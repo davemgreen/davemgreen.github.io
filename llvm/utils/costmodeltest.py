@@ -56,8 +56,9 @@ def checkcosts(llasm):
   logging.debug(f"cost = codesize:{codesize[0]} throughput:{thru[0]} lat:{lat[0]} sizelat:{sizelat[0]}")
   return (size, [codesize, thru, lat, sizelat], llasm, ('\n'.join(lines)).replace('\t', ' '))
 
-  if args.checkopted:
-    run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} costtest.ll -O1 -S -o -")
+  # TODOD:
+  #if args.checkopted:
+  #  run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} costtest.ll -O1 -S -o -")
 
 
 def generate_const(ty, sameval):
@@ -75,12 +76,12 @@ def generate(variant, instr, ty):
   if variant == 'binop':
     preamble += f", {tystr} %b"
   elif variant == 'binopsplat':
-    preamble += f", {eltstr} %b"
+    preamble += f", {eltstr} %bs"
   preamble += ") {\n"
 
   setup = ""
   if variant == "binopsplat":
-    setup += f"  %i = insertelement {tystr} poison, {eltstr} %b, i64 0\n  %bs = shufflevector {tystr} %i, {tystr} poison, <{ty.elts} x i32> zeroinitializer\n"
+    setup += f"  %i = insertelement {tystr} poison, {eltstr} %bs, i64 0\n  %b = shufflevector {tystr} %i, {tystr} poison, <{ty.elts} x i32> zeroinitializer\n"
 
   instrstr = "  %c = "
   b = "%b" if variant == "binop" or variant == "binopsplat" else generate_const(ty, variant == 'binopconstsplat')
@@ -108,7 +109,7 @@ class Ty:
 fptymap = { 16:'half', 32:'float', 64:'double',
             'half':16, 'float':32, 'double':64 }
 
-def integertypes():
+def inttypes():
   #TODO: i128, other type sizes?
   for bits in [8, 16, 32, 64]:
     yield Ty('i'+str(bits))
@@ -133,177 +134,87 @@ def fptypes():
 
 def binop_variants(ty):
   yield ('binop', 0)
-  #yield ('binopconst', 0) #1 if ty.elts == 1 else 2)
-  #if ty.elts > 1:
-  #  yield ('binopsplat', 0) #1
-  #  yield ('binopconstsplat', 0) #1 if ty.elts == 1 or ty.bits <= 32 else 2)
+  yield ('binopconst', 0) #1 if ty.elts == 1 else 2)
+  if ty.elts > 1:
+    yield ('binopsplat', 0) #1
+    yield ('binopconstsplat', 0) #1 if ty.elts == 1 or ty.bits <= 32 else 2)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--serve', action='store_true')
+parser.add_argument('--type', choices=['all', 'int', 'fp', 'cast'], default='all')
 parser.add_argument('-mtriple', default='aarch64')
 parser.add_argument('-mattr', default=None)
-parser.add_argument('-checkopted', action='store_true')
+#parser.add_argument('--checkopted', action='store_true')
 args = parser.parse_args()
 
-if args.serve:
-  import pandas, numpy, html
-  df = pandas.read_json("data.json")
-  df['error'] = df.codesize - df['size']
-  df2 = pandas.pivot_table(df, index=['instr', 'variant'], columns=['ty'],
-                           values=['error', 'size', 'thru', 'lat', 'sizelat', 'codesize', 'll', 'asm', 'costoutput'],
-                           aggfunc=lambda x: x)
-  df3 = pandas.pivot_table(df, index=['instr', 'variant'], columns=['ty'],
-                           values=['error'])
 
-  def to_html(tys):
-    asm = '<table border="1" class="dataframe"><thead><tr>\n'
-    asm += '  <th>instr</th>\n'
-    asm += '  <th>variant</th>\n'
-    for ty in tys:
-      asm += f'  <th>{ty}</th>\n'
-    asm += '</tr></thead>\n'
+def do(instr, variant, ty, extrasize, data):
+  logging.info(f"{variant} {instr} with {ty.str()}")
+  (size, costs, ll, asm) = checkcosts(generate(variant, instr, ty))
+  if costs[0][0] != size - extrasize:
+    logging.warning(f">>> {variant} {instr} with {ty.str()}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
+  data.append({"instr":instr, "ty":str(ty), "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "extrasize":extrasize, "asm":asm, "ll":ll, "costoutput":costs[0][1]})
+  logging.debug('')
 
-    asm += '<tbody>\n'
-    for idx in df2.index:
-      print(idx)
-      item = df2.loc[idx]
-      if pandas.isna(item['error'][tys[-1]]):
-        continue
+# Operations are the ones in https://github.com/llvm/llvm-project/issues/115133
+#  TODO: load/store, bitcast, getelementptr, phi, select, icmp, zext/sext/trunc, not?
 
-      asm += '  <tr>\n'
-      asm += f'    <th rowspan="1" valign="top">{html.escape(str(idx[0]))}</th>\n'
-      asm += f'    <th>{html.escape(str(idx[1]))}</th>\n'
-      for ty in tys:
-        #print("  ", ty)
-        error = item["error"][ty]
-        if pandas.isna(error):
-          error = "-"
-        size = item["size"][ty]
-        codesize = item["codesize"][ty]
-        thru = item["thru"][ty]
-        lat = item["lat"][ty]
-        sizelat = item["sizelat"][ty]
-        ll = '  ' + item["ll"][ty].replace('\n', '\n  ')
-        asmtxt = '  ' + item["asm"][ty].replace('\n', '\n  ')
-        costout = '  ' + item["costoutput"][ty].replace('\n', '\n  ')
-        tt = f'{idx[0]} {idx[1]} {ty}\nCodesize cost:{codesize}\nMeasured size:{size}\nOthercosts: thru:{thru} lat:{lat} sizelat:{sizelat}\nIR:\n{ll}\nAsm:\n{asmtxt}\nCodesize cost output:\n{costout}'
-        tt = html.escape(tt).replace('\\n', '\n').replace('\n', '&#013;')
-        asm += f'    <td title="{tt}">{html.escape(str(error))}</th>\n'
-      asm += '  </tr>\n'
-    asm += '</tbody></table>\n'
-    return asm
+exit = False
+if args.type == 'all' or args.type == 'int':
+  data = []
+  try:
+    # Int Binops
+    for instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl']:
+      for ty in inttypes():
+        for (variant, extrasize) in binop_variants(ty):
+          do(instr, variant, ty, extrasize, data)
 
-  html_template = f"""
-<html>
-<head>
-    <style>
-        h1 {{
-          font-family: verdana;
-          font-size: 24px;
-        }}
-        h3 {{
-          font-family: verdana;
-          font-size: 20px;
-        }}
-        table {{
-            width: 60%;
-            margin: 10px auto;
-            border-collapse: collapse;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }}
-        th, td {{
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }}
-        th {{
-            background-color: #4c79aa;
-            color: white;
-        }}
-        tr:nth-child(even) {{
-            background-color: #f2f2f2;
-        }}
-        td:hover {{
-          background-color: #ddd;
-        }}
-    </style>
-</head>
-<body>
-    <h1>Cost model tests</h1>
-    <p>This attempts to compare the first-order output of the cost model compared to the measured codesize. It generates simple snippets of IR and compares the output of opt -passes=print<cost-model> -cost-kind=codesize and the assmebly generated from llc. The assembly output of llc is sometimes filtered to remove loop pinvariant instructions. The table lists the difference between the two cost models.</p>
-    <p>Not all the scores are expected to match exactly. More details on each and the costs found can be found in their respective tooltips.</p>
-    <h3>Integer errors</h3>
-    {to_html([str(x) for x in integertypes()])}
-    <h3>Float errors</h3>
-    {to_html([str(x) for x in fptypes()])}
-    {df3.to_html()}
-</body>
-</html>
-"""
-  with open("data.html", "w", encoding="utf-8") as f:
-    f.write(html_template)
+    # Int unops
+    # abs, bitreverse, bswap, ctlz, cttz, ctpop, 
+    # Int triops
+    # fshl, fshr, rotr, rotl, 
+    # select, icmp, fcmp
 
-  import http.server
-  server = http.server.HTTPServer(('', 8081), http.server.SimpleHTTPRequestHandler)
-  print("http://e108579-lin.cambridge.arm.com:8081/data.html")
-  server.serve_forever()
+    #uaddo, usubo, uadde, usube?
+    #umulo, smulo?
+    #umulh, smulh
+    #ushlsat, sshlsat
+    #smulfix, umulfix
+    #smulfixsat, umulfixsat
+    #sdivfix, udivfix
+    #sdivfixsat, udivfixsat
 
+  except KeyboardInterrupt:
+    exit=True
+  with open("data-int.json", "w") as f:
+    json.dump(data, f)
+  #print(data)
+  if exit:
+    sys.exit(1)
 
+exit = False
+if args.type == 'all' or args.type == 'fp':
+  data = []
+  try:
+    # Floating point Binops
+    for instr in ['fadd', 'fsub', 'fmul', 'fdiv', 'frem', 'minnum', 'maxnum', 'minimum', 'maximum', 'copysign', 'pow']:
+      for ty in fptypes():
+        for (variant, extrasize) in binop_variants(ty):
+          do(instr, variant, ty, extrasize, data)
 
-data = []
-try:
-  def do(instr, variant, ty, extrasize):
-    logging.info(f"{variant} {instr} with {ty.str()}")
-    (size, costs, ll, asm) = checkcosts(generate(variant, instr, ty))
-    if costs[0][0] != size - extrasize:
-      logging.warning(f">>> {variant} {instr} with {ty.str()}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
-    logging.debug('')
-    data.append({"instr":instr, "ty":str(ty), "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "extrasize":extrasize, "asm":asm, "ll":ll, "costoutput":costs[0][1]})
+    # fma, fmuladd
+    # fneg, fabs, fsqrt, ceil, floor, trunc, rint, nearbyint
+    # fpext, fptrunc, fptosi, fptoui, uitofp, sitofp, fptosisat, fptouisat
+    # lrint, llrint, lround, llround
+    # fminimumnum, fmaximumnum
+    # fpowi
+    # sin, cos, etc
+    # fexp, fexp2, flog, flog2, flog10
+    # fldexp, frexmp
 
-  # Operations are the ones in https://github.com/llvm/llvm-project/issues/115133
-  #  TODO: load/store, bitcast, getelementptr, phi, select, icmp, zext/sext/trunc, not?
-
-  # Integer Binops
-  for instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl']:
-    for ty in integertypes():
-      for (variant, extrasize) in binop_variants(ty):
-        do(instr, variant, ty, extrasize)
-
-  # Integer unops
-  # abs, bitreverse, bswap, ctlz, cttz, ctpop, 
-  # Integer triops
-  # fshl, fshr, rotr, rotl, 
-  # select, icmp, fcmp
-
-  #uaddo, usubo, uadde, usube?
-  #umulo, smulo?
-  #umulh, smulh
-  #ushlsat, sshlsat
-  #smulfix, umulfix
-  #smulfixsat, umulfixsat
-  #sdivfix, udivfix
-  #sdivfixsat, udivfixsat
-
-
-  # Floating point Binops
-  for instr in ['fadd', 'fsub', 'fmul', 'fdiv', 'frem', 'minnum', 'maxnum', 'minimum', 'maximum', 'copysign', 'pow']:
-    for ty in fptypes():
-      for (variant, extrasize) in binop_variants(ty):
-        do(instr, variant, ty, extrasize)
-
-  # fma, fmuladd
-  # fneg, fabs, fsqrt, ceil, floor, trunc, rint, nearbyint
-  # fpext, fptrunc, fptosi, fptoui, uitofp, sitofp, fptosisat, fptouisat
-  # lrint, llrint, lround, llround
-  # fminimumnum, fmaximumnum
-  # fpowi
-  # sin, cos, etc
-  # fexp, fexp2, flog, flog2, flog10
-  # fldexp, frexmp
-
-except KeyboardInterrupt:
-  pass
-with open("data.json", "w") as f:
-  json.dump(data, f)
-print(data)
+  except KeyboardInterrupt:
+    exit=True
+  with open("data-fp.json", "w") as f:
+    json.dump(data, f)
+  #print(data)
+  if exit:
+    sys.exit(1)
