@@ -28,25 +28,33 @@ def getcost(costkind, print):
   cost = sum([int(x[len(costpre):len(costpre)+x[len(costpre):].find(' ')]) for x in costs if x.startswith(costpre)]) 
   return (cost, text.strip())
 
-def checkcosts(llasm):
-  logging.debug(llasm)
-  with open("costtest.ll", "w") as f:
-    f.write(llasm)
-  
-  run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} costtest.ll -o costtest.s")
-  #run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} costtest.ll -o costtest.o -filetype=obj --function-sections")
-  #sizelines = run(f"llvm-size -A costtest.o")
-  #size = int([x for x in sizelines.split('\n') if ".text.test" in x][0].split()[1]) // 4 - 1
+def getasm(extraflags):
+  try:
+    run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {extraflags} costtest.ll -o costtest.s")
+  except subprocess.CalledProcessError as e:
+    return (["ERROR: " + e.output.decode('utf-8')], -1)
   with open("costtest.s") as f:
     lines = [l.strip() for l in f]
-  # This tries to remove .declarations, comments and invariant instructions (movs and constants).
+  # This tries to remove .declarations, comments etc
   lines = [l for l in lines if l[0] != '.' and l[0] != '/' and not l.startswith('test:')]
   #logging.debug(lines)
+
   # TODOD: Improve the filtering to what is invariant, somehow. Or include it in the costs.
   filteredlines = [l for l in lines if not l.startswith('movi') and not l.startswith('mov\tw') and l != 'ret' and not l.startswith('adrp') and not l.startswith('ldr') and not l.startswith('dup') and not l.startswith('fmov')]
   logging.debug(filteredlines)
   size = len(filteredlines)
   logging.debug(f"size = {size}")
+
+  return (lines, size)
+
+def checkcosts(llasm):
+  logging.debug(llasm)
+  with open("costtest.ll", "w") as f:
+    f.write(llasm)
+  
+  lines, size = getasm('')
+
+  gilines, gisize = getasm('-global-isel')
 
   codesize = getcost('code-size', True)
   thru = getcost('throughput', False)
@@ -54,7 +62,7 @@ def checkcosts(llasm):
   sizelat = getcost('size-latency', False)
 
   logging.debug(f"cost = codesize:{codesize[0]} throughput:{thru[0]} lat:{lat[0]} sizelat:{sizelat[0]}")
-  return (size, [codesize, thru, lat, sizelat], llasm, ('\n'.join(lines)).replace('\t', ' '))
+  return (size, gisize, [codesize, thru, lat, sizelat], llasm, ('\n'.join(lines)).replace('\t', ' '), ('\n'.join(gilines)).replace('\t', ' '))
 
   # TODOD:
   #if args.checkopted:
@@ -62,7 +70,7 @@ def checkcosts(llasm):
 
 
 def generate_const(ty, sameval):
-  consts = ['3', '2'] if not ty.isFloat() else ['3.0', '2.0']
+  consts = ['7', '6'] if not ty.isFloat() else ['7.0', '6.0']
   if ty.elts == 1:
     return consts[0]
   if sameval:
@@ -149,10 +157,10 @@ args = parser.parse_args()
 
 def do(instr, variant, ty, extrasize, data):
   logging.info(f"{variant} {instr} with {ty.str()}")
-  (size, costs, ll, asm) = checkcosts(generate(variant, instr, ty))
+  (size, gisize, costs, ll, asm, giasm) = checkcosts(generate(variant, instr, ty))
   if costs[0][0] != size - extrasize:
     logging.warning(f">>> {variant} {instr} with {ty.str()}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
-  data.append({"instr":instr, "ty":str(ty), "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "extrasize":extrasize, "asm":asm, "ll":ll, "costoutput":costs[0][1]})
+  data.append({"instr":instr, "ty":str(ty), "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[0][1]})
   logging.debug('')
 
 # Operations are the ones in https://github.com/llvm/llvm-project/issues/115133
