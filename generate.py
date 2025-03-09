@@ -194,7 +194,7 @@ if args.type == 'all' or args.type == 'int':
   except KeyboardInterrupt:
     exit=True
   with open("data-int.json", "w") as f:
-    json.dump(data, f)
+    json.dump(data, f, indent=1)
   #print(data)
   if exit:
     sys.exit(1)
@@ -222,7 +222,7 @@ if args.type == 'all' or args.type == 'fp':
   except KeyboardInterrupt:
     exit=True
   with open("data-fp.json", "w") as f:
-    json.dump(data, f)
+    json.dump(data, f, indent=1)
   #print(data)
   if exit:
     sys.exit(1)
