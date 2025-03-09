@@ -32,7 +32,7 @@ def getasm(extraflags):
   try:
     run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {extraflags} costtest.ll -o costtest.s")
   except subprocess.CalledProcessError as e:
-    return (["ERROR: " + e.output.decode('utf-8')], -1)
+    return ([e.output.decode('utf-8').split('\n')[0]], -1)
   with open("costtest.s") as f:
     lines = [l.strip() for l in f]
   # This tries to remove .declarations, comments etc
