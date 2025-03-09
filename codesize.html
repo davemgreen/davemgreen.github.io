@@ -1,0 +1,140 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AArch64 Cost model tests</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("data-int.json")
+                .then(response => response.json())
+                .then(json => drawTable(json, 'int'))
+                .catch(reason => console.log(reason));
+            fetch("data-fp.json")
+                .then(response => response.json())
+                .then(json => drawTable(json, 'fp'))
+                .catch(reason => console.log(reason));
+        });
+        
+        function drawTable(json, label) {
+            var instrs = {};
+            var tys = []
+            json.forEach(j => {
+                instrs[j.instr] ??= {};
+                instrs[j.instr][j.variant] ??= {};
+                instrs[j.instr][j.variant][j.ty] = j
+                if (!tys.includes(j.ty))
+                    tys.push(j.ty);
+            });
+
+            var table = document.getElementById('table-'+label)
+            while (table.childNodes.length != 0)
+                table.removeChild(table.childNodes[0]);
+
+            head = table.createTHead();
+            tr = head.insertRow(0);
+            tr.insertCell().outerHTML = "<th>Instr</th>"
+            tr.insertCell().outerHTML = "<th>Variant</th>"
+            for (var ty in tys) {
+                tr.insertCell().outerHTML = "<th>"+tys[ty]+"</th>"
+            }
+
+            body = table.createTBody();
+            for (var instr in instrs) {
+                var first = true
+                for (var variant in instrs[instr]) {
+                    tr = body.insertRow();
+                    if (first) {
+                        console.log(Object.keys(instrs[instr]).length)
+                        console.log(instrs[instr])
+                        tr.insertCell().outerHTML = "<th rowspan='"+Object.keys(instrs[instr]).length+"' valign='top'>"+instr+"</th>"
+                        first = false
+                    }
+                    tr.insertCell().outerHTML = "<th>"+variant+"</th>"
+                    for (var ty in tys) {
+                        cell = tr.insertCell()
+                        j = instrs[instr][variant][tys[ty]]
+                        if (!j) {
+                            cell.innerHTML = "-"
+                        } else {
+                            cell.innerHTML = j.codesize - j.size
+                            cell.onclick = function() {
+                                let _j = j
+                                let _label = label
+                                return function() { drawDetails(_label, _j); }
+                            }()
+                        }
+                    }
+                }
+            }
+        }
+
+        function escape(s) {
+            return s.replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('#', '\#')
+        }
+
+        function drawDetails(label, j) {
+            var details = document.getElementById('details-'+label);
+            txt = "<h3>Details</h3>"
+            txt += j.instr + " " + j.variant + " " + j.ty + "\n";
+            txt += "Codesize cost:"+j.codesize+"\n"
+            txt += "Measured size:"+j.size+" (gisize:"+j.gisize+")\n"
+            txt += "Othercosts: thru:"+j.thru+" lat:"+j.lat+" sizelat:"+j.sizelat+"\n"
+            txt += "\nIR:\n<code>"+escape(j.ll)+"</code>\n"
+            txt += "\nAsm:\n<code>"+escape(j.asm)+"</code>\n"
+            txt += "\nCodesize cost output:\n<code>"+escape(j.costoutput)+"</code>\n"
+            details.innerHTML = txt.replaceAll('\n', '<br>');
+        }
+    </script>
+    <style>
+        h1 {
+          font-family: verdana;
+          font-size: 24px;
+        }
+        h3 {
+          font-family: verdana;
+          font-size: 20px;
+        }
+        table {
+            width: 60%;
+            margin: 10px auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #4c79aa;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        td:hover {
+          background-color: #ddd;
+        }
+        code {
+            font-family: Consolas,"courier new";
+        }
+    </style>
+</head>
+<body>
+    <h1>Cost model tests</h1>
+    <p>This attempts to compare the first-order output of the cost model compared to the measured codesize. It generates simple snippets of IR and compares the output of opt -passes=print<cost-model> -cost-kind=codesize and the assembly generated from llc. The assembly output of llc is sometimes filtered to remove loop invariant instructions.</p>
+    <p>The table lists the difference between the two cost models (i.e. zero is good). Not all the scores are expected to match exactly. More details and the costs can be found by clicking on a table entry.</p>
+    <h3>Integer errors</h3>
+    <div style="display: flex;">
+        <div width="60%"><table id="table-int" class="dataframe" border="1"><th>Loading</th></table></div>
+        <div width="40%" style="white-space: pre; padding: 10px;" id="details-int"><h3>Details</h3></div>
+    </div>
+    <h3>FP errors</h3>
+    <div style="display: flex;">
+        <div width="60%"><table id="table-fp" class="dataframe" border="1"><th>Loading</th></table></div>
+        <div width="40%" style="white-space: pre; padding: 10px;" id="details-fp"><h3>Details</h3></div>
+    </div>
+</body>
+</html>
+
