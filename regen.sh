@@ -16,6 +16,7 @@ HASH=`cd llvm-project && git rev-parse HEAD`
 
 PATH=$PWD/llvm-project/build/bin:$PATH python generate.py
 
+git diff
 if ! git diff-index --quiet HEAD --; then
   git add -u
   git commit -m "Regen $HASH `date`"
