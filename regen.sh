@@ -15,6 +15,8 @@ HASH=`cd llvm-project && git rev-parse HEAD`
 ( cd llvm-project/build && ninja )
 
 PATH=$PWD/llvm-project/build/bin:$PATH python generate.py
+PATH=$PWD/llvm-project/build/bin:$PATH python generate.py -mattr=fullfp16
+PATH=$PWD/llvm-project/build/bin:$PATH python generate.py -mattr=sve2
 
 git diff
 if ! git diff-index --quiet HEAD --; then

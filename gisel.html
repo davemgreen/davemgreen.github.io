@@ -13,6 +13,14 @@
                 .then(response => response.json())
                 .then(json => drawTable(json, 'fp'))
                 .catch(reason => console.log(reason));
+            fetch("data-cast.json")
+                .then(response => response.json())
+                .then(json => drawTable(json, 'cast'))
+                .catch(reason => console.log(reason));
+            fetch("data-vec.json")
+                .then(response => response.json())
+                .then(json => drawTable(json, 'vec'))
+                .catch(reason => console.log(reason));
         });
         
         function drawTable(json, label) {
@@ -35,7 +43,7 @@
             tr.insertCell().outerHTML = "<th>Instr</th>"
             tr.insertCell().outerHTML = "<th>Variant</th>"
             for (var ty in tys) {
-                tr.insertCell().outerHTML = "<th>"+tys[ty]+"</th>"
+                tr.insertCell().outerHTML = "<th>"+escape(tys[ty])+"</th>"
             }
 
             body = table.createTBody();
@@ -76,7 +84,7 @@
         function drawDetails(label, j) {
             var details = document.getElementById('details-'+label);
             txt = "<h3>Details</h3>"
-            txt += j.instr + " " + j.variant + " " + j.ty + "\n";
+            txt += j.instr + " " + j.variant + " " + escape(j.ty) + "\n";
             txt += "Measured size:"+j.size+"\n"
             txt += "GISel gisize:"+j.gisize+"\n"
             txt += "(Costs: thru:"+j.thru+" codesize:"+j.codesize+" lat:"+j.lat+" sizelat:"+j.sizelat+"\n"
@@ -125,15 +133,25 @@
 <body>
     <h1>AArch64 GISel coverage tests</h1>
     <p>The table lists the difference between the number of instructions generated from gisel vs sdag (+ve means gisel is worse). More details and the asm can be found by clicking on a table entry.</p>
-    <h3>Integer differences</h3>
+    <h3>Integer diffs</h3>
     <div style="display: flex;">
         <div width="60%" style="flex: 0 0 60%;"><table id="table-int" class="dataframe" border="1"><th>Loading</th></table></div>
         <div width="40%" style="position: sticky; top: 10px; align-self: flex-start; white-space: pre; padding: 10px;" id="details-int"><h3>Details</h3></div>
     </div>
-    <h3>FP differences</h3>
+    <h3>FP diffs</h3>
     <div style="display: flex;">
         <div width="60%" style="flex: 0 0 60%;"><table id="table-fp" class="dataframe" border="1"><th>Loading</th></table></div>
         <div width="40%" style="position: sticky; top: 10px; align-self: flex-start; white-space: pre; padding: 10px;" id="details-fp"><h3>Details</h3></div>
+    </div>
+    <h3>Cast diffs</h3>
+    <div style="display: flex;">
+        <div width="60%" style="flex: 0 0 60%;"><table id="table-cast" class="dataframe" border="1"><th>Loading</th></table></div>
+        <div width="40%" style="position: sticky; top: 10px; align-self: flex-start; white-space: pre; padding: 10px;" id="details-cast"><h3>Details</h3></div>
+    </div>
+    <h3>Vec diffs</h3>
+    <div style="display: flex;">
+        <div width="60%" style="flex: 0 0 60%;"><table id="table-vec" class="dataframe" border="1"><th>Loading</th></table></div>
+        <div width="40%" style="position: sticky; top: 10px; align-self: flex-start; white-space: pre; padding: 10px;" id="details-vec"><h3>Details</h3></div>
     </div>
 </body>
 </html>

@@ -40,7 +40,8 @@ def getasm(extraflags):
   #logging.debug(lines)
 
   # TODOD: Improve the filtering to what is invariant, somehow. Or include it in the costs.
-  filteredlines = [l for l in lines if not l.startswith('movi') and not l.startswith('mov\tw') and l != 'ret' and not l.startswith('adrp') and not l.startswith('ldr') and not l.startswith('dup') and not l.startswith('fmov')]
+  #filteredlines = [l for l in lines if not l.startswith('movi') and not l.startswith('mov\tw') and l != 'ret' and not l.startswith('adrp') and not l.startswith('ldr') and not l.startswith('dup') and not l.startswith('fmov')]
+  filteredlines = [l for l in lines if l != 'ret' and not l.startswith('ptrue')]
   logging.debug(filteredlines)
   size = len(filteredlines)
   logging.debug(f"size = {size}")
@@ -77,68 +78,99 @@ def generate_const(ty, sameval):
     return "<" + ", ".join([f"{ty.scalar} {consts[0]}" for x in range(ty.elts)]) + '>'
   return "<" + ", ".join([f"{ty.scalar} {consts[0]}, {ty.scalar} {consts[1]}" for x in range(ty.elts // 2)]) + '>'
 
-def generate(variant, instr, ty):
+def generate(variant, instr, ty, ty2):
   tystr = ty.str()
   eltstr = ty.scalar
-  preamble = f"define {tystr} @test({tystr} %a"
+  rettystr = eltstr if instr == 'extractelement' else ty2.str()
+  preamble = f"define {rettystr} @test({tystr} %a"
   if variant == 'binop':
     preamble += f", {tystr} %b"
-  elif variant == 'binopsplat':
+  elif variant == 'binopsplat' or instr == 'insertelement':
     preamble += f", {eltstr} %bs"
+  elif variant == 'triop':
+    preamble += f", {tystr} %b, {tystr} %c"
+  if variant == 'vecopvar':
+    preamble += f", i32 %c"
   preamble += ") {\n"
 
   setup = ""
   if variant == "binopsplat":
-    setup += f"  %i = insertelement {tystr} poison, {eltstr} %bs, i64 0\n  %b = shufflevector {tystr} %i, {tystr} poison, <{ty.elts} x i32> zeroinitializer\n"
+    setup += f"  %i = insertelement {tystr} poison, {eltstr} %bs, i64 0\n"
+    setup += f"  %b = shufflevector {tystr} %i, {tystr} poison, <{ty.vecpart()} x i32> zeroinitializer\n"
 
-  instrstr = "  %c = "
+  instrstr = "  %r = "
   b = "%b" if variant == "binop" or variant == "binopsplat" else generate_const(ty, variant == 'binopconstsplat')
   if instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'fadd', 'fsub', 'fmul', 'fdiv', 'frem']:
     instrstr += f"{instr} {tystr} %a, {b}\n"
   elif instr in ['rotr', 'rotl']:
     instrstr += f"call {tystr} @llvm.fsh{instr[3]}({tystr} %a, {tystr} %a, {tystr} {b})\n"
+  elif instr in ['fneg']:
+    instrstr += f"{instr} {tystr} %a\n"
+  elif instr == 'abs' or instr == 'ctlz' or instr == 'cttz':
+    instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, i1 0)\n"
+  elif variant == 'unop':
+    instrstr += f"call {tystr} @llvm.{instr}({tystr} %a)\n"
+  elif variant == 'triop':
+    instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, {tystr} %b, {tystr} %c)\n"
+  elif instr == 'extractelement':
+    idx = '%c' if variant == 'vecopvar' else ('1' if variant == 'vecop1' else '0')
+    instrstr += f"extractelement {tystr} %a, i32 {idx}\n"
+  elif instr == 'insertelement':
+    idx = '%c' if variant == 'vecopvar' else ('1' if variant == 'vecop1' else '0')
+    instrstr += f"insertelement {tystr} %a, {eltstr} %bs, i32 {idx}\n"
+  elif variant.startswith('cast'):
+    instrstr += f"{instr} {tystr} %a to {rettystr}\n"
   else:
     instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
   
-  return preamble + setup + instrstr + f"  ret {tystr} %c\n}}"
+  return preamble + setup + instrstr + f"  ret {rettystr} %r\n}}"
 
 class Ty:
-  def __init__(self, scalar, elts=1):
+  def __init__(self, scalar, elts=1, scalable=0):
     self.scalar = scalar
     self.elts = elts
+    self.scalable = scalable
   def isFloat(self):
     return self.scalar[0] != 'i'
   def str(self):
-    if self.elts == 1:
+    if self.elts == 1 and not self.scalable:
       return self.scalar
-    return f"<{self.elts} x {self.scalar}>"
+    return f"<{self.vecpart()} x {self.scalar}>"
+  def vecpart(self):
+    if self.scalable:
+      return f"vscale x {self.elts}"
+    return f"{self.elts}"
   def __repr__(self):
     return self.str()
 fptymap = { 16:'half', 32:'float', 64:'double',
             'half':16, 'float':32, 'double':64 }
 
 def inttypes():
-  #TODO: i128, other type sizes?
+  # TODO: i128, other type sizes?
   for bits in [8, 16, 32, 64]:
     yield Ty('i'+str(bits))
-  for bits in [8, 16, 32, 64]:
-    for s in [2, 4, 8, 16, 32]:
-      if s * bits > 256: #TODO: Higher sizes are incorrect for codesize
-        continue
-      if s * bits < 64: #TODO: Start looking at smaller sizes once the legal sizes are better. Odd vector sizes
-        continue
-      yield Ty('i'+str(bits), s)
+  for scalable in [0,1]:
+    if scalable == 1 and (not args.mattr or 'sve' not in args.mattr):
+      continue
+    for bits in [8, 16, 32, 64]:
+      for s in [2, 4, 8, 16, 32]:
+        if s * bits > 256: #TODO: Higher sizes are incorrect for codesize
+          continue
+        if s * bits < 64: #TODO: Start looking at smaller sizes once the legal sizes are better. Odd vector sizes
+          continue
+        yield Ty('i'+str(bits), s, scalable)
 def fptypes():
-  #TODO: f128? They are just libcalls
+  # TODO: f128? They are just libcalls
   for bits in [16, 32, 64]:
     yield Ty(fptymap[bits])
-  for bits in [16, 32, 64]:
-    for s in [2, 4, 8, 16, 32]:
-      if s * bits > 256: #TODO: Higher sizes are incorrect for codesize
-        continue
-      if s * bits < 64: #TODO: Start looking at smaller sizes once the legal sizes are better. Odd vector sizes
-        continue
-      yield Ty(fptymap[bits], s)
+  for scalable in [0,1]:
+    for bits in [16, 32, 64]:
+      for s in [2, 4, 8, 16, 32]:
+        if s * bits > 256: # TODO: Higher sizes are incorrect for codesize
+          continue
+        if s * bits < 64: # TODO: Start looking at smaller sizes once the legal sizes are better. Odd vector sizes
+          continue
+        yield Ty(fptymap[bits], s, scalable)
 
 def binop_variants(ty):
   yield ('binop', 0)
@@ -148,23 +180,24 @@ def binop_variants(ty):
     yield ('binopconstsplat', 0) #1 if ty.elts == 1 or ty.bits <= 32 else 2)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--type', choices=['all', 'int', 'fp', 'cast'], default='all')
+parser.add_argument('--type', choices=['all', 'int', 'fp', 'cast', 'vec'], default='all')
 parser.add_argument('-mtriple', default='aarch64')
 parser.add_argument('-mattr', default=None)
 #parser.add_argument('--checkopted', action='store_true')
 args = parser.parse_args()
 
 
-def do(instr, variant, ty, extrasize, data):
+def do(instr, variant, ty, ty2, extrasize, data, tyoverride=None):
   logging.info(f"{variant} {instr} with {ty.str()}")
-  (size, gisize, costs, ll, asm, giasm) = checkcosts(generate(variant, instr, ty))
+  (size, gisize, costs, ll, asm, giasm) = checkcosts(generate(variant, instr, ty, ty2))
+  tystr = str(ty) if not tyoverride else tyoverride
   if costs[0][0] != size - extrasize:
-    logging.warning(f">>> {variant} {instr} with {ty.str()}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
-  data.append({"instr":instr, "ty":str(ty), "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[0][1]})
+    logging.warning(f">>> {variant} {instr} with {tystr}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
+  data.append({"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[0][1]})
   logging.debug('')
 
 # Operations are the ones in https://github.com/llvm/llvm-project/issues/115133
-#  TODO: load/store, bitcast, getelementptr, phi, select, icmp, zext/sext/trunc, not?
+#  TODO: load/store, bitcast, getelementptr, phi
 
 exit = False
 if args.type == 'all' or args.type == 'int':
@@ -173,56 +206,137 @@ if args.type == 'all' or args.type == 'int':
     # Int Binops
     for instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl']:
       for ty in inttypes():
+        if ty.scalable:
+          continue
         for (variant, extrasize) in binop_variants(ty):
-          do(instr, variant, ty, extrasize, data)
+          do(instr, variant, ty, ty, extrasize, data)
 
     # Int unops
-    # abs, bitreverse, bswap, ctlz, cttz, ctpop, 
-    # Int triops
-    # fshl, fshr, rotr, rotl, 
-    # select, icmp, fcmp
+    for instr in ['abs', 'bitreverse', 'bswap', 'ctlz', 'cttz', 'ctpop']:
+      for ty in inttypes():
+        if ty.scalable:
+          continue
+        if instr == 'bswap' and ty.scalar == 'i8':
+          continue
+        do(instr, 'unop', ty, ty, 0, data)
+    # TODO: not?
 
-    #uaddo, usubo, uadde, usube?
-    #umulo, smulo?
-    #umulh, smulh
-    #ushlsat, sshlsat
-    #smulfix, umulfix
-    #smulfixsat, umulfixsat
-    #sdivfix, udivfix
-    #sdivfixsat, udivfixsat
+    # Int triops
+    for instr in ['fshl', 'fshr']:
+      for ty in inttypes():
+        if ty.scalable:
+          continue
+        do(instr, 'triop', ty, ty, 0, data)
+    # TODO: select, icmp, fcmp, mla?
+    # TODO: fshl+const
+
+    # TODO: uaddo, usubo, uadde, usube?
+    # TODO: umulo, smulo?
+    # TODO: umulh, smulh
+    # TODO: ushlsat, sshlsat
+    # TODO: smulfix, umulfix
+    # TODO: smulfixsat, umulfixsat
+    # TODO: sdivfix, udivfix
+    # TODO: sdivfixsat, udivfixsat
+
+    # TODO: vecreduce.add, vecreduce.mul, vecreduce.and, vecreduce.or, vecreduce.xor, vecreduce.min/max's
 
   except KeyboardInterrupt:
     exit=True
-  with open("data-int.json", "w") as f:
+  with open(f"data-int{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
     json.dump(data, f, indent=1)
-  #print(data)
   if exit:
     sys.exit(1)
 
-exit = False
 if args.type == 'all' or args.type == 'fp':
   data = []
   try:
     # Floating point Binops
     for instr in ['fadd', 'fsub', 'fmul', 'fdiv', 'frem', 'minnum', 'maxnum', 'minimum', 'maximum', 'copysign', 'pow']:
       for ty in fptypes():
+        if ty.scalable:
+          continue
         for (variant, extrasize) in binop_variants(ty):
-          do(instr, variant, ty, extrasize, data)
+          do(instr, variant, ty, ty, extrasize, data)
 
-    # fma, fmuladd
-    # fneg, fabs, fsqrt, ceil, floor, trunc, rint, nearbyint
-    # fpext, fptrunc, fptosi, fptoui, uitofp, sitofp, fptosisat, fptouisat
-    # lrint, llrint, lround, llround
-    # fminimumnum, fmaximumnum
-    # fpowi
-    # sin, cos, etc
-    # fexp, fexp2, flog, flog2, flog10
-    # fldexp, frexmp
+    # FP unops
+    for instr in ['fneg', 'fabs', 'sqrt', 'ceil', 'floor', 'trunc', 'rint', 'nearbyint']:
+      for ty in fptypes():
+        if ty.scalable:
+          continue
+        do(instr, 'unop', ty, ty, 0, data)
+    for instr in ['fma', 'fmuladd']:
+      for ty in fptypes():
+        if ty.scalable:
+          continue
+        do(instr, 'triop', ty, ty, 0, data)
+
+    # TODO: fmul+fadd? select+fcmp
+    # TODO: fminimumnum, fmaximumnum
+    # TODO: fpowi
+    # TODO: sin, cos, etc
+    # TODO: fexp, fexp2, flog, flog2, flog10
+    # TODO: fldexp, frexmp
+
+    # TODO: vecreduce.fadd, vecreduce.fmul, vecreduce.fmin/max's
 
   except KeyboardInterrupt:
     exit=True
-  with open("data-fp.json", "w") as f:
+  with open(f"data-fp{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
     json.dump(data, f, indent=1)
-  #print(data)
+  if exit:
+    sys.exit(1)
+
+
+if args.type == 'all' or args.type == 'cast':
+  data = []
+  try:
+    # TODO: zext, sext, trunc
+    # TODO: fpext, fptrunc, , fptosisat, fptouisat
+    # TODO: lrint, llrint, lround, llround
+
+    # fptosi, fptoui, uitofp, sitofp
+    for instr in ['fptosi', 'fptoui']:
+      for ty1 in fptypes():
+        for ty2 in inttypes():
+          if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
+            continue
+          do(instr, 'cast '+ty2.scalar, ty1, ty2, 0, data)
+    for instr in ['sitofp', 'uitofp']:
+      for ty1 in fptypes():
+        for ty2 in inttypes():
+          if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
+            continue
+          do(instr, 'cast '+ty2.scalar, ty2, ty1, 0, data, str(ty1))
+
+  except KeyboardInterrupt:
+    exit=True
+  with open(f"data-cast{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+    json.dump(data, f, indent=1)
+  if exit:
+    sys.exit(1)
+
+
+if args.type == 'all' or args.type == 'vec':
+  data = []
+  try:
+    for instr in ['insertelement', 'extractelement']:
+      for ty in inttypes():
+        if ty.elts == 1 or ty.scalable:
+          continue
+        for variant in ['vecop0', 'vecop1', 'vecopvar']:
+          do(instr, variant, ty, ty, 0, data)
+      for ty in fptypes():
+        if ty.elts == 1 or ty.scalable:
+          continue
+        for variant in ['vecop0', 'vecop1', 'vecopvar']:
+          do(instr, variant, ty, ty, 0, data)
+
+  # TODO: shuffles
+
+  except KeyboardInterrupt:
+    exit=True
+  with open(f"data-vec{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+    json.dump(data, f, indent=1)
   if exit:
     sys.exit(1)
