@@ -1,4 +1,4 @@
-import sys, os, subprocess, argparse, logging, json
+import sys, os, subprocess, argparse, logging, json, tempfile, multiprocessing
 
 # Try to more extensively check the cost model figures coming out of the cost model, for every operation x type combo.
 # Currently it looks at costsize costs, as those are easier to measure.
@@ -10,7 +10,7 @@ import sys, os, subprocess, argparse, logging, json
 # and this to serve is to pert 8081, inside a venv with pandas
 #   python llvm/utils/costmodeltest.py --servellvm/utils/costmodeltest.py
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format='')
+logging.basicConfig(stream=sys.stdout, level=logging.WARNING, format='')
 logging.getLogger("requests").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 
@@ -19,8 +19,8 @@ def run(cmd):
   cmd = cmd.split()
   return subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode('utf-8')
   
-def getcost(costkind, print):
-  text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} costtest.ll -passes=print<cost-model> -cost-kind={costkind} -disable-output")
+def getcost(path, costkind, print):
+  text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind={costkind} -disable-output")
   costpre = 'Cost Model: Found an estimated cost of '
   if print:
     logging.debug(text.strip())
@@ -28,12 +28,12 @@ def getcost(costkind, print):
   cost = sum([int(x[len(costpre):len(costpre)+x[len(costpre):].find(' ')]) for x in costs if x.startswith(costpre)]) 
   return (cost, text.strip())
 
-def getasm(extraflags):
+def getasm(path, extraflags):
   try:
-    run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {extraflags} costtest.ll -o costtest.s")
+    run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {extraflags} {os.path.join(path, 'costtest.ll')} -o {os.path.join(path, 'costtest.s')}")
   except subprocess.CalledProcessError as e:
     return ([e.output.decode('utf-8').split('\n')[0]], -1)
-  with open("costtest.s") as f:
+  with open(os.path.join(path, "costtest.s")) as f:
     lines = [l.strip() for l in f]
   # This tries to remove .declarations, comments etc
   lines = [l for l in lines if l[0] != '.' and l[0] != '/' and not l.startswith('test:')]
@@ -50,20 +50,21 @@ def getasm(extraflags):
 
 def checkcosts(llasm):
   logging.debug(llasm)
-  with open("costtest.ll", "w") as f:
-    f.write(llasm)
+  with tempfile.TemporaryDirectory() as tmp:
+    with open(os.path.join(tmp, "costtest.ll"), "w") as f:
+      f.write(llasm)
   
-  lines, size = getasm('')
+    lines, size = getasm(tmp, '')
 
-  gilines, gisize = getasm('-global-isel')
+    gilines, gisize = getasm(tmp, '-global-isel')
 
-  codesize = getcost('code-size', True)
-  thru = getcost('throughput', False)
-  lat = getcost('latency', False)
-  sizelat = getcost('size-latency', False)
+    codesize = getcost(tmp, 'code-size', True)
+    thru = getcost(tmp, 'throughput', False)
+    lat = getcost(tmp, 'latency', False)
+    sizelat = getcost(tmp, 'size-latency', False)
 
-  logging.debug(f"cost = codesize:{codesize[0]} throughput:{thru[0]} lat:{lat[0]} sizelat:{sizelat[0]}")
-  return (size, gisize, [codesize, thru, lat, sizelat], llasm, ('\n'.join(lines)).replace('\t', ' '), ('\n'.join(gilines)).replace('\t', ' '))
+    logging.debug(f"cost = codesize:{codesize[0]} throughput:{thru[0]} lat:{lat[0]} sizelat:{sizelat[0]}")
+    return (size, gisize, [codesize, thru, lat, sizelat], llasm, ('\n'.join(lines)).replace('\t', ' '), ('\n'.join(gilines)).replace('\t', ' '))
 
   # TODOD:
   #if args.checkopted:
@@ -191,40 +192,37 @@ parser.add_argument('-mattr', default=None)
 args = parser.parse_args()
 
 
-def do(instr, variant, ty, ty2, extrasize, data, tyoverride=None):
+def do(instr, variant, ty, ty2, extrasize, tyoverride):
   logging.info(f"{variant} {instr} with {ty.str()}")
   (size, gisize, costs, ll, asm, giasm) = checkcosts(generate(variant, instr, ty, ty2))
   tystr = str(ty) if not tyoverride else tyoverride
   if costs[0][0] != size - extrasize:
     logging.warning(f">>> {variant} {instr} with {tystr}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
-  data.append({"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[0][1]})
-  logging.debug('')
+  return {"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[0][1]}
 
 # Operations are the ones in https://github.com/llvm/llvm-project/issues/115133
 #  TODO: load/store, bitcast, getelementptr, phi
 
-exit = False
 if args.type == 'all' or args.type == 'int':
-  data = []
-  try:
+  def enumint():
     # Int Binops
     for instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl']:
       for ty in inttypes():
         for (variant, extrasize) in binop_variants(ty):
-          do(instr, variant, ty, ty, extrasize, data)
+          yield (instr, variant, ty, ty, extrasize, None)
 
     # Int unops
     for instr in ['abs', 'bitreverse', 'bswap', 'ctlz', 'cttz', 'ctpop']:
       for ty in inttypes():
         if instr == 'bswap' and ty.scalar == 'i8':
           continue
-        do(instr, 'unop', ty, ty, 0, data)
+        yield (instr, 'unop', ty, ty, 0, None)
     # TODO: not?
 
     # Int triops
     for instr in ['fshl', 'fshr']:
       for ty in inttypes():
-        do(instr, 'triop', ty, ty, 0, data)
+        yield (instr, 'triop', ty, ty, 0, None)
     # TODO: select, icmp, fcmp, mla?
     # TODO: fshl+const
 
@@ -239,29 +237,27 @@ if args.type == 'all' or args.type == 'int':
 
     # TODO: vecreduce.add, vecreduce.mul, vecreduce.and, vecreduce.or, vecreduce.xor, vecreduce.min/max's
 
-  except KeyboardInterrupt:
-    exit=True
+  pool = multiprocessing.Pool(16)
+  data = pool.starmap(do, enumint())
   with open(f"data-int{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
     json.dump(data, f, indent=1)
-  if exit:
-    sys.exit(1)
+
 
 if args.type == 'all' or args.type == 'fp':
-  data = []
-  try:
+  def enumfp():
     # Floating point Binops
     for instr in ['fadd', 'fsub', 'fmul', 'fdiv', 'frem', 'minnum', 'maxnum', 'minimum', 'maximum', 'copysign', 'pow']:
       for ty in fptypes():
         for (variant, extrasize) in binop_variants(ty):
-          do(instr, variant, ty, ty, extrasize, data)
+          yield (instr, variant, ty, ty, extrasize, None)
 
     # FP unops
     for instr in ['fneg', 'fabs', 'sqrt', 'ceil', 'floor', 'trunc', 'rint', 'nearbyint']:
       for ty in fptypes():
-        do(instr, 'unop', ty, ty, 0, data)
+        yield (instr, 'unop', ty, ty, 0, None)
     for instr in ['fma', 'fmuladd']:
       for ty in fptypes():
-        do(instr, 'triop', ty, ty, 0, data)
+        yield (instr, 'triop', ty, ty, 0, None)
 
     # TODO: fmul+fadd? select+fcmp
     # TODO: fminimumnum, fmaximumnum
@@ -272,17 +268,14 @@ if args.type == 'all' or args.type == 'fp':
 
     # TODO: vecreduce.fadd, vecreduce.fmul, vecreduce.fmin/max's
 
-  except KeyboardInterrupt:
-    exit=True
+  pool = multiprocessing.Pool(16)
+  data = pool.starmap(do, enumfp())
   with open(f"data-fp{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
     json.dump(data, f, indent=1)
-  if exit:
-    sys.exit(1)
 
 
 if args.type == 'all' or args.type == 'cast':
-  data = []
-  try:
+  def enumcast():
     # TODO: zext, sext, trunc
     # TODO: fpext, fptrunc, fptosisat, fptouisat
     # TODO: lrint, llrint, lround, llround
@@ -293,42 +286,37 @@ if args.type == 'all' or args.type == 'cast':
         for ty2 in inttypes():
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
-          do(instr, 'cast '+ty2.scalar, ty1, ty2, 0, data)
+          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
     for instr in ['sitofp', 'uitofp']:
       for ty1 in fptypes():
         for ty2 in inttypes():
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
-          do(instr, 'cast '+ty2.scalar, ty2, ty1, 0, data, str(ty1))
+          yield (instr, 'cast '+ty2.scalar, ty2, ty1, 0, str(ty1))
 
-  except KeyboardInterrupt:
-    exit=True
+  pool = multiprocessing.Pool(16)
+  data = pool.starmap(do, enumcast())
   with open(f"data-cast{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
     json.dump(data, f, indent=1)
-  if exit:
-    sys.exit(1)
 
 
 if args.type == 'all' or args.type == 'vec':
-  data = []
-  try:
+  def enumvec():
     for instr in ['insertelement', 'extractelement']:
       for ty in inttypes():
         if ty.elts == 1:
           continue
         for variant in ['vecop0', 'vecop1', 'vecopvar']:
-          do(instr, variant, ty, ty, 0, data)
+          yield (instr, variant, ty, ty, 0, None)
       for ty in fptypes():
         if ty.elts == 1:
           continue
         for variant in ['vecop0', 'vecop1', 'vecopvar']:
-          do(instr, variant, ty, ty, 0, data)
+          yield (instr, variant, ty, ty, 0, None)
 
   # TODO: shuffles
 
-  except KeyboardInterrupt:
-    exit=True
+  pool = multiprocessing.Pool(16)
+  data = pool.starmap(do, enumvec())
   with open(f"data-vec{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
     json.dump(data, f, indent=1)
-  if exit:
-    sys.exit(1)
