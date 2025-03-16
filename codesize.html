@@ -4,23 +4,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AArch64 Cost model tests</title>
     <script>
+        function load(label, type) {
+            fetch("data-" + label + type + ".json")
+                .then(response => {
+                    if (!response.ok) {
+                        fetch("data-" + label + ".json")
+                            .then(reposonse => reposonse.json())
+                            .then(json => drawTable(json, label))
+                            .catch(reason => console.log(reason));
+                        return Promise.reject()
+                    }
+                    return response.json()
+                })
+                .then(json => drawTable(json, label))
+                .catch(reason => console.log(reason));
+        }
+
+        function reload(type) {
+            load("int", type)
+            load("fp", type)
+            load("cast", type)
+            load("vec", type)
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
-            fetch("data-int.json")
-                .then(response => response.json())
-                .then(json => drawTable(json, 'int'))
-                .catch(reason => console.log(reason));
-            fetch("data-fp.json")
-                .then(response => response.json())
-                .then(json => drawTable(json, 'fp'))
-                .catch(reason => console.log(reason));
-            fetch("data-cast.json")
-                .then(response => response.json())
-                .then(json => drawTable(json, 'cast'))
-                .catch(reason => console.log(reason));
-            fetch("data-vec.json")
-                .then(response => response.json())
-                .then(json => drawTable(json, 'vec'))
-                .catch(reason => console.log(reason));
+            reload('')
         });
         
         function drawTable(json, label) {
@@ -34,7 +42,7 @@
                     tys.push(j.ty);
             });
 
-            var table = document.getElementById('table-'+label)
+            const table = document.getElementById('table-'+label)
             while (table.childNodes.length != 0)
                 table.removeChild(table.childNodes[0]);
 
@@ -125,12 +133,20 @@
         code {
             font-family: Consolas,"courier new";
         }
+        button:focus {
+            background: #c3c3c3;
+        }
     </style>
 </head>
 <body>
     <h1>Cost model tests</h1>
     <p>This attempts to compare the first-order output of the cost model compared to the measured codesize. It generates simple snippets of IR and compares the output of opt -passes=print<cost-model> -cost-kind=codesize and the assembly generated from llc. The assembly output of llc is sometimes filtered to remove loop invariant instructions.</p>
     <p>The table lists the difference between the two cost models (i.e. zero is good). Not all the scores are expected to match exactly. More details and the costs can be found by clicking on a table entry.</p>
+    <div style="display: flex border=10px;">
+        <button onclick="reload('')">Base</button>
+        <button onclick="reload('-fullfp16')">FP16</button>
+        <button onclick="reload('-sve2')">SVE</button>
+    </div>
     <h3>Integer diffs</h3>
     <div style="display: flex;">
         <div width="60%" style="flex: 0 0 60%;"><table id="table-int" class="dataframe" border="1"><th>Loading</th></table></div>

@@ -75,7 +75,8 @@ def generate_const(ty, sameval):
   if ty.elts == 1:
     return consts[0]
   if sameval:
-    return "<" + ", ".join([f"{ty.scalar} {consts[0]}" for x in range(ty.elts)]) + '>'
+    #return "<" + ", ".join([f"{ty.scalar} {consts[0]}" for x in range(ty.elts)]) + '>'
+    return f"splat ({ty.scalar} {consts[0]})"
   return "<" + ", ".join([f"{ty.scalar} {consts[0]}, {ty.scalar} {consts[1]}" for x in range(ty.elts // 2)]) + '>'
 
 def generate(variant, instr, ty, ty2):
@@ -164,6 +165,8 @@ def fptypes():
   for bits in [16, 32, 64]:
     yield Ty(fptymap[bits])
   for scalable in [0,1]:
+    if scalable == 1 and (not args.mattr or 'sve' not in args.mattr):
+      continue
     for bits in [16, 32, 64]:
       for s in [2, 4, 8, 16, 32]:
         if s * bits > 256: # TODO: Higher sizes are incorrect for codesize
@@ -174,7 +177,8 @@ def fptypes():
 
 def binop_variants(ty):
   yield ('binop', 0)
-  yield ('binopconst', 0) #1 if ty.elts == 1 else 2)
+  if not ty.scalable:
+    yield ('binopconst', 0) #1 if ty.elts == 1 else 2)
   if ty.elts > 1:
     yield ('binopsplat', 0) #1
     yield ('binopconstsplat', 0) #1 if ty.elts == 1 or ty.bits <= 32 else 2)
@@ -206,16 +210,12 @@ if args.type == 'all' or args.type == 'int':
     # Int Binops
     for instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl']:
       for ty in inttypes():
-        if ty.scalable:
-          continue
         for (variant, extrasize) in binop_variants(ty):
           do(instr, variant, ty, ty, extrasize, data)
 
     # Int unops
     for instr in ['abs', 'bitreverse', 'bswap', 'ctlz', 'cttz', 'ctpop']:
       for ty in inttypes():
-        if ty.scalable:
-          continue
         if instr == 'bswap' and ty.scalar == 'i8':
           continue
         do(instr, 'unop', ty, ty, 0, data)
@@ -224,8 +224,6 @@ if args.type == 'all' or args.type == 'int':
     # Int triops
     for instr in ['fshl', 'fshr']:
       for ty in inttypes():
-        if ty.scalable:
-          continue
         do(instr, 'triop', ty, ty, 0, data)
     # TODO: select, icmp, fcmp, mla?
     # TODO: fshl+const
@@ -254,21 +252,15 @@ if args.type == 'all' or args.type == 'fp':
     # Floating point Binops
     for instr in ['fadd', 'fsub', 'fmul', 'fdiv', 'frem', 'minnum', 'maxnum', 'minimum', 'maximum', 'copysign', 'pow']:
       for ty in fptypes():
-        if ty.scalable:
-          continue
         for (variant, extrasize) in binop_variants(ty):
           do(instr, variant, ty, ty, extrasize, data)
 
     # FP unops
     for instr in ['fneg', 'fabs', 'sqrt', 'ceil', 'floor', 'trunc', 'rint', 'nearbyint']:
       for ty in fptypes():
-        if ty.scalable:
-          continue
         do(instr, 'unop', ty, ty, 0, data)
     for instr in ['fma', 'fmuladd']:
       for ty in fptypes():
-        if ty.scalable:
-          continue
         do(instr, 'triop', ty, ty, 0, data)
 
     # TODO: fmul+fadd? select+fcmp
@@ -292,7 +284,7 @@ if args.type == 'all' or args.type == 'cast':
   data = []
   try:
     # TODO: zext, sext, trunc
-    # TODO: fpext, fptrunc, , fptosisat, fptouisat
+    # TODO: fpext, fptrunc, fptosisat, fptouisat
     # TODO: lrint, llrint, lround, llround
 
     # fptosi, fptoui, uitofp, sitofp
@@ -322,12 +314,12 @@ if args.type == 'all' or args.type == 'vec':
   try:
     for instr in ['insertelement', 'extractelement']:
       for ty in inttypes():
-        if ty.elts == 1 or ty.scalable:
+        if ty.elts == 1:
           continue
         for variant in ['vecop0', 'vecop1', 'vecopvar']:
           do(instr, variant, ty, ty, 0, data)
       for ty in fptypes():
-        if ty.elts == 1 or ty.scalable:
+        if ty.elts == 1:
           continue
         for variant in ['vecop0', 'vecop1', 'vecopvar']:
           do(instr, variant, ty, ty, 0, data)
