@@ -9,7 +9,7 @@
                 .then(response => {
                     if (!response.ok) {
                         fetch("data-" + label + ".json")
-                            .then(reposonse => reposonse.json())
+                            .then(response => response.json())
                             .then(json => drawTable(json, label))
                             .catch(reason => console.log(reason));
                         return Promise.reject()
@@ -23,7 +23,8 @@
         function reload(type) {
             load("int", type)
             load("fp", type)
-            load("cast", type)
+            load("castint", type)
+            load("castfp", type)
             load("vec", type)
         }
 
@@ -43,8 +44,7 @@
             });
 
             const table = document.getElementById('table-'+label)
-            while (table.childNodes.length != 0)
-                table.removeChild(table.childNodes[0]);
+            table.innerHTML = ""
 
             head = table.createTHead();
             tr = head.insertRow(0);
@@ -157,10 +157,15 @@
         <div width="60%" style="flex: 0 0 60%;"><table id="table-fp" class="dataframe" border="1"><th>Loading</th></table></div>
         <div width="40%" style="position: sticky; top: 10px; align-self: flex-start; white-space: pre; padding: 10px;" id="details-fp"><h3>Details</h3></div>
     </div>
-    <h3>Cast diffs</h3>
+    <h3>Integer-Cast diffs</h3>
     <div style="display: flex;">
-        <div width="60%" style="flex: 0 0 60%;"><table id="table-cast" class="dataframe" border="1"><th>Loading</th></table></div>
-        <div width="40%" style="position: sticky; top: 10px; align-self: flex-start; white-space: pre; padding: 10px;" id="details-cast"><h3>Details</h3></div>
+        <div width="60%" style="flex: 0 0 60%;"><table id="table-castint" class="dataframe" border="1"><th>Loading</th></table></div>
+        <div width="40%" style="position: sticky; top: 10px; align-self: flex-start; white-space: pre; padding: 10px;" id="details-castint"><h3>Details</h3></div>
+    </div>
+    <h3>FP-Cast diffs</h3>
+    <div style="display: flex;">
+        <div width="60%" style="flex: 0 0 60%;"><table id="table-castfp" class="dataframe" border="1"><th>Loading</th></table></div>
+        <div width="40%" style="position: sticky; top: 10px; align-self: flex-start; white-space: pre; padding: 10px;" id="details-castfp"><h3>Details</h3></div>
     </div>
     <h3>Vec diffs</h3>
     <div style="display: flex;">

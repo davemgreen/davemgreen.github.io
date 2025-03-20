@@ -76,7 +76,6 @@ def generate_const(ty, sameval):
   if ty.elts == 1:
     return consts[0]
   if sameval:
-    #return "<" + ", ".join([f"{ty.scalar} {consts[0]}" for x in range(ty.elts)]) + '>'
     return f"splat ({ty.scalar} {consts[0]})"
   return "<" + ", ".join([f"{ty.scalar} {consts[0]}, {ty.scalar} {consts[1]}" for x in range(ty.elts // 2)]) + '>'
 
@@ -134,6 +133,8 @@ class Ty:
     self.scalable = scalable
   def isFloat(self):
     return self.scalar[0] != 'i'
+  def scalarsize(self):
+    return int(self.scalar[1:]) if self.scalar[0] == 'i' else fptymap[self.scalar]
   def str(self):
     if self.elts == 1 and not self.scalable:
       return self.scalar
@@ -147,7 +148,7 @@ class Ty:
 fptymap = { 16:'half', 32:'float', 64:'double',
             'half':16, 'float':32, 'double':64 }
 
-def inttypes():
+def inttypes(highsizes = False):
   # TODO: i128, other type sizes?
   for bits in [8, 16, 32, 64]:
     yield Ty('i'+str(bits))
@@ -156,12 +157,12 @@ def inttypes():
       continue
     for bits in [8, 16, 32, 64]:
       for s in [2, 4, 8, 16, 32]:
-        if s * bits > 256: #TODO: Higher sizes are incorrect for codesize
+        if not highsizes and s * bits > 256:
           continue
         if s * bits < 64: #TODO: Start looking at smaller sizes once the legal sizes are better. Odd vector sizes
           continue
         yield Ty('i'+str(bits), s, scalable)
-def fptypes():
+def fptypes(highsizes = False):
   # TODO: f128? They are just libcalls
   for bits in [16, 32, 64]:
     yield Ty(fptymap[bits])
@@ -170,7 +171,7 @@ def fptypes():
       continue
     for bits in [16, 32, 64]:
       for s in [2, 4, 8, 16, 32]:
-        if s * bits > 256: # TODO: Higher sizes are incorrect for codesize
+        if not highsizes and s * bits > 256:
           continue
         if s * bits < 64: # TODO: Start looking at smaller sizes once the legal sizes are better. Odd vector sizes
           continue
@@ -185,7 +186,7 @@ def binop_variants(ty):
     yield ('binopconstsplat', 0) #1 if ty.elts == 1 or ty.bits <= 32 else 2)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--type', choices=['all', 'int', 'fp', 'cast', 'vec'], default='all')
+parser.add_argument('--type', choices=['all', 'int', 'fp', 'castint', 'castfp', 'vec'], default='all')
 parser.add_argument('-mtriple', default='aarch64')
 parser.add_argument('-mattr', default=None)
 #parser.add_argument('--checkopted', action='store_true')
@@ -274,12 +275,29 @@ if args.type == 'all' or args.type == 'fp':
     json.dump(data, f, indent=1)
 
 
-if args.type == 'all' or args.type == 'cast':
+if args.type == 'all' or args.type == 'castint':
   def enumcast():
-    # TODO: zext, sext, trunc
-    # TODO: fpext, fptrunc, fptosisat, fptouisat
-    # TODO: lrint, llrint, lround, llround
+    for instr in ['zext', 'sext']:
+      for ty1 in inttypes():
+        for ty2 in inttypes(True):
+          if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() >= ty2.scalarsize():
+            continue
+          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
+    for instr in ['trunc']:
+      for ty1 in inttypes(True):
+        for ty2 in inttypes(True):
+          if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() <= ty2.scalarsize():
+            continue
+          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
 
+  pool = multiprocessing.Pool(16)
+  data = pool.starmap(do, enumcast())
+  with open(f"data-castint{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+    json.dump(data, f, indent=1)
+
+
+if args.type == 'all' or args.type == 'castfp':
+  def enumcast():
     # fptosi, fptoui, uitofp, sitofp
     for instr in ['fptosi', 'fptoui']:
       for ty1 in fptypes():
@@ -294,9 +312,12 @@ if args.type == 'all' or args.type == 'cast':
             continue
           yield (instr, 'cast '+ty2.scalar, ty2, ty1, 0, str(ty1))
 
+    # TODO: fpext, fptrunc, fptosisat, fptouisat
+    # TODO: lrint, llrint, lround, llround
+
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumcast())
-  with open(f"data-cast{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+  with open(f"data-castfp{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
     json.dump(data, f, indent=1)
 
 
