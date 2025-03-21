@@ -18,7 +18,7 @@ def run(cmd):
   logging.debug('> ' + cmd)
   cmd = cmd.split()
   return subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode('utf-8')
-  
+
 def getcost(path, costkind, print):
   try:
     text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind={costkind} -disable-output")
@@ -29,7 +29,7 @@ def getcost(path, costkind, print):
   if print:
     logging.debug(text.strip())
   costs = [x for x in text.split('\n') if 'instruction:   ret ' not in x]
-  cost = sum([int(x[len(costpre):len(costpre)+x[len(costpre):].find(' ')]) for x in costs if x.startswith(costpre)]) 
+  cost = sum([int(x[len(costpre):len(costpre)+x[len(costpre):].find(' ')]) for x in costs if x.startswith(costpre)])
   return (cost, text.strip())
 
 def getasm(path, extraflags):
@@ -57,7 +57,7 @@ def checkcosts(llasm):
   with tempfile.TemporaryDirectory() as tmp:
     with open(os.path.join(tmp, "costtest.ll"), "w") as f:
       f.write(llasm)
-  
+
     lines, size = getasm(tmp, '')
 
     gilines, gisize = getasm(tmp, '-global-isel')
@@ -82,16 +82,22 @@ def generate_const(ty, sameval):
   if sameval:
     return f"splat ({ty.scalar} {consts[0]})"
   return "<" + ", ".join([f"{ty.scalar} {consts[0]}, {ty.scalar} {consts[1]}" for x in range(ty.elts // 2)]) + '>'
+def generate_const0(ty):
+  if ty.elts == 1:
+    return '0' if not ty.isFloat() else '0.0'
+  return "zeroinitializer"
 
 def generate(variant, instr, ty, ty2):
   tystr = ty.str()
   eltstr = ty.scalar
   rettystr = eltstr if instr == 'extractelement' else ty2.str()
   preamble = f"define {rettystr} @test({tystr} %a"
-  if variant == 'binop':
+  if variant == 'binop' or variant == 'cmp':
     preamble += f", {tystr} %b"
   elif variant == 'binopsplat' or instr == 'insertelement':
     preamble += f", {eltstr} %bs"
+  elif variant == 'triop' and instr == 'select':
+    preamble += f", {tystr} %b, {Ty('i1', ty.elts, ty.scalable)} %c"
   elif variant == 'triop':
     preamble += f", {tystr} %b, {tystr} %c"
   elif variant == 'reduce' and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
@@ -106,7 +112,12 @@ def generate(variant, instr, ty, ty2):
     setup += f"  %b = shufflevector {tystr} %i, {tystr} poison, <{ty.vecpart()} x i32> zeroinitializer\n"
 
   instrstr = "  %r = "
-  b = "%b" if (variant == "binop" or variant == "binopsplat") else generate_const(ty, variant == 'binopconstsplat')
+  b = "%b"
+  if "const" in variant:
+    b = generate_const(ty, variant == 'binopconstsplat')
+  elif variant == 'cmp0':
+    b = generate_const0(ty)
+
   if instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'fadd', 'fsub', 'fmul', 'fdiv', 'frem']:
     instrstr += f"{instr} {tystr} %a, {b}\n"
   elif instr in ['rotr', 'rotl']:
@@ -117,6 +128,10 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, i1 0)\n"
   elif variant == 'unop':
     instrstr += f"call {tystr} @llvm.{instr}({tystr} %a)\n"
+  elif instr in ['select']:
+    instrstr += f"{instr}  {Ty('i1', ty.elts, ty.scalable)} %c, {tystr} %a, {tystr} %b\n"
+  elif variant == 'cmp' or variant == 'cmp0':
+    instrstr += f"{instr[:4]} {instr[4:]} {tystr} %a, {b}\n"
   elif variant == 'triop':
     instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, {tystr} %b, {tystr} %c)\n"
   elif variant == 'reduce' and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
@@ -133,7 +148,7 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"{instr} {tystr} %a to {rettystr}\n"
   else:
     instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
-  
+
   return preamble + setup + instrstr + f"  ret {rettystr} %r\n}}"
 
 class Ty:
@@ -222,7 +237,7 @@ if args.type == 'all' or args.type == 'int':
         for (variant, extrasize) in binop_variants(ty):
           yield (instr, variant, ty, ty, extrasize, None)
 
-    # Int unops
+    ## Int unops
     for instr in ['abs', 'bitreverse', 'bswap', 'ctlz', 'cttz', 'ctpop']:
       for ty in inttypes():
         if instr == 'bswap' and ty.scalar == 'i8':
@@ -231,10 +246,16 @@ if args.type == 'all' or args.type == 'int':
     # TODO: not?
 
     # Int triops
-    for instr in ['fshl', 'fshr']:
+    for instr in ['fshl', 'fshr', 'select']:
       for ty in inttypes():
         yield (instr, 'triop', ty, ty, 0, None)
-    # TODO: select, icmp, fcmp, mla?
+
+    for instr in ['icmp']: # selecticmp selecticmp0,
+      for op in ['eq', 'ne', 'slt', 'sle', 'sgt', 'sge', 'ult', 'ule', 'ugt', 'uge']:
+        for ty in inttypes():
+          yield (instr+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+          yield (instr+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+    # TODO: mla?
     # TODO: fshl+const
 
     # TODO: uaddo, usubo, uadde, usube?
@@ -274,7 +295,18 @@ if args.type == 'all' or args.type == 'fp':
       for ty in fptypes():
         yield (instr, 'triop', ty, ty, 0, None)
 
-    # TODO: fmul+fadd? select+fcmp
+    # FP triops
+    for instr in ['fma', 'fmuladd', 'select']:
+      for ty in fptypes():
+        yield (instr, 'triop', ty, ty, 0, None)
+
+    for instr in ['fcmp']: # selecticmp selecticmp0,
+      for op in ['oeq', 'ogt', 'oge', 'olt', 'ole', 'one', 'ord', 'ueq', 'ugt', 'uge', 'ult', 'ule', 'une', 'uno']:
+        for ty in fptypes():
+          yield (instr+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+          yield (instr+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+
+    # TODO: fmul+fadd?
     # TODO: fminimumnum, fmaximumnum
     # TODO: fpowi
     # TODO: sin, cos, etc
