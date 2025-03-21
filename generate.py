@@ -316,7 +316,6 @@ if args.type == 'all' or args.type == 'castint':
 
 if args.type == 'all' or args.type == 'castfp':
   def enumcast():
-    # fptosi, fptoui, uitofp, sitofp
     for instr in ['fptosi', 'fptoui']:
       for ty1 in fptypes():
         for ty2 in inttypes():
@@ -329,6 +328,18 @@ if args.type == 'all' or args.type == 'castfp':
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
           yield (instr, 'cast '+ty2.scalar, ty2, ty1, 0, str(ty1))
+    for instr in ['fpext']:
+      for ty1 in fptypes():
+        for ty2 in fptypes():
+          if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() >= ty2.scalarsize():
+            continue
+          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
+    for instr in ['fptrunc']:
+      for ty1 in fptypes():
+        for ty2 in fptypes():
+          if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() <= ty2.scalarsize():
+            continue
+          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
 
     # TODO: fpext, fptrunc, fptosisat, fptouisat
     # TODO: lrint, llrint, lround, llround
