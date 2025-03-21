@@ -1,4 +1,4 @@
-import sys, os, subprocess, argparse, logging, json, tempfile, multiprocessing
+import sys, os, subprocess, argparse, logging, json, tempfile, multiprocessing, shutil
 
 # Try to more extensively check the cost model figures coming out of the cost model, for every operation x type combo.
 # Currently it looks at costsize costs, as those are easier to measure.
@@ -20,7 +20,11 @@ def run(cmd):
   return subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode('utf-8')
   
 def getcost(path, costkind, print):
-  text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind={costkind} -disable-output")
+  try:
+    text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind={costkind} -disable-output")
+  except subprocess.CalledProcessError as e:
+    shutil.copyfile(os.path.join(path, 'costtest.ll'), 'costtest.ll')
+    raise
   costpre = 'Cost Model: Found an estimated cost of '
   if print:
     logging.debug(text.strip())
@@ -90,6 +94,8 @@ def generate(variant, instr, ty, ty2):
     preamble += f", {eltstr} %bs"
   elif variant == 'triop':
     preamble += f", {tystr} %b, {tystr} %c"
+  elif variant == 'reduce' and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
+    preamble += f", {rettystr} %b"
   if variant == 'vecopvar':
     preamble += f", i32 %c"
   preamble += ") {\n"
@@ -100,7 +106,7 @@ def generate(variant, instr, ty, ty2):
     setup += f"  %b = shufflevector {tystr} %i, {tystr} poison, <{ty.vecpart()} x i32> zeroinitializer\n"
 
   instrstr = "  %r = "
-  b = "%b" if variant == "binop" or variant == "binopsplat" else generate_const(ty, variant == 'binopconstsplat')
+  b = "%b" if (variant == "binop" or variant == "binopsplat") else generate_const(ty, variant == 'binopconstsplat')
   if instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'fadd', 'fsub', 'fmul', 'fdiv', 'frem']:
     instrstr += f"{instr} {tystr} %a, {b}\n"
   elif instr in ['rotr', 'rotl']:
@@ -113,6 +119,10 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"call {tystr} @llvm.{instr}({tystr} %a)\n"
   elif variant == 'triop':
     instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, {tystr} %b, {tystr} %c)\n"
+  elif variant == 'reduce' and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
+    instrstr += f"call {rettystr} @llvm.vector.{instr}({rettystr} %b, {tystr} %a)\n"
+  elif variant == 'reduce':
+    instrstr += f"call {rettystr} @llvm.vector.{instr}({tystr} %a)\n"
   elif instr == 'extractelement':
     idx = '%c' if variant == 'vecopvar' else ('1' if variant == 'vecop1' else '0')
     instrstr += f"extractelement {tystr} %a, i32 {idx}\n"
@@ -236,7 +246,11 @@ if args.type == 'all' or args.type == 'int':
     # TODO: sdivfix, udivfix
     # TODO: sdivfixsat, udivfixsat
 
-    # TODO: vecreduce.add, vecreduce.mul, vecreduce.and, vecreduce.or, vecreduce.xor, vecreduce.min/max's
+    for instr in ['add', 'mul', 'and', 'or', 'xor', 'smin', 'smax', 'umin', 'umax']:
+      for ty in inttypes():
+        if ty.elts == 1:
+          continue
+        yield ("reduce."+instr, 'reduce', ty, Ty(ty.scalar), 0, None)
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumint())
@@ -267,7 +281,11 @@ if args.type == 'all' or args.type == 'fp':
     # TODO: fexp, fexp2, flog, flog2, flog10
     # TODO: fldexp, frexmp
 
-    # TODO: vecreduce.fadd, vecreduce.fmul, vecreduce.fmin/max's
+    for instr in ['fadd', 'fmul', 'fmin', 'fmax', 'fminimum', 'fmaximum']:
+      for ty in fptypes():
+        if ty.elts == 1:
+          continue
+        yield ("reduce."+instr, 'reduce', ty, Ty(ty.scalar), 0, None)
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumfp())
