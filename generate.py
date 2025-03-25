@@ -104,6 +104,8 @@ def generate(variant, instr, ty, ty2):
     preamble += f", {rettystr} %b"
   if variant == 'vecopvar':
     preamble += f", i32 %c"
+  if (variant == 'cmp' or variant == 'cmp0') and instr.startswith('select'):
+    preamble += f", {tystr} %d, {tystr} %e"
   preamble += ") {\n"
 
   setup = ""
@@ -111,7 +113,7 @@ def generate(variant, instr, ty, ty2):
     setup += f"  %i = insertelement {tystr} poison, {eltstr} %bs, i64 0\n"
     setup += f"  %b = shufflevector {tystr} %i, {tystr} poison, <{ty.vecpart()} x i32> zeroinitializer\n"
 
-  instrstr = "  %r = "
+  instrstr = ""
   b = "%b"
   if "const" in variant:
     b = generate_const(ty, variant == 'binopconstsplat')
@@ -119,35 +121,37 @@ def generate(variant, instr, ty, ty2):
     b = generate_const0(ty)
 
   if instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'fadd', 'fsub', 'fmul', 'fdiv', 'frem']:
-    instrstr += f"{instr} {tystr} %a, {b}\n"
+    instrstr += f"  %r = {instr} {tystr} %a, {b}\n"
   elif instr in ['rotr', 'rotl']:
-    instrstr += f"call {tystr} @llvm.fsh{instr[3]}({tystr} %a, {tystr} %a, {tystr} {b})\n"
+    instrstr += f"  %r = call {tystr} @llvm.fsh{instr[3]}({tystr} %a, {tystr} %a, {tystr} {b})\n"
   elif instr in ['fneg']:
-    instrstr += f"{instr} {tystr} %a\n"
+    instrstr += f"  %r = {instr} {tystr} %a\n"
   elif instr == 'abs' or instr == 'ctlz' or instr == 'cttz':
-    instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, i1 0)\n"
+    instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, i1 0)\n"
   elif variant == 'unop':
-    instrstr += f"call {tystr} @llvm.{instr}({tystr} %a)\n"
+    instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a)\n"
   elif instr in ['select']:
-    instrstr += f"{instr}  {Ty('i1', ty.elts, ty.scalable)} %c, {tystr} %a, {tystr} %b\n"
+    instrstr += f"  %r = {instr}  {Ty('i1', ty.elts, ty.scalable)} %c, {tystr} %a, {tystr} %b\n"
+  elif (variant == 'cmp' or variant == 'cmp0') and instr.startswith('select'):
+    instrstr += f"  %c = {instr[6:10]} {instr[10:]} {tystr} %a, {b}\n  %r = select {Ty('i1', ty.elts, ty.scalable)} %c, {tystr} %d, {tystr} %e\n"
   elif variant == 'cmp' or variant == 'cmp0':
-    instrstr += f"{instr[:4]} {instr[4:]} {tystr} %a, {b}\n"
+    instrstr += f"  %r = {instr[:4]} {instr[4:]} {tystr} %a, {b}\n"
   elif variant == 'triop':
-    instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, {tystr} %b, {tystr} %c)\n"
+    instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} %b, {tystr} %c)\n"
   elif variant == 'reduce' and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
-    instrstr += f"call {rettystr} @llvm.vector.{instr}({rettystr} %b, {tystr} %a)\n"
+    instrstr += f"  %r = call {rettystr} @llvm.vector.{instr}({rettystr} %b, {tystr} %a)\n"
   elif variant == 'reduce':
-    instrstr += f"call {rettystr} @llvm.vector.{instr}({tystr} %a)\n"
+    instrstr += f"  %r = call {rettystr} @llvm.vector.{instr}({tystr} %a)\n"
   elif instr == 'extractelement':
     idx = '%c' if variant == 'vecopvar' else ('1' if variant == 'vecop1' else '0')
-    instrstr += f"extractelement {tystr} %a, i32 {idx}\n"
+    instrstr += f"  %r = extractelement {tystr} %a, i32 {idx}\n"
   elif instr == 'insertelement':
     idx = '%c' if variant == 'vecopvar' else ('1' if variant == 'vecop1' else '0')
-    instrstr += f"insertelement {tystr} %a, {eltstr} %bs, i32 {idx}\n"
+    instrstr += f"  %r = insertelement {tystr} %a, {eltstr} %bs, i32 {idx}\n"
   elif variant.startswith('cast'):
-    instrstr += f"{instr} {tystr} %a to {rettystr}\n"
+    instrstr += f"  %r = {instr} {tystr} %a to {rettystr}\n"
   else:
-    instrstr += f"call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
+    instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
 
   return preamble + setup + instrstr + f"  ret {rettystr} %r\n}}"
 
@@ -250,11 +254,12 @@ if args.type == 'all' or args.type == 'int':
       for ty in inttypes():
         yield (instr, 'triop', ty, ty, 0, None)
 
-    for instr in ['icmp']: # selecticmp selecticmp0,
-      for op in ['eq', 'ne', 'slt', 'sle', 'sgt', 'sge', 'ult', 'ule', 'ugt', 'uge']:
-        for ty in inttypes():
-          yield (instr+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
-          yield (instr+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+    for op in ['eq', 'ne', 'slt', 'sle', 'sgt', 'sge', 'ult', 'ule', 'ugt', 'uge']:
+      for ty in inttypes():
+        yield ('icmp'+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+        yield ('icmp'+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+        yield ('selecticmp'+op, 'cmp', ty, ty, 0, None)
+        yield ('selecticmp'+op, 'cmp0', ty, ty, 0, None)
     # TODO: mla?
     # TODO: fshl+const
 
@@ -300,11 +305,12 @@ if args.type == 'all' or args.type == 'fp':
       for ty in fptypes():
         yield (instr, 'triop', ty, ty, 0, None)
 
-    for instr in ['fcmp']: # selecticmp selecticmp0,
-      for op in ['oeq', 'ogt', 'oge', 'olt', 'ole', 'one', 'ord', 'ueq', 'ugt', 'uge', 'ult', 'ule', 'une', 'uno']:
-        for ty in fptypes():
-          yield (instr+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
-          yield (instr+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+    for op in ['oeq', 'ogt', 'oge', 'olt', 'ole', 'one', 'ord', 'ueq', 'ugt', 'uge', 'ult', 'ule', 'une', 'uno']:
+      for ty in fptypes():
+        yield ('fcmp'+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+        yield ('fcmp'+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
+        yield ('selectfcmp'+op, 'cmp', ty, ty, 0, None)
+        yield ('selectfcmp'+op, 'cmp0', ty, ty, 0, None)
 
     # TODO: fmul+fadd?
     # TODO: fminimumnum, fmaximumnum
