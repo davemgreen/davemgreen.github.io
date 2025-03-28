@@ -1,4 +1,4 @@
-import sys, os, subprocess, argparse, logging, json, tempfile, multiprocessing, shutil
+import sys, os, subprocess, argparse, logging, json, tempfile, multiprocessing, shutil, re
 
 # Try to more extensively check the cost model figures coming out of the cost model, for every operation x type combo.
 # Currently it looks at costsize costs, as those are easier to measure.
@@ -45,7 +45,7 @@ def getasm(path, extraflags):
 
   # TODOD: Improve the filtering to what is invariant, somehow. Or include it in the costs.
   #filteredlines = [l for l in lines if not l.startswith('movi') and not l.startswith('mov\tw') and l != 'ret' and not l.startswith('adrp') and not l.startswith('ldr') and not l.startswith('dup') and not l.startswith('fmov')]
-  filteredlines = [l for l in lines if l != 'ret' and not l.startswith('ptrue')]
+  filteredlines = [l for l in lines if l != 'ret' and not l.startswith('ptrue') and not re.match(r'fmov\sd[0-9], d[0-9]+',l) and not re.match(r'mov\sv[0-9].16b, v[0-9]+.16b', l)]
   logging.debug(filteredlines)
   size = len(filteredlines)
   logging.debug(f"size = {size}")
