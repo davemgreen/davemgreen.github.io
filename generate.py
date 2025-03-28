@@ -84,7 +84,7 @@ def generate_const(ty, sameval):
   return "<" + ", ".join([f"{ty.scalar} {consts[0]}, {ty.scalar} {consts[1]}" for x in range(ty.elts // 2)]) + '>'
 def generate_const0(ty):
   if ty.elts == 1:
-    return '0' if not ty.isFloat() else '0.0'
+    return '0' if not ty.isFloat() else ('0.0' if ty.scalar != 'fp128' else '0xL00000000000000000000000000000000')
   return "zeroinitializer"
 def generate_constm1(ty):
   if ty.elts == 1:
@@ -183,8 +183,8 @@ class Ty:
     return f"{self.elts}"
   def __repr__(self):
     return self.str()
-fptymap = { 16:'half', 32:'float', 64:'double',
-            'half':16, 'float':32, 'double':64 }
+fptymap = { 16:'half', 32:'float', 64:'double', 128:"fp128",
+            'half':16, 'float':32, 'double':64, "fp128":128 }
 
 def inttypes(highsizes = False):
   # TODO: i128, other type sizes?
@@ -250,7 +250,7 @@ if args.type == 'all' or args.type == 'int':
     # Int unops
     for instr in ['abs', 'bitreverse', 'bswap', 'ctlz', 'cttz', 'ctpop']:
       for ty in inttypes():
-        if instr == 'bswap' and ty.scalar == 'i8':
+        if instr == 'bswap' and (ty.scalar == 'i1' or ty.scalar == 'i8'):
           continue
         yield (instr, 'unop', ty, ty, 0, None)
     for instr in ['xor']:
