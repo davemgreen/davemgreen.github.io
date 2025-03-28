@@ -3,7 +3,7 @@
   "instr": "insertelement",
   "ty": "<8 x i8>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -13,13 +13,13 @@
   "asm": "mov v0.b[0], w0\nret",
   "giasm": "mov v0.b[0], w0\nret",
   "ll": "define <8 x i8> @test(<8 x i8> %a, i8 %bs) {\n  %r = insertelement <8 x i8> %a, i8 %bs, i32 0\n  ret <8 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i8> %a, i8 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i8> %a, i8 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x i8>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -29,13 +29,13 @@
   "asm": "mov v0.b[1], w0\nret",
   "giasm": "mov v0.b[1], w0\nret",
   "ll": "define <8 x i8> @test(<8 x i8> %a, i8 %bs) {\n  %r = insertelement <8 x i8> %a, i8 %bs, i32 1\n  ret <8 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i8> %a, i8 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i8> %a, i8 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x i8>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -45,13 +45,13 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfxil x8, x1, #0, #3\nstrb w0, [x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w1\nmov w8, #1                          // =0x1\nstr d0, [sp, #8]\nand x9, x9, #0x7\nmul x8, x9, x8\nadd x9, sp, #8\nstrb w0, [x9, x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "ll": "define <8 x i8> @test(<8 x i8> %a, i8 %bs, i32 %c) {\n  %r = insertelement <8 x i8> %a, i8 %bs, i32 %c\n  ret <8 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<16 x i8>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -61,13 +61,13 @@
   "asm": "mov v0.b[0], w0\nret",
   "giasm": "mov v0.b[0], w0\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a, i8 %bs) {\n  %r = insertelement <16 x i8> %a, i8 %bs, i32 0\n  ret <16 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <16 x i8> %a, i8 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x i8> %a, i8 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<16 x i8>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -77,13 +77,13 @@
   "asm": "mov v0.b[1], w0\nret",
   "giasm": "mov v0.b[1], w0\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a, i8 %bs) {\n  %r = insertelement <16 x i8> %a, i8 %bs, i32 1\n  ret <16 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <16 x i8> %a, i8 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x i8> %a, i8 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<16 x i8>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -93,13 +93,13 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfxil x8, x1, #0, #4\nstrb w0, [x8]\nldr q0, [sp], #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w1\nmov w8, #1                          // =0x1\nstr q0, [sp]\nand x9, x9, #0xf\nmul x8, x9, x8\nmov x9, sp\nstrb w0, [x9, x8]\nldr q0, [sp], #16\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a, i8 %bs, i32 %c) {\n  %r = insertelement <16 x i8> %a, i8 %bs, i32 %c\n  ret <16 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <16 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<32 x i8>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -109,13 +109,13 @@
   "asm": "mov v0.b[0], w0\nret",
   "giasm": "mov v0.b[0], w0\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, i8 %bs) {\n  %r = insertelement <32 x i8> %a, i8 %bs, i32 0\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <32 x i8> %a, i8 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <32 x i8> %a, i8 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <32 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<32 x i8>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -125,13 +125,13 @@
   "asm": "mov v0.b[1], w0\nret",
   "giasm": "mov v0.b[1], w0\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, i8 %bs) {\n  %r = insertelement <32 x i8> %a, i8 %bs, i32 1\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <32 x i8> %a, i8 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <32 x i8> %a, i8 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <32 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<32 x i8>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -141,13 +141,13 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x1, #0x1f\nmov x9, sp\nstrb w0, [x9, x8]\nldp q0, q1, [sp], #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w1\nmov x10, sp\nstp q0, q1, [sp]\nand x8, x8, #0x1f\nlsl x9, x8, #1\nsub x8, x9, x8\nstrb w0, [x10, x8]\nldp q0, q1, [sp]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, i8 %bs, i32 %c) {\n  %r = insertelement <32 x i8> %a, i8 %bs, i32 %c\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <32 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <32 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <32 x i8> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i16>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -157,13 +157,13 @@
   "asm": "mov v0.h[0], w0\nret",
   "giasm": "mov v0.h[0], w0\nret",
   "ll": "define <4 x i16> @test(<4 x i16> %a, i16 %bs) {\n  %r = insertelement <4 x i16> %a, i16 %bs, i32 0\n  ret <4 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i16> %a, i16 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i16> %a, i16 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i16>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -173,13 +173,13 @@
   "asm": "mov v0.h[1], w0\nret",
   "giasm": "mov v0.h[1], w0\nret",
   "ll": "define <4 x i16> @test(<4 x i16> %a, i16 %bs) {\n  %r = insertelement <4 x i16> %a, i16 %bs, i32 1\n  ret <4 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i16> %a, i16 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i16> %a, i16 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i16>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -189,13 +189,13 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfi x8, x1, #1, #2\nstrh w0, [x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w1\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x3\nstrh w0, [x8, x9, lsl #1]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "ll": "define <4 x i16> @test(<4 x i16> %a, i16 %bs, i32 %c) {\n  %r = insertelement <4 x i16> %a, i16 %bs, i32 %c\n  ret <4 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i16> %a, i16 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i16> %a, i16 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x i16>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -205,13 +205,13 @@
   "asm": "mov v0.h[0], w0\nret",
   "giasm": "mov v0.h[0], w0\nret",
   "ll": "define <8 x i16> @test(<8 x i16> %a, i16 %bs) {\n  %r = insertelement <8 x i16> %a, i16 %bs, i32 0\n  ret <8 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i16> %a, i16 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i16> %a, i16 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x i16>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -221,13 +221,13 @@
   "asm": "mov v0.h[1], w0\nret",
   "giasm": "mov v0.h[1], w0\nret",
   "ll": "define <8 x i16> @test(<8 x i16> %a, i16 %bs) {\n  %r = insertelement <8 x i16> %a, i16 %bs, i32 1\n  ret <8 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i16> %a, i16 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i16> %a, i16 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x i16>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -237,13 +237,13 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x1, #1, #3\nstrh w0, [x8]\nldr q0, [sp], #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w1\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x7\nstrh w0, [x8, x9, lsl #1]\nldr q0, [sp], #16\nret",
   "ll": "define <8 x i16> @test(<8 x i16> %a, i16 %bs, i32 %c) {\n  %r = insertelement <8 x i16> %a, i16 %bs, i32 %c\n  ret <8 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i16> %a, i16 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i16> %a, i16 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<16 x i16>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -253,13 +253,13 @@
   "asm": "mov v0.h[0], w0\nret",
   "giasm": "mov v0.h[0], w0\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, i16 %bs) {\n  %r = insertelement <16 x i16> %a, i16 %bs, i32 0\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <16 x i16> %a, i16 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x i16> %a, i16 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<16 x i16>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -269,13 +269,13 @@
   "asm": "mov v0.h[1], w0\nret",
   "giasm": "mov v0.h[1], w0\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, i16 %bs) {\n  %r = insertelement <16 x i16> %a, i16 %bs, i32 1\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <16 x i16> %a, i16 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x i16> %a, i16 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<16 x i16>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -285,13 +285,13 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x1, #0xf\nmov x9, sp\nstrh w0, [x9, x8, lsl #1]\nldp q0, q1, [sp], #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w1\nmov x9, sp\nstp q0, q1, [sp]\nand x8, x8, #0xf\nstrh w0, [x9, x8, lsl #1]\nldp q0, q1, [sp]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, i16 %bs, i32 %c) {\n  %r = insertelement <16 x i16> %a, i16 %bs, i32 %c\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <16 x i16> %a, i16 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x i16> %a, i16 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i16> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<2 x i32>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -301,13 +301,13 @@
   "asm": "mov v0.s[0], w0\nret",
   "giasm": "mov v0.s[0], w0\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a, i32 %bs) {\n  %r = insertelement <2 x i32> %a, i32 %bs, i32 0\n  ret <2 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x i32> %a, i32 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x i32> %a, i32 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<2 x i32>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -317,13 +317,13 @@
   "asm": "mov v0.s[1], w0\nret",
   "giasm": "mov v0.s[1], w0\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a, i32 %bs) {\n  %r = insertelement <2 x i32> %a, i32 %bs, i32 1\n  ret <2 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x i32> %a, i32 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x i32> %a, i32 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<2 x i32>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -333,13 +333,13 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfi x8, x1, #2, #1\nstr w0, [x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w1\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x1\nstr w0, [x8, x9, lsl #2]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a, i32 %bs, i32 %c) {\n  %r = insertelement <2 x i32> %a, i32 %bs, i32 %c\n  ret <2 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x i32> %a, i32 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x i32> %a, i32 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i32>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -349,13 +349,13 @@
   "asm": "mov v0.s[0], w0\nret",
   "giasm": "mov v0.s[0], w0\nret",
   "ll": "define <4 x i32> @test(<4 x i32> %a, i32 %bs) {\n  %r = insertelement <4 x i32> %a, i32 %bs, i32 0\n  ret <4 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i32> %a, i32 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i32> %a, i32 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i32>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -365,13 +365,13 @@
   "asm": "mov v0.s[1], w0\nret",
   "giasm": "mov v0.s[1], w0\nret",
   "ll": "define <4 x i32> @test(<4 x i32> %a, i32 %bs) {\n  %r = insertelement <4 x i32> %a, i32 %bs, i32 1\n  ret <4 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i32> %a, i32 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i32> %a, i32 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i32>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -381,13 +381,13 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x1, #2, #2\nstr w0, [x8]\nldr q0, [sp], #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w1\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x3\nstr w0, [x8, x9, lsl #2]\nldr q0, [sp], #16\nret",
   "ll": "define <4 x i32> @test(<4 x i32> %a, i32 %bs, i32 %c) {\n  %r = insertelement <4 x i32> %a, i32 %bs, i32 %c\n  ret <4 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i32> %a, i32 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i32> %a, i32 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x i32>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -397,13 +397,13 @@
   "asm": "mov v0.s[0], w0\nret",
   "giasm": "mov v0.s[0], w0\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, i32 %bs) {\n  %r = insertelement <8 x i32> %a, i32 %bs, i32 0\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i32> %a, i32 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i32> %a, i32 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x i32>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -413,13 +413,13 @@
   "asm": "mov v0.s[1], w0\nret",
   "giasm": "mov v0.s[1], w0\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, i32 %bs) {\n  %r = insertelement <8 x i32> %a, i32 %bs, i32 1\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i32> %a, i32 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i32> %a, i32 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x i32>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -429,13 +429,13 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x1, #0x7\nmov x9, sp\nstr w0, [x9, x8, lsl #2]\nldp q0, q1, [sp], #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w1\nmov x9, sp\nstp q0, q1, [sp]\nand x8, x8, #0x7\nstr w0, [x9, x8, lsl #2]\nldp q0, q1, [sp]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, i32 %bs, i32 %c) {\n  %r = insertelement <8 x i32> %a, i32 %bs, i32 %c\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x i32> %a, i32 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i32> %a, i32 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i32> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<2 x i64>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -445,13 +445,13 @@
   "asm": "mov v0.d[0], x0\nret",
   "giasm": "mov v0.d[0], x0\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a, i64 %bs) {\n  %r = insertelement <2 x i64> %a, i64 %bs, i32 0\n  ret <2 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x i64> %a, i64 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x i64> %a, i64 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i64> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<2 x i64>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -461,13 +461,13 @@
   "asm": "mov v0.d[1], x0\nret",
   "giasm": "mov v0.d[1], x0\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a, i64 %bs) {\n  %r = insertelement <2 x i64> %a, i64 %bs, i32 1\n  ret <2 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x i64> %a, i64 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x i64> %a, i64 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i64> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<2 x i64>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -477,13 +477,13 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x1, #3, #1\nstr x0, [x8]\nldr q0, [sp], #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w1\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x1\nstr x0, [x8, x9, lsl #3]\nldr q0, [sp], #16\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a, i64 %bs, i32 %c) {\n  %r = insertelement <2 x i64> %a, i64 %bs, i32 %c\n  ret <2 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x i64> %a, i64 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x i64> %a, i64 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i64> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i64>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -493,13 +493,13 @@
   "asm": "mov v0.d[0], x0\nret",
   "giasm": "mov v0.d[0], x0\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, i64 %bs) {\n  %r = insertelement <4 x i64> %a, i64 %bs, i32 0\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i64> %a, i64 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i64> %a, i64 %bs, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i64> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i64>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -509,13 +509,13 @@
   "asm": "mov v0.d[1], x0\nret",
   "giasm": "mov v0.d[1], x0\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, i64 %bs) {\n  %r = insertelement <4 x i64> %a, i64 %bs, i32 1\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i64> %a, i64 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i64> %a, i64 %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i64> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x i64>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -525,7 +525,7 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x1, #0x3\nmov x9, sp\nstr x0, [x9, x8, lsl #3]\nldp q0, q1, [sp], #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w1\nmov x9, sp\nstp q0, q1, [sp]\nand x8, x8, #0x3\nstr x0, [x9, x8, lsl #3]\nldp q0, q1, [sp]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, i64 %bs, i32 %c) {\n  %r = insertelement <4 x i64> %a, i64 %bs, i32 %c\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x i64> %a, i64 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x i64> %a, i64 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i64> %r"
  },
  {
   "instr": "insertelement",
@@ -547,7 +547,7 @@
   "instr": "insertelement",
   "ty": "<4 x half>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -557,13 +557,13 @@
   "asm": "mov v0.h[1], v1.h[0]\nret",
   "giasm": "mov v0.h[1], v1.h[0]\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, half %bs) {\n  %r = insertelement <4 x half> %a, half %bs, i32 1\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x half> %a, half %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x half> %a, half %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x half>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -573,7 +573,7 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfi x8, x0, #1, #2\nstr h1, [x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x3\nstr h1, [x8, x9, lsl #1]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, half %bs, i32 %c) {\n  %r = insertelement <4 x half> %a, half %bs, i32 %c\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x half> %a, half %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x half> %a, half %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
  },
  {
   "instr": "insertelement",
@@ -595,7 +595,7 @@
   "instr": "insertelement",
   "ty": "<8 x half>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -605,13 +605,13 @@
   "asm": "mov v0.h[1], v1.h[0]\nret",
   "giasm": "mov v0.h[1], v1.h[0]\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, half %bs) {\n  %r = insertelement <8 x half> %a, half %bs, i32 1\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x half> %a, half %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x half> %a, half %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x half> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x half>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -621,7 +621,7 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #1, #3\nstr h1, [x8]\nldr q0, [sp], #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x7\nstr h1, [x8, x9, lsl #1]\nldr q0, [sp], #16\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, half %bs, i32 %c) {\n  %r = insertelement <8 x half> %a, half %bs, i32 %c\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x half> %a, half %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x half> %a, half %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x half> %r"
  },
  {
   "instr": "insertelement",
@@ -643,7 +643,7 @@
   "instr": "insertelement",
   "ty": "<16 x half>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -653,13 +653,13 @@
   "asm": "mov v0.h[1], v2.h[0]\nret",
   "giasm": "mov v0.h[1], v2.h[0]\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, half %bs) {\n  %r = insertelement <16 x half> %a, half %bs, i32 1\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <16 x half> %a, half %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x half> %a, half %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x half> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<16 x half>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -669,7 +669,7 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0xf\nmov x9, sp\nstr h2, [x9, x8, lsl #1]\nldp q0, q1, [sp], #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nmov x9, sp\nstp q0, q1, [sp]\nand x8, x8, #0xf\nstr h2, [x9, x8, lsl #1]\nldp q0, q1, [sp]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, half %bs, i32 %c) {\n  %r = insertelement <16 x half> %a, half %bs, i32 %c\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <16 x half> %a, half %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x half> %a, half %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x half> %r"
  },
  {
   "instr": "insertelement",
@@ -691,7 +691,7 @@
   "instr": "insertelement",
   "ty": "<2 x float>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -701,13 +701,13 @@
   "asm": "mov v0.s[1], v1.s[0]\nret",
   "giasm": "mov v0.s[1], v1.s[0]\nret",
   "ll": "define <2 x float> @test(<2 x float> %a, float %bs) {\n  %r = insertelement <2 x float> %a, float %bs, i32 1\n  ret <2 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x float> %a, float %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x float> %a, float %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<2 x float>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -717,7 +717,7 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfi x8, x0, #2, #1\nstr s1, [x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x1\nstr s1, [x8, x9, lsl #2]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "ll": "define <2 x float> @test(<2 x float> %a, float %bs, i32 %c) {\n  %r = insertelement <2 x float> %a, float %bs, i32 %c\n  ret <2 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x float> %a, float %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x float> %a, float %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
  {
   "instr": "insertelement",
@@ -739,7 +739,7 @@
   "instr": "insertelement",
   "ty": "<4 x float>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -749,13 +749,13 @@
   "asm": "mov v0.s[1], v1.s[0]\nret",
   "giasm": "mov v0.s[1], v1.s[0]\nret",
   "ll": "define <4 x float> @test(<4 x float> %a, float %bs) {\n  %r = insertelement <4 x float> %a, float %bs, i32 1\n  ret <4 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x float> %a, float %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x float> %a, float %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x float> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x float>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -765,7 +765,7 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #2, #2\nstr s1, [x8]\nldr q0, [sp], #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x3\nstr s1, [x8, x9, lsl #2]\nldr q0, [sp], #16\nret",
   "ll": "define <4 x float> @test(<4 x float> %a, float %bs, i32 %c) {\n  %r = insertelement <4 x float> %a, float %bs, i32 %c\n  ret <4 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x float> %a, float %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x float> %a, float %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x float> %r"
  },
  {
   "instr": "insertelement",
@@ -787,7 +787,7 @@
   "instr": "insertelement",
   "ty": "<8 x float>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -797,13 +797,13 @@
   "asm": "mov v0.s[1], v2.s[0]\nret",
   "giasm": "mov v0.s[1], v2.s[0]\nret",
   "ll": "define <8 x float> @test(<8 x float> %a, float %bs) {\n  %r = insertelement <8 x float> %a, float %bs, i32 1\n  ret <8 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x float> %a, float %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x float> %a, float %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x float> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<8 x float>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -813,7 +813,7 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0x7\nmov x9, sp\nstr s2, [x9, x8, lsl #2]\nldp q0, q1, [sp], #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nmov x9, sp\nstp q0, q1, [sp]\nand x8, x8, #0x7\nstr s2, [x9, x8, lsl #2]\nldp q0, q1, [sp]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define <8 x float> @test(<8 x float> %a, float %bs, i32 %c) {\n  %r = insertelement <8 x float> %a, float %bs, i32 %c\n  ret <8 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <8 x float> %a, float %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x float> %a, float %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x float> %r"
  },
  {
   "instr": "insertelement",
@@ -835,7 +835,7 @@
   "instr": "insertelement",
   "ty": "<2 x double>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -845,13 +845,13 @@
   "asm": "mov v0.d[1], v1.d[0]\nret",
   "giasm": "mov v0.d[1], v1.d[0]\nret",
   "ll": "define <2 x double> @test(<2 x double> %a, double %bs) {\n  %r = insertelement <2 x double> %a, double %bs, i32 1\n  ret <2 x double> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x double> %a, double %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x double> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x double> %a, double %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x double> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<2 x double>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -861,7 +861,7 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #3, #1\nstr d1, [x8]\nldr q0, [sp], #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x1\nstr d1, [x8, x9, lsl #3]\nldr q0, [sp], #16\nret",
   "ll": "define <2 x double> @test(<2 x double> %a, double %bs, i32 %c) {\n  %r = insertelement <2 x double> %a, double %bs, i32 %c\n  ret <2 x double> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <2 x double> %a, double %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x double> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <2 x double> %a, double %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x double> %r"
  },
  {
   "instr": "insertelement",
@@ -883,7 +883,7 @@
   "instr": "insertelement",
   "ty": "<4 x double>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -893,13 +893,13 @@
   "asm": "mov v0.d[1], v2.d[0]\nret",
   "giasm": "mov v0.d[1], v2.d[0]\nret",
   "ll": "define <4 x double> @test(<4 x double> %a, double %bs) {\n  %r = insertelement <4 x double> %a, double %bs, i32 1\n  ret <4 x double> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x double> %a, double %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x double> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x double> %a, double %bs, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x double> %r"
  },
  {
   "instr": "insertelement",
   "ty": "<4 x double>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -909,13 +909,13 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0x3\nmov x9, sp\nstr d2, [x9, x8, lsl #3]\nldp q0, q1, [sp], #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nmov x9, sp\nstp q0, q1, [sp]\nand x8, x8, #0x3\nstr d2, [x9, x8, lsl #3]\nldp q0, q1, [sp]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define <4 x double> @test(<4 x double> %a, double %bs, i32 %c) {\n  %r = insertelement <4 x double> %a, double %bs, i32 %c\n  ret <4 x double> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = insertelement <4 x double> %a, double %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x double> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <4 x double> %a, double %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x double> %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i8>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -925,13 +925,13 @@
   "asm": "umov w0, v0.b[0]\nret",
   "giasm": "umov w0, v0.b[0]\nret",
   "ll": "define i8 @test(<8 x i8> %a) {\n  %r = extractelement <8 x i8> %a, i32 0\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i8> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i8> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i8>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -941,13 +941,13 @@
   "asm": "umov w0, v0.b[1]\nret",
   "giasm": "umov w0, v0.b[1]\nret",
   "ll": "define i8 @test(<8 x i8> %a) {\n  %r = extractelement <8 x i8> %a, i32 1\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i8> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i8> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i8>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -957,13 +957,13 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfxil x8, x0, #0, #3\nldrb w0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x7\nlsl x10, x9, #1\nsub x9, x10, x9\nldrb w0, [x8, x9]\nadd sp, sp, #16\nret",
   "ll": "define i8 @test(<8 x i8> %a, i32 %c) {\n  %r = extractelement <8 x i8> %a, i32 %c\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i8> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i8> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<16 x i8>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -973,13 +973,13 @@
   "asm": "umov w0, v0.b[0]\nret",
   "giasm": "umov w0, v0.b[0]\nret",
   "ll": "define i8 @test(<16 x i8> %a) {\n  %r = extractelement <16 x i8> %a, i32 0\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <16 x i8> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <16 x i8> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<16 x i8>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -989,13 +989,13 @@
   "asm": "umov w0, v0.b[1]\nret",
   "giasm": "umov w0, v0.b[1]\nret",
   "ll": "define i8 @test(<16 x i8> %a) {\n  %r = extractelement <16 x i8> %a, i32 1\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <16 x i8> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <16 x i8> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<16 x i8>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1005,13 +1005,13 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfxil x8, x0, #0, #4\nldrb w0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0xf\nlsl x10, x9, #1\nsub x9, x10, x9\nldrb w0, [x8, x9]\nadd sp, sp, #16\nret",
   "ll": "define i8 @test(<16 x i8> %a, i32 %c) {\n  %r = extractelement <16 x i8> %a, i32 %c\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <16 x i8> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <16 x i8> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<32 x i8>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1021,13 +1021,13 @@
   "asm": "umov w0, v0.b[0]\nret",
   "giasm": "umov w0, v0.b[0]\nret",
   "ll": "define i8 @test(<32 x i8> %a) {\n  %r = extractelement <32 x i8> %a, i32 0\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <32 x i8> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <32 x i8> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<32 x i8>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1037,13 +1037,13 @@
   "asm": "umov w0, v0.b[1]\nret",
   "giasm": "umov w0, v0.b[1]\nret",
   "ll": "define i8 @test(<32 x i8> %a) {\n  %r = extractelement <32 x i8> %a, i32 1\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <32 x i8> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <32 x i8> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<32 x i8>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1053,13 +1053,13 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0x1f\nmov x9, sp\nldrb w0, [x9, x8]\nadd sp, sp, #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nstp q0, q1, [sp]\nmov x10, sp\nand x8, x8, #0x1f\nlsl x9, x8, #1\nsub x8, x9, x8\nldrb w0, [x10, x8]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define i8 @test(<32 x i8> %a, i32 %c) {\n  %r = extractelement <32 x i8> %a, i32 %c\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <32 x i8> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <32 x i8> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i16>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1069,13 +1069,13 @@
   "asm": "umov w0, v0.h[0]\nret",
   "giasm": "umov w0, v0.h[0]\nret",
   "ll": "define i16 @test(<4 x i16> %a) {\n  %r = extractelement <4 x i16> %a, i32 0\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i16> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i16> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i16>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1085,13 +1085,13 @@
   "asm": "umov w0, v0.h[1]\nret",
   "giasm": "umov w0, v0.h[1]\nret",
   "ll": "define i16 @test(<4 x i16> %a) {\n  %r = extractelement <4 x i16> %a, i32 1\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i16> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i16> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i16>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1101,13 +1101,13 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfi x8, x0, #1, #2\nldrh w0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x3\nldrh w0, [x8, x9, lsl #1]\nadd sp, sp, #16\nret",
   "ll": "define i16 @test(<4 x i16> %a, i32 %c) {\n  %r = extractelement <4 x i16> %a, i32 %c\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i16> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i16> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i16>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1117,13 +1117,13 @@
   "asm": "umov w0, v0.h[0]\nret",
   "giasm": "umov w0, v0.h[0]\nret",
   "ll": "define i16 @test(<8 x i16> %a) {\n  %r = extractelement <8 x i16> %a, i32 0\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i16> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i16> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i16>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1133,13 +1133,13 @@
   "asm": "umov w0, v0.h[1]\nret",
   "giasm": "umov w0, v0.h[1]\nret",
   "ll": "define i16 @test(<8 x i16> %a) {\n  %r = extractelement <8 x i16> %a, i32 1\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i16> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i16> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i16>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1149,13 +1149,13 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #1, #3\nldrh w0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x7\nldrh w0, [x8, x9, lsl #1]\nadd sp, sp, #16\nret",
   "ll": "define i16 @test(<8 x i16> %a, i32 %c) {\n  %r = extractelement <8 x i16> %a, i32 %c\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i16> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i16> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<16 x i16>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1165,13 +1165,13 @@
   "asm": "umov w0, v0.h[0]\nret",
   "giasm": "umov w0, v0.h[0]\nret",
   "ll": "define i16 @test(<16 x i16> %a) {\n  %r = extractelement <16 x i16> %a, i32 0\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <16 x i16> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <16 x i16> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<16 x i16>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1181,13 +1181,13 @@
   "asm": "umov w0, v0.h[1]\nret",
   "giasm": "umov w0, v0.h[1]\nret",
   "ll": "define i16 @test(<16 x i16> %a) {\n  %r = extractelement <16 x i16> %a, i32 1\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <16 x i16> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <16 x i16> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<16 x i16>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1197,13 +1197,13 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0xf\nmov x9, sp\nldrh w0, [x9, x8, lsl #1]\nadd sp, sp, #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nstp q0, q1, [sp]\nmov x9, sp\nand x8, x8, #0xf\nldrh w0, [x9, x8, lsl #1]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define i16 @test(<16 x i16> %a, i32 %c) {\n  %r = extractelement <16 x i16> %a, i32 %c\n  ret i16 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <16 x i16> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <16 x i16> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<2 x i32>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1213,13 +1213,13 @@
   "asm": "fmov w0, s0\nret",
   "giasm": "fmov w0, s0\nret",
   "ll": "define i32 @test(<2 x i32> %a) {\n  %r = extractelement <2 x i32> %a, i32 0\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x i32> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x i32> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<2 x i32>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1229,13 +1229,13 @@
   "asm": "mov w0, v0.s[1]\nret",
   "giasm": "mov s0, v0.s[1]\nfmov w0, s0\nret",
   "ll": "define i32 @test(<2 x i32> %a) {\n  %r = extractelement <2 x i32> %a, i32 1\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x i32> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x i32> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<2 x i32>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1245,13 +1245,13 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfi x8, x0, #2, #1\nldr w0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x1\nldr w0, [x8, x9, lsl #2]\nadd sp, sp, #16\nret",
   "ll": "define i32 @test(<2 x i32> %a, i32 %c) {\n  %r = extractelement <2 x i32> %a, i32 %c\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x i32> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x i32> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i32>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1261,13 +1261,13 @@
   "asm": "fmov w0, s0\nret",
   "giasm": "fmov w0, s0\nret",
   "ll": "define i32 @test(<4 x i32> %a) {\n  %r = extractelement <4 x i32> %a, i32 0\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i32> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i32> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i32>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1277,13 +1277,13 @@
   "asm": "mov w0, v0.s[1]\nret",
   "giasm": "mov s0, v0.s[1]\nfmov w0, s0\nret",
   "ll": "define i32 @test(<4 x i32> %a) {\n  %r = extractelement <4 x i32> %a, i32 1\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i32> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i32> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i32>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1293,13 +1293,13 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #2, #2\nldr w0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x3\nldr w0, [x8, x9, lsl #2]\nadd sp, sp, #16\nret",
   "ll": "define i32 @test(<4 x i32> %a, i32 %c) {\n  %r = extractelement <4 x i32> %a, i32 %c\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i32> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i32> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i32>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1309,13 +1309,13 @@
   "asm": "fmov w0, s0\nret",
   "giasm": "fmov w0, s0\nret",
   "ll": "define i32 @test(<8 x i32> %a) {\n  %r = extractelement <8 x i32> %a, i32 0\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i32> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i32> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i32>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1325,13 +1325,13 @@
   "asm": "mov w0, v0.s[1]\nret",
   "giasm": "mov s0, v0.s[1]\nfmov w0, s0\nret",
   "ll": "define i32 @test(<8 x i32> %a) {\n  %r = extractelement <8 x i32> %a, i32 1\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i32> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i32> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x i32>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1341,13 +1341,13 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0x7\nmov x9, sp\nldr w0, [x9, x8, lsl #2]\nadd sp, sp, #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nstp q0, q1, [sp]\nmov x9, sp\nand x8, x8, #0x7\nldr w0, [x9, x8, lsl #2]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define i32 @test(<8 x i32> %a, i32 %c) {\n  %r = extractelement <8 x i32> %a, i32 %c\n  ret i32 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x i32> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x i32> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i32 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<2 x i64>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1357,13 +1357,13 @@
   "asm": "fmov x0, d0\nret",
   "giasm": "fmov x0, d0\nret",
   "ll": "define i64 @test(<2 x i64> %a) {\n  %r = extractelement <2 x i64> %a, i32 0\n  ret i64 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x i64> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x i64> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<2 x i64>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1373,13 +1373,13 @@
   "asm": "mov x0, v0.d[1]\nret",
   "giasm": "mov d0, v0.d[1]\nfmov x0, d0\nret",
   "ll": "define i64 @test(<2 x i64> %a) {\n  %r = extractelement <2 x i64> %a, i32 1\n  ret i64 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x i64> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x i64> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<2 x i64>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1389,13 +1389,13 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #3, #1\nldr x0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x1\nldr x0, [x8, x9, lsl #3]\nadd sp, sp, #16\nret",
   "ll": "define i64 @test(<2 x i64> %a, i32 %c) {\n  %r = extractelement <2 x i64> %a, i32 %c\n  ret i64 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x i64> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x i64> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i64>",
   "variant": "vecop0",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1405,13 +1405,13 @@
   "asm": "fmov x0, d0\nret",
   "giasm": "fmov x0, d0\nret",
   "ll": "define i64 @test(<4 x i64> %a) {\n  %r = extractelement <4 x i64> %a, i32 0\n  ret i64 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i64> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i64> %a, i32 0\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i64>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1421,13 +1421,13 @@
   "asm": "mov x0, v0.d[1]\nret",
   "giasm": "mov d0, v0.d[1]\nfmov x0, d0\nret",
   "ll": "define i64 @test(<4 x i64> %a) {\n  %r = extractelement <4 x i64> %a, i32 1\n  ret i64 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i64> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i64> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x i64>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1437,7 +1437,7 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0x3\nmov x9, sp\nldr x0, [x9, x8, lsl #3]\nadd sp, sp, #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nstp q0, q1, [sp]\nmov x9, sp\nand x8, x8, #0x3\nldr x0, [x9, x8, lsl #3]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define i64 @test(<4 x i64> %a, i32 %c) {\n  %r = extractelement <4 x i64> %a, i32 %c\n  ret i64 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x i64> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x i64> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i64 %r"
  },
  {
   "instr": "extractelement",
@@ -1459,7 +1459,7 @@
   "instr": "extractelement",
   "ty": "<4 x half>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1469,13 +1469,13 @@
   "asm": "mov h0, v0.h[1]\nret",
   "giasm": "mov h0, v0.h[1]\nret",
   "ll": "define half @test(<4 x half> %a) {\n  %r = extractelement <4 x half> %a, i32 1\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x half> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x half> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x half>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1485,7 +1485,7 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfi x8, x0, #1, #2\nldr h0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x3\nldr h0, [x8, x9, lsl #1]\nadd sp, sp, #16\nret",
   "ll": "define half @test(<4 x half> %a, i32 %c) {\n  %r = extractelement <4 x half> %a, i32 %c\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x half> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x half> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
  },
  {
   "instr": "extractelement",
@@ -1507,7 +1507,7 @@
   "instr": "extractelement",
   "ty": "<8 x half>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1517,13 +1517,13 @@
   "asm": "mov h0, v0.h[1]\nret",
   "giasm": "mov h0, v0.h[1]\nret",
   "ll": "define half @test(<8 x half> %a) {\n  %r = extractelement <8 x half> %a, i32 1\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x half> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x half> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x half>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1533,7 +1533,7 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #1, #3\nldr h0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x7\nldr h0, [x8, x9, lsl #1]\nadd sp, sp, #16\nret",
   "ll": "define half @test(<8 x half> %a, i32 %c) {\n  %r = extractelement <8 x half> %a, i32 %c\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x half> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x half> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
  },
  {
   "instr": "extractelement",
@@ -1555,7 +1555,7 @@
   "instr": "extractelement",
   "ty": "<16 x half>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1565,13 +1565,13 @@
   "asm": "mov h0, v0.h[1]\nret",
   "giasm": "mov h0, v0.h[1]\nret",
   "ll": "define half @test(<16 x half> %a) {\n  %r = extractelement <16 x half> %a, i32 1\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <16 x half> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <16 x half> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
  },
  {
   "instr": "extractelement",
   "ty": "<16 x half>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1581,7 +1581,7 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0xf\nmov x9, sp\nldr h0, [x9, x8, lsl #1]\nadd sp, sp, #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nstp q0, q1, [sp]\nmov x9, sp\nand x8, x8, #0xf\nldr h0, [x9, x8, lsl #1]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define half @test(<16 x half> %a, i32 %c) {\n  %r = extractelement <16 x half> %a, i32 %c\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <16 x half> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <16 x half> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
  },
  {
   "instr": "extractelement",
@@ -1603,7 +1603,7 @@
   "instr": "extractelement",
   "ty": "<2 x float>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1613,13 +1613,13 @@
   "asm": "mov s0, v0.s[1]\nret",
   "giasm": "mov s0, v0.s[1]\nret",
   "ll": "define float @test(<2 x float> %a) {\n  %r = extractelement <2 x float> %a, i32 1\n  ret float %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x float> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x float> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
  },
  {
   "instr": "extractelement",
   "ty": "<2 x float>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1629,7 +1629,7 @@
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfi x8, x0, #2, #1\nldr s0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nadd x8, sp, #8\nstr d0, [sp, #8]\nand x9, x9, #0x1\nldr s0, [x8, x9, lsl #2]\nadd sp, sp, #16\nret",
   "ll": "define float @test(<2 x float> %a, i32 %c) {\n  %r = extractelement <2 x float> %a, i32 %c\n  ret float %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x float> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x float> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
  },
  {
   "instr": "extractelement",
@@ -1651,7 +1651,7 @@
   "instr": "extractelement",
   "ty": "<4 x float>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1661,13 +1661,13 @@
   "asm": "mov s0, v0.s[1]\nret",
   "giasm": "mov s0, v0.s[1]\nret",
   "ll": "define float @test(<4 x float> %a) {\n  %r = extractelement <4 x float> %a, i32 1\n  ret float %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x float> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x float> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x float>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1677,7 +1677,7 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #2, #2\nldr s0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x3\nldr s0, [x8, x9, lsl #2]\nadd sp, sp, #16\nret",
   "ll": "define float @test(<4 x float> %a, i32 %c) {\n  %r = extractelement <4 x float> %a, i32 %c\n  ret float %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x float> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x float> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
  },
  {
   "instr": "extractelement",
@@ -1699,7 +1699,7 @@
   "instr": "extractelement",
   "ty": "<8 x float>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1709,13 +1709,13 @@
   "asm": "mov s0, v0.s[1]\nret",
   "giasm": "mov s0, v0.s[1]\nret",
   "ll": "define float @test(<8 x float> %a) {\n  %r = extractelement <8 x float> %a, i32 1\n  ret float %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x float> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x float> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
  },
  {
   "instr": "extractelement",
   "ty": "<8 x float>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1725,7 +1725,7 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0x7\nmov x9, sp\nldr s0, [x9, x8, lsl #2]\nadd sp, sp, #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nstp q0, q1, [sp]\nmov x9, sp\nand x8, x8, #0x7\nldr s0, [x9, x8, lsl #2]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define float @test(<8 x float> %a, i32 %c) {\n  %r = extractelement <8 x float> %a, i32 %c\n  ret float %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <8 x float> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <8 x float> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret float %r"
  },
  {
   "instr": "extractelement",
@@ -1747,7 +1747,7 @@
   "instr": "extractelement",
   "ty": "<2 x double>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1757,13 +1757,13 @@
   "asm": "mov d0, v0.d[1]\nret",
   "giasm": "mov d0, v0.d[1]\nret",
   "ll": "define double @test(<2 x double> %a) {\n  %r = extractelement <2 x double> %a, i32 1\n  ret double %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x double> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret double %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x double> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret double %r"
  },
  {
   "instr": "extractelement",
   "ty": "<2 x double>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1773,7 +1773,7 @@
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfi x8, x0, #3, #1\nldr d0, [x8]\nadd sp, sp, #16\nret",
   "giasm": "sub sp, sp, #16\nmov w9, w0\nmov x8, sp\nstr q0, [sp]\nand x9, x9, #0x1\nldr d0, [x8, x9, lsl #3]\nadd sp, sp, #16\nret",
   "ll": "define double @test(<2 x double> %a, i32 %c) {\n  %r = extractelement <2 x double> %a, i32 %c\n  ret double %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <2 x double> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret double %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <2 x double> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret double %r"
  },
  {
   "instr": "extractelement",
@@ -1795,7 +1795,7 @@
   "instr": "extractelement",
   "ty": "<4 x double>",
   "variant": "vecop1",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1805,13 +1805,13 @@
   "asm": "mov d0, v0.d[1]\nret",
   "giasm": "mov d0, v0.d[1]\nret",
   "ll": "define double @test(<4 x double> %a) {\n  %r = extractelement <4 x double> %a, i32 1\n  ret double %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x double> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret double %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x double> %a, i32 1\nCost Model: Found an estimated cost of 1 for instruction:   ret double %r"
  },
  {
   "instr": "extractelement",
   "ty": "<4 x double>",
   "variant": "vecopvar",
-  "codesize": 2,
+  "codesize": 1,
   "thru": 2,
   "lat": 2,
   "sizelat": 2,
@@ -1821,6 +1821,6 @@
   "asm": "stp q0, q1, [sp, #-32]!\nand x8, x0, #0x3\nmov x9, sp\nldr d0, [x9, x8, lsl #3]\nadd sp, sp, #32\nret",
   "giasm": "stp x29, x30, [sp, #-16]!           // 16-byte Folded Spill\nsub x9, sp, #48\nmov x29, sp\nand sp, x9, #0xffffffffffffffe0\nmov w8, w0\nstp q0, q1, [sp]\nmov x9, sp\nand x8, x8, #0x3\nldr d0, [x9, x8, lsl #3]\nmov sp, x29\nldp x29, x30, [sp], #16             // 16-byte Folded Reload\nret",
   "ll": "define double @test(<4 x double> %a, i32 %c) {\n  %r = extractelement <4 x double> %a, i32 %c\n  ret double %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = extractelement <4 x double> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret double %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <4 x double> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret double %r"
  }
 ]
