@@ -212,14 +212,6 @@ def fptypes(highsizes = False):
           continue
         yield Ty(fptymap[bits], s, scalable)
 
-def binop_variants(ty):
-  yield ('binop', 0)
-  if not ty.scalable:
-    yield ('binopconst', 0) #1 if ty.elts == 1 else 2)
-  if ty.elts > 1:
-    yield ('binopsplat', 0) #1
-    yield ('binopconstsplat', 0) #1 if ty.elts == 1 or ty.bits <= 32 else 2)
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--type', choices=['all', 'int', 'fp', 'castint', 'castfp', 'vec'], default='all')
 parser.add_argument('-mtriple', default='aarch64')
@@ -244,8 +236,13 @@ if args.type == 'all' or args.type == 'int':
     # Int Binops
     for instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl']:
       for ty in inttypes():
-        for (variant, extrasize) in binop_variants(ty):
-          yield (instr, variant, ty, ty, extrasize, None)
+        yield (instr, 'binop', ty, ty, 0, None)
+        if instr in ['sdiv', 'srem', 'udiv', 'urem', 'shl', 'ashr', 'lshr', 'rotr', 'rotl']:
+          if not ty.scalable:
+            yield (instr, 'binopconst', ty, ty, 0, None)
+          if ty.elts > 1:
+            yield (instr, 'binopsplat', ty, ty, 0, None)
+            yield (instr, 'binopconstsplat', ty, ty, 0, None)
 
     ## Int unops
     for instr in ['abs', 'bitreverse', 'bswap', 'ctlz', 'cttz', 'ctpop']:
@@ -297,8 +294,7 @@ if args.type == 'all' or args.type == 'fp':
     # Floating point Binops
     for instr in ['fadd', 'fsub', 'fmul', 'fdiv', 'frem', 'minnum', 'maxnum', 'minimum', 'maximum', 'copysign', 'pow']:
       for ty in fptypes():
-        for (variant, extrasize) in binop_variants(ty):
-          yield (instr, variant, ty, ty, extrasize, None)
+        yield (instr, 'binop', ty, ty, 0, None)
 
     # FP unops
     for instr in ['fneg', 'fabs', 'sqrt', 'ceil', 'floor', 'trunc', 'rint', 'nearbyint']:
