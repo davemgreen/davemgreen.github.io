@@ -86,6 +86,10 @@ def generate_const0(ty):
   if ty.elts == 1:
     return '0' if not ty.isFloat() else '0.0'
   return "zeroinitializer"
+def generate_constm1(ty):
+  if ty.elts == 1:
+    return '-1'
+  return f"splat ({ty.scalar} -1)"
 
 def generate(variant, instr, ty, ty2):
   tystr = ty.str()
@@ -117,6 +121,8 @@ def generate(variant, instr, ty, ty2):
   b = "%b"
   if "const" in variant:
     b = generate_const(ty, variant == 'binopconstsplat')
+  elif variant == 'mvn':
+    b = generate_constm1(ty)
   elif variant == 'cmp0':
     b = generate_const0(ty)
 
@@ -247,7 +253,9 @@ if args.type == 'all' or args.type == 'int':
         if instr == 'bswap' and ty.scalar == 'i8':
           continue
         yield (instr, 'unop', ty, ty, 0, None)
-    # TODO: not?
+    for instr in ['xor']:
+      for ty in inttypes():
+        yield (instr, 'mvn', ty, ty, 0, None)
 
     # Int triops
     for instr in ['fshl', 'fshr', 'select']:
