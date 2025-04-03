@@ -15322,7 +15322,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, #0                        // =0x0\nptrue p0.s\nfcmuo p1.h, p0/z, z0.h, z1.h\nnot p0.b, p0/z, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.h, p0/z, z0.h, z1.h\nnot p0.b, p0/z, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x half>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x half> %a) {\n  %r = fcmp ord <vscale x 4 x half> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ord <vscale x 4 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -15354,7 +15354,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.h, #0                        // =0x0\nptrue p0.s\nfcmuo p1.h, p0/z, z0.h, z3.h\nnot p0.b, p0/z, p1.b\nsel z0.s, p0, z1.s, z2.s\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.h, p0/z, z0.h, z3.h\nnot p0.b, p0/z, p1.b\nsel z0.s, p0, z1.s, z2.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x half> (<vscale x 4 x half>, <vscale x 4 x half>, <vscale x 4 x half>) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, <vscale x 4 x half> %d, <vscale x 4 x half> %e) {\n  %c = fcmp ord <vscale x 4 x half> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x half> %d, <vscale x 4 x half> %e\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ord <vscale x 4 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x half> %d, <vscale x 4 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x half> %r"
@@ -15386,7 +15386,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, #0                        // =0x0\nptrue p0.h\nfcmuo p1.h, p0/z, z0.h, z1.h\nnot p0.b, p0/z, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z0.h, z1.h\nnot p0.b, p0/z, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x i1> (<vscale x 8 x half>) (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x half> %a) {\n  %r = fcmp ord <vscale x 8 x half> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ord <vscale x 8 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x i1> %r"
@@ -15418,7 +15418,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.h, #0                        // =0x0\nptrue p0.h\nfcmuo p1.h, p0/z, z0.h, z3.h\nnot p0.b, p0/z, p1.b\nsel z0.h, p0, z1.h, z2.h\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z0.h, z3.h\nnot p0.b, p0/z, p1.b\nsel z0.h, p0, z1.h, z2.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x half> (<vscale x 8 x half>, <vscale x 8 x half>, <vscale x 8 x half>) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, <vscale x 8 x half> %d, <vscale x 8 x half> %e) {\n  %c = fcmp ord <vscale x 8 x half> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x half> %d, <vscale x 8 x half> %e\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ord <vscale x 8 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x half> %d, <vscale x 8 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x half> %r"
@@ -15450,7 +15450,7 @@
   "size": 6,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.h, #0                        // =0x0\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z2.h\nfcmuo p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z2.h\nfcmuo p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x i1> (<vscale x 16 x half>) (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a) {\n  %r = fcmp ord <vscale x 16 x half> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ord <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 16 x i1> %r"
@@ -15482,7 +15482,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.h, #0                        // =0x0\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z6.h\nfcmuo p2.h, p0/z, z0.h, z6.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z6.h\nfcmuo p2.h, p0/z, z0.h, z6.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x half> (<vscale x 16 x half>, <vscale x 16 x half>, <vscale x 16 x half>) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %d, <vscale x 16 x half> %e) {\n  %c = fcmp ord <vscale x 16 x half> %a, zeroinitializer\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x half> %d, <vscale x 16 x half> %e\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ord <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x half> %d, <vscale x 16 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 16 x half> %r"
@@ -15514,7 +15514,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.s, #0                        // =0x0\nptrue p0.d\nfcmuo p1.s, p0/z, z0.s, z1.s\nnot p0.b, p0/z, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.s, p0/z, z0.s, z1.s\nnot p0.b, p0/z, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x i1> (<vscale x 2 x float>) (in function: test)",
   "ll": "define <vscale x 2 x i1> @test(<vscale x 2 x float> %a) {\n  %r = fcmp ord <vscale x 2 x float> %a, zeroinitializer\n  ret <vscale x 2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ord <vscale x 2 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x i1> %r"
@@ -15546,7 +15546,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.s, #0                        // =0x0\nptrue p0.d\nfcmuo p1.s, p0/z, z0.s, z3.s\nnot p0.b, p0/z, p1.b\nsel z0.d, p0, z1.d, z2.d\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.s, p0/z, z0.s, z3.s\nnot p0.b, p0/z, p1.b\nsel z0.d, p0, z1.d, z2.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x float> (<vscale x 2 x float>, <vscale x 2 x float>, <vscale x 2 x float>) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, <vscale x 2 x float> %d, <vscale x 2 x float> %e) {\n  %c = fcmp ord <vscale x 2 x float> %a, zeroinitializer\n  %r = select <vscale x 2 x i1> %c, <vscale x 2 x float> %d, <vscale x 2 x float> %e\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ord <vscale x 2 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 2 x i1> %c, <vscale x 2 x float> %d, <vscale x 2 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x float> %r"
@@ -15578,7 +15578,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.s, #0                        // =0x0\nptrue p0.s\nfcmuo p1.s, p0/z, z0.s, z1.s\nnot p0.b, p0/z, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z0.s, z1.s\nnot p0.b, p0/z, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x float>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x float> %a) {\n  %r = fcmp ord <vscale x 4 x float> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ord <vscale x 4 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -15610,7 +15610,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.s, #0                        // =0x0\nptrue p0.s\nfcmuo p1.s, p0/z, z0.s, z3.s\nnot p0.b, p0/z, p1.b\nsel z0.s, p0, z1.s, z2.s\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z0.s, z3.s\nnot p0.b, p0/z, p1.b\nsel z0.s, p0, z1.s, z2.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x float> (<vscale x 4 x float>, <vscale x 4 x float>, <vscale x 4 x float>) (in function: test)",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, <vscale x 4 x float> %d, <vscale x 4 x float> %e) {\n  %c = fcmp ord <vscale x 4 x float> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x float> %d, <vscale x 4 x float> %e\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ord <vscale x 4 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x float> %d, <vscale x 4 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x float> %r"
@@ -15642,7 +15642,7 @@
   "size": 6,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.s, #0                        // =0x0\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z2.s\nfcmuo p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z2.s\nfcmuo p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x i1> (<vscale x 8 x float>) (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a) {\n  %r = fcmp ord <vscale x 8 x float> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ord <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x i1> %r"
@@ -15674,7 +15674,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.s, #0                        // =0x0\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z6.s\nfcmuo p2.s, p0/z, z0.s, z6.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nsel z1.s, p1, z3.s, z5.s\nsel z0.s, p0, z2.s, z4.s\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z6.s\nfcmuo p2.s, p0/z, z0.s, z6.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nsel z1.s, p1, z3.s, z5.s\nsel z0.s, p0, z2.s, z4.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x float> (<vscale x 8 x float>, <vscale x 8 x float>, <vscale x 8 x float>) (in function: test)",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %d, <vscale x 8 x float> %e) {\n  %c = fcmp ord <vscale x 8 x float> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x float> %d, <vscale x 8 x float> %e\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ord <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x float> %d, <vscale x 8 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x float> %r"
@@ -15706,7 +15706,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.d, #0                        // =0x0\nptrue p0.d\nfcmuo p1.d, p0/z, z0.d, z1.d\nnot p0.b, p0/z, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z0.d, z1.d\nnot p0.b, p0/z, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x i1> (<vscale x 2 x double>) (in function: test)",
   "ll": "define <vscale x 2 x i1> @test(<vscale x 2 x double> %a) {\n  %r = fcmp ord <vscale x 2 x double> %a, zeroinitializer\n  ret <vscale x 2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ord <vscale x 2 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x i1> %r"
@@ -15738,7 +15738,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.d, #0                        // =0x0\nptrue p0.d\nfcmuo p1.d, p0/z, z0.d, z3.d\nnot p0.b, p0/z, p1.b\nsel z0.d, p0, z1.d, z2.d\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z0.d, z3.d\nnot p0.b, p0/z, p1.b\nsel z0.d, p0, z1.d, z2.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x double> (<vscale x 2 x double>, <vscale x 2 x double>, <vscale x 2 x double>) (in function: test)",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, <vscale x 2 x double> %d, <vscale x 2 x double> %e) {\n  %c = fcmp ord <vscale x 2 x double> %a, zeroinitializer\n  %r = select <vscale x 2 x i1> %c, <vscale x 2 x double> %d, <vscale x 2 x double> %e\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ord <vscale x 2 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 2 x i1> %c, <vscale x 2 x double> %d, <vscale x 2 x double> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x double> %r"
@@ -15770,7 +15770,7 @@
   "size": 6,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, #0                        // =0x0\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z2.d\nfcmuo p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z2.d\nfcmuo p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x double>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a) {\n  %r = fcmp ord <vscale x 4 x double> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ord <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -15802,7 +15802,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.d, #0                        // =0x0\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z6.d\nfcmuo p2.d, p0/z, z0.d, z6.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nsel z1.d, p1, z3.d, z5.d\nsel z0.d, p0, z2.d, z4.d\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z6.d\nfcmuo p2.d, p0/z, z0.d, z6.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nsel z1.d, p1, z3.d, z5.d\nsel z0.d, p0, z2.d, z4.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x double> (<vscale x 4 x double>, <vscale x 4 x double>, <vscale x 4 x double>) (in function: test)",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %d, <vscale x 4 x double> %e) {\n  %c = fcmp ord <vscale x 4 x double> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x double> %d, <vscale x 4 x double> %e\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ord <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x double> %d, <vscale x 4 x double> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x double> %r"
@@ -16538,7 +16538,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, #0                        // =0x0\nptrue p0.s\nfcmuo p1.h, p0/z, z0.h, z1.h\nfcmeq p0.h, p0/z, z0.h, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.h, p0/z, z0.h, z1.h\nfcmeq p0.h, p0/z, z0.h, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x half>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x half> %a) {\n  %r = fcmp ueq <vscale x 4 x half> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ueq <vscale x 4 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -16570,7 +16570,7 @@
   "size": 5,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.h, #0                        // =0x0\nptrue p0.s\nfcmuo p1.h, p0/z, z0.h, z3.h\nfcmeq p0.h, p0/z, z0.h, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.s, p0, z1.s, z2.s\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.h, p0/z, z0.h, z3.h\nfcmeq p0.h, p0/z, z0.h, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.s, p0, z1.s, z2.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x half> (<vscale x 4 x half>, <vscale x 4 x half>, <vscale x 4 x half>) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, <vscale x 4 x half> %d, <vscale x 4 x half> %e) {\n  %c = fcmp ueq <vscale x 4 x half> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x half> %d, <vscale x 4 x half> %e\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ueq <vscale x 4 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x half> %d, <vscale x 4 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x half> %r"
@@ -16602,7 +16602,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, #0                        // =0x0\nptrue p0.h\nfcmuo p1.h, p0/z, z0.h, z1.h\nfcmeq p0.h, p0/z, z0.h, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z0.h, z1.h\nfcmeq p0.h, p0/z, z0.h, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x i1> (<vscale x 8 x half>) (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x half> %a) {\n  %r = fcmp ueq <vscale x 8 x half> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ueq <vscale x 8 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x i1> %r"
@@ -16634,7 +16634,7 @@
   "size": 5,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.h, #0                        // =0x0\nptrue p0.h\nfcmuo p1.h, p0/z, z0.h, z3.h\nfcmeq p0.h, p0/z, z0.h, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.h, p0, z1.h, z2.h\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z0.h, z3.h\nfcmeq p0.h, p0/z, z0.h, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.h, p0, z1.h, z2.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x half> (<vscale x 8 x half>, <vscale x 8 x half>, <vscale x 8 x half>) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, <vscale x 8 x half> %d, <vscale x 8 x half> %e) {\n  %c = fcmp ueq <vscale x 8 x half> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x half> %d, <vscale x 8 x half> %e\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ueq <vscale x 8 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x half> %d, <vscale x 8 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x half> %r"
@@ -16666,7 +16666,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.h, #0                        // =0x0\nptrue p0.h\nfcmeq p1.h, p0/z, z1.h, #0.0\nfcmeq p3.h, p0/z, z0.h, #0.0\nfcmuo p2.h, p0/z, z1.h, z2.h\nfcmuo p0.h, p0/z, z0.h, z2.h\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.h\nfcmeq p1.h, p0/z, z1.h, #0.0\nfcmeq p3.h, p0/z, z0.h, #0.0\nfcmuo p2.h, p0/z, z1.h, z2.h\nfcmuo p0.h, p0/z, z0.h, z2.h\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nuzp1 p0.b, p0.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x i1> (<vscale x 16 x half>) (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a) {\n  %r = fcmp ueq <vscale x 16 x half> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ueq <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 16 x i1> %r"
@@ -16698,7 +16698,7 @@
   "size": 9,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.h, #0                        // =0x0\nptrue p0.h\nfcmeq p1.h, p0/z, z1.h, #0.0\nfcmeq p3.h, p0/z, z0.h, #0.0\nfcmuo p2.h, p0/z, z1.h, z6.h\nfcmuo p0.h, p0/z, z0.h, z6.h\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.h\nfcmeq p1.h, p0/z, z1.h, #0.0\nfcmeq p3.h, p0/z, z0.h, #0.0\nfcmuo p2.h, p0/z, z1.h, z6.h\nfcmuo p0.h, p0/z, z0.h, z6.h\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x half> (<vscale x 16 x half>, <vscale x 16 x half>, <vscale x 16 x half>) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %d, <vscale x 16 x half> %e) {\n  %c = fcmp ueq <vscale x 16 x half> %a, zeroinitializer\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x half> %d, <vscale x 16 x half> %e\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ueq <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x half> %d, <vscale x 16 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 16 x half> %r"
@@ -16730,7 +16730,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.s, #0                        // =0x0\nptrue p0.d\nfcmuo p1.s, p0/z, z0.s, z1.s\nfcmeq p0.s, p0/z, z0.s, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.s, p0/z, z0.s, z1.s\nfcmeq p0.s, p0/z, z0.s, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x i1> (<vscale x 2 x float>) (in function: test)",
   "ll": "define <vscale x 2 x i1> @test(<vscale x 2 x float> %a) {\n  %r = fcmp ueq <vscale x 2 x float> %a, zeroinitializer\n  ret <vscale x 2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ueq <vscale x 2 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x i1> %r"
@@ -16762,7 +16762,7 @@
   "size": 5,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.s, #0                        // =0x0\nptrue p0.d\nfcmuo p1.s, p0/z, z0.s, z3.s\nfcmeq p0.s, p0/z, z0.s, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.d, p0, z1.d, z2.d\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.s, p0/z, z0.s, z3.s\nfcmeq p0.s, p0/z, z0.s, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.d, p0, z1.d, z2.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x float> (<vscale x 2 x float>, <vscale x 2 x float>, <vscale x 2 x float>) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, <vscale x 2 x float> %d, <vscale x 2 x float> %e) {\n  %c = fcmp ueq <vscale x 2 x float> %a, zeroinitializer\n  %r = select <vscale x 2 x i1> %c, <vscale x 2 x float> %d, <vscale x 2 x float> %e\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ueq <vscale x 2 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 2 x i1> %c, <vscale x 2 x float> %d, <vscale x 2 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x float> %r"
@@ -16794,7 +16794,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.s, #0                        // =0x0\nptrue p0.s\nfcmuo p1.s, p0/z, z0.s, z1.s\nfcmeq p0.s, p0/z, z0.s, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z0.s, z1.s\nfcmeq p0.s, p0/z, z0.s, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x float>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x float> %a) {\n  %r = fcmp ueq <vscale x 4 x float> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ueq <vscale x 4 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -16826,7 +16826,7 @@
   "size": 5,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.s, #0                        // =0x0\nptrue p0.s\nfcmuo p1.s, p0/z, z0.s, z3.s\nfcmeq p0.s, p0/z, z0.s, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.s, p0, z1.s, z2.s\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z0.s, z3.s\nfcmeq p0.s, p0/z, z0.s, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.s, p0, z1.s, z2.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x float> (<vscale x 4 x float>, <vscale x 4 x float>, <vscale x 4 x float>) (in function: test)",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, <vscale x 4 x float> %d, <vscale x 4 x float> %e) {\n  %c = fcmp ueq <vscale x 4 x float> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x float> %d, <vscale x 4 x float> %e\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ueq <vscale x 4 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x float> %d, <vscale x 4 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x float> %r"
@@ -16858,7 +16858,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.s, #0                        // =0x0\nptrue p0.s\nfcmeq p1.s, p0/z, z1.s, #0.0\nfcmeq p3.s, p0/z, z0.s, #0.0\nfcmuo p2.s, p0/z, z1.s, z2.s\nfcmuo p0.s, p0/z, z0.s, z2.s\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nfcmeq p1.s, p0/z, z1.s, #0.0\nfcmeq p3.s, p0/z, z0.s, #0.0\nfcmuo p2.s, p0/z, z1.s, z2.s\nfcmuo p0.s, p0/z, z0.s, z2.s\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nuzp1 p0.h, p0.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x i1> (<vscale x 8 x float>) (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a) {\n  %r = fcmp ueq <vscale x 8 x float> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ueq <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x i1> %r"
@@ -16890,7 +16890,7 @@
   "size": 9,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.s, #0                        // =0x0\nptrue p0.s\nfcmeq p1.s, p0/z, z1.s, #0.0\nfcmeq p3.s, p0/z, z0.s, #0.0\nfcmuo p2.s, p0/z, z1.s, z6.s\nfcmuo p0.s, p0/z, z0.s, z6.s\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nsel z1.s, p1, z3.s, z5.s\nsel z0.s, p0, z2.s, z4.s\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.s\nfcmeq p1.s, p0/z, z1.s, #0.0\nfcmeq p3.s, p0/z, z0.s, #0.0\nfcmuo p2.s, p0/z, z1.s, z6.s\nfcmuo p0.s, p0/z, z0.s, z6.s\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nsel z1.s, p1, z3.s, z5.s\nsel z0.s, p0, z2.s, z4.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x float> (<vscale x 8 x float>, <vscale x 8 x float>, <vscale x 8 x float>) (in function: test)",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %d, <vscale x 8 x float> %e) {\n  %c = fcmp ueq <vscale x 8 x float> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x float> %d, <vscale x 8 x float> %e\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ueq <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x float> %d, <vscale x 8 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x float> %r"
@@ -16922,7 +16922,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.d, #0                        // =0x0\nptrue p0.d\nfcmuo p1.d, p0/z, z0.d, z1.d\nfcmeq p0.d, p0/z, z0.d, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z0.d, z1.d\nfcmeq p0.d, p0/z, z0.d, #0.0\nsel p0.b, p0, p0.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x i1> (<vscale x 2 x double>) (in function: test)",
   "ll": "define <vscale x 2 x i1> @test(<vscale x 2 x double> %a) {\n  %r = fcmp ueq <vscale x 2 x double> %a, zeroinitializer\n  ret <vscale x 2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ueq <vscale x 2 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x i1> %r"
@@ -16954,7 +16954,7 @@
   "size": 5,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.d, #0                        // =0x0\nptrue p0.d\nfcmuo p1.d, p0/z, z0.d, z3.d\nfcmeq p0.d, p0/z, z0.d, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.d, p0, z1.d, z2.d\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z0.d, z3.d\nfcmeq p0.d, p0/z, z0.d, #0.0\nsel p0.b, p0, p0.b, p1.b\nsel z0.d, p0, z1.d, z2.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x double> (<vscale x 2 x double>, <vscale x 2 x double>, <vscale x 2 x double>) (in function: test)",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, <vscale x 2 x double> %d, <vscale x 2 x double> %e) {\n  %c = fcmp ueq <vscale x 2 x double> %a, zeroinitializer\n  %r = select <vscale x 2 x i1> %c, <vscale x 2 x double> %d, <vscale x 2 x double> %e\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ueq <vscale x 2 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 2 x i1> %c, <vscale x 2 x double> %d, <vscale x 2 x double> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x double> %r"
@@ -16986,7 +16986,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, #0                        // =0x0\nptrue p0.d\nfcmeq p1.d, p0/z, z1.d, #0.0\nfcmeq p3.d, p0/z, z0.d, #0.0\nfcmuo p2.d, p0/z, z1.d, z2.d\nfcmuo p0.d, p0/z, z0.d, z2.d\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.d\nfcmeq p1.d, p0/z, z1.d, #0.0\nfcmeq p3.d, p0/z, z0.d, #0.0\nfcmuo p2.d, p0/z, z1.d, z2.d\nfcmuo p0.d, p0/z, z0.d, z2.d\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nuzp1 p0.s, p0.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x double>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a) {\n  %r = fcmp ueq <vscale x 4 x double> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp ueq <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -17018,7 +17018,7 @@
   "size": 9,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.d, #0                        // =0x0\nptrue p0.d\nfcmeq p1.d, p0/z, z1.d, #0.0\nfcmeq p3.d, p0/z, z0.d, #0.0\nfcmuo p2.d, p0/z, z1.d, z6.d\nfcmuo p0.d, p0/z, z0.d, z6.d\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nsel z1.d, p1, z3.d, z5.d\nsel z0.d, p0, z2.d, z4.d\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.d\nfcmeq p1.d, p0/z, z1.d, #0.0\nfcmeq p3.d, p0/z, z0.d, #0.0\nfcmuo p2.d, p0/z, z1.d, z6.d\nfcmuo p0.d, p0/z, z0.d, z6.d\nsel p1.b, p1, p1.b, p2.b\nmov p0.b, p3/m, p3.b\nsel z1.d, p1, z3.d, z5.d\nsel z0.d, p0, z2.d, z4.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x double> (<vscale x 4 x double>, <vscale x 4 x double>, <vscale x 4 x double>) (in function: test)",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %d, <vscale x 4 x double> %e) {\n  %c = fcmp ueq <vscale x 4 x double> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x double> %d, <vscale x 4 x double> %e\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp ueq <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x double> %d, <vscale x 4 x double> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x double> %r"
@@ -23834,7 +23834,7 @@
   "size": 2,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, #0                        // =0x0\nptrue p0.s\nfcmuo p0.h, p0/z, z0.h, z1.h\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nfcmuo p0.h, p0/z, z0.h, z1.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x half>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x half> %a) {\n  %r = fcmp uno <vscale x 4 x half> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp uno <vscale x 4 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -23866,7 +23866,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.h, #0                        // =0x0\nptrue p0.s\nfcmuo p0.h, p0/z, z0.h, z3.h\nsel z0.s, p0, z1.s, z2.s\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nfcmuo p0.h, p0/z, z0.h, z3.h\nsel z0.s, p0, z1.s, z2.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x half> (<vscale x 4 x half>, <vscale x 4 x half>, <vscale x 4 x half>) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, <vscale x 4 x half> %d, <vscale x 4 x half> %e) {\n  %c = fcmp uno <vscale x 4 x half> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x half> %d, <vscale x 4 x half> %e\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp uno <vscale x 4 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x half> %d, <vscale x 4 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x half> %r"
@@ -23898,7 +23898,7 @@
   "size": 2,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, #0                        // =0x0\nptrue p0.h\nfcmuo p0.h, p0/z, z0.h, z1.h\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.h\nfcmuo p0.h, p0/z, z0.h, z1.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x i1> (<vscale x 8 x half>) (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x half> %a) {\n  %r = fcmp uno <vscale x 8 x half> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp uno <vscale x 8 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x i1> %r"
@@ -23930,7 +23930,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.h, #0                        // =0x0\nptrue p0.h\nfcmuo p0.h, p0/z, z0.h, z3.h\nsel z0.h, p0, z1.h, z2.h\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.h\nfcmuo p0.h, p0/z, z0.h, z3.h\nsel z0.h, p0, z1.h, z2.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x half> (<vscale x 8 x half>, <vscale x 8 x half>, <vscale x 8 x half>) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, <vscale x 8 x half> %d, <vscale x 8 x half> %e) {\n  %c = fcmp uno <vscale x 8 x half> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x half> %d, <vscale x 8 x half> %e\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp uno <vscale x 8 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x half> %d, <vscale x 8 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x half> %r"
@@ -23962,7 +23962,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.h, #0                        // =0x0\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z2.h\nfcmuo p0.h, p0/z, z0.h, z2.h\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z2.h\nfcmuo p0.h, p0/z, z0.h, z2.h\nuzp1 p0.b, p0.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x i1> (<vscale x 16 x half>) (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a) {\n  %r = fcmp uno <vscale x 16 x half> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp uno <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 16 x i1> %r"
@@ -23994,7 +23994,7 @@
   "size": 5,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.h, #0                        // =0x0\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z6.h\nfcmuo p0.h, p0/z, z0.h, z6.h\nsel z0.h, p0, z2.h, z4.h\nsel z1.h, p1, z3.h, z5.h\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z6.h\nfcmuo p0.h, p0/z, z0.h, z6.h\nsel z0.h, p0, z2.h, z4.h\nsel z1.h, p1, z3.h, z5.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x half> (<vscale x 16 x half>, <vscale x 16 x half>, <vscale x 16 x half>) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %d, <vscale x 16 x half> %e) {\n  %c = fcmp uno <vscale x 16 x half> %a, zeroinitializer\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x half> %d, <vscale x 16 x half> %e\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp uno <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x half> %d, <vscale x 16 x half> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 16 x half> %r"
@@ -24026,7 +24026,7 @@
   "size": 2,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.s, #0                        // =0x0\nptrue p0.d\nfcmuo p0.s, p0/z, z0.s, z1.s\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.d\nfcmuo p0.s, p0/z, z0.s, z1.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x i1> (<vscale x 2 x float>) (in function: test)",
   "ll": "define <vscale x 2 x i1> @test(<vscale x 2 x float> %a) {\n  %r = fcmp uno <vscale x 2 x float> %a, zeroinitializer\n  ret <vscale x 2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp uno <vscale x 2 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x i1> %r"
@@ -24058,7 +24058,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.s, #0                        // =0x0\nptrue p0.d\nfcmuo p0.s, p0/z, z0.s, z3.s\nsel z0.d, p0, z1.d, z2.d\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.d\nfcmuo p0.s, p0/z, z0.s, z3.s\nsel z0.d, p0, z1.d, z2.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x float> (<vscale x 2 x float>, <vscale x 2 x float>, <vscale x 2 x float>) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, <vscale x 2 x float> %d, <vscale x 2 x float> %e) {\n  %c = fcmp uno <vscale x 2 x float> %a, zeroinitializer\n  %r = select <vscale x 2 x i1> %c, <vscale x 2 x float> %d, <vscale x 2 x float> %e\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp uno <vscale x 2 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 2 x i1> %c, <vscale x 2 x float> %d, <vscale x 2 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x float> %r"
@@ -24090,7 +24090,7 @@
   "size": 2,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.s, #0                        // =0x0\nptrue p0.s\nfcmuo p0.s, p0/z, z0.s, z1.s\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nfcmuo p0.s, p0/z, z0.s, z1.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x float>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x float> %a) {\n  %r = fcmp uno <vscale x 4 x float> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp uno <vscale x 4 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -24122,7 +24122,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.s, #0                        // =0x0\nptrue p0.s\nfcmuo p0.s, p0/z, z0.s, z3.s\nsel z0.s, p0, z1.s, z2.s\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nfcmuo p0.s, p0/z, z0.s, z3.s\nsel z0.s, p0, z1.s, z2.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x float> (<vscale x 4 x float>, <vscale x 4 x float>, <vscale x 4 x float>) (in function: test)",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, <vscale x 4 x float> %d, <vscale x 4 x float> %e) {\n  %c = fcmp uno <vscale x 4 x float> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x float> %d, <vscale x 4 x float> %e\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp uno <vscale x 4 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x float> %d, <vscale x 4 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x float> %r"
@@ -24154,7 +24154,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.s, #0                        // =0x0\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z2.s\nfcmuo p0.s, p0/z, z0.s, z2.s\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z2.s\nfcmuo p0.s, p0/z, z0.s, z2.s\nuzp1 p0.h, p0.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x i1> (<vscale x 8 x float>) (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a) {\n  %r = fcmp uno <vscale x 8 x float> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp uno <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x i1> %r"
@@ -24186,7 +24186,7 @@
   "size": 5,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.s, #0                        // =0x0\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z6.s\nfcmuo p0.s, p0/z, z0.s, z6.s\nsel z0.s, p0, z2.s, z4.s\nsel z1.s, p1, z3.s, z5.s\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z6.s\nfcmuo p0.s, p0/z, z0.s, z6.s\nsel z0.s, p0, z2.s, z4.s\nsel z1.s, p1, z3.s, z5.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x float> (<vscale x 8 x float>, <vscale x 8 x float>, <vscale x 8 x float>) (in function: test)",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %d, <vscale x 8 x float> %e) {\n  %c = fcmp uno <vscale x 8 x float> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x float> %d, <vscale x 8 x float> %e\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp uno <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x float> %d, <vscale x 8 x float> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 8 x float> %r"
@@ -24218,7 +24218,7 @@
   "size": 2,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.d, #0                        // =0x0\nptrue p0.d\nfcmuo p0.d, p0/z, z0.d, z1.d\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.d\nfcmuo p0.d, p0/z, z0.d, z1.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x i1> (<vscale x 2 x double>) (in function: test)",
   "ll": "define <vscale x 2 x i1> @test(<vscale x 2 x double> %a) {\n  %r = fcmp uno <vscale x 2 x double> %a, zeroinitializer\n  ret <vscale x 2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp uno <vscale x 2 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x i1> %r"
@@ -24250,7 +24250,7 @@
   "size": 3,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z3.d, #0                        // =0x0\nptrue p0.d\nfcmuo p0.d, p0/z, z0.d, z3.d\nsel z0.d, p0, z1.d, z2.d\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.d\nfcmuo p0.d, p0/z, z0.d, z3.d\nsel z0.d, p0, z1.d, z2.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x double> (<vscale x 2 x double>, <vscale x 2 x double>, <vscale x 2 x double>) (in function: test)",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, <vscale x 2 x double> %d, <vscale x 2 x double> %e) {\n  %c = fcmp uno <vscale x 2 x double> %a, zeroinitializer\n  %r = select <vscale x 2 x i1> %c, <vscale x 2 x double> %d, <vscale x 2 x double> %e\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp uno <vscale x 2 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 2 x i1> %c, <vscale x 2 x double> %d, <vscale x 2 x double> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 2 x double> %r"
@@ -24282,7 +24282,7 @@
   "size": 4,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, #0                        // =0x0\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z2.d\nfcmuo p0.d, p0/z, z0.d, z2.d\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z2.d\nfcmuo p0.d, p0/z, z0.d, z2.d\nuzp1 p0.s, p0.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x i1> (<vscale x 4 x double>) (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a) {\n  %r = fcmp uno <vscale x 4 x double> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = fcmp uno <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x i1> %r"
@@ -24314,7 +24314,7 @@
   "size": 5,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z6.d, #0                        // =0x0\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z6.d\nfcmuo p0.d, p0/z, z0.d, z6.d\nsel z0.d, p0, z2.d, z4.d\nsel z1.d, p1, z3.d, z5.d\nret",
+  "asm": "movi v6.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z6.d\nfcmuo p0.d, p0/z, z0.d, z6.d\nsel z0.d, p0, z2.d, z4.d\nsel z1.d, p1, z3.d, z5.d\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x double> (<vscale x 4 x double>, <vscale x 4 x double>, <vscale x 4 x double>) (in function: test)",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %d, <vscale x 4 x double> %e) {\n  %c = fcmp uno <vscale x 4 x double> %a, zeroinitializer\n  %r = select <vscale x 4 x i1> %c, <vscale x 4 x double> %d, <vscale x 4 x double> %e\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %c = fcmp uno <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   %r = select <vscale x 4 x i1> %c, <vscale x 4 x double> %d, <vscale x 4 x double> %e\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 4 x double> %r"
