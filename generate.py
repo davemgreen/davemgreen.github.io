@@ -104,7 +104,7 @@ def generate(variant, instr, ty, ty2):
     preamble += f", {tystr} %b, {Ty('i1', ty.elts, ty.scalable)} %c"
   elif variant == 'triop':
     preamble += f", {tystr} %b, {tystr} %c"
-  elif variant == 'reduce' and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
+  elif variant.startswith('reduce') and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
     preamble += f", {rettystr} %b"
   if variant == 'vecopvar':
     preamble += f", i32 %c"
@@ -147,10 +147,10 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"  %r = {instr[:4]} {instr[4:]} {tystr} %a, {b}\n"
   elif variant.startswith('triop'):
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} %b, {tystr} {c})\n"
-  elif variant == 'reduce' and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
-    instrstr += f"  %r = call {rettystr} @llvm.vector.{instr}({rettystr} %b, {tystr} %a)\n"
-  elif variant == 'reduce':
-    instrstr += f"  %r = call {rettystr} @llvm.vector.{instr}({tystr} %a)\n"
+  elif variant.startswith('reduce') and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
+    instrstr += f"  %r = call {'fast ' if variant == 'reducefast' else ''}{rettystr} @llvm.vector.{instr}({rettystr} %b, {tystr} %a)\n"
+  elif variant.startswith('reduce'):
+    instrstr += f"  %r = call {'fast ' if variant == 'reducefast' else ''}{rettystr} @llvm.vector.{instr}({tystr} %a)\n"
   elif instr == 'extractelement':
     idx = '%c' if variant == 'vecopvar' else ('1' if variant == 'vecop1' else '0')
     instrstr += f"  %r = extractelement {tystr} %a, i32 {idx}\n"
@@ -334,6 +334,7 @@ if args.type == 'all' or args.type == 'fp':
         if ty.elts == 1:
           continue
         yield ("reduce."+instr, 'reduce', ty, Ty(ty.scalar), 0, None)
+        yield ("reduce."+instr, 'reducefast', ty, Ty(ty.scalar), 0, None)
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumfp())
