@@ -344,18 +344,15 @@ if args.type == 'all' or args.type == 'fp':
 
 if args.type == 'all' or args.type == 'castint':
   def enumcast():
-    for instr in ['zext', 'sext']:
-      for ty1 in inttypes():
-        for ty2 in inttypes(True):
-          if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() >= ty2.scalarsize():
-            continue
-          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
-    for instr in ['trunc']:
-      for ty1 in inttypes(True):
-        for ty2 in inttypes(True):
-          if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() <= ty2.scalarsize():
-            continue
-          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
+    for ty1 in inttypes(True):
+      for ty2 in inttypes(True):
+        if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
+          continue
+        if ty1.scalarsize() < ty2.scalarsize():
+          yield ('zext', 'cast '+ty2.scalar, ty1, ty2, 0, None)
+          yield ('sext', 'cast '+ty2.scalar, ty1, ty2, 0, None)
+        if ty1.scalarsize() > ty2.scalarsize():
+          yield ('trunc', 'cast '+ty2.scalar, ty1, ty2, 0, None)
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumcast())
@@ -366,26 +363,26 @@ if args.type == 'all' or args.type == 'castint':
 if args.type == 'all' or args.type == 'castfp':
   def enumcast():
     for instr in ['fptosi', 'fptoui']:
-      for ty1 in fptypes():
-        for ty2 in inttypes():
+      for ty1 in fptypes(True):
+        for ty2 in inttypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
     for instr in ['sitofp', 'uitofp']:
-      for ty1 in fptypes():
-        for ty2 in inttypes():
+      for ty1 in fptypes(True):
+        for ty2 in inttypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
           yield (instr, 'cast '+ty2.scalar, ty2, ty1, 0, str(ty1))
     for instr in ['fpext']:
-      for ty1 in fptypes():
-        for ty2 in fptypes():
+      for ty1 in fptypes(True):
+        for ty2 in fptypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() >= ty2.scalarsize():
             continue
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
     for instr in ['fptrunc']:
-      for ty1 in fptypes():
-        for ty2 in fptypes():
+      for ty1 in fptypes(True):
+        for ty2 in fptypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() <= ty2.scalarsize():
             continue
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
