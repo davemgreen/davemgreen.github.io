@@ -666,7 +666,7 @@
   "size": 15,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w1\nstr z1, [sp, #1, mul vl]\naddvl x8, x8, #2\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nstrb w0, [x9, x8]\nldr z0, [sp]\nldr z1, [sp, #1, mul vl]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w1\nstr z1, [sp, #1, mul vl]\nincb x8, all, mul #2\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nstrb w0, [x9, x8]\nldr z0, [sp]\nldr z1, [sp, #1, mul vl]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 32 x i8> (<vscale x 32 x i8>, i8, i32) (in function: test)",
   "ll": "define <vscale x 32 x i8> @test(<vscale x 32 x i8> %a, i8 %bs, i32 %c) {\n  %r = insertelement <vscale x 32 x i8> %a, i8 %bs, i32 %c\n  ret <vscale x 32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <vscale x 32 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 32 x i8> %r"
@@ -810,7 +810,7 @@
   "size": 15,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w1\nstr z1, [sp, #1, mul vl]\naddvl x8, x8, #1\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nstrh w0, [x9, x8, lsl #1]\nldr z0, [sp]\nldr z1, [sp, #1, mul vl]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w1\nstr z1, [sp, #1, mul vl]\nincb x8\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nstrh w0, [x9, x8, lsl #1]\nldr z0, [sp]\nldr z1, [sp, #1, mul vl]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x i16> (<vscale x 16 x i16>, i16, i32) (in function: test)",
   "ll": "define <vscale x 16 x i16> @test(<vscale x 16 x i16> %a, i16 %bs, i32 %c) {\n  %r = insertelement <vscale x 16 x i16> %a, i16 %bs, i32 %c\n  ret <vscale x 16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <vscale x 16 x i16> %a, i16 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 16 x i16> %r"
@@ -1578,7 +1578,7 @@
   "size": 15,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w0\nstr z1, [sp, #1, mul vl]\naddvl x8, x8, #1\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nstr h2, [x9, x8, lsl #1]\nldr z0, [sp]\nldr z1, [sp, #1, mul vl]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w0\nstr z1, [sp, #1, mul vl]\nincb x8\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nstr h2, [x9, x8, lsl #1]\nldr z0, [sp]\nldr z1, [sp, #1, mul vl]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x half> (<vscale x 16 x half>, half, i32) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, half %bs, i32 %c) {\n  %r = insertelement <vscale x 16 x half> %a, half %bs, i32 %c\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <vscale x 16 x half> %a, half %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <vscale x 16 x half> %r"
@@ -2490,7 +2490,7 @@
   "size": 13,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w0\nstr z1, [sp, #1, mul vl]\naddvl x8, x8, #2\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nldrb w0, [x9, x8]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w0\nstr z1, [sp, #1, mul vl]\nincb x8, all, mul #2\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nldrb w0, [x9, x8]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to lower function: i8 (<vscale x 32 x i8>, i32) (in function: test)",
   "ll": "define i8 @test(<vscale x 32 x i8> %a, i32 %c) {\n  %r = extractelement <vscale x 32 x i8> %a, i32 %c\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <vscale x 32 x i8> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i8 %r"
@@ -2634,7 +2634,7 @@
   "size": 13,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w0\nstr z1, [sp, #1, mul vl]\naddvl x8, x8, #1\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nldrh w0, [x9, x8, lsl #1]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w0\nstr z1, [sp, #1, mul vl]\nincb x8\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nldrh w0, [x9, x8, lsl #1]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to lower function: i16 (<vscale x 16 x i16>, i32) (in function: test)",
   "ll": "define i16 @test(<vscale x 16 x i16> %a, i32 %c) {\n  %r = extractelement <vscale x 16 x i16> %a, i32 %c\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <vscale x 16 x i16> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret i16 %r"
@@ -3402,7 +3402,7 @@
   "size": 13,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w0\nstr z1, [sp, #1, mul vl]\naddvl x8, x8, #1\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nldr h0, [x9, x8, lsl #1]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-2\nmov x8, #-1                         // =0xffffffffffffffff\nmov w9, w0\nstr z1, [sp, #1, mul vl]\nincb x8\nstr z0, [sp]\ncmp x9, x8\ncsel x8, x9, x8, lo\nmov x9, sp\nldr h0, [x9, x8, lsl #1]\naddvl sp, sp, #2\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to lower function: half (<vscale x 16 x half>, i32) (in function: test)",
   "ll": "define half @test(<vscale x 16 x half> %a, i32 %c) {\n  %r = extractelement <vscale x 16 x half> %a, i32 %c\n  ret half %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = extractelement <vscale x 16 x half> %a, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret half %r"
