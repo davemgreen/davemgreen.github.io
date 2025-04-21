@@ -91,14 +91,47 @@ def generate_constm1(ty):
     return '-1'
   return f"splat ({ty.scalar} -1)"
 
-def generateShuffleMask(dst, src, variant):
-  elts = dst.elts
+def zipf(it1, it2):
+  for i in zip(it1, it2):
+    yield i[0]
+    yield i[1]
+def generateShuffleMask(elts, srcelts, variant):
   mask = []
   variant = variant[:variant.find(' ')]
-  if variant == 'splat0':
+  n = elts // 2
+  if variant == 'identity':
+    # 0,1,2,3,..
+    mask = range(elts)
+  elif variant == 'reverse':
+    # 3,2,1,0
+    mask = reversed(range(elts))
+  elif variant == 'splat0':
+    # 0,0,0,0,...
     mask = [0] * elts
   elif variant == 'splat3':
-    mask = [min(3,src.elts-1)] * elts
+    # 3,3,3,3,...
+    mask = [min(3,srcelts-1)] * elts
+  elif variant == 'zip1':
+    #  0,n,1,n+1,2,...
+    mask = zipf(range(n), [srcelts//2 + i for i in range(n)])
+  elif variant == 'zip2':
+    #  n/2,3n/2,n/2+1,3n/2+1,...
+    mask = zipf([srcelts//4 + i for i in range(n)], [3*srcelts//4 + i for i in range(n)])
+  elif variant == 'uzp1':
+    #  0,2,4,6,...
+    mask = [2*i for i in range(elts)]
+  elif variant == 'uzp2':
+    #  1,3,5,7,...
+    mask = [2*i + 1 for i in range(elts)]
+  elif variant == 'trn1':
+    #  0,n,2,n+2,...
+    mask = zipf([2*i for i in range(n)], [srcelts//2 + 2*i for i in range(n)])
+  elif variant == 'trn2':
+    #  1,n+1,3,n+3,...
+    mask = zipf([2*i + 1 for i in range(n)], [srcelts//2 + 2*i + 1 for i in range(n)])
+  elif variant == 'splice2':
+    # 2,3,..,0,1
+    mask = list(range(2,elts))+[0,1]
   else:
     assert(False)
   mask = [str(x) for x in mask]
@@ -109,7 +142,7 @@ def generate(variant, instr, ty, ty2):
   eltstr = ty.scalar
   rettystr = eltstr if instr == 'extractelement' else ty2.str()
   preamble = f"define {rettystr} @test({tystr} %a"
-  if variant == 'binop' or variant == 'cmp' or variant == 'triopconstsplat' or instr == 'shuffle':
+  if variant == 'binop' or variant == 'cmp' or variant == 'triopconstsplat' or instr == 'shuffleb':
     preamble += f", {tystr} %b"
   elif variant == 'binopsplat' or instr == 'insertelement':
     preamble += f", {eltstr} %bs"
@@ -172,8 +205,10 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"  %r = insertelement {tystr} %a, {eltstr} %bs, i32 {idx}\n"
   elif variant.startswith('cast'):
     instrstr += f"  %r = {instr} {tystr} %a to {rettystr}\n"
-  elif instr == "shuffle":
-    instrstr += f"  %r = shufflevector {tystr} %a, {tystr} %b, {generateShuffleMask(ty2, ty, variant)}\n"
+  elif instr == "shuffleu":
+    instrstr += f"  %r = shufflevector {tystr} %a, {tystr} poison, {generateShuffleMask(ty2.elts, ty.elts, variant)}\n"
+  elif instr == "shuffleb":
+    instrstr += f"  %r = shufflevector {tystr} %a, {tystr} %b, {generateShuffleMask(ty2.elts, ty.elts*2, variant)}\n"
   else:
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
 
@@ -201,8 +236,9 @@ class Ty:
 fptymap = { 16:'half', 32:'float', 64:'double', 128:"fp128",
             'half':16, 'float':32, 'double':64, "fp128":128 }
 
-def inttypes(highsizes = False):
+def inttypes(highsizes = False, lowsizes = False):
   # TODO: i128, other type sizes?
+  # TODO: More sizes for more operations
   for bits in [8, 16, 32, 64]:
     yield Ty('i'+str(bits))
   for scalable in [0,1]:
@@ -212,11 +248,12 @@ def inttypes(highsizes = False):
       for s in [2, 4, 8, 16, 32]:
         if not highsizes and s * bits > 256:
           continue
-        if s * bits < 64: #TODO: Start looking at smaller sizes once the legal sizes are better. Odd vector sizes
+        if not lowsizes and s * bits < 64:
           continue
         yield Ty('i'+str(bits), s, scalable)
-def fptypes(highsizes = False):
+def fptypes(highsizes = False, lowsizes = False):
   # TODO: f128? They are just libcalls
+  # TODO: More sizes for more operations
   for bits in [16, 32, 64]:
     yield Ty(fptymap[bits])
   for scalable in [0,1]:
@@ -226,7 +263,7 @@ def fptypes(highsizes = False):
       for s in [2, 4, 8, 16, 32]:
         if not highsizes and s * bits > 256:
           continue
-        if s * bits < 64: # TODO: Start looking at smaller sizes once the legal sizes are better. Odd vector sizes
+        if not lowsizes and s * bits < 64:
           continue
         yield Ty(fptymap[bits], s, scalable)
 
@@ -239,12 +276,16 @@ args = parser.parse_args()
 
 
 def do(instr, variant, ty, ty2, extrasize, tyoverride):
-  logging.info(f"{variant} {instr} with {ty.str()}")
-  (size, gisize, costs, ll, asm, giasm) = checkcosts(generate(variant, instr, ty, ty2))
-  tystr = str(ty) if not tyoverride else tyoverride
-  if costs[0][0] != size - extrasize:
-    logging.warning(f">>> {variant} {instr} with {tystr}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
-  return {"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[0][1]}
+  try:
+    logging.info(f"{variant} {instr} with {ty.str()}")
+    (size, gisize, costs, ll, asm, giasm) = checkcosts(generate(variant, instr, ty, ty2))
+    tystr = str(ty) if not tyoverride else tyoverride
+    if costs[0][0] != size - extrasize:
+      logging.warning(f">>> {variant} {instr} with {tystr}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
+    return {"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[0][1]}
+  except:
+    logging.error(f"error in: {variant} {instr} with {ty.str()} {ty2.str()}")
+    raise
 
 # Operations are the ones in https://github.com/llvm/llvm-project/issues/115133
 #  TODO: load/store, bitcast, getelementptr, phi
@@ -413,6 +454,66 @@ if args.type == 'all' or args.type == 'castfp':
 
 if args.type == 'all' or args.type == 'vec':
   def enumvec():
+
+    # Shuffles, 1src
+    for variant in ['identity', 'splat0', 'splat3', 'zip1', 'zip2', 'uzp1', 'uzp2', 'trn1', 'trn2', 'reverse', 'splice2']:
+      for dst in inttypes(True, True):
+        for src in inttypes(True, True):
+          if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
+            continue
+          if variant in ['identity', 'reverse'] and src.elts < dst.elts:
+            continue
+          if variant in ['zip1', 'zip2', 'uzp1', 'uzp2', 'trn1', 'trn2'] and src.elts < dst.elts*2:
+            continue
+          if variant in ['splice2'] and src.elts != dst.elts:
+            continue
+          yield ('shuffleu', variant+' v'+str(dst.elts), src, dst, 0, None)
+      for dst in fptypes(True, True):
+        for src in fptypes(True, True):
+          if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
+            continue
+          if variant in ['identity', 'reverse'] and src.elts < dst.elts:
+            continue
+          if variant in ['zip1', 'zip2', 'uzp1', 'uzp2', 'trn1', 'trn2'] and src.elts < dst.elts*2:
+            continue
+          if variant in ['splice2'] and src.elts != dst.elts:
+            continue
+          yield ('shuffleu', variant+' v'+str(dst.elts), src, dst, 0, None)
+    #  TODO: subvector_insert
+    #  TODO: subvector_extract
+    #  TODO: Others? random, replicate, 
+
+    # Shuffles, 2srcs
+    for variant in ['identity', 'zip1', 'zip2', 'uzp1', 'uzp2', 'trn1', 'trn2', 'reverse', 'splice2']:
+      for dst in inttypes(True, True):
+        for src in inttypes(True, True):
+          if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
+            continue
+          if variant in ['identity', 'reverse'] and src.elts * 2 < dst.elts:
+            continue
+          if variant in ['zip1', 'zip2', 'uzp1', 'uzp2', 'trn1', 'trn2'] and src.elts < dst.elts:
+            continue
+          if variant in ['splice2'] and src.elts != dst.elts:
+            continue
+          yield ('shuffleb', variant+' v'+str(dst.elts), src, dst, 0, None)
+      for dst in fptypes(True, True):
+        for src in fptypes(True, True):
+          if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
+            continue
+          if variant in ['identity', 'reverse'] and src.elts * 2 < dst.elts:
+            continue
+          if variant in ['zip1', 'zip2', 'uzp1', 'uzp2', 'trn1', 'trn2'] and src.elts < dst.elts:
+            continue
+          if variant in ['splice2'] and src.elts != dst.elts:
+            continue
+          yield ('shuffleb', variant+' v'+str(dst.elts), src, dst, 0, None)
+
+    # 2src:
+    #  TODO: select?
+    #  TODO: subvector_insert
+    #  TODO: subvector_extract
+    #  TODO: Others? random,
+
     for instr in ['insertelement', 'extractelement']:
       for ty in inttypes():
         if ty.elts == 1:
@@ -424,39 +525,6 @@ if args.type == 'all' or args.type == 'vec':
           continue
         for variant in ['vecop0', 'vecop1', 'vecopvar']:
           yield (instr, variant, ty, ty, 0, None)
-
-    # Shuffles
-    for variant in ['splat0', 'splat3']:
-      for dst in inttypes(True):
-        for src in inttypes(True):
-          if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
-            continue
-          yield ('shuffle', variant+' v'+str(dst.elts), src, dst, 0, None)
-      for dst in fptypes(True):
-        for src in fptypes(True):
-          if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
-            continue
-          yield ('shuffle', variant+' v'+str(dst.elts), src, dst, 0, None)
-
-    #  zip1 0,n,1,n+1,2,...
-    #  zip2? n/2,3n/2,n/2+1,3n/2+1,...
-    #  uzp1 0,2,4,6,...
-    #  uzp2 1,3,5,7,...
-    #  trn1 0,n,2,n+2,...
-    #  trn2 1,n+1,3,n+3,...
-    #  reverse
-    #  subvector_insert
-    #  subvector_extract
-    #  rotate
-    # 2src:
-    #  zip1, zip2, uzp1, uzp2, trn1, trn2
-    #  reverse
-    #  select?
-    #  subvector_insert
-    #  subvector_extract
-    #  splice
-
-
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumvec())

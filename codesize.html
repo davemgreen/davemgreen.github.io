@@ -90,8 +90,8 @@
             var details = document.getElementById('details-'+label);
             txt = "<h3>Details</h3>"
             txt += j.instr + " " + j.variant + " " + escape(j.ty) + "\n";
-            txt += "Codesize cost:"+j.codesize+"\n"
             txt += "Measured size:"+j.size+" (gisize:"+j.gisize+")\n"
+            txt += "Codesize cost:"+j.codesize+"\n"
             txt += "Othercosts: thru:"+j.thru+" lat:"+j.lat+" sizelat:"+j.sizelat+"\n"
             txt += "\nIR:\n<code>"+escape(j.ll)+"</code>\n"
             txt += "\nAsm:\n<code>"+escape(j.asm)+"</code>\n"
