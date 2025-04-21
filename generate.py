@@ -91,12 +91,25 @@ def generate_constm1(ty):
     return '-1'
   return f"splat ({ty.scalar} -1)"
 
+def generateShuffleMask(dst, src, variant):
+  elts = dst.elts
+  mask = []
+  variant = variant[:variant.find(' ')]
+  if variant == 'splat0':
+    mask = [0] * elts
+  elif variant == 'splat3':
+    mask = [min(3,src.elts-1)] * elts
+  else:
+    assert(False)
+  mask = [str(x) for x in mask]
+  return f"<{elts} x i32> <i32 {', i32 '.join(mask)}>"
+
 def generate(variant, instr, ty, ty2):
   tystr = ty.str()
   eltstr = ty.scalar
   rettystr = eltstr if instr == 'extractelement' else ty2.str()
   preamble = f"define {rettystr} @test({tystr} %a"
-  if variant == 'binop' or variant == 'cmp' or variant == 'triopconstsplat':
+  if variant == 'binop' or variant == 'cmp' or variant == 'triopconstsplat' or instr == 'shuffle':
     preamble += f", {tystr} %b"
   elif variant == 'binopsplat' or instr == 'insertelement':
     preamble += f", {eltstr} %bs"
@@ -159,6 +172,8 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"  %r = insertelement {tystr} %a, {eltstr} %bs, i32 {idx}\n"
   elif variant.startswith('cast'):
     instrstr += f"  %r = {instr} {tystr} %a to {rettystr}\n"
+  elif instr == "shuffle":
+    instrstr += f"  %r = shufflevector {tystr} %a, {tystr} %b, {generateShuffleMask(ty2, ty, variant)}\n"
   else:
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
 
@@ -410,7 +425,38 @@ if args.type == 'all' or args.type == 'vec':
         for variant in ['vecop0', 'vecop1', 'vecopvar']:
           yield (instr, variant, ty, ty, 0, None)
 
-  # TODO: shuffles
+    # Shuffles
+    for variant in ['splat0', 'splat3']:
+      for dst in inttypes(True):
+        for src in inttypes(True):
+          if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
+            continue
+          yield ('shuffle', variant+' v'+str(dst.elts), src, dst, 0, None)
+      for dst in fptypes(True):
+        for src in fptypes(True):
+          if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
+            continue
+          yield ('shuffle', variant+' v'+str(dst.elts), src, dst, 0, None)
+
+    #  zip1 0,n,1,n+1,2,...
+    #  zip2? n/2,3n/2,n/2+1,3n/2+1,...
+    #  uzp1 0,2,4,6,...
+    #  uzp2 1,3,5,7,...
+    #  trn1 0,n,2,n+2,...
+    #  trn2 1,n+1,3,n+3,...
+    #  reverse
+    #  subvector_insert
+    #  subvector_extract
+    #  rotate
+    # 2src:
+    #  zip1, zip2, uzp1, uzp2, trn1, trn2
+    #  reverse
+    #  select?
+    #  subvector_insert
+    #  subvector_extract
+    #  splice
+
+
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumvec())
