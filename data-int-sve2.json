@@ -18584,10 +18584,10 @@
   "lat": 2,
   "sizelat": 2,
   "size": 2,
-  "gisize": -1,
+  "gisize": 2,
   "extrasize": 0,
   "asm": "rbit v0.16b, v0.16b\nrbit v1.16b, v1.16b\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<32 x s8>) = G_BSWAP %0:_ (in function: test)",
+  "giasm": "rbit v0.16b, v0.16b\nrbit v1.16b, v1.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a) {\n  %r = call <32 x i8> @llvm.bitreverse(<32 x i8> %a)\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 2 for instruction:   %r = call <32 x i8> @llvm.bitreverse.v32i8(<32 x i8> %a)\nCost Model: Found an estimated cost of 1 for instruction:   ret <32 x i8> %r"
  },
