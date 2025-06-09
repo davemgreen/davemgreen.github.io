@@ -1899,7 +1899,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.8b, v0.b[0]\nret",
-  "giasm": "dup v0.16b, v0.b[0]\nret",
+  "giasm": "dup v0.8b, v0.b[0]\nret",
   "ll": "define <8 x i8> @test(<16 x i8> %a) {\n  %r = shufflevector <16 x i8> %a, <16 x i8> poison, <8 x i32> <i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x i8> %a, <16 x i8> poison, <8 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
  },
@@ -1915,7 +1915,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.8b, v0.b[0]\nret",
-  "giasm": "dup v0.16b, v0.b[0]\nret",
+  "giasm": "dup v0.8b, v0.b[0]\nret",
   "ll": "define <8 x i8> @test(<32 x i8> %a) {\n  %r = shufflevector <32 x i8> %a, <32 x i8> poison, <8 x i32> <i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x i8> %a, <32 x i8> poison, <8 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
  },
@@ -2203,7 +2203,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[0]\nret",
-  "giasm": "dup v0.8h, v0.h[0]\nret",
+  "giasm": "dup v0.4h, v0.h[0]\nret",
   "ll": "define <4 x i16> @test(<8 x i16> %a) {\n  %r = shufflevector <8 x i16> %a, <8 x i16> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <8 x i16> %a, <8 x i16> poison, <4 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
@@ -2219,7 +2219,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[0]\nret",
-  "giasm": "dup v0.8h, v0.h[0]\nret",
+  "giasm": "dup v0.4h, v0.h[0]\nret",
   "ll": "define <4 x i16> @test(<16 x i16> %a) {\n  %r = shufflevector <16 x i16> %a, <16 x i16> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x i16> %a, <16 x i16> poison, <4 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
@@ -2235,7 +2235,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[0]\nret",
-  "giasm": "dup v0.8h, v0.h[0]\nret",
+  "giasm": "dup v0.4h, v0.h[0]\nret",
   "ll": "define <4 x i16> @test(<32 x i16> %a) {\n  %r = shufflevector <32 x i16> %a, <32 x i16> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x i16> %a, <32 x i16> poison, <4 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
@@ -2507,7 +2507,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "dup v0.4s, v0.s[0]\nret",
+  "giasm": "dup v0.2s, v0.s[0]\nret",
   "ll": "define <2 x i32> @test(<4 x i32> %a) {\n  %r = shufflevector <4 x i32> %a, <4 x i32> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <4 x i32> %a, <4 x i32> poison, <2 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
@@ -2523,7 +2523,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "dup v0.4s, v0.s[0]\nret",
+  "giasm": "dup v0.2s, v0.s[0]\nret",
   "ll": "define <2 x i32> @test(<8 x i32> %a) {\n  %r = shufflevector <8 x i32> %a, <8 x i32> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <8 x i32> %a, <8 x i32> poison, <2 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
@@ -2539,7 +2539,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "dup v0.4s, v0.s[0]\nret",
+  "giasm": "dup v0.2s, v0.s[0]\nret",
   "ll": "define <2 x i32> @test(<16 x i32> %a) {\n  %r = shufflevector <16 x i32> %a, <16 x i32> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x i32> %a, <16 x i32> poison, <2 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
@@ -2555,7 +2555,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "dup v0.4s, v0.s[0]\nret",
+  "giasm": "dup v0.2s, v0.s[0]\nret",
   "ll": "define <2 x i32> @test(<32 x i32> %a) {\n  %r = shufflevector <32 x i32> %a, <32 x i32> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x i32> %a, <32 x i32> poison, <2 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
@@ -3403,7 +3403,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[0]\nret",
-  "giasm": "dup v0.8h, v0.h[0]\nret",
+  "giasm": "dup v0.4h, v0.h[0]\nret",
   "ll": "define <4 x half> @test(<8 x half> %a) {\n  %r = shufflevector <8 x half> %a, <8 x half> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <8 x half> %a, <8 x half> poison, <4 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
  },
@@ -3419,7 +3419,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[0]\nret",
-  "giasm": "dup v0.8h, v0.h[0]\nret",
+  "giasm": "dup v0.4h, v0.h[0]\nret",
   "ll": "define <4 x half> @test(<16 x half> %a) {\n  %r = shufflevector <16 x half> %a, <16 x half> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x half> %a, <16 x half> poison, <4 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
  },
@@ -3435,7 +3435,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[0]\nret",
-  "giasm": "dup v0.8h, v0.h[0]\nret",
+  "giasm": "dup v0.4h, v0.h[0]\nret",
   "ll": "define <4 x half> @test(<32 x half> %a) {\n  %r = shufflevector <32 x half> %a, <32 x half> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x half> %a, <32 x half> poison, <4 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
  },
@@ -3707,7 +3707,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "dup v0.4s, v0.s[0]\nret",
+  "giasm": "dup v0.2s, v0.s[0]\nret",
   "ll": "define <2 x float> @test(<4 x float> %a) {\n  %r = shufflevector <4 x float> %a, <4 x float> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <4 x float> %a, <4 x float> poison, <2 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
@@ -3723,7 +3723,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "dup v0.4s, v0.s[0]\nret",
+  "giasm": "dup v0.2s, v0.s[0]\nret",
   "ll": "define <2 x float> @test(<8 x float> %a) {\n  %r = shufflevector <8 x float> %a, <8 x float> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <8 x float> %a, <8 x float> poison, <2 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
@@ -3739,7 +3739,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "dup v0.4s, v0.s[0]\nret",
+  "giasm": "dup v0.2s, v0.s[0]\nret",
   "ll": "define <2 x float> @test(<16 x float> %a) {\n  %r = shufflevector <16 x float> %a, <16 x float> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x float> %a, <16 x float> poison, <2 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
@@ -3755,7 +3755,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "dup v0.4s, v0.s[0]\nret",
+  "giasm": "dup v0.2s, v0.s[0]\nret",
   "ll": "define <2 x float> @test(<32 x float> %a) {\n  %r = shufflevector <32 x float> %a, <32 x float> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x float> %a, <32 x float> poison, <2 x i32> zeroinitializer\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
@@ -4699,7 +4699,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.8b, v0.b[3]\nret",
-  "giasm": "dup v0.16b, v0.b[3]\nret",
+  "giasm": "dup v0.8b, v0.b[3]\nret",
   "ll": "define <8 x i8> @test(<16 x i8> %a) {\n  %r = shufflevector <16 x i8> %a, <16 x i8> poison, <8 x i32> <i32 3, i32 3, i32 3, i32 3, i32 3, i32 3, i32 3, i32 3>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x i8> %a, <16 x i8> poison, <8 x i32> <i32 3, i32 3, i32 3, i32 3, i32 3, i32 3, i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
  },
@@ -4715,7 +4715,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.8b, v0.b[3]\nret",
-  "giasm": "dup v0.16b, v0.b[3]\nret",
+  "giasm": "dup v0.8b, v0.b[3]\nret",
   "ll": "define <8 x i8> @test(<32 x i8> %a) {\n  %r = shufflevector <32 x i8> %a, <32 x i8> poison, <8 x i32> <i32 3, i32 3, i32 3, i32 3, i32 3, i32 3, i32 3, i32 3>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x i8> %a, <32 x i8> poison, <8 x i32> <i32 3, i32 3, i32 3, i32 3, i32 3, i32 3, i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
  },
@@ -5003,7 +5003,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[3]\nret",
-  "giasm": "dup v0.8h, v0.h[3]\nret",
+  "giasm": "dup v0.4h, v0.h[3]\nret",
   "ll": "define <4 x i16> @test(<8 x i16> %a) {\n  %r = shufflevector <8 x i16> %a, <8 x i16> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <8 x i16> %a, <8 x i16> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
@@ -5019,7 +5019,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[3]\nret",
-  "giasm": "dup v0.8h, v0.h[3]\nret",
+  "giasm": "dup v0.4h, v0.h[3]\nret",
   "ll": "define <4 x i16> @test(<16 x i16> %a) {\n  %r = shufflevector <16 x i16> %a, <16 x i16> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x i16> %a, <16 x i16> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
@@ -5035,7 +5035,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[3]\nret",
-  "giasm": "dup v0.8h, v0.h[3]\nret",
+  "giasm": "dup v0.4h, v0.h[3]\nret",
   "ll": "define <4 x i16> @test(<32 x i16> %a) {\n  %r = shufflevector <32 x i16> %a, <32 x i16> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x i16> %a, <32 x i16> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i16> %r"
  },
@@ -5307,7 +5307,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[3]\nret",
-  "giasm": "dup v0.4s, v0.s[3]\nret",
+  "giasm": "dup v0.2s, v0.s[3]\nret",
   "ll": "define <2 x i32> @test(<4 x i32> %a) {\n  %r = shufflevector <4 x i32> %a, <4 x i32> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <4 x i32> %a, <4 x i32> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
@@ -5323,7 +5323,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[3]\nret",
-  "giasm": "dup v0.4s, v0.s[3]\nret",
+  "giasm": "dup v0.2s, v0.s[3]\nret",
   "ll": "define <2 x i32> @test(<8 x i32> %a) {\n  %r = shufflevector <8 x i32> %a, <8 x i32> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <8 x i32> %a, <8 x i32> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
@@ -5339,7 +5339,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[3]\nret",
-  "giasm": "dup v0.4s, v0.s[3]\nret",
+  "giasm": "dup v0.2s, v0.s[3]\nret",
   "ll": "define <2 x i32> @test(<16 x i32> %a) {\n  %r = shufflevector <16 x i32> %a, <16 x i32> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x i32> %a, <16 x i32> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
@@ -5355,7 +5355,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[3]\nret",
-  "giasm": "dup v0.4s, v0.s[3]\nret",
+  "giasm": "dup v0.2s, v0.s[3]\nret",
   "ll": "define <2 x i32> @test(<32 x i32> %a) {\n  %r = shufflevector <32 x i32> %a, <32 x i32> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x i32> %a, <32 x i32> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i32> %r"
  },
@@ -6203,7 +6203,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[3]\nret",
-  "giasm": "dup v0.8h, v0.h[3]\nret",
+  "giasm": "dup v0.4h, v0.h[3]\nret",
   "ll": "define <4 x half> @test(<8 x half> %a) {\n  %r = shufflevector <8 x half> %a, <8 x half> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\n  ret <4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <8 x half> %a, <8 x half> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
  },
@@ -6219,7 +6219,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[3]\nret",
-  "giasm": "dup v0.8h, v0.h[3]\nret",
+  "giasm": "dup v0.4h, v0.h[3]\nret",
   "ll": "define <4 x half> @test(<16 x half> %a) {\n  %r = shufflevector <16 x half> %a, <16 x half> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\n  ret <4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x half> %a, <16 x half> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
  },
@@ -6235,7 +6235,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.4h, v0.h[3]\nret",
-  "giasm": "dup v0.8h, v0.h[3]\nret",
+  "giasm": "dup v0.4h, v0.h[3]\nret",
   "ll": "define <4 x half> @test(<32 x half> %a) {\n  %r = shufflevector <32 x half> %a, <32 x half> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\n  ret <4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x half> %a, <32 x half> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x half> %r"
  },
@@ -6507,7 +6507,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[3]\nret",
-  "giasm": "dup v0.4s, v0.s[3]\nret",
+  "giasm": "dup v0.2s, v0.s[3]\nret",
   "ll": "define <2 x float> @test(<4 x float> %a) {\n  %r = shufflevector <4 x float> %a, <4 x float> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <4 x float> %a, <4 x float> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
@@ -6523,7 +6523,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[3]\nret",
-  "giasm": "dup v0.4s, v0.s[3]\nret",
+  "giasm": "dup v0.2s, v0.s[3]\nret",
   "ll": "define <2 x float> @test(<8 x float> %a) {\n  %r = shufflevector <8 x float> %a, <8 x float> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <8 x float> %a, <8 x float> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
@@ -6539,7 +6539,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[3]\nret",
-  "giasm": "dup v0.4s, v0.s[3]\nret",
+  "giasm": "dup v0.2s, v0.s[3]\nret",
   "ll": "define <2 x float> @test(<16 x float> %a) {\n  %r = shufflevector <16 x float> %a, <16 x float> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <16 x float> %a, <16 x float> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
@@ -6555,7 +6555,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "dup v0.2s, v0.s[3]\nret",
-  "giasm": "dup v0.4s, v0.s[3]\nret",
+  "giasm": "dup v0.2s, v0.s[3]\nret",
   "ll": "define <2 x float> @test(<32 x float> %a) {\n  %r = shufflevector <32 x float> %a, <32 x float> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <32 x float> %a, <32 x float> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x float> %r"
  },
@@ -16328,10 +16328,10 @@
   "lat": 1,
   "sizelat": 1,
   "size": 1,
-  "gisize": 6,
+  "gisize": 5,
   "extrasize": 0,
   "asm": "uzp1 v0.4h, v0.4h, v1.4h\nret",
-  "giasm": "mov w8, v0.s[1]\nmov w9, v1.s[1]\nmov v0.h[1], w8\nfmov w8, s1\nmov v0.h[2], w8\nmov v0.h[3], w9\nret",
+  "giasm": "mov w8, v0.s[1]\nmov v0.h[1], w8\nmov w8, v1.s[1]\nmov v0.h[2], v1.h[0]\nmov v0.h[3], w8\nret",
   "ll": "define <4 x i8> @test(<2 x i8> %a, <2 x i8> %b) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> %b, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <2 x i8> %a, <2 x i8> %b, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i8> %r"
  },
@@ -31179,7 +31179,7 @@
   "gisize": 10,
   "extrasize": 0,
   "asm": "sub sp, sp, #16\nadd x8, sp, #8\nstr d0, [sp, #8]\nbfxil x8, x1, #0, #3\nstrb w0, [x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
-  "giasm": "sub sp, sp, #16\nmov w9, w1\nmov w8, #1                          // =0x1\nstr d0, [sp, #8]\nand x9, x9, #0x7\nmul x8, x9, x8\nadd x9, sp, #8\nstrb w0, [x9, x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
+  "giasm": "sub sp, sp, #16\nmov w9, w1\nmov w8, #1                          // =0x1\nstr d0, [sp, #8]\nand x9, x9, #0x7\numull x8, w9, w8\nadd x9, sp, #8\nstrb w0, [x9, x8]\nldr d0, [sp, #8]\nadd sp, sp, #16\nret",
   "ll": "define <8 x i8> @test(<8 x i8> %a, i8 %bs, i32 %c) {\n  %r = insertelement <8 x i8> %a, i8 %bs, i32 %c\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <8 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <8 x i8> %r"
  },
@@ -31227,7 +31227,7 @@
   "gisize": 9,
   "extrasize": 0,
   "asm": "sub sp, sp, #16\nmov x8, sp\nstr q0, [sp]\nbfxil x8, x1, #0, #4\nstrb w0, [x8]\nldr q0, [sp], #16\nret",
-  "giasm": "sub sp, sp, #16\nmov w9, w1\nmov w8, #1                          // =0x1\nstr q0, [sp]\nand x9, x9, #0xf\nmul x8, x9, x8\nmov x9, sp\nstrb w0, [x9, x8]\nldr q0, [sp], #16\nret",
+  "giasm": "sub sp, sp, #16\nmov w9, w1\nmov w8, #1                          // =0x1\nstr q0, [sp]\nand x9, x9, #0xf\numull x8, w9, w8\nmov x9, sp\nstrb w0, [x9, x8]\nldr q0, [sp], #16\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a, i8 %bs, i32 %c) {\n  %r = insertelement <16 x i8> %a, i8 %bs, i32 %c\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = insertelement <16 x i8> %a, i8 %bs, i32 %c\nCost Model: Found an estimated cost of 1 for instruction:   ret <16 x i8> %r"
  },
