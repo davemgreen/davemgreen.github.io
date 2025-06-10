@@ -293,7 +293,7 @@ def do(instr, variant, ty, ty2, extrasize, tyoverride):
 if args.type == 'all' or args.type == 'int':
   def enumint():
     # Int Binops
-    for instr in ['add', 'sub', 'mul', 'sdiv', 'srem', 'udiv', 'urem', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl']:
+    for instr in ['add', 'sub', 'mul', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'sdiv', 'srem', 'udiv', 'urem', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl']:
       for ty in inttypes():
         yield (instr, 'binop', ty, ty, 0, None)
         if instr in ['sdiv', 'srem', 'udiv', 'urem', 'shl', 'ashr', 'lshr', 'rotr', 'rotl']:
