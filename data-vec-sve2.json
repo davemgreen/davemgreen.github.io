@@ -16328,10 +16328,10 @@
   "lat": 1,
   "sizelat": 1,
   "size": 1,
-  "gisize": 5,
+  "gisize": 6,
   "extrasize": 0,
   "asm": "uzp1 v0.4h, v0.4h, v1.4h\nret",
-  "giasm": "mov w8, v0.s[1]\nmov v0.h[1], w8\nmov w8, v1.s[1]\nmov v0.h[2], v1.h[0]\nmov v0.h[3], w8\nret",
+  "giasm": "mov w8, v0.s[1]\nmov w9, v1.s[1]\nmov v0.h[1], w8\nfmov w8, s1\nmov v0.h[2], w8\nmov v0.h[3], w9\nret",
   "ll": "define <4 x i8> @test(<2 x i8> %a, <2 x i8> %b) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> %b, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 1 for instruction:   %r = shufflevector <2 x i8> %a, <2 x i8> %b, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i8> %r"
  },
