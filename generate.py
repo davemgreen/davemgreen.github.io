@@ -140,7 +140,7 @@ def generateShuffleMask(elts, srcelts, variant):
 def generate(variant, instr, ty, ty2):
   tystr = ty.str()
   eltstr = ty.scalar
-  rettystr = eltstr if instr == 'extractelement' else ty2.str()
+  rettystr = eltstr if instr == 'extractelement' else (tystr if variant=='binopi' else ty2.str())
   preamble = f"define {rettystr} @test({tystr} %a"
   if variant == 'binop' or variant == 'cmp' or variant == 'triopconstsplat' or instr == 'shuffleb':
     preamble += f", {tystr} %b"
@@ -152,6 +152,8 @@ def generate(variant, instr, ty, ty2):
     preamble += f", {tystr} %b, {tystr} %c"
   elif variant.startswith('reduce') and (instr == 'reduce.fadd' or instr == 'reduce.fmul'):
     preamble += f", {rettystr} %b"
+  elif variant == 'binopi':
+    preamble += f", {ty2.str()} %b"
   if variant == 'vecopvar':
     preamble += f", i32 %c"
   if (variant == 'cmp' or variant == 'cmp0') and instr.startswith('select'):
@@ -185,6 +187,8 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, i1 0)\n"
   elif variant == 'unop':
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a)\n"
+  elif variant == 'binopi':
+    instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {ty2.str()} %b)\n"
   elif instr in ['select']:
     instrstr += f"  %r = {instr}  {Ty('i1', ty.elts, ty.scalable)} %c, {tystr} %a, {tystr} %b\n"
   elif (variant == 'cmp' or variant == 'cmp0') and instr.startswith('select'):
@@ -357,20 +361,24 @@ if args.type == 'all' or args.type == 'fp':
     for instr in ['fadd', 'fsub', 'fmul', 'fdiv', 'frem', 'minnum', 'maxnum', 'minimum', 'maximum', 'copysign', 'pow']:
       for ty in fptypes():
         yield (instr, 'binop', ty, ty, 0, None)
+    for instr in ['ldexp']:
+      for ty in fptypes():
+        yield (instr, 'binopi', ty, Ty('i32', ty.elts, ty.scalable), 0, None)
+    for instr in ['powi']:
+      for ty in fptypes():
+        yield (instr, 'binopi', ty, Ty('i32'), 0, None)
 
     # FP unops
-    for instr in ['fneg', 'fabs', 'sqrt', 'ceil', 'floor', 'trunc', 'rint', 'nearbyint']:
+    for instr in ['fneg', 'fabs', 'sqrt', 'ceil', 'floor', 'trunc', 'rint', 'nearbyint', 'round', 'roundeven', 'exp']:
       for ty in fptypes():
         yield (instr, 'unop', ty, ty, 0, None)
-    for instr in ['fma', 'fmuladd']:
-      for ty in fptypes():
-        yield (instr, 'triop', ty, ty, 0, None)
 
     # FP triops
     for instr in ['fma', 'fmuladd', 'select']:
       for ty in fptypes():
         yield (instr, 'triop', ty, ty, 0, None)
 
+    # fcmps
     for op in ['oeq', 'ogt', 'oge', 'olt', 'ole', 'one', 'ord', 'ueq', 'ugt', 'uge', 'ult', 'ule', 'une', 'uno']:
       for ty in fptypes():
         yield ('fcmp'+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
@@ -382,7 +390,7 @@ if args.type == 'all' or args.type == 'fp':
     # TODO: fminimumnum, fmaximumnum
     # TODO: fpowi
     # TODO: sin, cos, etc
-    # TODO: fexp, fexp2, flog, flog2, flog10
+    # TODO: fexp2, flog, flog2, flog10
     # TODO: fldexp, frexmp
 
     for instr in ['fadd', 'fmul', 'fmin', 'fmax', 'fminimum', 'fmaximum']:
