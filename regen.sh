@@ -18,7 +18,7 @@ PATH=$PWD/llvm-project/build/bin:$PATH python generate.py
 PATH=$PWD/llvm-project/build/bin:$PATH python generate.py -mattr=fullfp16
 PATH=$PWD/llvm-project/build/bin:$PATH python generate.py -mattr=sve2
 
-git diff
+git --no-pager diff
 if ! git diff-index --quiet HEAD --; then
   git add -u
   git commit -m "Regen $HASH `date`"
