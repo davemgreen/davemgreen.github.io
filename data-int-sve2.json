@@ -19418,7 +19418,7 @@
   "size": 14,
   "gisize": 6,
   "extrasize": 0,
-  "asm": "ushr v1.2d, v0.2d, #1\nptrue p0.d, vl2\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #2\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #4\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #8\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #16\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #32\norr v0.16b, v0.16b, v1.16b\nmvn v0.16b, v0.16b\ncnt z0.d, p0/m, z0.d\nret",
+  "asm": "ushr v1.2d, v0.2d, #1\nptrue p0.d, vl2\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #2\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #4\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #8\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #16\norr v0.16b, v0.16b, v1.16b\nushr v1.2d, v0.2d, #32\nnbsl z1.d, z1.d, z0.d, z1.d\nmovprfx z0, z1\ncnt z0.d, p0/m, z1.d\nret",
   "giasm": "fmov x9, d0\nmov x8, v0.d[1]\nclz x9, x9\nfmov d0, x9\nclz x8, x8\nmov v0.d[1], x8\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) {\n  %r = call <2 x i64> @llvm.ctlz(<2 x i64> %a, i1 0)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 6 for instruction:   %r = call <2 x i64> @llvm.ctlz.v2i64(<2 x i64> %a, i1 false)\nCost Model: Found an estimated cost of 1 for instruction:   ret <2 x i64> %r"
@@ -19434,7 +19434,7 @@
   "size": 28,
   "gisize": 12,
   "extrasize": 0,
-  "asm": "ushr v2.2d, v0.2d, #1\nushr v3.2d, v1.2d, #1\nptrue p0.d, vl2\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #2\nushr v3.2d, v1.2d, #2\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #4\nushr v3.2d, v1.2d, #4\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #8\nushr v3.2d, v1.2d, #8\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #16\nushr v3.2d, v1.2d, #16\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #32\nushr v3.2d, v1.2d, #32\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v1.16b, v1.16b\ncnt z0.d, p0/m, z0.d\ncnt z1.d, p0/m, z1.d\nret",
+  "asm": "ushr v2.2d, v0.2d, #1\nushr v3.2d, v1.2d, #1\nptrue p0.d, vl2\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #2\nushr v3.2d, v1.2d, #2\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #4\nushr v3.2d, v1.2d, #4\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #8\nushr v3.2d, v1.2d, #8\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #16\nushr v3.2d, v1.2d, #16\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nushr v2.2d, v0.2d, #32\nushr v3.2d, v1.2d, #32\nnbsl z2.d, z2.d, z0.d, z2.d\nnbsl z3.d, z3.d, z1.d, z3.d\nmovprfx z0, z2\ncnt z0.d, p0/m, z2.d\nmovprfx z1, z3\ncnt z1.d, p0/m, z3.d\nret",
   "giasm": "fmov x10, d0\nfmov x11, d1\nmov x8, v0.d[1]\nmov x9, v1.d[1]\nclz x10, x10\nclz x11, x11\nfmov d0, x10\nfmov d1, x11\nclz x8, x8\nclz x9, x9\nmov v0.d[1], x8\nmov v1.d[1], x9\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a) {\n  %r = call <4 x i64> @llvm.ctlz(<4 x i64> %a, i1 0)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found an estimated cost of 12 for instruction:   %r = call <4 x i64> @llvm.ctlz.v4i64(<4 x i64> %a, i1 false)\nCost Model: Found an estimated cost of 1 for instruction:   ret <4 x i64> %r"
