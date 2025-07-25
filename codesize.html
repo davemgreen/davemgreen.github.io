@@ -4,35 +4,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AArch64 Cost model tests</title>
     <script>
-        function load(label, type) {
+        function load(label, type, from, to) {
             fetch("data-" + label + type + ".json")
                 .then(response => {
                     if (!response.ok) {
                         fetch("data-" + label + ".json")
                             .then(response => response.json())
-                            .then(json => drawTable(json, label))
+                            .then(json => drawTable(json, label, from, to))
                             .catch(reason => console.log(reason));
                         return Promise.reject()
                     }
                     return response.json()
                 })
-                .then(json => drawTable(json, label))
+                .then(json => drawTable(json, label, from, to))
                 .catch(reason => console.log(reason));
         }
 
-        function reload(type) {
-            load("int", type)
-            load("fp", type)
-            load("castint", type)
-            load("castfp", type)
-            load("vec", type)
+        function reload() {
+            arch = document.getElementById("arch").value
+            from = document.getElementById("from").value
+            to = document.getElementById("to").value
+
+            load("int", arch, from, to)
+            load("fp", arch, from, to)
+            load("castint", arch, from, to)
+            load("castfp", arch, from, to)
+            load("vec", arch, from, to)
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            reload('')
+            reload()
         });
         
-        function drawTable(json, label) {
+        function drawTable(json, label, from, to) {
             var instrs = {};
             var tys = []
             json.forEach(j => {
@@ -70,7 +74,8 @@
                         if (!j) {
                             cell.innerHTML = "-"
                         } else {
-                            cell.innerHTML = j.codesize - j.size
+                            j["none"] = 0
+                            cell.innerHTML = j[from] - j[to]
                             cell.onclick = function() {
                                 let _j = j
                                 let _label = label
@@ -143,9 +148,31 @@
     <p>This attempts to compare the first-order output of the cost model compared to the measured codesize. It generates simple snippets of IR and compares the output of opt -passes=print<cost-model> -cost-kind=codesize and the assembly generated from llc. The assembly output of llc is sometimes filtered to remove loop invariant instructions.</p>
     <p>The table lists the difference between the two cost models (i.e. zero is good). Not all the scores are expected to match exactly. More details and the costs can be found by clicking on a table entry.</p>
     <div style="display: flex border=10px;">
-        <button onclick="reload('')">Base</button>
-        <button onclick="reload('-fullfp16')">FP16</button>
-        <button onclick="reload('-sve2')">SVE</button>
+        <select id="from" onchange="reload()">
+          <option value='none'>None</option>
+          <option value='codesize' selected>Codesize</option>
+          <option value='thru'>Thru</option>
+          <option value='lat'>Lat</option>
+          <option value='sizelat'>SizeLat</option>
+          <option value='size'>Insns</option>
+          <option value='gisize'>GISelInsns</option>
+        </select>
+        vs
+        <select id="to" onchange="reload()">
+          <option value='none'>None</option>
+          <option value='codesize'>Codesize</option>
+          <option value='thru'>Thru</option>
+          <option value='lat'>Lat</option>
+          <option value='sizelat'>SizeLat</option>
+          <option value='size' selected>Insns</option>
+          <option value='gisize'>GISelInsns</option>
+        </select>
+        Architecture:
+        <select id="arch" onchange="reload()">
+          <option value=''>Base</option>
+          <option value='-fullfp16'>FP16</option>
+          <option value='-sve2'>SVE</option>
+        </select>
     </div>
     <h3>Integer diffs</h3>
     <div style="display: flex;">
