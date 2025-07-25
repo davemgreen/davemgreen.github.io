@@ -19,18 +19,35 @@ def run(cmd):
   cmd = cmd.split()
   return subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode('utf-8')
 
-def getcost(path, costkind, print):
+def parseCostLine(line):
+  costpre = 'Cost Model: Found costs of '
+  if not line.startswith(costpre):
+    return [0,0,0,0]
+  line = line[len(costpre):line.find(' for: ')]
+  def parseint(cost):
+    if cost.strip() == "Invalid":
+      return -1
+    return int(cost)
+  if "RThru" in line:
+    costs=line.replace(':', ' ').split(' ')
+    return [parseint(costs[1]), parseint(costs[3]), parseint(costs[5]), parseint(costs[7])]
+  cost = parseint(line)
+  return [cost, cost, cost, cost]
+def getcost(path):
   try:
-    text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind={costkind} -disable-output")
+    text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind=all -disable-output")
   except subprocess.CalledProcessError as e:
     shutil.copyfile(os.path.join(path, 'costtest.ll'), 'costtest.ll')
     raise
-  costpre = 'Cost Model: Found an estimated cost of '
   if print:
     logging.debug(text.strip())
-  costs = [x for x in text.split('\n') if 'instruction:   ret ' not in x]
-  cost = sum([int(x[len(costpre):len(costpre)+x[len(costpre):].find(' ')]) for x in costs if x.startswith(costpre)])
-  return (cost, text.strip())
+  costs = [x for x in text.split('\n') if 'for:   ret ' not in x]
+  costs = [parseCostLine(x) for x in costs]
+  def sumcost(costs, idx):
+    if len([c for c in costs if c[idx]<0]) > 0:
+      return -1
+    return sum([c[idx] for c in costs])
+  return (sumcost(costs, 0), sumcost(costs, 1), sumcost(costs, 2), sumcost(costs, 3), text.strip())
 
 def getasm(path, extraflags):
   try:
@@ -62,13 +79,10 @@ def checkcosts(llasm):
 
     gilines, gisize = getasm(tmp, '-global-isel')
 
-    codesize = getcost(tmp, 'code-size', True)
-    thru = getcost(tmp, 'throughput', False)
-    lat = getcost(tmp, 'latency', False)
-    sizelat = getcost(tmp, 'size-latency', False)
+    sizes = getcost(tmp)
 
-    logging.debug(f"cost = codesize:{codesize[0]} throughput:{thru[0]} lat:{lat[0]} sizelat:{sizelat[0]}")
-    return (size, gisize, [codesize, thru, lat, sizelat], llasm, ('\n'.join(lines)).replace('\t', ' '), ('\n'.join(gilines)).replace('\t', ' '))
+    logging.debug(f"cost = throughput:{sizes[0]} codesize:{sizes[1]} lat:{sizes[2]} sizelat:{sizes[3]}")
+    return (size, gisize, sizes, llasm, ('\n'.join(lines)).replace('\t', ' '), ('\n'.join(gilines)).replace('\t', ' '))
 
   # TODOD:
   #if args.checkopted:
@@ -284,9 +298,9 @@ def do(instr, variant, ty, ty2, extrasize, tyoverride):
     logging.info(f"{variant} {instr} with {ty.str()}")
     (size, gisize, costs, ll, asm, giasm) = checkcosts(generate(variant, instr, ty, ty2))
     tystr = str(ty) if not tyoverride else tyoverride
-    if costs[0][0] != size - extrasize:
-      logging.warning(f">>> {variant} {instr} with {tystr}  size = {size} vs cost = {costs[0][0]} (expected extrasize={extrasize})")
-    return {"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[0][0], "thru":costs[1][0], "lat":costs[2][0], "sizelat":costs[3][0], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[0][1]}
+    if costs[0] != size - extrasize:
+      logging.warning(f">>> {variant} {instr} with {tystr}  size = {size} vs cost = {costs[0]} (expected extrasize={extrasize})")
+    return {"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[1], "thru":costs[0], "lat":costs[2], "sizelat":costs[3], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[4]}
   except:
     logging.error(f"error in: {variant} {instr} with {ty.str()} {ty2.str()}")
     raise

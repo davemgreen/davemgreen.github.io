@@ -75,7 +75,15 @@
                             cell.innerHTML = "-"
                         } else {
                             j["none"] = 0
-                            cell.innerHTML = j[from] - j[to]
+                            if (j[from] < 0 && j[to] < 0) {
+                                cell.innerHTML = "I - I"
+                            } else if (j[from] < 0) {
+                                cell.innerHTML = "I - " + j[to]
+                            } else if (j[to] < 0) {
+                                cell.innerHTML = j[from] + " - I"
+                            } else {
+                                cell.innerHTML = j[from] - j[to]
+                            }
                             cell.onclick = function() {
                                 let _j = j
                                 let _label = label
@@ -100,7 +108,7 @@
             txt += "Othercosts: thru:"+j.thru+" lat:"+j.lat+" sizelat:"+j.sizelat+"\n"
             txt += "\nIR:\n<code>"+escape(j.ll)+"</code>\n"
             txt += "\nAsm:\n<code>"+escape(j.asm)+"</code>\n"
-            txt += "\nCodesize cost output:\n<code>"+escape(j.costoutput)+"</code>\n"
+            txt += "\nCostmodel output:\n<code>"+escape(j.costoutput)+"</code>\n"
             details.innerHTML = txt.replaceAll('\n', '<br>');
         }
     </script>
