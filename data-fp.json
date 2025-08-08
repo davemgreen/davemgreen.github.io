@@ -4,7 +4,7 @@
   "ty": "half",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 4,
   "lat": 3,
   "sizelat": 1,
   "size": 4,
@@ -13,7 +13,7 @@
   "asm": "fcvt s1, h1\nfcvt s0, h0\nfadd s0, s0, s1\nfcvt h0, s0\nret",
   "giasm": "fcvt s0, h0\nfcvt s1, h1\nfadd s0, s0, s1\nfcvt h0, s0\nret",
   "ll": "define half @test(half %a, half %b) {\n  %r = fadd half %a, %b\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fadd half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fadd half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fadd",
@@ -52,7 +52,7 @@
   "ty": "<4 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 4,
   "lat": 3,
   "sizelat": 1,
   "size": 4,
@@ -61,14 +61,14 @@
   "asm": "fcvtl v1.4s, v1.4h\nfcvtl v0.4s, v0.4h\nfadd v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "giasm": "fcvtl v0.4s, v0.4h\nfcvtl v1.4s, v1.4h\nfadd v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, <4 x half> %b) {\n  %r = fadd <4 x half> %a, %b\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fadd <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fadd <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
  },
  {
   "instr": "fadd",
   "ty": "<8 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 8,
   "lat": 3,
   "sizelat": 1,
   "size": 8,
@@ -77,14 +77,14 @@
   "asm": "fcvtl v2.4s, v1.4h\nfcvtl v3.4s, v0.4h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v0.4s, v0.8h\nfadd v2.4s, v3.4s, v2.4s\nfadd v1.4s, v0.4s, v1.4s\nfcvtn v0.4h, v2.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "giasm": "fcvtl v2.4s, v0.4h\nfcvtl v3.4s, v1.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfadd v2.4s, v2.4s, v3.4s\nfadd v1.4s, v0.4s, v1.4s\nfcvtn v0.4h, v2.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, <8 x half> %b) {\n  %r = fadd <8 x half> %a, %b\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fadd <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fadd <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
  },
  {
   "instr": "fadd",
   "ty": "<16 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 4,
+  "thru": 16,
   "lat": 3,
   "sizelat": 1,
   "size": 16,
@@ -93,7 +93,7 @@
   "asm": "fcvtl v4.4s, v2.4h\nfcvtl v5.4s, v0.4h\nfcvtl v6.4s, v3.4h\nfcvtl v7.4s, v1.4h\nfcvtl2 v2.4s, v2.8h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v3.4s, v3.8h\nfcvtl2 v1.4s, v1.8h\nfadd v4.4s, v5.4s, v4.4s\nfadd v5.4s, v7.4s, v6.4s\nfadd v2.4s, v0.4s, v2.4s\nfadd v3.4s, v1.4s, v3.4s\nfcvtn v0.4h, v4.4s\nfcvtn v1.4h, v5.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "giasm": "fcvtl v4.4s, v0.4h\nfcvtl v5.4s, v1.4h\nfcvtl v6.4s, v2.4h\nfcvtl v7.4s, v3.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v2.4s, v2.8h\nfcvtl2 v3.4s, v3.8h\nfadd v4.4s, v4.4s, v6.4s\nfadd v5.4s, v5.4s, v7.4s\nfadd v2.4s, v0.4s, v2.4s\nfadd v3.4s, v1.4s, v3.4s\nfcvtn v0.4h, v4.4s\nfcvtn v1.4h, v5.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, <16 x half> %b) {\n  %r = fadd <16 x half> %a, %b\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fadd <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fadd <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
  },
  {
   "instr": "fadd",
@@ -180,7 +180,7 @@
   "ty": "half",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 4,
   "lat": 3,
   "sizelat": 1,
   "size": 4,
@@ -189,7 +189,7 @@
   "asm": "fcvt s1, h1\nfcvt s0, h0\nfsub s0, s0, s1\nfcvt h0, s0\nret",
   "giasm": "fcvt s0, h0\nfcvt s1, h1\nfsub s0, s0, s1\nfcvt h0, s0\nret",
   "ll": "define half @test(half %a, half %b) {\n  %r = fsub half %a, %b\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fsub half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fsub half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fsub",
@@ -228,7 +228,7 @@
   "ty": "<4 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 4,
   "lat": 3,
   "sizelat": 1,
   "size": 4,
@@ -237,14 +237,14 @@
   "asm": "fcvtl v1.4s, v1.4h\nfcvtl v0.4s, v0.4h\nfsub v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "giasm": "fcvtl v0.4s, v0.4h\nfcvtl v1.4s, v1.4h\nfsub v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, <4 x half> %b) {\n  %r = fsub <4 x half> %a, %b\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fsub <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fsub <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
  },
  {
   "instr": "fsub",
   "ty": "<8 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 8,
   "lat": 3,
   "sizelat": 1,
   "size": 8,
@@ -253,14 +253,14 @@
   "asm": "fcvtl v2.4s, v1.4h\nfcvtl v3.4s, v0.4h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v0.4s, v0.8h\nfsub v2.4s, v3.4s, v2.4s\nfsub v1.4s, v0.4s, v1.4s\nfcvtn v0.4h, v2.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "giasm": "fcvtl v2.4s, v0.4h\nfcvtl v3.4s, v1.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfsub v2.4s, v2.4s, v3.4s\nfsub v1.4s, v0.4s, v1.4s\nfcvtn v0.4h, v2.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, <8 x half> %b) {\n  %r = fsub <8 x half> %a, %b\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fsub <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fsub <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
  },
  {
   "instr": "fsub",
   "ty": "<16 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 4,
+  "thru": 16,
   "lat": 3,
   "sizelat": 1,
   "size": 16,
@@ -269,7 +269,7 @@
   "asm": "fcvtl v4.4s, v2.4h\nfcvtl v5.4s, v0.4h\nfcvtl v6.4s, v3.4h\nfcvtl v7.4s, v1.4h\nfcvtl2 v2.4s, v2.8h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v3.4s, v3.8h\nfcvtl2 v1.4s, v1.8h\nfsub v4.4s, v5.4s, v4.4s\nfsub v5.4s, v7.4s, v6.4s\nfsub v2.4s, v0.4s, v2.4s\nfsub v3.4s, v1.4s, v3.4s\nfcvtn v0.4h, v4.4s\nfcvtn v1.4h, v5.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "giasm": "fcvtl v4.4s, v0.4h\nfcvtl v5.4s, v1.4h\nfcvtl v6.4s, v2.4h\nfcvtl v7.4s, v3.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v2.4s, v2.8h\nfcvtl2 v3.4s, v3.8h\nfsub v4.4s, v4.4s, v6.4s\nfsub v5.4s, v5.4s, v7.4s\nfsub v2.4s, v0.4s, v2.4s\nfsub v3.4s, v1.4s, v3.4s\nfcvtn v0.4h, v4.4s\nfcvtn v1.4h, v5.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, <16 x half> %b) {\n  %r = fsub <16 x half> %a, %b\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fsub <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fsub <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
  },
  {
   "instr": "fsub",
@@ -356,7 +356,7 @@
   "ty": "half",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 5,
   "lat": 3,
   "sizelat": 1,
   "size": 4,
@@ -365,7 +365,7 @@
   "asm": "fcvt s1, h1\nfcvt s0, h0\nfmul s0, s0, s1\nfcvt h0, s0\nret",
   "giasm": "fcvt s0, h0\nfcvt s1, h1\nfmul s0, s0, s1\nfcvt h0, s0\nret",
   "ll": "define half @test(half %a, half %b) {\n  %r = fmul half %a, %b\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fmul half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fmul half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fmul",
@@ -404,7 +404,7 @@
   "ty": "<4 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 5,
   "lat": 3,
   "sizelat": 1,
   "size": 4,
@@ -413,14 +413,14 @@
   "asm": "fcvtl v1.4s, v1.4h\nfcvtl v0.4s, v0.4h\nfmul v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "giasm": "fcvtl v0.4s, v0.4h\nfcvtl v1.4s, v1.4h\nfmul v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, <4 x half> %b) {\n  %r = fmul <4 x half> %a, %b\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fmul <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fmul <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
  },
  {
   "instr": "fmul",
   "ty": "<8 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 10,
   "lat": 3,
   "sizelat": 1,
   "size": 8,
@@ -429,14 +429,14 @@
   "asm": "fcvtl v2.4s, v1.4h\nfcvtl v3.4s, v0.4h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v0.4s, v0.8h\nfmul v2.4s, v3.4s, v2.4s\nfmul v1.4s, v0.4s, v1.4s\nfcvtn v0.4h, v2.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "giasm": "fcvtl v2.4s, v0.4h\nfcvtl v3.4s, v1.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfmul v2.4s, v2.4s, v3.4s\nfmul v1.4s, v0.4s, v1.4s\nfcvtn v0.4h, v2.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, <8 x half> %b) {\n  %r = fmul <8 x half> %a, %b\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fmul <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fmul <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
  },
  {
   "instr": "fmul",
   "ty": "<16 x half>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 4,
+  "thru": 20,
   "lat": 3,
   "sizelat": 1,
   "size": 16,
@@ -445,7 +445,7 @@
   "asm": "fcvtl v4.4s, v2.4h\nfcvtl v5.4s, v0.4h\nfcvtl v6.4s, v3.4h\nfcvtl v7.4s, v1.4h\nfcvtl2 v2.4s, v2.8h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v3.4s, v3.8h\nfcvtl2 v1.4s, v1.8h\nfmul v4.4s, v5.4s, v4.4s\nfmul v5.4s, v7.4s, v6.4s\nfmul v2.4s, v0.4s, v2.4s\nfmul v3.4s, v1.4s, v3.4s\nfcvtn v0.4h, v4.4s\nfcvtn v1.4h, v5.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "giasm": "fcvtl v4.4s, v0.4h\nfcvtl v5.4s, v1.4h\nfcvtl v6.4s, v2.4h\nfcvtl v7.4s, v3.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v2.4s, v2.8h\nfcvtl2 v3.4s, v3.8h\nfmul v4.4s, v4.4s, v6.4s\nfmul v5.4s, v5.4s, v7.4s\nfmul v2.4s, v0.4s, v2.4s\nfmul v3.4s, v1.4s, v3.4s\nfcvtn v0.4h, v4.4s\nfcvtn v1.4h, v5.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, <16 x half> %b) {\n  %r = fmul <16 x half> %a, %b\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fmul <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:20 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fmul <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
  },
  {
   "instr": "fmul",
@@ -532,7 +532,7 @@
   "ty": "half",
   "variant": "binop",
   "codesize": 4,
-  "thru": 2,
+  "thru": 5,
   "lat": 4,
   "sizelat": 4,
   "size": 4,
@@ -541,7 +541,7 @@
   "asm": "fcvt s1, h1\nfcvt s0, h0\nfdiv s0, s0, s1\nfcvt h0, s0\nret",
   "giasm": "fcvt s0, h0\nfcvt s1, h1\nfdiv s0, s0, s1\nfcvt h0, s0\nret",
   "ll": "define half @test(half %a, half %b) {\n  %r = fdiv half %a, %b\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:4 Lat:4 SizeLat:4 for:   %r = fdiv half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = fdiv half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fdiv",
@@ -580,7 +580,7 @@
   "ty": "<4 x half>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 2,
+  "thru": 5,
   "lat": 4,
   "sizelat": 4,
   "size": 4,
@@ -589,14 +589,14 @@
   "asm": "fcvtl v1.4s, v1.4h\nfcvtl v0.4s, v0.4h\nfdiv v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "giasm": "fcvtl v0.4s, v0.4h\nfcvtl v1.4s, v1.4h\nfdiv v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, <4 x half> %b) {\n  %r = fdiv <4 x half> %a, %b\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:4 Lat:4 SizeLat:4 for:   %r = fdiv <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = fdiv <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
  },
  {
   "instr": "fdiv",
   "ty": "<8 x half>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 2,
+  "thru": 10,
   "lat": 4,
   "sizelat": 4,
   "size": 8,
@@ -605,14 +605,14 @@
   "asm": "fcvtl v2.4s, v1.4h\nfcvtl v3.4s, v0.4h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v0.4s, v0.8h\nfdiv v2.4s, v3.4s, v2.4s\nfdiv v1.4s, v0.4s, v1.4s\nfcvtn v0.4h, v2.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "giasm": "fcvtl v2.4s, v0.4h\nfcvtl v3.4s, v1.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfdiv v2.4s, v2.4s, v3.4s\nfdiv v1.4s, v0.4s, v1.4s\nfcvtn v0.4h, v2.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, <8 x half> %b) {\n  %r = fdiv <8 x half> %a, %b\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:4 Lat:4 SizeLat:4 for:   %r = fdiv <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:4 Lat:4 SizeLat:4 for:   %r = fdiv <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
  },
  {
   "instr": "fdiv",
   "ty": "<16 x half>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 4,
+  "thru": 20,
   "lat": 4,
   "sizelat": 4,
   "size": 16,
@@ -621,7 +621,7 @@
   "asm": "fcvtl2 v4.4s, v2.8h\nfcvtl2 v5.4s, v0.8h\nfcvtl v2.4s, v2.4h\nfcvtl v0.4s, v0.4h\nfdiv v4.4s, v5.4s, v4.4s\nfcvtl v5.4s, v1.4h\nfcvtl2 v1.4s, v1.8h\nfdiv v0.4s, v0.4s, v2.4s\nfcvtl v2.4s, v3.4h\nfcvtl2 v3.4s, v3.8h\nfdiv v2.4s, v5.4s, v2.4s\nfcvtn v0.4h, v0.4s\nfcvtn2 v0.8h, v4.4s\nfdiv v3.4s, v1.4s, v3.4s\nfcvtn v1.4h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "giasm": "fcvtl v4.4s, v0.4h\nfcvtl v5.4s, v2.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v2.4s, v2.8h\nfdiv v4.4s, v4.4s, v5.4s\nfcvtl v5.4s, v3.4h\nfdiv v2.4s, v0.4s, v2.4s\nfcvtl v0.4s, v1.4h\nfdiv v5.4s, v0.4s, v5.4s\nfcvtl2 v0.4s, v1.8h\nfcvtl2 v1.4s, v3.8h\nfdiv v3.4s, v0.4s, v1.4s\nfcvtn v0.4h, v4.4s\nfcvtn v1.4h, v5.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, <16 x half> %b) {\n  %r = fdiv <16 x half> %a, %b\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fdiv <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:20 CodeSize:4 Lat:4 SizeLat:4 for:   %r = fdiv <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
  },
  {
   "instr": "fdiv",
@@ -708,7 +708,7 @@
   "ty": "half",
   "variant": "binop",
   "codesize": 4,
-  "thru": 10,
+  "thru": 13,
   "lat": 4,
   "sizelat": 4,
   "size": 6,
@@ -717,7 +717,7 @@
   "asm": "str x30, [sp, #-16]!                // 8-byte Folded Spill\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr x30, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "str x30, [sp, #-16]!                // 8-byte Folded Spill\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr x30, [sp], #16                  // 8-byte Folded Reload\nret",
   "ll": "define half @test(half %a, half %b) {\n  %r = frem half %a, %b\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem half %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "frem",
@@ -756,7 +756,7 @@
   "ty": "<4 x half>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 52,
+  "thru": 55,
   "lat": 4,
   "sizelat": 4,
   "size": 42,
@@ -765,14 +765,14 @@
   "asm": "sub sp, sp, #64\nstr x30, [sp, #48]                  // 8-byte Folded Spill\nmov h3, v0.h[1]\nmov h2, v1.h[1]\nstp q0, q1, [sp, #16]               // 32-byte Folded Spill\nfcvt s0, h3\nfcvt s1, h2\nbl fmodf\nldr q1, [sp, #16]                   // 16-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp]                        // 16-byte Folded Spill\nldr q0, [sp, #32]                   // 16-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr q1, [sp, #16]                   // 16-byte Folded Reload\nfcvt h3, s0\nldr q0, [sp, #32]                   // 16-byte Folded Reload\nmov h1, v1.h[2]\nmov h2, v0.h[2]\nldr q0, [sp]                        // 16-byte Folded Reload\nmov v3.h[1], v0.h[0]\nfcvt s0, h1\nfcvt s1, h2\nstr q3, [sp]                        // 16-byte Folded Spill\nbl fmodf\nldp q1, q2, [sp, #16]               // 32-byte Folded Reload\nfcvt h0, s0\nldr q3, [sp]                        // 16-byte Folded Reload\nmov h1, v1.h[3]\nmov h2, v2.h[3]\nmov v3.h[2], v0.h[0]\nfcvt s0, h1\nfcvt s1, h2\nstr q3, [sp]                        // 16-byte Folded Spill\nbl fmodf\nfcvt h1, s0\nldr q0, [sp]                        // 16-byte Folded Reload\nldr x30, [sp, #48]                  // 8-byte Folded Reload\nmov v0.h[3], v1.h[0]\nadd sp, sp, #64\nret",
   "giasm": "sub sp, sp, #112\nstp d13, d12, [sp, #48]             // 16-byte Folded Spill\nstp d11, d10, [sp, #64]             // 16-byte Folded Spill\nstp d9, d8, [sp, #80]               // 16-byte Folded Spill\nstr x30, [sp, #96]                  // 8-byte Folded Spill\nmov h8, v0.h[1]\nmov h9, v0.h[2]\nmov h10, v0.h[3]\nmov h11, v1.h[1]\nmov h12, v1.h[2]\nmov h13, v1.h[3]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt s2, h8\nfcvt h0, s0\nfcvt s1, h11\nstr q0, [sp, #32]                   // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nfcvt s2, h9\nfcvt h0, s0\nfcvt s1, h12\nstr q0, [sp]                        // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nfcvt s2, h10\nfcvt h0, s0\nfcvt s1, h13\nstr q0, [sp, #16]                   // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nldp q3, q2, [sp]                    // 32-byte Folded Reload\nfcvt h0, s0\nldr q1, [sp, #32]                   // 16-byte Folded Reload\nldp d9, d8, [sp, #80]               // 16-byte Folded Reload\nldp d11, d10, [sp, #64]             // 16-byte Folded Reload\nldr x30, [sp, #96]                  // 8-byte Folded Reload\nmov v1.h[1], v3.h[0]\nldp d13, d12, [sp, #48]             // 16-byte Folded Reload\nmov v1.h[2], v2.h[0]\nmov v1.h[3], v0.h[0]\nmov v0.16b, v1.16b\nadd sp, sp, #112\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, <4 x half> %b) {\n  %r = frem <4 x half> %a, %b\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:52 CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:55 CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
  },
  {
   "instr": "frem",
   "ty": "<8 x half>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 108,
+  "thru": 110,
   "lat": 4,
   "sizelat": 4,
   "size": 79,
@@ -781,14 +781,14 @@
   "asm": "sub sp, sp, #64\nstr x30, [sp, #48]                  // 8-byte Folded Spill\nmov h3, v0.h[1]\nmov h2, v1.h[1]\nstp q0, q1, [sp]                    // 32-byte Folded Spill\nfcvt s0, h3\nfcvt s1, h2\nbl fmodf\nfcvt h0, s0\nstr q0, [sp, #32]                   // 16-byte Folded Spill\nldp q0, q1, [sp]                    // 32-byte Folded Reload\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldp q1, q2, [sp, #16]               // 32-byte Folded Reload\nmov h1, v1.h[2]\nmov v0.h[1], v2.h[0]\nfcvt s1, h1\nstr q0, [sp, #32]                   // 16-byte Folded Spill\nldr q0, [sp]                        // 16-byte Folded Reload\nmov h0, v0.h[2]\nfcvt s0, h0\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #32]                   // 16-byte Folded Reload\nmov v1.h[2], v0.h[0]\nstr q1, [sp, #32]                   // 16-byte Folded Spill\nldp q0, q1, [sp]                    // 32-byte Folded Reload\nmov h0, v0.h[3]\nmov h1, v1.h[3]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #32]                   // 16-byte Folded Reload\nmov v1.h[3], v0.h[0]\nstr q1, [sp, #32]                   // 16-byte Folded Spill\nldp q0, q1, [sp]                    // 32-byte Folded Reload\nmov h0, v0.h[4]\nmov h1, v1.h[4]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #32]                   // 16-byte Folded Reload\nmov v1.h[4], v0.h[0]\nstr q1, [sp, #32]                   // 16-byte Folded Spill\nldp q0, q1, [sp]                    // 32-byte Folded Reload\nmov h0, v0.h[5]\nmov h1, v1.h[5]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #32]                   // 16-byte Folded Reload\nmov v1.h[5], v0.h[0]\nstr q1, [sp, #32]                   // 16-byte Folded Spill\nldp q0, q1, [sp]                    // 32-byte Folded Reload\nmov h0, v0.h[6]\nmov h1, v1.h[6]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #32]                   // 16-byte Folded Reload\nmov v1.h[6], v0.h[0]\nstr q1, [sp, #32]                   // 16-byte Folded Spill\nldp q0, q1, [sp]                    // 32-byte Folded Reload\nmov h0, v0.h[7]\nmov h1, v1.h[7]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h1, s0\nldr q0, [sp, #32]                   // 16-byte Folded Reload\nldr x30, [sp, #48]                  // 8-byte Folded Reload\nmov v0.h[7], v1.h[0]\nadd sp, sp, #64\nret",
   "giasm": "sub sp, sp, #192\nstp d15, d14, [sp, #112]            // 16-byte Folded Spill\nstp d13, d12, [sp, #128]            // 16-byte Folded Spill\nstp d11, d10, [sp, #144]            // 16-byte Folded Spill\nstp d9, d8, [sp, #160]              // 16-byte Folded Spill\nstr x30, [sp, #176]                 // 8-byte Folded Spill\nmov h2, v0.h[5]\nmov h11, v0.h[1]\nmov h12, v0.h[2]\nmov h13, v0.h[3]\nmov h14, v0.h[4]\nmov h8, v1.h[1]\nmov h9, v1.h[2]\nmov h10, v1.h[3]\nmov h15, v1.h[4]\nstr h2, [sp, #48]                   // 2-byte Folded Spill\nmov h2, v0.h[6]\nstr h2, [sp, #64]                   // 2-byte Folded Spill\nmov h2, v0.h[7]\nfcvt s0, h0\nstr h2, [sp, #96]                   // 2-byte Folded Spill\nmov h2, v1.h[5]\nstr h2, [sp, #186]                  // 2-byte Folded Spill\nmov h2, v1.h[6]\nstr h2, [sp, #188]                  // 2-byte Folded Spill\nmov h2, v1.h[7]\nfcvt s1, h1\nstr h2, [sp, #190]                  // 2-byte Folded Spill\nbl fmodf\nfcvt s2, h11\nfcvt h0, s0\nfcvt s1, h8\nstr q0, [sp, #80]                   // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nfcvt s2, h12\nfcvt h0, s0\nfcvt s1, h9\nstr q0, [sp, #32]                   // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nfcvt s2, h13\nfcvt h0, s0\nfcvt s1, h10\nstr q0, [sp, #16]                   // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nfcvt s2, h14\nfcvt h0, s0\nfcvt s1, h15\nstr q0, [sp]                        // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #48]                   // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #48]                   // 16-byte Folded Spill\nldr h0, [sp, #186]                  // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #64]                   // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #64]                   // 16-byte Folded Spill\nldr h0, [sp, #188]                  // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #96]                   // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #96]                   // 16-byte Folded Spill\nldr h0, [sp, #190]                  // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldp q2, q3, [sp, #16]               // 32-byte Folded Reload\nfcvt h0, s0\nldr q1, [sp, #80]                   // 16-byte Folded Reload\nldp d9, d8, [sp, #160]              // 16-byte Folded Reload\nldp d11, d10, [sp, #144]            // 16-byte Folded Reload\nldr x30, [sp, #176]                 // 8-byte Folded Reload\nmov v1.h[1], v3.h[0]\nldp d13, d12, [sp, #128]            // 16-byte Folded Reload\nldp d15, d14, [sp, #112]            // 16-byte Folded Reload\nmov v1.h[2], v2.h[0]\nldr q2, [sp]                        // 16-byte Folded Reload\nmov v1.h[3], v2.h[0]\nldp q3, q2, [sp, #48]               // 32-byte Folded Reload\nmov v1.h[4], v3.h[0]\nmov v1.h[5], v2.h[0]\nldr q2, [sp, #96]                   // 16-byte Folded Reload\nmov v1.h[6], v2.h[0]\nmov v1.h[7], v0.h[0]\nmov v0.16b, v1.16b\nadd sp, sp, #192\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, <8 x half> %b) {\n  %r = frem <8 x half> %a, %b\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:108 CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:110 CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
  },
  {
   "instr": "frem",
   "ty": "<16 x half>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 216,
+  "thru": 220,
   "lat": 4,
   "sizelat": 4,
   "size": 163,
@@ -797,7 +797,7 @@
   "asm": "sub sp, sp, #96\nstr x30, [sp, #80]                  // 8-byte Folded Spill\nstp q0, q1, [sp]                    // 32-byte Folded Spill\nmov h1, v2.h[1]\nstp q3, q2, [sp, #32]               // 32-byte Folded Spill\nmov h3, v0.h[1]\nfcvt s1, h1\nfcvt s0, h3\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nfcvt s1, h1\nstr q0, [sp, #64]                   // 16-byte Folded Spill\nldr q0, [sp]                        // 16-byte Folded Reload\nfcvt s0, h0\nbl fmodf\nfcvt h0, s0\nldp q1, q2, [sp, #48]               // 32-byte Folded Reload\nmov h1, v1.h[2]\nmov v0.h[1], v2.h[0]\nfcvt s1, h1\nstr q0, [sp, #64]                   // 16-byte Folded Spill\nldr q0, [sp]                        // 16-byte Folded Reload\nmov h0, v0.h[2]\nfcvt s0, h0\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #64]                   // 16-byte Folded Reload\nmov v1.h[2], v0.h[0]\nldr q0, [sp]                        // 16-byte Folded Reload\nmov h0, v0.h[3]\nstr q1, [sp, #64]                   // 16-byte Folded Spill\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov h1, v1.h[3]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #64]                   // 16-byte Folded Reload\nmov v1.h[3], v0.h[0]\nldr q0, [sp]                        // 16-byte Folded Reload\nmov h0, v0.h[4]\nstr q1, [sp, #64]                   // 16-byte Folded Spill\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov h1, v1.h[4]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #64]                   // 16-byte Folded Reload\nmov v1.h[4], v0.h[0]\nldr q0, [sp]                        // 16-byte Folded Reload\nmov h0, v0.h[5]\nstr q1, [sp, #64]                   // 16-byte Folded Spill\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov h1, v1.h[5]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #64]                   // 16-byte Folded Reload\nmov v1.h[5], v0.h[0]\nldr q0, [sp]                        // 16-byte Folded Reload\nmov h0, v0.h[6]\nstr q1, [sp, #64]                   // 16-byte Folded Spill\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov h1, v1.h[6]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #64]                   // 16-byte Folded Reload\nmov v1.h[6], v0.h[0]\nldr q0, [sp]                        // 16-byte Folded Reload\nmov h0, v0.h[7]\nstr q1, [sp, #64]                   // 16-byte Folded Spill\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov h1, v1.h[7]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #64]                   // 16-byte Folded Reload\nmov v1.h[7], v0.h[0]\nstr q1, [sp, #64]                   // 16-byte Folded Spill\nldp q0, q1, [sp, #16]               // 32-byte Folded Reload\nmov h0, v0.h[1]\nmov h1, v1.h[1]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nstr q0, [sp, #48]                   // 16-byte Folded Spill\nldp q0, q1, [sp, #16]               // 32-byte Folded Reload\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldp q1, q2, [sp, #32]               // 32-byte Folded Reload\nmov h1, v1.h[2]\nmov v0.h[1], v2.h[0]\nfcvt s1, h1\nstr q0, [sp, #48]                   // 16-byte Folded Spill\nldr q0, [sp, #16]                   // 16-byte Folded Reload\nmov h0, v0.h[2]\nfcvt s0, h0\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov v1.h[2], v0.h[0]\nstr q1, [sp, #48]                   // 16-byte Folded Spill\nldp q0, q1, [sp, #16]               // 32-byte Folded Reload\nmov h0, v0.h[3]\nmov h1, v1.h[3]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov v1.h[3], v0.h[0]\nstr q1, [sp, #48]                   // 16-byte Folded Spill\nldp q0, q1, [sp, #16]               // 32-byte Folded Reload\nmov h0, v0.h[4]\nmov h1, v1.h[4]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov v1.h[4], v0.h[0]\nstr q1, [sp, #48]                   // 16-byte Folded Spill\nldp q0, q1, [sp, #16]               // 32-byte Folded Reload\nmov h0, v0.h[5]\nmov h1, v1.h[5]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov v1.h[5], v0.h[0]\nstr q1, [sp, #48]                   // 16-byte Folded Spill\nldp q0, q1, [sp, #16]               // 32-byte Folded Reload\nmov h0, v0.h[6]\nmov h1, v1.h[6]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfcvt h0, s0\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nmov v1.h[6], v0.h[0]\nstr q1, [sp, #48]                   // 16-byte Folded Spill\nldp q0, q1, [sp, #16]               // 32-byte Folded Reload\nmov h0, v0.h[7]\nmov h1, v1.h[7]\nfcvt s0, h0\nfcvt s1, h1\nbl fmodf\nfmov s1, s0\nldr x30, [sp, #80]                  // 8-byte Folded Reload\nfcvt h2, s1\nldp q1, q0, [sp, #48]               // 32-byte Folded Reload\nmov v1.h[7], v2.h[0]\nadd sp, sp, #96\nret",
   "giasm": "sub sp, sp, #448\nstp d15, d14, [sp, #368]            // 16-byte Folded Spill\nstp d13, d12, [sp, #384]            // 16-byte Folded Spill\nstp d11, d10, [sp, #400]            // 16-byte Folded Spill\nstp d9, d8, [sp, #416]              // 16-byte Folded Spill\nstp x29, x30, [sp, #432]            // 16-byte Folded Spill\nmov v4.16b, v1.16b\nstr q1, [sp, #112]                  // 16-byte Folded Spill\nmov h1, v0.h[4]\nmov h12, v0.h[1]\nmov h13, v0.h[2]\nstr q3, [sp, #16]                   // 16-byte Folded Spill\nmov h14, v0.h[3]\nmov h15, v2.h[1]\nmov h8, v2.h[2]\nmov h9, v2.h[3]\nmov h10, v2.h[4]\nmov h11, v2.h[5]\nstr h1, [sp, #272]                  // 2-byte Folded Spill\nmov h1, v0.h[5]\nstr h1, [sp, #240]                  // 2-byte Folded Spill\nmov h1, v0.h[6]\nstr h1, [sp, #176]                  // 2-byte Folded Spill\nmov h1, v0.h[7]\nfcvt s0, h0\nstr h1, [sp, #144]                  // 2-byte Folded Spill\nmov h1, v4.h[1]\nstr h1, [sp, #48]                   // 2-byte Folded Spill\nmov h1, v4.h[2]\nstr h1, [sp, #80]                   // 2-byte Folded Spill\nmov h1, v4.h[3]\nstr h1, [sp, #128]                  // 2-byte Folded Spill\nmov h1, v4.h[4]\nstr h1, [sp, #192]                  // 2-byte Folded Spill\nmov h1, v4.h[5]\nstr h1, [sp, #256]                  // 2-byte Folded Spill\nmov h1, v4.h[6]\nstr h1, [sp, #336]                  // 2-byte Folded Spill\nmov h1, v4.h[7]\nstr h1, [sp, #352]                  // 2-byte Folded Spill\nmov h1, v2.h[6]\nstr h1, [sp, #12]                   // 2-byte Folded Spill\nmov h1, v2.h[7]\nstr h1, [sp, #14]                   // 2-byte Folded Spill\nmov h1, v3.h[1]\nstr h1, [sp, #44]                   // 2-byte Folded Spill\nmov h1, v3.h[2]\nstr h1, [sp, #46]                   // 2-byte Folded Spill\nmov h1, v3.h[3]\nstr h1, [sp, #78]                   // 2-byte Folded Spill\nmov h1, v3.h[4]\nstr h1, [sp, #110]                  // 2-byte Folded Spill\nmov h1, v3.h[5]\nstr h1, [sp, #174]                  // 2-byte Folded Spill\nmov h1, v3.h[6]\nstr h1, [sp, #238]                  // 2-byte Folded Spill\nmov h1, v3.h[7]\nstr h1, [sp, #302]                  // 2-byte Folded Spill\nfcvt s1, h2\nbl fmodf\nfcvt s2, h12\nfcvt h0, s0\nfcvt s1, h15\nstr q0, [sp, #304]                  // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nfcvt s2, h13\nfcvt h0, s0\nfcvt s1, h8\nstr q0, [sp, #208]                  // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nfcvt s2, h14\nfcvt h0, s0\nfcvt s1, h9\nstr q0, [sp, #320]                  // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #272]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nfcvt s1, h10\nstr q0, [sp, #272]                  // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #240]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nfcvt s1, h11\nstr q0, [sp, #240]                  // 16-byte Folded Spill\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #176]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #176]                  // 16-byte Folded Spill\nldr h0, [sp, #12]                   // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #144]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #144]                  // 16-byte Folded Spill\nldr h0, [sp, #14]                   // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr q1, [sp, #112]                  // 16-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #112]                  // 16-byte Folded Spill\nldr q0, [sp, #16]                   // 16-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #48]                   // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #48]                   // 16-byte Folded Spill\nldr h0, [sp, #44]                   // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #80]                   // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #80]                   // 16-byte Folded Spill\nldr h0, [sp, #46]                   // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #128]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #128]                  // 16-byte Folded Spill\nldr h0, [sp, #78]                   // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #192]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #192]                  // 16-byte Folded Spill\nldr h0, [sp, #110]                  // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #256]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #256]                  // 16-byte Folded Spill\nldr h0, [sp, #174]                  // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #336]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #336]                  // 16-byte Folded Spill\nldr h0, [sp, #238]                  // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr h1, [sp, #352]                  // 2-byte Folded Reload\nfcvt h0, s0\nfcvt s2, h1\nstr q0, [sp, #352]                  // 16-byte Folded Spill\nldr h0, [sp, #302]                  // 2-byte Folded Reload\nfcvt s1, h0\nfmov s0, s2\nbl fmodf\nldr q3, [sp, #304]                  // 16-byte Folded Reload\nldr q2, [sp, #208]                  // 16-byte Folded Reload\nldr q1, [sp, #48]                   // 16-byte Folded Reload\nldp x29, x30, [sp, #432]            // 16-byte Folded Reload\nmov v3.h[1], v2.h[0]\nldr q2, [sp, #80]                   // 16-byte Folded Reload\nldp d9, d8, [sp, #416]              // 16-byte Folded Reload\nmov v1.h[1], v2.h[0]\nldr q2, [sp, #320]                  // 16-byte Folded Reload\nldp d11, d10, [sp, #400]            // 16-byte Folded Reload\nmov v3.h[2], v2.h[0]\nldr q2, [sp, #128]                  // 16-byte Folded Reload\nldp d13, d12, [sp, #384]            // 16-byte Folded Reload\nmov v1.h[2], v2.h[0]\nldr q2, [sp, #272]                  // 16-byte Folded Reload\nldp d15, d14, [sp, #368]            // 16-byte Folded Reload\nmov v3.h[3], v2.h[0]\nldr q2, [sp, #192]                  // 16-byte Folded Reload\nmov v1.h[3], v2.h[0]\nldp q4, q2, [sp, #240]              // 32-byte Folded Reload\nmov v3.h[4], v4.h[0]\nmov v1.h[4], v2.h[0]\nldr q2, [sp, #176]                  // 16-byte Folded Reload\nmov v3.h[5], v2.h[0]\nldr q2, [sp, #336]                  // 16-byte Folded Reload\nmov v1.h[5], v2.h[0]\nfcvt h2, s0\nldr q0, [sp, #144]                  // 16-byte Folded Reload\nmov v3.h[6], v0.h[0]\nldr q0, [sp, #352]                  // 16-byte Folded Reload\nmov v1.h[6], v0.h[0]\nldr q0, [sp, #112]                  // 16-byte Folded Reload\nmov v3.h[7], v0.h[0]\nmov v1.h[7], v2.h[0]\nmov v0.16b, v3.16b\nadd sp, sp, #448\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, <16 x half> %b) {\n  %r = frem <16 x half> %a, %b\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:216 CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:220 CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
  },
  {
   "instr": "frem",
@@ -2292,7 +2292,7 @@
   "ty": "half",
   "variant": "unop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 1,
   "lat": 3,
   "sizelat": 1,
   "size": 3,
@@ -2301,7 +2301,7 @@
   "asm": "fmov w8, s0\neor w8, w8, #0x8000\nfmov s0, w8\nret",
   "giasm": "fmov w8, s0\neor w8, w8, #0xffff8000\nfmov s0, w8\nret",
   "ll": "define half @test(half %a) {\n  %r = fneg half %a\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fneg half %a\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:1 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fneg half %a\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fneg",
@@ -2340,7 +2340,7 @@
   "ty": "<4 x half>",
   "variant": "unop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 1,
   "lat": 3,
   "sizelat": 1,
   "size": 2,
@@ -2349,14 +2349,14 @@
   "asm": "movi v1.4h, #128, lsl #8\neor v0.8b, v0.8b, v1.8b\nret",
   "giasm": "movi v1.4h, #128, lsl #8\neor v0.8b, v0.8b, v1.8b\nret",
   "ll": "define <4 x half> @test(<4 x half> %a) {\n  %r = fneg <4 x half> %a\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fneg <4 x half> %a\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:1 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fneg <4 x half> %a\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
  },
  {
   "instr": "fneg",
   "ty": "<8 x half>",
   "variant": "unop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 1,
   "lat": 3,
   "sizelat": 1,
   "size": 2,
@@ -2365,14 +2365,14 @@
   "asm": "movi v1.8h, #128, lsl #8\neor v0.16b, v0.16b, v1.16b\nret",
   "giasm": "movi v1.8h, #128, lsl #8\neor v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <8 x half> @test(<8 x half> %a) {\n  %r = fneg <8 x half> %a\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fneg <8 x half> %a\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:1 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fneg <8 x half> %a\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
  },
  {
   "instr": "fneg",
   "ty": "<16 x half>",
   "variant": "unop",
   "codesize": 1,
-  "thru": 4,
+  "thru": 2,
   "lat": 3,
   "sizelat": 1,
   "size": 3,
@@ -2381,7 +2381,7 @@
   "asm": "movi v2.8h, #128, lsl #8\neor v0.16b, v0.16b, v2.16b\neor v1.16b, v1.16b, v2.16b\nret",
   "giasm": "movi v2.8h, #128, lsl #8\neor v0.16b, v0.16b, v2.16b\neor v1.16b, v1.16b, v2.16b\nret",
   "ll": "define <16 x half> @test(<16 x half> %a) {\n  %r = fneg <16 x half> %a\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fneg <16 x half> %a\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = fneg <16 x half> %a\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
  },
  {
   "instr": "fneg",
@@ -4452,7 +4452,7 @@
   "ty": "<4 x half>",
   "variant": "triop",
   "codesize": 2,
-  "thru": 4,
+  "thru": 9,
   "lat": 6,
   "sizelat": 2,
   "size": 8,
@@ -4461,14 +4461,14 @@
   "asm": "fcvtl v1.4s, v1.4h\nfcvtl v0.4s, v0.4h\nfmul v0.4s, v0.4s, v1.4s\nfcvtl v1.4s, v2.4h\nfcvtn v0.4h, v0.4s\nfcvtl v0.4s, v0.4h\nfadd v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "giasm": "fcvtl v0.4s, v0.4h\nfcvtl v1.4s, v1.4h\nfmul v0.4s, v0.4s, v1.4s\nfcvtl v1.4s, v2.4h\nfcvtn v0.4h, v0.4s\nfcvtl v0.4s, v0.4h\nfadd v0.4s, v0.4s, v1.4s\nfcvtn v0.4h, v0.4s\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, <4 x half> %b, <4 x half> %c) {\n  %r = call <4 x half> @llvm.fmuladd(<4 x half> %a, <4 x half> %b, <4 x half> %c)\n  ret <4 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:6 SizeLat:2 for:   %r = call <4 x half> @llvm.fmuladd.v4f16(<4 x half> %a, <4 x half> %b, <4 x half> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:2 Lat:6 SizeLat:2 for:   %r = call <4 x half> @llvm.fmuladd.v4f16(<4 x half> %a, <4 x half> %b, <4 x half> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
  },
  {
   "instr": "fmuladd",
   "ty": "<8 x half>",
   "variant": "triop",
   "codesize": 2,
-  "thru": 4,
+  "thru": 18,
   "lat": 6,
   "sizelat": 2,
   "size": 16,
@@ -4477,14 +4477,14 @@
   "asm": "fcvtl v3.4s, v1.4h\nfcvtl v4.4s, v0.4h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v0.4s, v0.8h\nfmul v3.4s, v4.4s, v3.4s\nfmul v0.4s, v0.4s, v1.4s\nfcvtn v1.4h, v3.4s\nfcvtl v3.4s, v2.4h\nfcvtl2 v2.4s, v2.8h\nfcvtn2 v1.8h, v0.4s\nfcvtl v0.4s, v1.4h\nfcvtl2 v1.4s, v1.8h\nfadd v0.4s, v0.4s, v3.4s\nfadd v1.4s, v1.4s, v2.4s\nfcvtn v0.4h, v0.4s\nfcvtn2 v0.8h, v1.4s\nret",
   "giasm": "fcvtl v3.4s, v0.4h\nfcvtl v4.4s, v1.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfmul v3.4s, v3.4s, v4.4s\nfmul v0.4s, v0.4s, v1.4s\nfcvtn v1.4h, v3.4s\nfcvtl v3.4s, v2.4h\nfcvtl2 v2.4s, v2.8h\nfcvtn v0.4h, v0.4s\nfcvtl v1.4s, v1.4h\nfcvtl v0.4s, v0.4h\nfadd v1.4s, v1.4s, v3.4s\nfadd v2.4s, v0.4s, v2.4s\nfcvtn v0.4h, v1.4s\nfcvtn2 v0.8h, v2.4s\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, <8 x half> %b, <8 x half> %c) {\n  %r = call <8 x half> @llvm.fmuladd(<8 x half> %a, <8 x half> %b, <8 x half> %c)\n  ret <8 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:6 SizeLat:2 for:   %r = call <8 x half> @llvm.fmuladd.v8f16(<8 x half> %a, <8 x half> %b, <8 x half> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:2 Lat:6 SizeLat:2 for:   %r = call <8 x half> @llvm.fmuladd.v8f16(<8 x half> %a, <8 x half> %b, <8 x half> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
  },
  {
   "instr": "fmuladd",
   "ty": "<16 x half>",
   "variant": "triop",
   "codesize": 2,
-  "thru": 8,
+  "thru": 36,
   "lat": 6,
   "sizelat": 2,
   "size": 32,
@@ -4493,7 +4493,7 @@
   "asm": "fcvtl v6.4s, v2.4h\nfcvtl v7.4s, v0.4h\nfcvtl v16.4s, v3.4h\nfcvtl v17.4s, v1.4h\nfcvtl2 v2.4s, v2.8h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v3.4s, v3.8h\nfcvtl2 v1.4s, v1.8h\nfmul v6.4s, v7.4s, v6.4s\nfmul v7.4s, v17.4s, v16.4s\nfmul v0.4s, v0.4s, v2.4s\nfmul v1.4s, v1.4s, v3.4s\nfcvtn v2.4h, v6.4s\nfcvtl v6.4s, v5.4h\nfcvtn v3.4h, v7.4s\nfcvtn2 v2.8h, v0.4s\nfcvtl v0.4s, v4.4h\nfcvtl2 v4.4s, v4.8h\nfcvtn2 v3.8h, v1.4s\nfcvtl v1.4s, v2.4h\nfcvtl2 v2.4s, v2.8h\nfcvtl v7.4s, v3.4h\nfadd v0.4s, v1.4s, v0.4s\nfcvtl2 v1.4s, v3.8h\nfcvtl2 v3.4s, v5.8h\nfadd v5.4s, v7.4s, v6.4s\nfadd v2.4s, v2.4s, v4.4s\nfcvtn v0.4h, v0.4s\nfadd v3.4s, v1.4s, v3.4s\nfcvtn v1.4h, v5.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v3.4s\nret",
   "giasm": "fcvtl v6.4s, v0.4h\nfcvtl v7.4s, v2.4h\nfcvtl v16.4s, v1.4h\nfcvtl v17.4s, v3.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v2.4s, v2.8h\nfcvtl2 v3.4s, v3.8h\nfmul v6.4s, v6.4s, v7.4s\nfmul v7.4s, v16.4s, v17.4s\nfmul v0.4s, v0.4s, v2.4s\nfmul v1.4s, v1.4s, v3.4s\nfcvtn v2.4h, v6.4s\nfcvtl v6.4s, v4.4h\nfcvtl2 v4.4s, v4.8h\nfcvtn v3.4h, v7.4s\nfcvtl v7.4s, v5.4h\nfcvtl2 v5.4s, v5.8h\nfcvtn v0.4h, v0.4s\nfcvtn v1.4h, v1.4s\nfcvtl v2.4s, v2.4h\nfcvtl v3.4s, v3.4h\nfcvtl v0.4s, v0.4h\nfcvtl v1.4s, v1.4h\nfadd v2.4s, v2.4s, v6.4s\nfadd v3.4s, v3.4s, v7.4s\nfadd v4.4s, v0.4s, v4.4s\nfadd v5.4s, v1.4s, v5.4s\nfcvtn v0.4h, v2.4s\nfcvtn v1.4h, v3.4s\nfcvtn2 v0.8h, v4.4s\nfcvtn2 v1.8h, v5.4s\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, <16 x half> %b, <16 x half> %c) {\n  %r = call <16 x half> @llvm.fmuladd(<16 x half> %a, <16 x half> %b, <16 x half> %c)\n  ret <16 x half> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:2 Lat:6 SizeLat:2 for:   %r = call <16 x half> @llvm.fmuladd.v16f16(<16 x half> %a, <16 x half> %b, <16 x half> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:36 CodeSize:2 Lat:6 SizeLat:2 for:   %r = call <16 x half> @llvm.fmuladd.v16f16(<16 x half> %a, <16 x half> %b, <16 x half> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
  },
  {
   "instr": "fmuladd",
@@ -14612,7 +14612,7 @@
   "ty": "<4 x half>",
   "variant": "reduce",
   "codesize": 11,
-  "thru": 18,
+  "thru": 26,
   "lat": 22,
   "sizelat": 14,
   "size": 19,
@@ -14621,14 +14621,14 @@
   "asm": "fcvt s2, h0\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[1]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[2]\nmov h0, v0.h[3]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s0, h0\nfcvt s1, h1\nfadd s1, s1, s2\nfcvt h1, s1\nfcvt s1, h1\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "giasm": "fcvt s1, h1\nfcvt s2, h0\nfadd s1, s1, s2\nmov h2, v0.h[1]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[2]\nmov h0, v0.h[3]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s0, h0\nfcvt s1, h1\nfadd s1, s1, s2\nfcvt h1, s1\nfcvt s1, h1\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<4 x half> %a, half %b) {\n  %r = call half @llvm.vector.reduce.fadd(half %b, <4 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:22 SizeLat:14 for:   %r = call half @llvm.vector.reduce.fadd.v4f16(half %b, <4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:11 Lat:22 SizeLat:14 for:   %r = call half @llvm.vector.reduce.fadd.v4f16(half %b, <4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fadd",
   "ty": "<4 x half>",
   "variant": "reducefast",
   "codesize": 8,
-  "thru": 10,
+  "thru": 14,
   "lat": 12,
   "sizelat": 8,
   "size": 13,
@@ -14637,14 +14637,14 @@
   "asm": "mov h2, v0.h[1]\nmov h3, v0.h[3]\nmov h4, v0.h[2]\nfcvt s0, h0\nfcvt s1, h1\nfcvt s2, h2\nfcvt s4, h4\nfcvt s3, h3\nfadd s0, s0, s2\nfadd s2, s4, s3\nfadd s0, s0, s2\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "giasm": "fcvtl v0.4s, v0.4h\nfcvt s1, h1\nfaddp v0.4s, v0.4s, v0.4s\nfaddp s0, v0.2s\nfcvt h0, s0\nfcvt s0, h0\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<4 x half> %a, half %b) {\n  %r = call fast half @llvm.vector.reduce.fadd(half %b, <4 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:8 Lat:12 SizeLat:8 for:   %r = call fast half @llvm.vector.reduce.fadd.v4f16(half %b, <4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:14 CodeSize:8 Lat:12 SizeLat:8 for:   %r = call fast half @llvm.vector.reduce.fadd.v4f16(half %b, <4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fadd",
   "ty": "<8 x half>",
   "variant": "reduce",
   "codesize": 23,
-  "thru": 38,
+  "thru": 54,
   "lat": 46,
   "sizelat": 30,
   "size": 39,
@@ -14653,14 +14653,14 @@
   "asm": "fcvt s1, h1\nfcvt s2, h0\nfadd s1, s1, s2\nmov h2, v0.h[1]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[2]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[3]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[4]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[5]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[6]\nmov h0, v0.h[7]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s0, h0\nfcvt s1, h1\nfadd s1, s1, s2\nfcvt h1, s1\nfcvt s1, h1\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "giasm": "fcvt s1, h1\nfcvt s2, h0\nfadd s1, s1, s2\nmov h2, v0.h[1]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[2]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[3]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[4]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[5]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfadd s1, s1, s2\nmov h2, v0.h[6]\nmov h0, v0.h[7]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s0, h0\nfcvt s1, h1\nfadd s1, s1, s2\nfcvt h1, s1\nfcvt s1, h1\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<8 x half> %a, half %b) {\n  %r = call half @llvm.vector.reduce.fadd(half %b, <8 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:46 SizeLat:30 for:   %r = call half @llvm.vector.reduce.fadd.v8f16(half %b, <8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:54 CodeSize:23 Lat:46 SizeLat:30 for:   %r = call half @llvm.vector.reduce.fadd.v8f16(half %b, <8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fadd",
   "ty": "<8 x half>",
   "variant": "reducefast",
   "codesize": 27,
-  "thru": 30,
+  "thru": 48,
   "lat": 33,
   "sizelat": 27,
   "size": 25,
@@ -14669,14 +14669,14 @@
   "asm": "mov h2, v0.h[3]\nmov h3, v0.h[2]\nmov h4, v0.h[1]\nmov h5, v0.h[5]\nmov h6, v0.h[4]\nfcvt s7, h0\nmov h16, v0.h[6]\nmov h0, v0.h[7]\nfcvt s1, h1\nfcvt s4, h4\nfcvt s3, h3\nfcvt s2, h2\nfcvt s6, h6\nfcvt s5, h5\nfcvt s0, h0\nfadd s4, s7, s4\nfadd s2, s3, s2\nfcvt s3, h16\nfadd s5, s6, s5\nfadd s0, s1, s0\nfadd s2, s4, s2\nfadd s3, s5, s3\nfadd s2, s2, s3\nfadd s0, s0, s2\nfcvt h0, s0\nret",
   "giasm": "fcvtl v2.4s, v0.4h\nfcvtl2 v0.4s, v0.8h\nfcvt s1, h1\nfadd v0.4s, v2.4s, v0.4s\nfaddp v0.4s, v0.4s, v0.4s\nfaddp s0, v0.2s\nfcvt h0, s0\nfcvt s0, h0\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<8 x half> %a, half %b) {\n  %r = call fast half @llvm.vector.reduce.fadd(half %b, <8 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:30 CodeSize:27 Lat:33 SizeLat:27 for:   %r = call fast half @llvm.vector.reduce.fadd.v8f16(half %b, <8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:48 CodeSize:27 Lat:33 SizeLat:27 for:   %r = call fast half @llvm.vector.reduce.fadd.v8f16(half %b, <8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fadd",
   "ty": "<16 x half>",
   "variant": "reduce",
   "codesize": 46,
-  "thru": 76,
+  "thru": 108,
   "lat": 92,
   "sizelat": 60,
   "size": 78,
@@ -14685,14 +14685,14 @@
   "asm": "fcvt s2, h2\nfcvt s3, h0\nfadd s2, s2, s3\nmov h3, v0.h[1]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[2]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[3]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[4]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[5]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[6]\nmov h0, v0.h[7]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s0, h0\nfcvt s2, h2\nfadd s2, s2, s3\nfcvt h2, s2\nfcvt s2, h2\nfadd s0, s2, s0\nfcvt s2, h1\nfcvt h0, s0\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[1]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[2]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[3]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[4]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[5]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[6]\nmov h1, v1.h[7]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s1, h1\nfcvt s0, h0\nfadd s0, s0, s2\nfcvt h0, s0\nfcvt s0, h0\nfadd s0, s0, s1\nfcvt h0, s0\nret",
   "giasm": "fcvt s2, h2\nfcvt s3, h0\nfadd s2, s2, s3\nmov h3, v0.h[1]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[2]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[3]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[4]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[5]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfadd s2, s2, s3\nmov h3, v0.h[6]\nmov h0, v0.h[7]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s0, h0\nfcvt s2, h2\nfadd s2, s2, s3\nfcvt h2, s2\nfcvt s2, h2\nfadd s0, s2, s0\nfcvt s2, h1\nfcvt h0, s0\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[1]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[2]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[3]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[4]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[5]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfadd s0, s0, s2\nmov h2, v1.h[6]\nmov h1, v1.h[7]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s1, h1\nfcvt s0, h0\nfadd s0, s0, s2\nfcvt h0, s0\nfcvt s0, h0\nfadd s0, s0, s1\nfcvt h0, s0\nret",
   "ll": "define half @test(<16 x half> %a, half %b) {\n  %r = call half @llvm.vector.reduce.fadd(half %b, <16 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:92 SizeLat:60 for:   %r = call half @llvm.vector.reduce.fadd.v16f16(half %b, <16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:108 CodeSize:46 Lat:92 SizeLat:60 for:   %r = call half @llvm.vector.reduce.fadd.v16f16(half %b, <16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fadd",
   "ty": "<16 x half>",
   "variant": "reducefast",
   "codesize": 44,
-  "thru": 48,
+  "thru": 72,
   "lat": 52,
   "sizelat": 44,
   "size": 33,
@@ -14701,7 +14701,7 @@
   "asm": "fcvtl v3.4s, v1.4h\nfcvtl v4.4s, v0.4h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v0.4s, v0.8h\nfcvt s2, h2\nfadd v3.4s, v4.4s, v3.4s\nfadd v0.4s, v0.4s, v1.4s\nfcvtn v1.4h, v3.4s\nfcvtn2 v1.8h, v0.4s\nmov h0, v1.h[1]\nmov h3, v1.h[2]\nmov h4, v1.h[3]\nmov h5, v1.h[4]\nmov h6, v1.h[5]\nfcvt s7, h1\nmov h16, v1.h[6]\nmov h1, v1.h[7]\nfcvt s0, h0\nfcvt s3, h3\nfcvt s4, h4\nfcvt s5, h5\nfcvt s6, h6\nfcvt s1, h1\nfadd s0, s7, s0\nfadd s3, s3, s4\nfadd s4, s5, s6\nfcvt s5, h16\nfadd s1, s2, s1\nfadd s0, s0, s3\nfadd s3, s4, s5\nfadd s0, s0, s3\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "giasm": "fcvtl v3.4s, v0.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl v4.4s, v1.4h\nfcvtl2 v1.4s, v1.8h\nfadd v0.4s, v3.4s, v0.4s\nfadd v1.4s, v4.4s, v1.4s\nfadd v0.4s, v0.4s, v1.4s\nfcvt s1, h2\nfaddp v0.4s, v0.4s, v0.4s\nfaddp s0, v0.2s\nfcvt h0, s0\nfcvt s0, h0\nfadd s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<16 x half> %a, half %b) {\n  %r = call fast half @llvm.vector.reduce.fadd(half %b, <16 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:48 CodeSize:44 Lat:52 SizeLat:44 for:   %r = call fast half @llvm.vector.reduce.fadd.v16f16(half %b, <16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:72 CodeSize:44 Lat:52 SizeLat:44 for:   %r = call fast half @llvm.vector.reduce.fadd.v16f16(half %b, <16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fadd",
@@ -14868,7 +14868,7 @@
   "ty": "<4 x half>",
   "variant": "reduce",
   "codesize": 11,
-  "thru": 18,
+  "thru": 30,
   "lat": 22,
   "sizelat": 14,
   "size": 19,
@@ -14877,14 +14877,14 @@
   "asm": "fcvt s2, h0\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[1]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[2]\nmov h0, v0.h[3]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s0, h0\nfcvt s1, h1\nfmul s1, s1, s2\nfcvt h1, s1\nfcvt s1, h1\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "giasm": "fcvt s1, h1\nfcvt s2, h0\nfmul s1, s1, s2\nmov h2, v0.h[1]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[2]\nmov h0, v0.h[3]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s0, h0\nfcvt s1, h1\nfmul s1, s1, s2\nfcvt h1, s1\nfcvt s1, h1\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<4 x half> %a, half %b) {\n  %r = call half @llvm.vector.reduce.fmul(half %b, <4 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:22 SizeLat:14 for:   %r = call half @llvm.vector.reduce.fmul.v4f16(half %b, <4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:30 CodeSize:11 Lat:22 SizeLat:14 for:   %r = call half @llvm.vector.reduce.fmul.v4f16(half %b, <4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fmul",
   "ty": "<4 x half>",
   "variant": "reducefast",
   "codesize": 8,
-  "thru": 10,
+  "thru": 16,
   "lat": 12,
   "sizelat": 8,
   "size": 13,
@@ -14893,14 +14893,14 @@
   "asm": "mov h2, v0.h[1]\nmov h3, v0.h[3]\nmov h4, v0.h[2]\nfcvt s0, h0\nfcvt s1, h1\nfcvt s2, h2\nfcvt s4, h4\nfcvt s3, h3\nfmul s0, s0, s2\nfmul s2, s4, s3\nfmul s0, s0, s2\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "giasm": "fcvtl v0.4s, v0.4h\nfcvt s1, h1\nmov d2, v0.d[1]\nfmul v0.2s, v0.2s, v2.2s\nmov s2, v0.s[1]\nfmul s0, s0, s2\nfcvt h0, s0\nfcvt s0, h0\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<4 x half> %a, half %b) {\n  %r = call fast half @llvm.vector.reduce.fmul(half %b, <4 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:8 Lat:12 SizeLat:8 for:   %r = call fast half @llvm.vector.reduce.fmul.v4f16(half %b, <4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:8 Lat:12 SizeLat:8 for:   %r = call fast half @llvm.vector.reduce.fmul.v4f16(half %b, <4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fmul",
   "ty": "<8 x half>",
   "variant": "reduce",
   "codesize": 23,
-  "thru": 38,
+  "thru": 62,
   "lat": 46,
   "sizelat": 30,
   "size": 39,
@@ -14909,14 +14909,14 @@
   "asm": "fcvt s1, h1\nfcvt s2, h0\nfmul s1, s1, s2\nmov h2, v0.h[1]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[2]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[3]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[4]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[5]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[6]\nmov h0, v0.h[7]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s0, h0\nfcvt s1, h1\nfmul s1, s1, s2\nfcvt h1, s1\nfcvt s1, h1\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "giasm": "fcvt s1, h1\nfcvt s2, h0\nfmul s1, s1, s2\nmov h2, v0.h[1]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[2]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[3]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[4]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[5]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s1, h1\nfmul s1, s1, s2\nmov h2, v0.h[6]\nmov h0, v0.h[7]\nfcvt h1, s1\nfcvt s2, h2\nfcvt s0, h0\nfcvt s1, h1\nfmul s1, s1, s2\nfcvt h1, s1\nfcvt s1, h1\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<8 x half> %a, half %b) {\n  %r = call half @llvm.vector.reduce.fmul(half %b, <8 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:46 SizeLat:30 for:   %r = call half @llvm.vector.reduce.fmul.v8f16(half %b, <8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:62 CodeSize:23 Lat:46 SizeLat:30 for:   %r = call half @llvm.vector.reduce.fmul.v8f16(half %b, <8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fmul",
   "ty": "<8 x half>",
   "variant": "reducefast",
   "codesize": 27,
-  "thru": 30,
+  "thru": 54,
   "lat": 33,
   "sizelat": 27,
   "size": 25,
@@ -14925,14 +14925,14 @@
   "asm": "mov h2, v0.h[3]\nmov h3, v0.h[2]\nmov h4, v0.h[1]\nmov h5, v0.h[5]\nmov h6, v0.h[4]\nfcvt s7, h0\nmov h16, v0.h[6]\nmov h0, v0.h[7]\nfcvt s1, h1\nfcvt s4, h4\nfcvt s3, h3\nfcvt s2, h2\nfcvt s6, h6\nfcvt s5, h5\nfcvt s0, h0\nfmul s4, s7, s4\nfmul s2, s3, s2\nfcvt s3, h16\nfmul s5, s6, s5\nfmul s0, s1, s0\nfmul s2, s4, s2\nfmul s3, s5, s3\nfmul s2, s2, s3\nfmul s0, s0, s2\nfcvt h0, s0\nret",
   "giasm": "fcvtl v2.4s, v0.4h\nfcvtl2 v0.4s, v0.8h\nfcvt s1, h1\nfmul v0.4s, v2.4s, v0.4s\nmov d2, v0.d[1]\nfmul v0.2s, v0.2s, v2.2s\nmov s2, v0.s[1]\nfmul s0, s0, s2\nfcvt h0, s0\nfcvt s0, h0\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<8 x half> %a, half %b) {\n  %r = call fast half @llvm.vector.reduce.fmul(half %b, <8 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:30 CodeSize:27 Lat:33 SizeLat:27 for:   %r = call fast half @llvm.vector.reduce.fmul.v8f16(half %b, <8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:54 CodeSize:27 Lat:33 SizeLat:27 for:   %r = call fast half @llvm.vector.reduce.fmul.v8f16(half %b, <8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fmul",
   "ty": "<16 x half>",
   "variant": "reduce",
   "codesize": 46,
-  "thru": 76,
+  "thru": 124,
   "lat": 92,
   "sizelat": 60,
   "size": 78,
@@ -14941,14 +14941,14 @@
   "asm": "fcvt s2, h2\nfcvt s3, h0\nfmul s2, s2, s3\nmov h3, v0.h[1]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[2]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[3]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[4]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[5]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[6]\nmov h0, v0.h[7]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s0, h0\nfcvt s2, h2\nfmul s2, s2, s3\nfcvt h2, s2\nfcvt s2, h2\nfmul s0, s2, s0\nfcvt s2, h1\nfcvt h0, s0\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[1]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[2]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[3]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[4]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[5]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[6]\nmov h1, v1.h[7]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s1, h1\nfcvt s0, h0\nfmul s0, s0, s2\nfcvt h0, s0\nfcvt s0, h0\nfmul s0, s0, s1\nfcvt h0, s0\nret",
   "giasm": "fcvt s2, h2\nfcvt s3, h0\nfmul s2, s2, s3\nmov h3, v0.h[1]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[2]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[3]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[4]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[5]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s2, h2\nfmul s2, s2, s3\nmov h3, v0.h[6]\nmov h0, v0.h[7]\nfcvt h2, s2\nfcvt s3, h3\nfcvt s0, h0\nfcvt s2, h2\nfmul s2, s2, s3\nfcvt h2, s2\nfcvt s2, h2\nfmul s0, s2, s0\nfcvt s2, h1\nfcvt h0, s0\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[1]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[2]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[3]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[4]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[5]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s0, h0\nfmul s0, s0, s2\nmov h2, v1.h[6]\nmov h1, v1.h[7]\nfcvt h0, s0\nfcvt s2, h2\nfcvt s1, h1\nfcvt s0, h0\nfmul s0, s0, s2\nfcvt h0, s0\nfcvt s0, h0\nfmul s0, s0, s1\nfcvt h0, s0\nret",
   "ll": "define half @test(<16 x half> %a, half %b) {\n  %r = call half @llvm.vector.reduce.fmul(half %b, <16 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:92 SizeLat:60 for:   %r = call half @llvm.vector.reduce.fmul.v16f16(half %b, <16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:124 CodeSize:46 Lat:92 SizeLat:60 for:   %r = call half @llvm.vector.reduce.fmul.v16f16(half %b, <16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fmul",
   "ty": "<16 x half>",
   "variant": "reducefast",
   "codesize": 44,
-  "thru": 48,
+  "thru": 80,
   "lat": 52,
   "sizelat": 44,
   "size": 33,
@@ -14957,7 +14957,7 @@
   "asm": "fcvtl v3.4s, v1.4h\nfcvtl v4.4s, v0.4h\nfcvtl2 v1.4s, v1.8h\nfcvtl2 v0.4s, v0.8h\nfcvt s2, h2\nfmul v3.4s, v4.4s, v3.4s\nfmul v0.4s, v0.4s, v1.4s\nfcvtn v1.4h, v3.4s\nfcvtn2 v1.8h, v0.4s\nmov h0, v1.h[1]\nmov h3, v1.h[2]\nmov h4, v1.h[3]\nmov h5, v1.h[4]\nmov h6, v1.h[5]\nfcvt s7, h1\nmov h16, v1.h[6]\nmov h1, v1.h[7]\nfcvt s0, h0\nfcvt s3, h3\nfcvt s4, h4\nfcvt s5, h5\nfcvt s6, h6\nfcvt s1, h1\nfmul s0, s7, s0\nfmul s3, s3, s4\nfmul s4, s5, s6\nfcvt s5, h16\nfmul s1, s2, s1\nfmul s0, s0, s3\nfmul s3, s4, s5\nfmul s0, s0, s3\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "giasm": "fcvtl v3.4s, v0.4h\nfcvtl2 v0.4s, v0.8h\nfcvtl v4.4s, v1.4h\nfcvtl2 v1.4s, v1.8h\nfmul v0.4s, v3.4s, v0.4s\nfmul v1.4s, v4.4s, v1.4s\nfmul v0.4s, v0.4s, v1.4s\nmov d1, v0.d[1]\nfmul v0.2s, v0.2s, v1.2s\nmov s1, v0.s[1]\nfmul s0, s0, s1\nfcvt s1, h2\nfcvt h0, s0\nfcvt s0, h0\nfmul s0, s1, s0\nfcvt h0, s0\nret",
   "ll": "define half @test(<16 x half> %a, half %b) {\n  %r = call fast half @llvm.vector.reduce.fmul(half %b, <16 x half> %a)\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:48 CodeSize:44 Lat:52 SizeLat:44 for:   %r = call fast half @llvm.vector.reduce.fmul.v16f16(half %b, <16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:80 CodeSize:44 Lat:52 SizeLat:44 for:   %r = call fast half @llvm.vector.reduce.fmul.v16f16(half %b, <16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "reduce.fmul",
