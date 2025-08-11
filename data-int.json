@@ -15611,7 +15611,7 @@
   "gisize": 3,
   "extrasize": 0,
   "asm": "ubfx w0, w0, #7, #1\nret",
-  "giasm": "sxtb w8, w0\ncmp w8, #0\ncset w0, lt\nret",
+  "giasm": "sxtb w8, w0\ncmp w8, #0\ncset w0, mi\nret",
   "ll": "define i1 @test(i8 %a) {\n  %r = icmp slt i8 %a, 0\n  ret i1 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = icmp slt i8 %a, 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
@@ -15642,8 +15642,8 @@
   "size": 3,
   "gisize": 3,
   "extrasize": 0,
-  "asm": "sxtb w8, w0\ncmp w8, #0\ncsel w0, w1, w2, lt\nret",
-  "giasm": "sxtb w8, w0\ncmp w8, #0\ncsel w0, w1, w2, lt\nret",
+  "asm": "sxtb w8, w0\ncmp w8, #0\ncsel w0, w1, w2, mi\nret",
+  "giasm": "sxtb w8, w0\ncmp w8, #0\ncsel w0, w1, w2, mi\nret",
   "ll": "define i8 @test(i8 %a, i8 %d, i8 %e) {\n  %c = icmp slt i8 %a, 0\n  %r = select i1 %c, i8 %d, i8 %e\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %c = icmp slt i8 %a, 0\nCost Model: Found costs of 1 for:   %r = select i1 %c, i8 %d, i8 %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -15675,7 +15675,7 @@
   "gisize": 3,
   "extrasize": 0,
   "asm": "ubfx w0, w0, #15, #1\nret",
-  "giasm": "sxth w8, w0\ncmp w8, #0\ncset w0, lt\nret",
+  "giasm": "sxth w8, w0\ncmp w8, #0\ncset w0, mi\nret",
   "ll": "define i1 @test(i16 %a) {\n  %r = icmp slt i16 %a, 0\n  ret i1 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = icmp slt i16 %a, 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
@@ -15706,8 +15706,8 @@
   "size": 3,
   "gisize": 3,
   "extrasize": 0,
-  "asm": "sxth w8, w0\ncmp w8, #0\ncsel w0, w1, w2, lt\nret",
-  "giasm": "sxth w8, w0\ncmp w8, #0\ncsel w0, w1, w2, lt\nret",
+  "asm": "sxth w8, w0\ncmp w8, #0\ncsel w0, w1, w2, mi\nret",
+  "giasm": "sxth w8, w0\ncmp w8, #0\ncsel w0, w1, w2, mi\nret",
   "ll": "define i16 @test(i16 %a, i16 %d, i16 %e) {\n  %c = icmp slt i16 %a, 0\n  %r = select i1 %c, i16 %d, i16 %e\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %c = icmp slt i16 %a, 0\nCost Model: Found costs of 1 for:   %r = select i1 %c, i16 %d, i16 %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -15739,7 +15739,7 @@
   "gisize": 2,
   "extrasize": 0,
   "asm": "lsr w0, w0, #31\nret",
-  "giasm": "cmp w0, #0\ncset w0, lt\nret",
+  "giasm": "cmp w0, #0\ncset w0, mi\nret",
   "ll": "define i1 @test(i32 %a) {\n  %r = icmp slt i32 %a, 0\n  ret i1 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = icmp slt i32 %a, 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
@@ -15770,8 +15770,8 @@
   "size": 2,
   "gisize": 2,
   "extrasize": 0,
-  "asm": "cmp w0, #0\ncsel w0, w1, w2, lt\nret",
-  "giasm": "cmp w0, #0\ncsel w0, w1, w2, lt\nret",
+  "asm": "cmp w0, #0\ncsel w0, w1, w2, mi\nret",
+  "giasm": "cmp w0, #0\ncsel w0, w1, w2, mi\nret",
   "ll": "define i32 @test(i32 %a, i32 %d, i32 %e) {\n  %c = icmp slt i32 %a, 0\n  %r = select i1 %c, i32 %d, i32 %e\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %c = icmp slt i32 %a, 0\nCost Model: Found costs of 1 for:   %r = select i1 %c, i32 %d, i32 %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -15803,7 +15803,7 @@
   "gisize": 2,
   "extrasize": 0,
   "asm": "lsr x0, x0, #63\nret",
-  "giasm": "cmp x0, #0\ncset w0, lt\nret",
+  "giasm": "cmp x0, #0\ncset w0, mi\nret",
   "ll": "define i1 @test(i64 %a) {\n  %r = icmp slt i64 %a, 0\n  ret i1 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = icmp slt i64 %a, 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
@@ -15834,8 +15834,8 @@
   "size": 2,
   "gisize": 2,
   "extrasize": 0,
-  "asm": "cmp x0, #0\ncsel x0, x1, x2, lt\nret",
-  "giasm": "cmp x0, #0\ncsel x0, x1, x2, lt\nret",
+  "asm": "cmp x0, #0\ncsel x0, x1, x2, mi\nret",
+  "giasm": "cmp x0, #0\ncsel x0, x1, x2, mi\nret",
   "ll": "define i64 @test(i64 %a, i64 %d, i64 %e) {\n  %c = icmp slt i64 %a, 0\n  %r = select i1 %c, i64 %d, i64 %e\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %c = icmp slt i64 %a, 0\nCost Model: Found costs of 1 for:   %r = select i1 %c, i64 %d, i64 %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -18491,7 +18491,7 @@
   "gisize": 3,
   "extrasize": 0,
   "asm": "ubfx w8, w0, #7, #1\neor w0, w8, #0x1\nret",
-  "giasm": "sxtb w8, w0\ncmp w8, #0\ncset w0, ge\nret",
+  "giasm": "sxtb w8, w0\ncmp w8, #0\ncset w0, pl\nret",
   "ll": "define i1 @test(i8 %a) {\n  %r = icmp sge i8 %a, 0\n  ret i1 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = icmp sge i8 %a, 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
@@ -18523,7 +18523,7 @@
   "gisize": 3,
   "extrasize": 0,
   "asm": "sxtb w8, w0\ncmn w8, #1\ncsel w0, w1, w2, gt\nret",
-  "giasm": "sxtb w8, w0\ncmp w8, #0\ncsel w0, w1, w2, ge\nret",
+  "giasm": "sxtb w8, w0\ncmp w8, #0\ncsel w0, w1, w2, pl\nret",
   "ll": "define i8 @test(i8 %a, i8 %d, i8 %e) {\n  %c = icmp sge i8 %a, 0\n  %r = select i1 %c, i8 %d, i8 %e\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %c = icmp sge i8 %a, 0\nCost Model: Found costs of 1 for:   %r = select i1 %c, i8 %d, i8 %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -18555,7 +18555,7 @@
   "gisize": 3,
   "extrasize": 0,
   "asm": "ubfx w8, w0, #15, #1\neor w0, w8, #0x1\nret",
-  "giasm": "sxth w8, w0\ncmp w8, #0\ncset w0, ge\nret",
+  "giasm": "sxth w8, w0\ncmp w8, #0\ncset w0, pl\nret",
   "ll": "define i1 @test(i16 %a) {\n  %r = icmp sge i16 %a, 0\n  ret i1 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = icmp sge i16 %a, 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
@@ -18587,7 +18587,7 @@
   "gisize": 3,
   "extrasize": 0,
   "asm": "sxth w8, w0\ncmn w8, #1\ncsel w0, w1, w2, gt\nret",
-  "giasm": "sxth w8, w0\ncmp w8, #0\ncsel w0, w1, w2, ge\nret",
+  "giasm": "sxth w8, w0\ncmp w8, #0\ncsel w0, w1, w2, pl\nret",
   "ll": "define i16 @test(i16 %a, i16 %d, i16 %e) {\n  %c = icmp sge i16 %a, 0\n  %r = select i1 %c, i16 %d, i16 %e\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %c = icmp sge i16 %a, 0\nCost Model: Found costs of 1 for:   %r = select i1 %c, i16 %d, i16 %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -18619,7 +18619,7 @@
   "gisize": 2,
   "extrasize": 0,
   "asm": "mvn w8, w0\nlsr w0, w8, #31\nret",
-  "giasm": "cmp w0, #0\ncset w0, ge\nret",
+  "giasm": "cmp w0, #0\ncset w0, pl\nret",
   "ll": "define i1 @test(i32 %a) {\n  %r = icmp sge i32 %a, 0\n  ret i1 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = icmp sge i32 %a, 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
@@ -18651,7 +18651,7 @@
   "gisize": 2,
   "extrasize": 0,
   "asm": "cmn w0, #1\ncsel w0, w1, w2, gt\nret",
-  "giasm": "cmp w0, #0\ncsel w0, w1, w2, ge\nret",
+  "giasm": "cmp w0, #0\ncsel w0, w1, w2, pl\nret",
   "ll": "define i32 @test(i32 %a, i32 %d, i32 %e) {\n  %c = icmp sge i32 %a, 0\n  %r = select i1 %c, i32 %d, i32 %e\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %c = icmp sge i32 %a, 0\nCost Model: Found costs of 1 for:   %r = select i1 %c, i32 %d, i32 %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -18683,7 +18683,7 @@
   "gisize": 2,
   "extrasize": 0,
   "asm": "lsr x8, x0, #63\neor w0, w8, #0x1\nret",
-  "giasm": "cmp x0, #0\ncset w0, ge\nret",
+  "giasm": "cmp x0, #0\ncset w0, pl\nret",
   "ll": "define i1 @test(i64 %a) {\n  %r = icmp sge i64 %a, 0\n  ret i1 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = icmp sge i64 %a, 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
@@ -18715,7 +18715,7 @@
   "gisize": 2,
   "extrasize": 0,
   "asm": "cmn x0, #1\ncsel x0, x1, x2, gt\nret",
-  "giasm": "cmp x0, #0\ncsel x0, x1, x2, ge\nret",
+  "giasm": "cmp x0, #0\ncsel x0, x1, x2, pl\nret",
   "ll": "define i64 @test(i64 %a, i64 %d, i64 %e) {\n  %c = icmp sge i64 %a, 0\n  %r = select i1 %c, i64 %d, i64 %e\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %c = icmp sge i64 %a, 0\nCost Model: Found costs of 1 for:   %r = select i1 %c, i64 %d, i64 %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
