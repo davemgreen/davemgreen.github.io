@@ -4244,8 +4244,8 @@
   "ty": "float",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4253,15 +4253,15 @@
   "asm": "fmadd s0, s0, s1, s2\nret",
   "giasm": "fmadd s0, s0, s1, s2\nret",
   "ll": "define float @test(float %a, float %b, float %c) {\n  %r = call float @llvm.fma(float %a, float %b, float %c)\n  ret float %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call float @llvm.fma.f32(float %a, float %b, float %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret float %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call float @llvm.fma.f32(float %a, float %b, float %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret float %r"
  },
  {
   "instr": "fma",
   "ty": "double",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4269,7 +4269,7 @@
   "asm": "fmadd d0, d0, d1, d2\nret",
   "giasm": "fmadd d0, d0, d1, d2\nret",
   "ll": "define double @test(double %a, double %b, double %c) {\n  %r = call double @llvm.fma(double %a, double %b, double %c)\n  ret double %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call double @llvm.fma.f64(double %a, double %b, double %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret double %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call double @llvm.fma.f64(double %a, double %b, double %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret double %r"
  },
  {
   "instr": "fma",
@@ -4324,8 +4324,8 @@
   "ty": "<2 x float>",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4333,15 +4333,15 @@
   "asm": "fmla v2.2s, v1.2s, v0.2s\nfmov d0, d2\nret",
   "giasm": "fmla v2.2s, v1.2s, v0.2s\nfmov d0, d2\nret",
   "ll": "define <2 x float> @test(<2 x float> %a, <2 x float> %b, <2 x float> %c) {\n  %r = call <2 x float> @llvm.fma(<2 x float> %a, <2 x float> %b, <2 x float> %c)\n  ret <2 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call <2 x float> @llvm.fma.v2f32(<2 x float> %a, <2 x float> %b, <2 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <2 x float> @llvm.fma.v2f32(<2 x float> %a, <2 x float> %b, <2 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x float> %r"
  },
  {
   "instr": "fma",
   "ty": "<4 x float>",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4349,31 +4349,31 @@
   "asm": "fmla v2.4s, v1.4s, v0.4s\nmov v0.16b, v2.16b\nret",
   "giasm": "fmla v2.4s, v1.4s, v0.4s\nmov v0.16b, v2.16b\nret",
   "ll": "define <4 x float> @test(<4 x float> %a, <4 x float> %b, <4 x float> %c) {\n  %r = call <4 x float> @llvm.fma(<4 x float> %a, <4 x float> %b, <4 x float> %c)\n  ret <4 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call <4 x float> @llvm.fma.v4f32(<4 x float> %a, <4 x float> %b, <4 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <4 x float> @llvm.fma.v4f32(<4 x float> %a, <4 x float> %b, <4 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x float> %r"
  },
  {
   "instr": "fma",
   "ty": "<8 x float>",
   "variant": "triop",
-  "codesize": 4,
+  "codesize": 1,
   "thru": 4,
-  "lat": 4,
-  "sizelat": 4,
+  "lat": 3,
+  "sizelat": 1,
   "size": 2,
   "gisize": 2,
   "extrasize": 0,
   "asm": "fmla v4.4s, v2.4s, v0.4s\nfmla v5.4s, v3.4s, v1.4s\nmov v0.16b, v4.16b\nmov v1.16b, v5.16b\nret",
   "giasm": "fmla v4.4s, v2.4s, v0.4s\nfmla v5.4s, v3.4s, v1.4s\nmov v0.16b, v4.16b\nmov v1.16b, v5.16b\nret",
   "ll": "define <8 x float> @test(<8 x float> %a, <8 x float> %b, <8 x float> %c) {\n  %r = call <8 x float> @llvm.fma(<8 x float> %a, <8 x float> %b, <8 x float> %c)\n  ret <8 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <8 x float> @llvm.fma.v8f32(<8 x float> %a, <8 x float> %b, <8 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <8 x float> @llvm.fma.v8f32(<8 x float> %a, <8 x float> %b, <8 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x float> %r"
  },
  {
   "instr": "fma",
   "ty": "<2 x double>",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4381,23 +4381,23 @@
   "asm": "fmla v2.2d, v1.2d, v0.2d\nmov v0.16b, v2.16b\nret",
   "giasm": "fmla v2.2d, v1.2d, v0.2d\nmov v0.16b, v2.16b\nret",
   "ll": "define <2 x double> @test(<2 x double> %a, <2 x double> %b, <2 x double> %c) {\n  %r = call <2 x double> @llvm.fma(<2 x double> %a, <2 x double> %b, <2 x double> %c)\n  ret <2 x double> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call <2 x double> @llvm.fma.v2f64(<2 x double> %a, <2 x double> %b, <2 x double> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x double> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <2 x double> @llvm.fma.v2f64(<2 x double> %a, <2 x double> %b, <2 x double> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x double> %r"
  },
  {
   "instr": "fma",
   "ty": "<4 x double>",
   "variant": "triop",
-  "codesize": 4,
+  "codesize": 1,
   "thru": 4,
-  "lat": 4,
-  "sizelat": 4,
+  "lat": 3,
+  "sizelat": 1,
   "size": 2,
   "gisize": 2,
   "extrasize": 0,
   "asm": "fmla v4.2d, v2.2d, v0.2d\nfmla v5.2d, v3.2d, v1.2d\nmov v0.16b, v4.16b\nmov v1.16b, v5.16b\nret",
   "giasm": "fmla v4.2d, v2.2d, v0.2d\nfmla v5.2d, v3.2d, v1.2d\nmov v0.16b, v4.16b\nmov v1.16b, v5.16b\nret",
   "ll": "define <4 x double> @test(<4 x double> %a, <4 x double> %b, <4 x double> %c) {\n  %r = call <4 x double> @llvm.fma(<4 x double> %a, <4 x double> %b, <4 x double> %c)\n  ret <4 x double> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <4 x double> @llvm.fma.v4f64(<4 x double> %a, <4 x double> %b, <4 x double> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x double> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <4 x double> @llvm.fma.v4f64(<4 x double> %a, <4 x double> %b, <4 x double> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x double> %r"
  },
  {
   "instr": "fmuladd",
@@ -4420,8 +4420,8 @@
   "ty": "float",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4429,15 +4429,15 @@
   "asm": "fmadd s0, s0, s1, s2\nret",
   "giasm": "fmadd s0, s0, s1, s2\nret",
   "ll": "define float @test(float %a, float %b, float %c) {\n  %r = call float @llvm.fmuladd(float %a, float %b, float %c)\n  ret float %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call float @llvm.fmuladd.f32(float %a, float %b, float %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret float %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call float @llvm.fmuladd.f32(float %a, float %b, float %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret float %r"
  },
  {
   "instr": "fmuladd",
   "ty": "double",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4445,7 +4445,7 @@
   "asm": "fmadd d0, d0, d1, d2\nret",
   "giasm": "fmadd d0, d0, d1, d2\nret",
   "ll": "define double @test(double %a, double %b, double %c) {\n  %r = call double @llvm.fmuladd(double %a, double %b, double %c)\n  ret double %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call double @llvm.fmuladd.f64(double %a, double %b, double %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret double %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call double @llvm.fmuladd.f64(double %a, double %b, double %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret double %r"
  },
  {
   "instr": "fmuladd",
@@ -4500,8 +4500,8 @@
   "ty": "<2 x float>",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4509,15 +4509,15 @@
   "asm": "fmla v2.2s, v1.2s, v0.2s\nfmov d0, d2\nret",
   "giasm": "fmla v2.2s, v1.2s, v0.2s\nfmov d0, d2\nret",
   "ll": "define <2 x float> @test(<2 x float> %a, <2 x float> %b, <2 x float> %c) {\n  %r = call <2 x float> @llvm.fmuladd(<2 x float> %a, <2 x float> %b, <2 x float> %c)\n  ret <2 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call <2 x float> @llvm.fmuladd.v2f32(<2 x float> %a, <2 x float> %b, <2 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <2 x float> @llvm.fmuladd.v2f32(<2 x float> %a, <2 x float> %b, <2 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x float> %r"
  },
  {
   "instr": "fmuladd",
   "ty": "<4 x float>",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4525,31 +4525,31 @@
   "asm": "fmla v2.4s, v1.4s, v0.4s\nmov v0.16b, v2.16b\nret",
   "giasm": "fmla v2.4s, v1.4s, v0.4s\nmov v0.16b, v2.16b\nret",
   "ll": "define <4 x float> @test(<4 x float> %a, <4 x float> %b, <4 x float> %c) {\n  %r = call <4 x float> @llvm.fmuladd(<4 x float> %a, <4 x float> %b, <4 x float> %c)\n  ret <4 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call <4 x float> @llvm.fmuladd.v4f32(<4 x float> %a, <4 x float> %b, <4 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <4 x float> @llvm.fmuladd.v4f32(<4 x float> %a, <4 x float> %b, <4 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x float> %r"
  },
  {
   "instr": "fmuladd",
   "ty": "<8 x float>",
   "variant": "triop",
-  "codesize": 4,
+  "codesize": 1,
   "thru": 4,
-  "lat": 4,
-  "sizelat": 4,
+  "lat": 3,
+  "sizelat": 1,
   "size": 2,
   "gisize": 2,
   "extrasize": 0,
   "asm": "fmla v4.4s, v2.4s, v0.4s\nfmla v5.4s, v3.4s, v1.4s\nmov v0.16b, v4.16b\nmov v1.16b, v5.16b\nret",
   "giasm": "fmla v4.4s, v2.4s, v0.4s\nfmla v5.4s, v3.4s, v1.4s\nmov v0.16b, v4.16b\nmov v1.16b, v5.16b\nret",
   "ll": "define <8 x float> @test(<8 x float> %a, <8 x float> %b, <8 x float> %c) {\n  %r = call <8 x float> @llvm.fmuladd(<8 x float> %a, <8 x float> %b, <8 x float> %c)\n  ret <8 x float> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <8 x float> @llvm.fmuladd.v8f32(<8 x float> %a, <8 x float> %b, <8 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x float> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <8 x float> @llvm.fmuladd.v8f32(<8 x float> %a, <8 x float> %b, <8 x float> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x float> %r"
  },
  {
   "instr": "fmuladd",
   "ty": "<2 x double>",
   "variant": "triop",
   "codesize": 1,
-  "thru": 1,
-  "lat": 1,
+  "thru": 2,
+  "lat": 3,
   "sizelat": 1,
   "size": 1,
   "gisize": 1,
@@ -4557,23 +4557,23 @@
   "asm": "fmla v2.2d, v1.2d, v0.2d\nmov v0.16b, v2.16b\nret",
   "giasm": "fmla v2.2d, v1.2d, v0.2d\nmov v0.16b, v2.16b\nret",
   "ll": "define <2 x double> @test(<2 x double> %a, <2 x double> %b, <2 x double> %c) {\n  %r = call <2 x double> @llvm.fmuladd(<2 x double> %a, <2 x double> %b, <2 x double> %c)\n  ret <2 x double> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %a, <2 x double> %b, <2 x double> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x double> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %a, <2 x double> %b, <2 x double> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x double> %r"
  },
  {
   "instr": "fmuladd",
   "ty": "<4 x double>",
   "variant": "triop",
-  "codesize": 4,
+  "codesize": 1,
   "thru": 4,
-  "lat": 4,
-  "sizelat": 4,
+  "lat": 3,
+  "sizelat": 1,
   "size": 2,
   "gisize": 2,
   "extrasize": 0,
   "asm": "fmla v4.2d, v2.2d, v0.2d\nfmla v5.2d, v3.2d, v1.2d\nmov v0.16b, v4.16b\nmov v1.16b, v5.16b\nret",
   "giasm": "fmla v4.2d, v2.2d, v0.2d\nfmla v5.2d, v3.2d, v1.2d\nmov v0.16b, v4.16b\nmov v1.16b, v5.16b\nret",
   "ll": "define <4 x double> @test(<4 x double> %a, <4 x double> %b, <4 x double> %c) {\n  %r = call <4 x double> @llvm.fmuladd(<4 x double> %a, <4 x double> %b, <4 x double> %c)\n  ret <4 x double> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <4 x double> @llvm.fmuladd.v4f64(<4 x double> %a, <4 x double> %b, <4 x double> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x double> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:1 Lat:3 SizeLat:1 for:   %r = call <4 x double> @llvm.fmuladd.v4f64(<4 x double> %a, <4 x double> %b, <4 x double> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x double> %r"
  },
  {
   "instr": "select",
