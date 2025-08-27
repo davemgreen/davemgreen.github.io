@@ -172,7 +172,10 @@ def generate(variant, instr, ty, ty2):
     preamble += f", i32 %c"
   if (variant == 'cmp' or variant == 'cmp0') and instr.startswith('select'):
     preamble += f", {tystr} %d, {tystr} %e"
-  preamble += ") {\n"
+  preamble += ") "
+  if args.vscale:
+    preamble += f"vscale_range({args.vscale}, {args.vscale})"
+  preamble += "{\n"
 
   setup = ""
   if variant == "binopsplat":
@@ -289,8 +292,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--type', choices=['all', 'int', 'fp', 'castint', 'castfp', 'vec'], default='all')
 parser.add_argument('-mtriple', default='aarch64')
 parser.add_argument('-mattr', default=None)
+parser.add_argument('-vscale', default=None)
 #parser.add_argument('--checkopted', action='store_true')
 args = parser.parse_args()
+
+def getFileName(mid):
+  return f"data-{mid}{'-'+args.mattr if args.mattr else ''}{'-'+str(128*int(args.vscale)) if args.vscale else ''}.json"
 
 
 def do(instr, variant, ty, ty2, extrasize, tyoverride):
@@ -365,7 +372,7 @@ if args.type == 'all' or args.type == 'int':
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumint())
-  with open(f"data-int{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+  with open(getFileName('int'), "w") as f:
     json.dump(data, f, indent=1)
 
 
@@ -416,7 +423,7 @@ if args.type == 'all' or args.type == 'fp':
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumfp())
-  with open(f"data-fp{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+  with open(getFileName('fp'), "w") as f:
     json.dump(data, f, indent=1)
 
 
@@ -434,7 +441,7 @@ if args.type == 'all' or args.type == 'castint':
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumcast())
-  with open(f"data-castint{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+  with open(getFileName('castint'), "w") as f:
     json.dump(data, f, indent=1)
 
 
@@ -470,7 +477,7 @@ if args.type == 'all' or args.type == 'castfp':
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumcast())
-  with open(f"data-castfp{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+  with open(getFileName('castfp'), "w") as f:
     json.dump(data, f, indent=1)
 
 
@@ -550,5 +557,5 @@ if args.type == 'all' or args.type == 'vec':
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumvec())
-  with open(f"data-vec{'-'+args.mattr if args.mattr else ''}.json", "w") as f:
+  with open(getFileName('vec'), "w") as f:
     json.dump(data, f, indent=1)
