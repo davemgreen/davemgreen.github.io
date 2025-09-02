@@ -15879,10 +15879,10 @@
   "thru": 4,
   "lat": 4,
   "sizelat": 4,
-  "size": 8,
+  "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "index z1.s, #0, #1\nmov z2.s, #-7                       // =0xfffffffffffffff9\nmov z3.d, z1.d\nadd z1.s, z1.s, z2.s\nadd z3.s, z3.s, #25                 // =0x19\nushl v2.2s, v0.2s, v3.2s\nushl v0.2s, v0.2s, v1.2s\norr v0.8b, v0.8b, v2.8b\nret",
+  "asm": "index z1.s, #0, #1\nmov z2.d, z1.d\nsub z1.s, z1.s, #7                  // =0x7\nadd z2.s, z2.s, #25                 // =0x19\nushl v1.2s, v0.2s, v1.2s\nushl v0.2s, v0.2s, v2.2s\norr v0.8b, v1.8b, v0.8b\nret",
   "giasm": "adrp x8, .LCPI0_1\nldr d1, [x8, :lo12:.LCPI0_1]\nadrp x8, .LCPI0_0\nldr d2, [x8, :lo12:.LCPI0_0]\nneg v1.2s, v1.2s\nushl v1.2s, v0.2s, v1.2s\nushl v0.2s, v0.2s, v2.2s\norr v0.8b, v1.8b, v0.8b\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) vscale_range(2, 2){\n  %r = call <2 x i32> @llvm.fshr(<2 x i32> %a, <2 x i32> %a, <2 x i32> <i32 7, i32 6>)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <2 x i32> @llvm.fshr.v2i32(<2 x i32> %a, <2 x i32> %a, <2 x i32> <i32 7, i32 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
@@ -16071,10 +16071,10 @@
   "thru": 4,
   "lat": 4,
   "sizelat": 4,
-  "size": 8,
+  "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "index z1.d, #0, #1\nmov z2.d, #-7                       // =0xfffffffffffffff9\nmov z3.d, z1.d\nadd z1.d, z1.d, z2.d\nadd z3.d, z3.d, #57                 // =0x39\nushl v2.2d, v0.2d, v3.2d\nushl v0.2d, v0.2d, v1.2d\norr v0.16b, v0.16b, v2.16b\nret",
+  "asm": "index z1.d, #0, #1\nmov z2.d, z1.d\nsub z1.d, z1.d, #7                  // =0x7\nadd z2.d, z2.d, #57                 // =0x39\nushl v1.2d, v0.2d, v1.2d\nushl v0.2d, v0.2d, v2.2d\norr v0.16b, v1.16b, v0.16b\nret",
   "giasm": "adrp x8, .LCPI0_1\nldr q1, [x8, :lo12:.LCPI0_1]\nadrp x8, .LCPI0_0\nldr q2, [x8, :lo12:.LCPI0_0]\nneg v1.2d, v1.2d\nushl v1.2d, v0.2d, v1.2d\nushl v0.2d, v0.2d, v2.2d\norr v0.16b, v1.16b, v0.16b\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) vscale_range(2, 2){\n  %r = call <2 x i64> @llvm.fshr(<2 x i64> %a, <2 x i64> %a, <2 x i64> <i64 7, i64 6>)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <2 x i64> @llvm.fshr.v2i64(<2 x i64> %a, <2 x i64> %a, <2 x i64> <i64 7, i64 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
@@ -17242,7 +17242,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "index z1.s, #0, #-1\nmov z2.s, #-25                      // =0xffffffffffffffe7\nadd z2.s, z1.s, z2.s\nadd z1.s, z1.s, #7                  // =0x7\nushl v2.2s, v0.2s, v2.2s\nushl v0.2s, v0.2s, v1.2s\norr v0.8b, v0.8b, v2.8b\nret",
+  "asm": "index z1.s, #0, #-1\nmov z2.d, z1.d\nadd z1.s, z1.s, #7                  // =0x7\nsub z2.s, z2.s, #25                 // =0x19\nushl v1.2s, v0.2s, v1.2s\nushl v0.2s, v0.2s, v2.2s\norr v0.8b, v1.8b, v0.8b\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nadrp x8, .LCPI0_1\nldr d2, [x8, :lo12:.LCPI0_1]\nneg v1.2s, v1.2s\nushl v2.2s, v0.2s, v2.2s\nushl v0.2s, v0.2s, v1.2s\norr v0.8b, v2.8b, v0.8b\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) vscale_range(2, 2){\n  %r = call <2 x i32> @llvm.fshl(<2 x i32> %a, <2 x i32> %a, <2 x i32> <i32 7, i32 6>)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <2 x i32> @llvm.fshl.v2i32(<2 x i32> %a, <2 x i32> %a, <2 x i32> <i32 7, i32 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
@@ -17434,7 +17434,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "index z1.d, #0, #-1\nmov z2.d, #-57                      // =0xffffffffffffffc7\nadd z2.d, z1.d, z2.d\nadd z1.d, z1.d, #7                  // =0x7\nushl v2.2d, v0.2d, v2.2d\nushl v0.2d, v0.2d, v1.2d\norr v0.16b, v0.16b, v2.16b\nret",
+  "asm": "index z1.d, #0, #-1\nmov z2.d, z1.d\nadd z1.d, z1.d, #7                  // =0x7\nsub z2.d, z2.d, #57                 // =0x39\nushl v1.2d, v0.2d, v1.2d\nushl v0.2d, v0.2d, v2.2d\norr v0.16b, v1.16b, v0.16b\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q1, [x8, :lo12:.LCPI0_0]\nadrp x8, .LCPI0_1\nldr q2, [x8, :lo12:.LCPI0_1]\nneg v1.2d, v1.2d\nushl v2.2d, v0.2d, v2.2d\nushl v0.2d, v0.2d, v1.2d\norr v0.16b, v2.16b, v0.16b\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) vscale_range(2, 2){\n  %r = call <2 x i64> @llvm.fshl(<2 x i64> %a, <2 x i64> %a, <2 x i64> <i64 7, i64 6>)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <2 x i64> @llvm.fshl.v2i64(<2 x i64> %a, <2 x i64> %a, <2 x i64> <i64 7, i64 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
