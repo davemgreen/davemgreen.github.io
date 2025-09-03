@@ -1402,7 +1402,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x half> (<vscale x 4 x half>, <vscale x 4 x half>) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, <vscale x 4 x half> %b) {\n  %r = frem <vscale x 4 x half> %a, %b\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:Invalid CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <vscale x 4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
@@ -1418,7 +1418,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x half> (<vscale x 8 x half>, <vscale x 8 x half>) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, <vscale x 8 x half> %b) {\n  %r = frem <vscale x 8 x half> %a, %b\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:Invalid CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <vscale x 8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x half> %r"
@@ -1434,7 +1434,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x half> (<vscale x 16 x half>, <vscale x 16 x half>) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %b) {\n  %r = frem <vscale x 16 x half> %a, %b\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:Invalid CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <vscale x 16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x half> %r"
@@ -1450,7 +1450,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x float> (<vscale x 2 x float>, <vscale x 2 x float>) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, <vscale x 2 x float> %b) {\n  %r = frem <vscale x 2 x float> %a, %b\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:Invalid CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <vscale x 2 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
@@ -1466,7 +1466,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x float> (<vscale x 4 x float>, <vscale x 4 x float>) (in function: test)",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, <vscale x 4 x float> %b) {\n  %r = frem <vscale x 4 x float> %a, %b\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:Invalid CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <vscale x 4 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
@@ -1482,7 +1482,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x float> (<vscale x 8 x float>, <vscale x 8 x float>) (in function: test)",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %b) {\n  %r = frem <vscale x 8 x float> %a, %b\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:Invalid CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <vscale x 8 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x float> %r"
@@ -1498,7 +1498,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x double> (<vscale x 2 x double>, <vscale x 2 x double>) (in function: test)",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, <vscale x 2 x double> %b) {\n  %r = frem <vscale x 2 x double> %a, %b\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:Invalid CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <vscale x 2 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
@@ -1514,7 +1514,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x double> (<vscale x 4 x double>, <vscale x 4 x double>) (in function: test)",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %b) {\n  %r = frem <vscale x 4 x double> %a, %b\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:Invalid CodeSize:4 Lat:4 SizeLat:4 for:   %r = frem <vscale x 4 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
@@ -3226,7 +3226,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x half> (<vscale x 4 x half>, <vscale x 4 x half>) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, <vscale x 4 x half> %b) {\n  %r = call <vscale x 4 x half> @llvm.pow(<vscale x 4 x half> %a, <vscale x 4 x half> %b)\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x half> @llvm.pow.nxv4f16(<vscale x 4 x half> %a, <vscale x 4 x half> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
@@ -3242,7 +3242,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x half> (<vscale x 8 x half>, <vscale x 8 x half>) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, <vscale x 8 x half> %b) {\n  %r = call <vscale x 8 x half> @llvm.pow(<vscale x 8 x half> %a, <vscale x 8 x half> %b)\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x half> @llvm.pow.nxv8f16(<vscale x 8 x half> %a, <vscale x 8 x half> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x half> %r"
@@ -3258,7 +3258,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x half> (<vscale x 16 x half>, <vscale x 16 x half>) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %b) {\n  %r = call <vscale x 16 x half> @llvm.pow(<vscale x 16 x half> %a, <vscale x 16 x half> %b)\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x half> @llvm.pow.nxv16f16(<vscale x 16 x half> %a, <vscale x 16 x half> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x half> %r"
@@ -3274,7 +3274,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x float> (<vscale x 2 x float>, <vscale x 2 x float>) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, <vscale x 2 x float> %b) {\n  %r = call <vscale x 2 x float> @llvm.pow(<vscale x 2 x float> %a, <vscale x 2 x float> %b)\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x float> @llvm.pow.nxv2f32(<vscale x 2 x float> %a, <vscale x 2 x float> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
@@ -3290,7 +3290,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x float> (<vscale x 4 x float>, <vscale x 4 x float>) (in function: test)",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, <vscale x 4 x float> %b) {\n  %r = call <vscale x 4 x float> @llvm.pow(<vscale x 4 x float> %a, <vscale x 4 x float> %b)\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x float> @llvm.pow.nxv4f32(<vscale x 4 x float> %a, <vscale x 4 x float> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
@@ -3306,7 +3306,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x float> (<vscale x 8 x float>, <vscale x 8 x float>) (in function: test)",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %b) {\n  %r = call <vscale x 8 x float> @llvm.pow(<vscale x 8 x float> %a, <vscale x 8 x float> %b)\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x float> @llvm.pow.nxv8f32(<vscale x 8 x float> %a, <vscale x 8 x float> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x float> %r"
@@ -3322,7 +3322,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x double> (<vscale x 2 x double>, <vscale x 2 x double>) (in function: test)",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, <vscale x 2 x double> %b) {\n  %r = call <vscale x 2 x double> @llvm.pow(<vscale x 2 x double> %a, <vscale x 2 x double> %b)\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x double> @llvm.pow.nxv2f64(<vscale x 2 x double> %a, <vscale x 2 x double> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
@@ -3338,7 +3338,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x double> (<vscale x 4 x double>, <vscale x 4 x double>) (in function: test)",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %b) {\n  %r = call <vscale x 4 x double> @llvm.pow(<vscale x 4 x double> %a, <vscale x 4 x double> %b)\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x double> @llvm.pow.nxv4f64(<vscale x 4 x double> %a, <vscale x 4 x double> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
@@ -3530,7 +3530,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x half> (<vscale x 4 x half>, <vscale x 4 x i32>) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, <vscale x 4 x i32> %b) {\n  %r = call <vscale x 4 x half> @llvm.ldexp(<vscale x 4 x half> %a, <vscale x 4 x i32> %b)\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x half> @llvm.ldexp.nxv4f16.nxv4i32(<vscale x 4 x half> %a, <vscale x 4 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
@@ -3546,7 +3546,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x half> (<vscale x 8 x half>, <vscale x 8 x i32>) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, <vscale x 8 x i32> %b) {\n  %r = call <vscale x 8 x half> @llvm.ldexp(<vscale x 8 x half> %a, <vscale x 8 x i32> %b)\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x half> @llvm.ldexp.nxv8f16.nxv8i32(<vscale x 8 x half> %a, <vscale x 8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x half> %r"
@@ -3562,7 +3562,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x half> (<vscale x 16 x half>, <vscale x 16 x i32>) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, <vscale x 16 x i32> %b) {\n  %r = call <vscale x 16 x half> @llvm.ldexp(<vscale x 16 x half> %a, <vscale x 16 x i32> %b)\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x half> @llvm.ldexp.nxv16f16.nxv16i32(<vscale x 16 x half> %a, <vscale x 16 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x half> %r"
@@ -3578,7 +3578,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x float> (<vscale x 2 x float>, <vscale x 2 x i32>) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, <vscale x 2 x i32> %b) {\n  %r = call <vscale x 2 x float> @llvm.ldexp(<vscale x 2 x float> %a, <vscale x 2 x i32> %b)\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x float> @llvm.ldexp.nxv2f32.nxv2i32(<vscale x 2 x float> %a, <vscale x 2 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
@@ -3594,7 +3594,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x float> (<vscale x 4 x float>, <vscale x 4 x i32>) (in function: test)",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, <vscale x 4 x i32> %b) {\n  %r = call <vscale x 4 x float> @llvm.ldexp(<vscale x 4 x float> %a, <vscale x 4 x i32> %b)\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x float> @llvm.ldexp.nxv4f32.nxv4i32(<vscale x 4 x float> %a, <vscale x 4 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
@@ -3610,7 +3610,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x float> (<vscale x 8 x float>, <vscale x 8 x i32>) (in function: test)",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x float> %a, <vscale x 8 x i32> %b) {\n  %r = call <vscale x 8 x float> @llvm.ldexp(<vscale x 8 x float> %a, <vscale x 8 x i32> %b)\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x float> @llvm.ldexp.nxv8f32.nxv8i32(<vscale x 8 x float> %a, <vscale x 8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x float> %r"
@@ -3626,7 +3626,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x double> (<vscale x 2 x double>, <vscale x 2 x i32>) (in function: test)",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, <vscale x 2 x i32> %b) {\n  %r = call <vscale x 2 x double> @llvm.ldexp(<vscale x 2 x double> %a, <vscale x 2 x i32> %b)\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x double> @llvm.ldexp.nxv2f64.nxv2i32(<vscale x 2 x double> %a, <vscale x 2 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
@@ -3642,7 +3642,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x double> (<vscale x 4 x double>, <vscale x 4 x i32>) (in function: test)",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x double> %a, <vscale x 4 x i32> %b) {\n  %r = call <vscale x 4 x double> @llvm.ldexp(<vscale x 4 x double> %a, <vscale x 4 x i32> %b)\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x double> @llvm.ldexp.nxv4f64.nxv4i32(<vscale x 4 x double> %a, <vscale x 4 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
@@ -3834,7 +3834,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x half> (<vscale x 4 x half>, i32) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, i32 %b) {\n  %r = call <vscale x 4 x half> @llvm.powi(<vscale x 4 x half> %a, i32 %b)\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x half> @llvm.powi.nxv4f16.i32(<vscale x 4 x half> %a, i32 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
@@ -3850,7 +3850,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x half> (<vscale x 8 x half>, i32) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, i32 %b) {\n  %r = call <vscale x 8 x half> @llvm.powi(<vscale x 8 x half> %a, i32 %b)\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x half> @llvm.powi.nxv8f16.i32(<vscale x 8 x half> %a, i32 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x half> %r"
@@ -3866,7 +3866,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 16 x half> (<vscale x 16 x half>, i32) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, i32 %b) {\n  %r = call <vscale x 16 x half> @llvm.powi(<vscale x 16 x half> %a, i32 %b)\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x half> @llvm.powi.nxv16f16.i32(<vscale x 16 x half> %a, i32 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x half> %r"
@@ -3882,7 +3882,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x float> (<vscale x 2 x float>, i32) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, i32 %b) {\n  %r = call <vscale x 2 x float> @llvm.powi(<vscale x 2 x float> %a, i32 %b)\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x float> @llvm.powi.nxv2f32.i32(<vscale x 2 x float> %a, i32 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
@@ -3898,7 +3898,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x float> (<vscale x 4 x float>, i32) (in function: test)",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, i32 %b) {\n  %r = call <vscale x 4 x float> @llvm.powi(<vscale x 4 x float> %a, i32 %b)\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x float> @llvm.powi.nxv4f32.i32(<vscale x 4 x float> %a, i32 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
@@ -3914,7 +3914,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 8 x float> (<vscale x 8 x float>, i32) (in function: test)",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x float> %a, i32 %b) {\n  %r = call <vscale x 8 x float> @llvm.powi(<vscale x 8 x float> %a, i32 %b)\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x float> @llvm.powi.nxv8f32.i32(<vscale x 8 x float> %a, i32 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x float> %r"
@@ -3930,7 +3930,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 2 x double> (<vscale x 2 x double>, i32) (in function: test)",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, i32 %b) {\n  %r = call <vscale x 2 x double> @llvm.powi(<vscale x 2 x double> %a, i32 %b)\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x double> @llvm.powi.nxv2f64.i32(<vscale x 2 x double> %a, i32 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
@@ -3946,7 +3946,7 @@
   "size": -1,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "LLVM ERROR: Invalid size request on a scalable vector.",
+  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
   "giasm": "LLVM ERROR: unable to lower function: <vscale x 4 x double> (<vscale x 4 x double>, i32) (in function: test)",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x double> %a, i32 %b) {\n  %r = call <vscale x 4 x double> @llvm.powi(<vscale x 4 x double> %a, i32 %b)\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x double> @llvm.powi.nxv4f64.i32(<vscale x 4 x double> %a, i32 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
