@@ -5627,7 +5627,7 @@
   "gisize": 8,
   "extrasize": 0,
   "asm": "mov w8, #37                         // =0x25\nand w9, w0, #0xff\nmul w8, w9, w8\nlsr w8, w8, #8\nsub w9, w0, w8\nand w9, w9, #0xfe\nadd w8, w8, w9, lsr #1\nlsr w0, w8, #2\nret",
-  "giasm": "mov w8, #37                         // =0x25\nand w9, w0, #0xff\nmul w8, w9, w8\nlsr w8, w8, #8\nsub w9, w0, w8\nubfx w9, w9, #1, #7\nadd w8, w9, w8\nubfx w0, w8, #2, #6\nret",
+  "giasm": "mov w8, #37                         // =0x25\nand w9, w0, #0xff\nmul w8, w9, w8\nlsr w8, w8, #8\nsub w9, w0, w8\nubfx w9, w9, #1, #7\nadd w8, w9, w8\nlsr w0, w8, #2\nret",
   "ll": "define i8 @test(i8 %a) {\n  %r = udiv i8 %a, 7\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv i8 %a, 7\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -5659,7 +5659,7 @@
   "gisize": 8,
   "extrasize": 0,
   "asm": "mov w8, #9363                       // =0x2493\nand w9, w0, #0xffff\nmul w8, w9, w8\nlsr w8, w8, #16\nsub w9, w0, w8\nand w9, w9, #0xfffe\nadd w8, w8, w9, lsr #1\nlsr w0, w8, #2\nret",
-  "giasm": "mov w8, #9363                       // =0x2493\nand w9, w0, #0xffff\nmul w8, w9, w8\nlsr w8, w8, #16\nsub w9, w0, w8\nubfx w9, w9, #1, #15\nadd w8, w9, w8\nubfx w0, w8, #2, #14\nret",
+  "giasm": "mov w8, #9363                       // =0x2493\nand w9, w0, #0xffff\nmul w8, w9, w8\nlsr w8, w8, #16\nsub w9, w0, w8\nubfx w9, w9, #1, #15\nadd w8, w9, w8\nlsr w0, w8, #2\nret",
   "ll": "define i16 @test(i16 %a) {\n  %r = udiv i16 %a, 7\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv i16 %a, 7\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -6459,7 +6459,7 @@
   "gisize": 11,
   "extrasize": 0,
   "asm": "mov w8, #37                         // =0x25\nand w9, w0, #0xff\nmul w8, w9, w8\nlsr w8, w8, #8\nsub w9, w0, w8\nand w9, w9, #0xfe\nadd w8, w8, w9, lsr #1\nlsr w8, w8, #2\nsub w8, w8, w8, lsl #3\nadd w0, w0, w8\nret",
-  "giasm": "mov w8, #37                         // =0x25\nand w9, w0, #0xff\nmul w8, w9, w8\nlsr w8, w8, #8\nsub w9, w0, w8\nubfx w9, w9, #1, #7\nadd w8, w9, w8\nubfx w8, w8, #2, #6\nlsl w9, w8, #3\nsub w8, w9, w8\nsub w0, w0, w8\nret",
+  "giasm": "mov w8, #37                         // =0x25\nand w9, w0, #0xff\nmul w8, w9, w8\nlsr w8, w8, #8\nsub w9, w0, w8\nubfx w9, w9, #1, #7\nadd w8, w9, w8\nlsr w8, w8, #2\nlsl w9, w8, #3\nsub w8, w9, w8\nsub w0, w0, w8\nret",
   "ll": "define i8 @test(i8 %a) {\n  %r = urem i8 %a, 7\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem i8 %a, 7\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -6491,7 +6491,7 @@
   "gisize": 11,
   "extrasize": 0,
   "asm": "mov w8, #9363                       // =0x2493\nand w9, w0, #0xffff\nmul w8, w9, w8\nlsr w8, w8, #16\nsub w9, w0, w8\nand w9, w9, #0xfffe\nadd w8, w8, w9, lsr #1\nlsr w8, w8, #2\nsub w8, w8, w8, lsl #3\nadd w0, w0, w8\nret",
-  "giasm": "mov w8, #9363                       // =0x2493\nand w9, w0, #0xffff\nmul w8, w9, w8\nlsr w8, w8, #16\nsub w9, w0, w8\nubfx w9, w9, #1, #15\nadd w8, w9, w8\nubfx w8, w8, #2, #14\nlsl w9, w8, #3\nsub w8, w9, w8\nsub w0, w0, w8\nret",
+  "giasm": "mov w8, #9363                       // =0x2493\nand w9, w0, #0xffff\nmul w8, w9, w8\nlsr w8, w8, #16\nsub w9, w0, w8\nubfx w9, w9, #1, #15\nadd w8, w9, w8\nlsr w8, w8, #2\nlsl w9, w8, #3\nsub w8, w9, w8\nsub w0, w0, w8\nret",
   "ll": "define i16 @test(i16 %a) {\n  %r = urem i16 %a, 7\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem i16 %a, 7\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
