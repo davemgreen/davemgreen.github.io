@@ -7963,7 +7963,7 @@
   "gisize": 3,
   "extrasize": 0,
   "asm": "shl v2.4h, v2.4h, #15\ncmlt v2.4h, v2.4h, #0\nbif v0.8b, v1.8b, v2.8b\nret",
-  "giasm": "shl v2.4h, v2.4h, #15\nsshr v2.4h, v2.4h, #15\nbif v0.8b, v1.8b, v2.8b\nret",
+  "giasm": "shl v2.4h, v2.4h, #15\ncmlt v2.4h, v2.4h, #0\nbif v0.8b, v1.8b, v2.8b\nret",
   "ll": "define <4 x half> @test(<4 x half> %a, <4 x half> %b, <4 x i1> %c) vscale_range(2, 2){\n  %r = select  <4 x i1> %c, <4 x half> %a, <4 x half> %b\n  ret <4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = select <4 x i1> %c, <4 x half> %a, <4 x half> %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x half> %r"
  },
@@ -7979,7 +7979,7 @@
   "gisize": 4,
   "extrasize": 0,
   "asm": "ushll v2.8h, v2.8b, #0\nshl v2.8h, v2.8h, #15\ncmlt v2.8h, v2.8h, #0\nbif v0.16b, v1.16b, v2.16b\nret",
-  "giasm": "ushll v2.8h, v2.8b, #0\nshl v2.8h, v2.8h, #15\nsshr v2.8h, v2.8h, #15\nbif v0.16b, v1.16b, v2.16b\nret",
+  "giasm": "ushll v2.8h, v2.8b, #0\nshl v2.8h, v2.8h, #15\ncmlt v2.8h, v2.8h, #0\nbif v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x half> @test(<8 x half> %a, <8 x half> %b, <8 x i1> %c) vscale_range(2, 2){\n  %r = select  <8 x i1> %c, <8 x half> %a, <8 x half> %b\n  ret <8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = select <8 x i1> %c, <8 x half> %a, <8 x half> %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x half> %r"
  },
@@ -7995,7 +7995,7 @@
   "gisize": 8,
   "extrasize": 0,
   "asm": "ptrue p0.h, vl8\nuunpklo z4.h, z4.b\nptrue p1.h\nsplice z2.h, p0, { z2.h, z3.h }\nsplice z0.h, p0, { z0.h, z1.h }\nlsl z4.h, z4.h, #15\nasr z4.h, z4.h, #15\nand z4.h, z4.h, #0x1\ncmpne p0.h, p1/z, z4.h, #0\nsel z0.h, p0, z0.h, z2.h\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
-  "giasm": "ushll v5.8h, v4.8b, #0\nushll2 v4.8h, v4.16b, #0\nshl v5.8h, v5.8h, #15\nshl v4.8h, v4.8h, #15\nsshr v5.8h, v5.8h, #15\nsshr v4.8h, v4.8h, #15\nbif v0.16b, v2.16b, v5.16b\nbif v1.16b, v3.16b, v4.16b\nret",
+  "giasm": "ushll v5.8h, v4.8b, #0\nushll2 v4.8h, v4.16b, #0\nshl v5.8h, v5.8h, #15\nshl v4.8h, v4.8h, #15\ncmlt v5.8h, v5.8h, #0\ncmlt v4.8h, v4.8h, #0\nbif v0.16b, v2.16b, v5.16b\nbif v1.16b, v3.16b, v4.16b\nret",
   "ll": "define <16 x half> @test(<16 x half> %a, <16 x half> %b, <16 x i1> %c) vscale_range(2, 2){\n  %r = select  <16 x i1> %c, <16 x half> %a, <16 x half> %b\n  ret <16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = select <16 x i1> %c, <16 x half> %a, <16 x half> %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
  },
@@ -8011,7 +8011,7 @@
   "gisize": 3,
   "extrasize": 0,
   "asm": "shl v2.2s, v2.2s, #31\ncmlt v2.2s, v2.2s, #0\nbif v0.8b, v1.8b, v2.8b\nret",
-  "giasm": "shl v2.2s, v2.2s, #31\nsshr v2.2s, v2.2s, #31\nbif v0.8b, v1.8b, v2.8b\nret",
+  "giasm": "shl v2.2s, v2.2s, #31\ncmlt v2.2s, v2.2s, #0\nbif v0.8b, v1.8b, v2.8b\nret",
   "ll": "define <2 x float> @test(<2 x float> %a, <2 x float> %b, <2 x i1> %c) vscale_range(2, 2){\n  %r = select  <2 x i1> %c, <2 x float> %a, <2 x float> %b\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = select <2 x i1> %c, <2 x float> %a, <2 x float> %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x float> %r"
  },
@@ -8027,7 +8027,7 @@
   "gisize": 4,
   "extrasize": 0,
   "asm": "ushll v2.4s, v2.4h, #0\nshl v2.4s, v2.4s, #31\ncmlt v2.4s, v2.4s, #0\nbif v0.16b, v1.16b, v2.16b\nret",
-  "giasm": "ushll v2.4s, v2.4h, #0\nshl v2.4s, v2.4s, #31\nsshr v2.4s, v2.4s, #31\nbif v0.16b, v1.16b, v2.16b\nret",
+  "giasm": "ushll v2.4s, v2.4h, #0\nshl v2.4s, v2.4s, #31\ncmlt v2.4s, v2.4s, #0\nbif v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <4 x float> @test(<4 x float> %a, <4 x float> %b, <4 x i1> %c) vscale_range(2, 2){\n  %r = select  <4 x i1> %c, <4 x float> %a, <4 x float> %b\n  ret <4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = select <4 x i1> %c, <4 x float> %a, <4 x float> %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x float> %r"
  },
@@ -8043,7 +8043,7 @@
   "gisize": 9,
   "extrasize": 0,
   "asm": "ptrue p0.d, vl2\nuunpklo z4.h, z4.b\nptrue p1.s\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nuunpklo z4.s, z4.h\nlsl z4.s, z4.s, #31\nasr z4.s, z4.s, #31\nand z4.s, z4.s, #0x1\ncmpne p0.s, p1/z, z4.s, #0\nsel z0.s, p0, z0.s, z2.s\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
-  "giasm": "ushll v4.8h, v4.8b, #0\nushll v5.4s, v4.4h, #0\nushll2 v4.4s, v4.8h, #0\nshl v5.4s, v5.4s, #31\nshl v4.4s, v4.4s, #31\nsshr v5.4s, v5.4s, #31\nsshr v4.4s, v4.4s, #31\nbif v0.16b, v2.16b, v5.16b\nbif v1.16b, v3.16b, v4.16b\nret",
+  "giasm": "ushll v4.8h, v4.8b, #0\nushll v5.4s, v4.4h, #0\nushll2 v4.4s, v4.8h, #0\nshl v5.4s, v5.4s, #31\nshl v4.4s, v4.4s, #31\ncmlt v5.4s, v5.4s, #0\ncmlt v4.4s, v4.4s, #0\nbif v0.16b, v2.16b, v5.16b\nbif v1.16b, v3.16b, v4.16b\nret",
   "ll": "define <8 x float> @test(<8 x float> %a, <8 x float> %b, <8 x i1> %c) vscale_range(2, 2){\n  %r = select  <8 x i1> %c, <8 x float> %a, <8 x float> %b\n  ret <8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = select <8 x i1> %c, <8 x float> %a, <8 x float> %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x float> %r"
  },
@@ -8059,7 +8059,7 @@
   "gisize": 4,
   "extrasize": 0,
   "asm": "ushll v2.2d, v2.2s, #0\nshl v2.2d, v2.2d, #63\ncmlt v2.2d, v2.2d, #0\nbif v0.16b, v1.16b, v2.16b\nret",
-  "giasm": "ushll v2.2d, v2.2s, #0\nshl v2.2d, v2.2d, #63\nsshr v2.2d, v2.2d, #63\nbif v0.16b, v1.16b, v2.16b\nret",
+  "giasm": "ushll v2.2d, v2.2s, #0\nshl v2.2d, v2.2d, #63\ncmlt v2.2d, v2.2d, #0\nbif v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <2 x double> @test(<2 x double> %a, <2 x double> %b, <2 x i1> %c) vscale_range(2, 2){\n  %r = select  <2 x i1> %c, <2 x double> %a, <2 x double> %b\n  ret <2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = select <2 x i1> %c, <2 x double> %a, <2 x double> %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x double> %r"
  },
@@ -8075,7 +8075,7 @@
   "gisize": 9,
   "extrasize": 0,
   "asm": "ptrue p0.d, vl2\nuunpklo z4.s, z4.h\nptrue p1.d\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nuunpklo z4.d, z4.s\nlsl z4.d, z4.d, #63\nasr z4.d, z4.d, #63\nand z4.d, z4.d, #0x1\ncmpne p0.d, p1/z, z4.d, #0\nsel z0.d, p0, z0.d, z2.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
-  "giasm": "ushll v4.4s, v4.4h, #0\nushll v5.2d, v4.2s, #0\nushll2 v4.2d, v4.4s, #0\nshl v5.2d, v5.2d, #63\nshl v4.2d, v4.2d, #63\nsshr v5.2d, v5.2d, #63\nsshr v4.2d, v4.2d, #63\nbif v0.16b, v2.16b, v5.16b\nbif v1.16b, v3.16b, v4.16b\nret",
+  "giasm": "ushll v4.4s, v4.4h, #0\nushll v5.2d, v4.2s, #0\nushll2 v4.2d, v4.4s, #0\nshl v5.2d, v5.2d, #63\nshl v4.2d, v4.2d, #63\ncmlt v5.2d, v5.2d, #0\ncmlt v4.2d, v4.2d, #0\nbif v0.16b, v2.16b, v5.16b\nbif v1.16b, v3.16b, v4.16b\nret",
   "ll": "define <4 x double> @test(<4 x double> %a, <4 x double> %b, <4 x i1> %c) vscale_range(2, 2){\n  %r = select  <4 x i1> %c, <4 x double> %a, <4 x double> %b\n  ret <4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = select <4 x i1> %c, <4 x double> %a, <4 x double> %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x double> %r"
  },
