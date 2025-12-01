@@ -224,6 +224,8 @@ def generate(variant, instr, ty, ty2):
   elif instr == 'insertelement':
     idx = '%c' if variant == 'vecopvar' else ('1' if variant == 'vecop1' else '0')
     instrstr += f"  %r = insertelement {tystr} %a, {eltstr} %bs, i32 {idx}\n"
+  elif instr in ['llrint', 'lrint', 'llround', 'lround']:
+    instrstr += f"  %r = call {rettystr} @llvm.{instr}({tystr} %a)\n"
   elif variant.startswith('cast'):
     instrstr += f"  %r = {instr} {tystr} %a to {rettystr}\n"
   elif instr == "shuffleu":
@@ -472,8 +474,13 @@ if args.type == 'all' or args.type == 'castfp':
             continue
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
 
-    # TODO: fpext, fptrunc, fptosisat, fptouisat
-    # TODO: lrint, llrint, lround, llround
+    for instr in ['lrint', 'llrint', 'lround', 'llround']:
+      for ty1 in fptypes(True):
+        yield (instr, 'cast i64', ty1, Ty('i64', ty1.elts, ty1.scalable), 0, None)
+        if not instr.startswith('ll'):
+          yield (instr, 'cast i32', ty1, Ty('i32', ty1.elts, ty1.scalable), 0, None)
+
+    # TODO: fptosisat, fptouisat
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumcast())
