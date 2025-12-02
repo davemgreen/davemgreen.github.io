@@ -5259,7 +5259,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "fcvtas w0, h0\nret",
-  "giasm": "fcvtas w0, h0\nret",
+  "giasm": "fcvtas x0, h0\nret",
   "ll": "define i32 @test(half %a) {\n  %r = call i32 @llvm.lround(half %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lround.i32.f16(half %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -5291,7 +5291,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "fcvtas w0, s0\nret",
-  "giasm": "fcvtas w0, s0\nret",
+  "giasm": "fcvtas x0, s0\nret",
   "ll": "define i32 @test(float %a) {\n  %r = call i32 @llvm.lround(float %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lround.i32.f32(float %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -5323,7 +5323,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "fcvtas w0, d0\nret",
-  "giasm": "fcvtas w0, d0\nret",
+  "giasm": "fcvtas x0, d0\nret",
   "ll": "define i32 @test(double %a) {\n  %r = call i32 @llvm.lround(double %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lround.i32.f64(double %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
