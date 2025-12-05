@@ -4440,10 +4440,10 @@
   "lat": 1,
   "sizelat": 1,
   "size": 3,
-  "gisize": -1,
+  "gisize": 3,
   "extrasize": 0,
   "asm": "fcvt s0, h0\nfrintx s0, s0\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(s32) = G_INTRINSIC_LRINT %2:_(s32) (in function: test)",
+  "giasm": "fcvt s0, h0\nfrintx s0, s0\nfcvtzs w0, s0\nret",
   "ll": "define i32 @test(half %a) {\n  %r = call i32 @llvm.lrint(half %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lrint.i32.f16(half %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -4472,10 +4472,10 @@
   "lat": 1,
   "sizelat": 1,
   "size": 2,
-  "gisize": -1,
+  "gisize": 2,
   "extrasize": 0,
   "asm": "frintx s0, s0\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(s32) = G_INTRINSIC_LRINT %0:_(s32) (in function: test)",
+  "giasm": "frintx s0, s0\nfcvtzs w0, s0\nret",
   "ll": "define i32 @test(float %a) {\n  %r = call i32 @llvm.lrint(float %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lrint.i32.f32(float %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -4504,10 +4504,10 @@
   "lat": 1,
   "sizelat": 1,
   "size": 2,
-  "gisize": -1,
+  "gisize": 2,
   "extrasize": 0,
   "asm": "frintx d0, d0\nfcvtzs w0, d0\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(s32) = G_INTRINSIC_LRINT %0:_(s64) (in function: test)",
+  "giasm": "frintx d0, d0\nfcvtzs w0, d0\nret",
   "ll": "define i32 @test(double %a) {\n  %r = call i32 @llvm.lrint(double %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lrint.i32.f64(double %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -4523,7 +4523,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nfcvt s0, h0\nfcvt s1, h1\nfcvt s2, h2\nfcvt s3, h3\nfrintx s0, s0\nfrintx s1, s1\nfrintx s2, s2\nfrintx s3, s3\nfcvtzs x8, s0\nfcvtzs x9, s1\nfcvtzs x10, s2\nfcvtzs x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x s64>) = G_INTRINSIC_LRINT %4:_(<4 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x s64>) = G_INTRINSIC_LRINT %0:_(<4 x s16>) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x half> %a) {\n  %r = call <4 x i64> @llvm.lrint(<4 x half> %a)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i64> @llvm.lrint.v4i64.v4f16(<4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -4539,7 +4539,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "mov h1, v0.h[1]\nfcvt s2, h0\nmov h3, v0.h[2]\nmov h0, v0.h[3]\nfcvt s1, h1\nfrintx s2, s2\nfcvt s3, h3\nfrintx s1, s1\nfcvtzs w8, s2\nfcvt s2, h0\nfcvtzs w9, s1\nfrintx s1, s3\nfmov s0, w8\nmov v0.s[1], w9\nfcvtzs w8, s1\nfrintx s1, s2\nmov v0.s[2], w8\nfcvtzs w8, s1\nmov v0.s[3], w8\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x s32>) = G_INTRINSIC_LRINT %2:_(<4 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x s32>) = G_INTRINSIC_LRINT %0:_(<4 x s16>) (in function: test)",
   "ll": "define <4 x i32> @test(<4 x half> %a) {\n  %r = call <4 x i32> @llvm.lrint(<4 x half> %a)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i32> @llvm.lrint.v4i32.v4f16(<4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
  },
@@ -4555,7 +4555,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nfcvt s0, h0\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nfcvt s1, h1\nfcvt s4, h4\nfcvt s3, h3\nfcvt s7, h7\nfrintx s0, s0\nfcvt s2, h2\nfcvt s5, h5\nfcvt s6, h6\nfrintx s1, s1\nfrintx s4, s4\nfrintx s3, s3\nfrintx s7, s7\nfcvtzs x9, s0\nfrintx s2, s2\nfrintx s5, s5\nfrintx s6, s6\nfcvtzs x8, s1\nfcvtzs x12, s4\nfcvtzs x11, s3\nfcvtzs x15, s7\nfmov d0, x9\nfcvtzs x10, s2\nfcvtzs x13, s5\nfcvtzs x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x s64>) = G_INTRINSIC_LRINT %6:_(<8 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x s64>) = G_INTRINSIC_LRINT %0:_(<8 x s16>) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x half> %a) {\n  %r = call <8 x i64> @llvm.lrint(<8 x half> %a)\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i64> @llvm.lrint.v8i64.v8f16(<8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -4571,7 +4571,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h3, v0.h[1]\nfcvt s6, h0\nmov h4, v0.h[2]\nmov h0, v0.h[3]\nmov h2, v1.h[1]\nfcvt s5, h1\nmov h7, v1.h[2]\nfcvt s3, h3\nfrintx s6, s6\nfcvt s4, h4\nmov h1, v1.h[3]\nfcvt s2, h2\nfrintx s5, s5\nfcvt s7, h7\nfrintx s3, s3\nfcvtzs w9, s6\nfrintx s4, s4\nfrintx s2, s2\nfcvtzs w8, s5\nfcvt s5, h1\nfcvtzs w11, s3\nfcvt s3, h0\nfmov s0, w9\nfcvtzs w12, s4\nfcvtzs w10, s2\nfrintx s2, s7\nfmov s1, w8\nmov v0.s[1], w11\nfcvtzs w8, s2\nmov v1.s[1], w10\nfrintx s2, s3\nfrintx s3, s5\nmov v0.s[2], w12\nmov v1.s[2], w8\nfcvtzs w9, s2\nfcvtzs w8, s3\nmov v0.s[3], w9\nmov v1.s[3], w8\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x s32>) = G_INTRINSIC_LRINT %4:_(<8 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x s32>) = G_INTRINSIC_LRINT %0:_(<8 x s16>) (in function: test)",
   "ll": "define <8 x i32> @test(<8 x half> %a) {\n  %r = call <8 x i32> @llvm.lrint(<8 x half> %a)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i32> @llvm.lrint.v8i32.v8f16(<8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
@@ -4587,7 +4587,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\next v3.16b, v1.16b, v1.16b, #8\nmov h17, v0.h[1]\nmov h19, v0.h[2]\nfcvt s18, h0\nmov h0, v0.h[3]\nmov h4, v2.h[1]\nmov h5, v2.h[2]\nfcvt s7, h3\nfcvt s6, h2\nmov h16, v3.h[2]\nmov h2, v2.h[3]\nfcvt s17, h17\nfcvt s19, h19\nfrintx s18, s18\nfcvt s0, h0\nfcvt s4, h4\nfcvt s5, h5\nfrintx s7, s7\nfrintx s6, s6\nfcvt s16, h16\nfcvt s2, h2\nfrintx s17, s17\nfrintx s19, s19\nfcvtzs x13, s18\nfrintx s0, s0\nfrintx s4, s4\nfrintx s5, s5\nfcvtzs x9, s7\nmov h7, v1.h[2]\nfcvtzs x8, s6\nmov h6, v1.h[1]\nfrintx s16, s16\nfcvtzs x14, s17\nfcvtzs x15, s19\nfcvtzs x10, s4\nmov h4, v3.h[1]\nfcvtzs x11, s5\nmov h5, v1.h[3]\nmov h3, v3.h[3]\nfcvt s1, h1\nfcvt s7, h7\nfcvt s6, h6\nfcvtzs x12, s16\nfrintx s16, s2\nfmov d2, x8\nfcvt s4, h4\nfcvt s3, h3\nfcvt s5, h5\nfrintx s1, s1\nfrintx s7, s7\nfrintx s17, s6\nfmov d6, x9\nmov v2.d[1], x10\nfrintx s4, s4\nfrintx s18, s3\nfrintx s5, s5\nfcvtzs x8, s1\nfcvtzs x9, s7\nfmov d3, x11\nfcvtzs x11, s0\nfmov d7, x12\nfcvtzs x12, s16\nfcvtzs x16, s17\nfcvtzs x17, s4\nfmov d0, x13\nfmov d1, x15\nfcvtzs x18, s18\nfcvtzs x0, s5\nfmov d4, x8\nfmov d5, x9\nmov v0.d[1], x14\nmov v1.d[1], x11\nmov v3.d[1], x12\nmov v4.d[1], x16\nmov v6.d[1], x17\nmov v7.d[1], x18\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<16 x s64>) = G_INTRINSIC_LRINT %12:_(<16 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<16 x s64>) = G_INTRINSIC_LRINT %0:_(<16 x s16>) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x half> %a) {\n  %r = call <16 x i64> @llvm.lrint(<16 x half> %a)\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i64> @llvm.lrint.v16i64.v16f16(<16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -4603,7 +4603,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\next v3.16b, v1.16b, v1.16b, #8\nmov h18, v0.h[1]\nmov h19, v1.h[1]\nfcvt s20, h0\nmov h21, v0.h[2]\nmov h0, v0.h[3]\nmov h4, v2.h[1]\nmov h5, v2.h[2]\nfcvt s6, h2\nfcvt s7, h3\nmov h16, v3.h[1]\nmov h17, v3.h[2]\nfcvt s18, h18\nfcvt s19, h19\nmov h2, v2.h[3]\nfcvt s4, h4\nfcvt s5, h5\nfrintx s6, s6\nfrintx s7, s7\nfcvt s16, h16\nfcvt s17, h17\nfrintx s18, s18\nfcvt s2, h2\nfrintx s4, s4\nfrintx s5, s5\nfcvtzs w8, s6\nfcvt s6, h1\nfcvtzs w9, s7\nmov h7, v1.h[2]\nfrintx s16, s16\nfcvtzs w15, s18\nfcvtzs w10, s4\nfrintx s4, s17\nfcvtzs w11, s5\nfrintx s5, s20\nfcvt s17, h21\nfrintx s6, s6\nfcvtzs w12, s16\nfrintx s16, s19\nfcvt s7, h7\nmov h19, v1.h[3]\nfmov s1, w8\nfcvtzs w13, s4\nmov h4, v3.h[3]\nfmov s3, w9\nfcvtzs w14, s5\nfrintx s5, s17\nfcvtzs w16, s6\nfcvt s17, h0\nfcvtzs w8, s16\nfrintx s6, s7\nfcvt s7, h19\nmov v1.s[1], w10\nmov v3.s[1], w12\nfcvt s4, h4\nfcvtzs w9, s5\nfmov s0, w14\nfrintx s5, s2\nfmov s2, w16\nfrintx s16, s17\nfcvtzs w10, s6\nfrintx s6, s7\nmov v1.s[2], w11\nmov v3.s[2], w13\nmov v0.s[1], w15\nfrintx s4, s4\nmov v2.s[1], w8\nfcvtzs w8, s5\nfcvtzs w12, s16\nmov v0.s[2], w9\nfcvtzs w9, s4\nmov v2.s[2], w10\nfcvtzs w10, s6\nmov v1.s[3], w8\nmov v0.s[3], w12\nmov v3.s[3], w9\nmov v2.s[3], w10\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<16 x s32>) = G_INTRINSIC_LRINT %8:_(<16 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<16 x s32>) = G_INTRINSIC_LRINT %0:_(<16 x s16>) (in function: test)",
   "ll": "define <16 x i32> @test(<16 x half> %a) {\n  %r = call <16 x i32> @llvm.lrint(<16 x half> %a)\n  ret <16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i32> @llvm.lrint.v16i32.v16f16(<16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i32> %r"
  },
@@ -4619,7 +4619,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v4.16b, v1.16b, v1.16b, #8\next v5.16b, v2.16b, v2.16b, #8\next v6.16b, v3.16b, v3.16b, #8\next v7.16b, v0.16b, v0.16b, #8\nmov h19, v0.h[1]\nfcvt s21, h0\nmov h23, v1.h[2]\nfcvt s22, h1\nfcvt s26, h2\nmov h27, v2.h[1]\nmov h28, v2.h[2]\nmov h16, v4.h[2]\nfcvt s17, h5\nmov h18, v5.h[2]\nmov h20, v6.h[2]\nfcvt s24, h7\nfcvt s25, h6\nfcvt s19, h19\nfrintx s22, s22\nfcvt s16, h16\nfrintx s17, s17\nfcvt s18, h18\nfcvt s20, h20\nfrintx s16, s16\nfcvtzs x12, s17\nfrintx s17, s18\nfrintx s18, s21\nfcvt s21, h23\nfrintx s23, s24\nfrintx s24, s25\nfrintx s25, s19\nmov h19, v7.h[1]\nfcvtzs x13, s16\nfrintx s16, s20\nfrintx s20, s26\nfcvtzs x9, s23\nmov h23, v3.h[2]\nfcvt s26, h27\nfcvtzs x15, s24\nfcvtzs x10, s25\nfcvt s24, h28\nmov h25, v3.h[3]\nfcvtzs x14, s17\nfrintx s21, s21\nfmov d17, x12\nfcvtzs x12, s16\nfmov d16, x13\nfcvtzs x13, s22\nfcvt s22, h3\nmov h3, v3.h[1]\nmov h27, v0.h[2]\nmov h28, v2.h[3]\nfcvt s23, h23\nfrintx s26, s26\nfcvtzs x16, s20\nfrintx s20, s24\nfcvt s24, h25\nfcvtzs x11, s18\nfmov d18, x14\nfcvtzs x14, s21\nfrintx s22, s22\nfcvt s3, h3\nfcvt s25, h27\nfcvt s27, h28\nfrintx s23, s23\nmov h21, v1.h[3]\nfmov d2, x15\nfcvtzs x15, s26\nfmov d26, x13\nmov h1, v1.h[1]\nfcvtzs x13, s20\nfrintx s20, s24\nfmov d24, x14\nfcvtzs x14, s22\nfrintx s3, s3\nfmov d22, x16\nfrintx s27, s27\nfcvtzs x16, s23\nfcvt s21, h21\nfrintx s25, s25\nfcvt s1, h1\nmov h0, v0.h[3]\nmov h23, v7.h[2]\nmov v22.d[1], x15\nfcvtzs x15, s20\nfmov d20, x13\nfcvtzs x13, s3\nfmov d3, x14\nfcvtzs x14, s27\nfmov d27, x16\nfrintx s21, s21\nmov h7, v7.h[3]\nfrintx s1, s1\nfcvt s0, h0\nfcvt s23, h23\nfcvt s19, h19\nmov v27.d[1], x15\nfcvtzs x15, s25\nmov h25, v6.h[3]\nmov h6, v6.h[1]\nmov v3.d[1], x13\nfcvtzs x13, s21\nmov h21, v5.h[1]\nmov h5, v5.h[3]\nmov v20.d[1], x14\nfcvtzs x14, s1\nmov h1, v4.h[1]\nfrintx s0, s0\nfcvt s25, h25\nfcvt s7, h7\nstp q3, q27, [x8, #192]\nfcvt s6, h6\nmov h3, v4.h[3]\nstp q22, q20, [x8, #128]\nfcvt s21, h21\nfcvt s5, h5\nmov v24.d[1], x13\nmov v26.d[1], x14\nfcvt s4, h4\nfrintx s22, s25\nfmov d20, x12\nfcvt s1, h1\nfrintx s6, s6\nfcvt s3, h3\nfcvtzs x12, s0\nfrintx s5, s5\nfrintx s21, s21\nfmov d0, x11\nstp q26, q24, [x8, #64]\nfmov d24, x15\nfrintx s4, s4\nfcvtzs x11, s22\nfrintx s22, s23\nfrintx s1, s1\nfcvtzs x13, s6\nfrintx s3, s3\nfrintx s6, s7\nfcvtzs x14, s5\nmov v24.d[1], x12\nfrintx s5, s19\nfcvtzs x12, s21\nmov v0.d[1], x10\nfcvtzs x10, s4\nmov v20.d[1], x11\nfcvtzs x11, s22\nmov v2.d[1], x13\nfcvtzs x15, s3\nfcvtzs x13, s1\nmov v18.d[1], x14\nfcvtzs x14, s6\nstp q0, q24, [x8]\nmov v17.d[1], x12\nfcvtzs x12, s5\nfmov d0, x10\nfmov d1, x11\nstp q2, q20, [x8, #224]\nfmov d2, x9\nmov v16.d[1], x15\nstp q17, q18, [x8, #160]\nmov v0.d[1], x13\nmov v1.d[1], x14\nmov v2.d[1], x12\nstp q0, q16, [x8, #96]\nstp q2, q1, [x8, #32]\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<32 x s64>) = G_INTRINSIC_LRINT %53:_(<32 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<32 x s64>) = G_INTRINSIC_LRINT %0:_(<32 x s16>) (in function: test)",
   "ll": "define <32 x i64> @test(<32 x half> %a) {\n  %r = call <32 x i64> @llvm.lrint(<32 x half> %a)\n  ret <32 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:152 CodeSize:92 Lat:152 SizeLat:152 for:   %r = call <32 x i64> @llvm.lrint.v32i64.v32f16(<32 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i64> %r"
  },
@@ -4635,7 +4635,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v5.16b, v0.16b, v0.16b, #8\next v4.16b, v1.16b, v1.16b, #8\next v17.16b, v2.16b, v2.16b, #8\nmov h6, v5.h[1]\nfcvt s7, h5\nmov h16, v5.h[2]\nmov h5, v5.h[3]\nmov h18, v4.h[1]\nmov h20, v4.h[3]\nmov h19, v4.h[2]\nfcvt s21, h4\nmov h23, v17.h[1]\next v4.16b, v3.16b, v3.16b, #8\nfcvt s22, h17\nfcvt s6, h6\nfrintx s7, s7\nfcvt s16, h16\nfcvt s5, h5\nfcvt s18, h18\nfcvt s20, h20\nfcvt s19, h19\nfrintx s22, s22\nfrintx s6, s6\nfcvtzs w12, s7\nfrintx s7, s16\nfrintx s5, s5\nfrintx s16, s21\nfcvt s21, h23\nfrintx s18, s18\nfrintx s20, s20\nfrintx s19, s19\nfcvtzs w15, s22\nmov h22, v1.h[2]\nfcvtzs w17, s6\nmov h6, v17.h[2]\nmov h17, v17.h[3]\nfcvtzs w9, s7\nmov h7, v4.h[2]\nfcvtzs w8, s5\nmov h5, v4.h[1]\nfcvtzs w13, s16\nfrintx s16, s21\nfcvtzs w14, s18\nfcvtzs w10, s20\nfcvt s18, h4\nfcvt s6, h6\nfcvt s17, h17\nmov h20, v0.h[2]\nfcvt s7, h7\nfcvtzs w11, s19\nmov h19, v0.h[1]\nfcvt s5, h5\nfcvtzs w0, s16\nmov h21, v1.h[1]\nfrintx s18, s18\nmov h4, v4.h[3]\nfrintx s6, s6\nfrintx s16, s17\nmov h17, v0.h[3]\nfcvt s0, h0\nfcvt s19, h19\nfrintx s5, s5\nfcvtzs w2, s18\nfcvt s18, h21\nfcvt s21, h2\nfcvtzs w18, s6\nfrintx s6, s7\nfcvt s7, h20\nfcvtzs w16, s16\nfcvt s16, h17\nfcvt s17, h1\nfrintx s0, s0\nfcvtzs w3, s5\nfrintx s5, s19\nfcvt s19, h22\nmov h1, v1.h[3]\nfcvtzs w1, s6\nfrintx s6, s7\nmov h7, v2.h[1]\nfrintx s17, s17\nfrintx s20, s16\nfmov s16, w12\nfcvtzs w4, s0\nfrintx s0, s18\nfcvtzs w5, s5\nfrintx s5, s19\nfrintx s18, s21\nfcvt s19, h3\nfcvtzs w12, s6\nfcvt s6, h7\nmov h7, v3.h[1]\nfcvtzs w6, s17\nfmov s17, w13\nmov v16.s[1], w17\nfcvtzs w17, s20\nfcvtzs w7, s0\nmov h0, v2.h[2]\nmov h20, v3.h[2]\nfcvtzs w13, s5\nfmov s5, w15\nfrintx s6, s6\nfcvt s7, h7\nmov v17.s[1], w14\nfcvtzs w14, s18\nfrintx s18, s19\nmov h2, v2.h[3]\nfcvt s0, h0\nmov h3, v3.h[3]\nmov v5.s[1], w0\nfcvt s19, h20\nfcvt s1, h1\nmov v16.s[2], w9\nfcvtzs w15, s6\nfrintx s6, s7\nfmov s7, w2\nfcvtzs w0, s18\nfcvt s20, h2\nfcvt s18, h4\nfrintx s21, s0\nfcvt s3, h3\nfmov s0, w4\nfrintx s19, s19\nfmov s2, w6\nfmov s4, w14\nfcvtzs w2, s6\nmov v7.s[1], w3\nfrintx s1, s1\nfmov s6, w0\nmov v0.s[1], w5\nfrintx s20, s20\nmov v2.s[1], w7\nfcvtzs w3, s21\nmov v4.s[1], w15\nfcvtzs w14, s19\nfrintx s18, s18\nfrintx s3, s3\nmov v6.s[1], w2\nmov v17.s[2], w11\nfcvtzs w15, s1\nfcvtzs w0, s20\nmov v5.s[2], w18\nmov v0.s[2], w12\nmov v7.s[2], w1\nmov v2.s[2], w13\nmov v4.s[2], w3\nfcvtzs w9, s18\nfcvtzs w11, s3\nmov v16.s[3], w8\nmov v6.s[2], w14\nmov v17.s[3], w10\nmov v0.s[3], w17\nmov v5.s[3], w16\nmov v2.s[3], w15\nmov v4.s[3], w0\nmov v7.s[3], w9\nmov v1.16b, v16.16b\nmov v6.s[3], w11\nmov v3.16b, v17.16b\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %5:_(<32 x s32>) = G_INTRINSIC_LRINT %14:_(<32 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %5:_(<32 x s32>) = G_INTRINSIC_LRINT %0:_(<32 x s16>) (in function: test)",
   "ll": "define <32 x i32> @test(<32 x half> %a) {\n  %r = call <32 x i32> @llvm.lrint(<32 x half> %a)\n  ret <32 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:152 CodeSize:92 Lat:152 SizeLat:152 for:   %r = call <32 x i32> @llvm.lrint.v32i32.v32f16(<32 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i32> %r"
  },
@@ -5019,7 +5019,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nfcvt s0, h0\nfcvt s1, h1\nfcvt s2, h2\nfcvt s3, h3\nfrintx s0, s0\nfrintx s1, s1\nfrintx s2, s2\nfrintx s3, s3\nfcvtzs x8, s0\nfcvtzs x9, s1\nfcvtzs x10, s2\nfcvtzs x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x s64>) = G_INTRINSIC_LLRINT %4:_(<4 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x s64>) = G_INTRINSIC_LLRINT %0:_(<4 x s16>) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x half> %a) {\n  %r = call <4 x i64> @llvm.llrint(<4 x half> %a)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i64> @llvm.llrint.v4i64.v4f16(<4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -5035,7 +5035,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nfcvt s0, h0\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nfcvt s1, h1\nfcvt s4, h4\nfcvt s3, h3\nfcvt s7, h7\nfrintx s0, s0\nfcvt s2, h2\nfcvt s5, h5\nfcvt s6, h6\nfrintx s1, s1\nfrintx s4, s4\nfrintx s3, s3\nfrintx s7, s7\nfcvtzs x9, s0\nfrintx s2, s2\nfrintx s5, s5\nfrintx s6, s6\nfcvtzs x8, s1\nfcvtzs x12, s4\nfcvtzs x11, s3\nfcvtzs x15, s7\nfmov d0, x9\nfcvtzs x10, s2\nfcvtzs x13, s5\nfcvtzs x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x s64>) = G_INTRINSIC_LLRINT %6:_(<8 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x s64>) = G_INTRINSIC_LLRINT %0:_(<8 x s16>) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x half> %a) {\n  %r = call <8 x i64> @llvm.llrint(<8 x half> %a)\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i64> @llvm.llrint.v8i64.v8f16(<8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -5051,7 +5051,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\next v3.16b, v1.16b, v1.16b, #8\nmov h17, v0.h[1]\nmov h19, v0.h[2]\nfcvt s18, h0\nmov h0, v0.h[3]\nmov h4, v2.h[1]\nmov h5, v2.h[2]\nfcvt s7, h3\nfcvt s6, h2\nmov h16, v3.h[2]\nmov h2, v2.h[3]\nfcvt s17, h17\nfcvt s19, h19\nfrintx s18, s18\nfcvt s0, h0\nfcvt s4, h4\nfcvt s5, h5\nfrintx s7, s7\nfrintx s6, s6\nfcvt s16, h16\nfcvt s2, h2\nfrintx s17, s17\nfrintx s19, s19\nfcvtzs x13, s18\nfrintx s0, s0\nfrintx s4, s4\nfrintx s5, s5\nfcvtzs x9, s7\nmov h7, v1.h[2]\nfcvtzs x8, s6\nmov h6, v1.h[1]\nfrintx s16, s16\nfcvtzs x14, s17\nfcvtzs x15, s19\nfcvtzs x10, s4\nmov h4, v3.h[1]\nfcvtzs x11, s5\nmov h5, v1.h[3]\nmov h3, v3.h[3]\nfcvt s1, h1\nfcvt s7, h7\nfcvt s6, h6\nfcvtzs x12, s16\nfrintx s16, s2\nfmov d2, x8\nfcvt s4, h4\nfcvt s3, h3\nfcvt s5, h5\nfrintx s1, s1\nfrintx s7, s7\nfrintx s17, s6\nfmov d6, x9\nmov v2.d[1], x10\nfrintx s4, s4\nfrintx s18, s3\nfrintx s5, s5\nfcvtzs x8, s1\nfcvtzs x9, s7\nfmov d3, x11\nfcvtzs x11, s0\nfmov d7, x12\nfcvtzs x12, s16\nfcvtzs x16, s17\nfcvtzs x17, s4\nfmov d0, x13\nfmov d1, x15\nfcvtzs x18, s18\nfcvtzs x0, s5\nfmov d4, x8\nfmov d5, x9\nmov v0.d[1], x14\nmov v1.d[1], x11\nmov v3.d[1], x12\nmov v4.d[1], x16\nmov v6.d[1], x17\nmov v7.d[1], x18\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<16 x s64>) = G_INTRINSIC_LLRINT %12:_(<16 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<16 x s64>) = G_INTRINSIC_LLRINT %0:_(<16 x s16>) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x half> %a) {\n  %r = call <16 x i64> @llvm.llrint(<16 x half> %a)\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i64> @llvm.llrint.v16i64.v16f16(<16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -5067,7 +5067,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ext v4.16b, v1.16b, v1.16b, #8\next v5.16b, v2.16b, v2.16b, #8\next v6.16b, v3.16b, v3.16b, #8\next v7.16b, v0.16b, v0.16b, #8\nmov h19, v0.h[1]\nfcvt s21, h0\nmov h23, v1.h[2]\nfcvt s22, h1\nfcvt s26, h2\nmov h27, v2.h[1]\nmov h28, v2.h[2]\nmov h16, v4.h[2]\nfcvt s17, h5\nmov h18, v5.h[2]\nmov h20, v6.h[2]\nfcvt s24, h7\nfcvt s25, h6\nfcvt s19, h19\nfrintx s22, s22\nfcvt s16, h16\nfrintx s17, s17\nfcvt s18, h18\nfcvt s20, h20\nfrintx s16, s16\nfcvtzs x12, s17\nfrintx s17, s18\nfrintx s18, s21\nfcvt s21, h23\nfrintx s23, s24\nfrintx s24, s25\nfrintx s25, s19\nmov h19, v7.h[1]\nfcvtzs x13, s16\nfrintx s16, s20\nfrintx s20, s26\nfcvtzs x9, s23\nmov h23, v3.h[2]\nfcvt s26, h27\nfcvtzs x15, s24\nfcvtzs x10, s25\nfcvt s24, h28\nmov h25, v3.h[3]\nfcvtzs x14, s17\nfrintx s21, s21\nfmov d17, x12\nfcvtzs x12, s16\nfmov d16, x13\nfcvtzs x13, s22\nfcvt s22, h3\nmov h3, v3.h[1]\nmov h27, v0.h[2]\nmov h28, v2.h[3]\nfcvt s23, h23\nfrintx s26, s26\nfcvtzs x16, s20\nfrintx s20, s24\nfcvt s24, h25\nfcvtzs x11, s18\nfmov d18, x14\nfcvtzs x14, s21\nfrintx s22, s22\nfcvt s3, h3\nfcvt s25, h27\nfcvt s27, h28\nfrintx s23, s23\nmov h21, v1.h[3]\nfmov d2, x15\nfcvtzs x15, s26\nfmov d26, x13\nmov h1, v1.h[1]\nfcvtzs x13, s20\nfrintx s20, s24\nfmov d24, x14\nfcvtzs x14, s22\nfrintx s3, s3\nfmov d22, x16\nfrintx s27, s27\nfcvtzs x16, s23\nfcvt s21, h21\nfrintx s25, s25\nfcvt s1, h1\nmov h0, v0.h[3]\nmov h23, v7.h[2]\nmov v22.d[1], x15\nfcvtzs x15, s20\nfmov d20, x13\nfcvtzs x13, s3\nfmov d3, x14\nfcvtzs x14, s27\nfmov d27, x16\nfrintx s21, s21\nmov h7, v7.h[3]\nfrintx s1, s1\nfcvt s0, h0\nfcvt s23, h23\nfcvt s19, h19\nmov v27.d[1], x15\nfcvtzs x15, s25\nmov h25, v6.h[3]\nmov h6, v6.h[1]\nmov v3.d[1], x13\nfcvtzs x13, s21\nmov h21, v5.h[1]\nmov h5, v5.h[3]\nmov v20.d[1], x14\nfcvtzs x14, s1\nmov h1, v4.h[1]\nfrintx s0, s0\nfcvt s25, h25\nfcvt s7, h7\nstp q3, q27, [x8, #192]\nfcvt s6, h6\nmov h3, v4.h[3]\nstp q22, q20, [x8, #128]\nfcvt s21, h21\nfcvt s5, h5\nmov v24.d[1], x13\nmov v26.d[1], x14\nfcvt s4, h4\nfrintx s22, s25\nfmov d20, x12\nfcvt s1, h1\nfrintx s6, s6\nfcvt s3, h3\nfcvtzs x12, s0\nfrintx s5, s5\nfrintx s21, s21\nfmov d0, x11\nstp q26, q24, [x8, #64]\nfmov d24, x15\nfrintx s4, s4\nfcvtzs x11, s22\nfrintx s22, s23\nfrintx s1, s1\nfcvtzs x13, s6\nfrintx s3, s3\nfrintx s6, s7\nfcvtzs x14, s5\nmov v24.d[1], x12\nfrintx s5, s19\nfcvtzs x12, s21\nmov v0.d[1], x10\nfcvtzs x10, s4\nmov v20.d[1], x11\nfcvtzs x11, s22\nmov v2.d[1], x13\nfcvtzs x15, s3\nfcvtzs x13, s1\nmov v18.d[1], x14\nfcvtzs x14, s6\nstp q0, q24, [x8]\nmov v17.d[1], x12\nfcvtzs x12, s5\nfmov d0, x10\nfmov d1, x11\nstp q2, q20, [x8, #224]\nfmov d2, x9\nmov v16.d[1], x15\nstp q17, q18, [x8, #160]\nmov v0.d[1], x13\nmov v1.d[1], x14\nmov v2.d[1], x12\nstp q0, q16, [x8, #96]\nstp q2, q1, [x8, #32]\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<32 x s64>) = G_INTRINSIC_LLRINT %53:_(<32 x s32>) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<32 x s64>) = G_INTRINSIC_LLRINT %0:_(<32 x s16>) (in function: test)",
   "ll": "define <32 x i64> @test(<32 x half> %a) {\n  %r = call <32 x i64> @llvm.llrint(<32 x half> %a)\n  ret <32 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:152 CodeSize:92 Lat:152 SizeLat:152 for:   %r = call <32 x i64> @llvm.llrint.v32i64.v32f16(<32 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i64> %r"
  },
@@ -5259,7 +5259,7 @@
   "gisize": 2,
   "extrasize": 0,
   "asm": "fcvt s0, h0\nfcvtas w0, s0\nret",
-  "giasm": "fcvt s0, h0\nfcvtas x0, s0\nret",
+  "giasm": "fcvt s0, h0\nfcvtas w0, s0\nret",
   "ll": "define i32 @test(half %a) {\n  %r = call i32 @llvm.lround(half %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lround.i32.f16(half %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -5291,7 +5291,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "fcvtas w0, s0\nret",
-  "giasm": "fcvtas x0, s0\nret",
+  "giasm": "fcvtas w0, s0\nret",
   "ll": "define i32 @test(float %a) {\n  %r = call i32 @llvm.lround(float %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lround.i32.f32(float %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -5323,7 +5323,7 @@
   "gisize": 1,
   "extrasize": 0,
   "asm": "fcvtas w0, d0\nret",
-  "giasm": "fcvtas x0, d0\nret",
+  "giasm": "fcvtas w0, d0\nret",
   "ll": "define i32 @test(double %a) {\n  %r = call i32 @llvm.lround(double %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lround.i32.f64(double %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
