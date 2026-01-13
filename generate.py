@@ -53,7 +53,9 @@ def getasm(path, extraflags):
   try:
     run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {extraflags} {os.path.join(path, 'costtest.ll')} -o {os.path.join(path, 'costtest.s')}")
   except subprocess.CalledProcessError as e:
-    return ([e.output.decode('utf-8').split('\n')[0]], -1)
+    lines = [e.output.decode('utf-8').split('\n')[0]]
+    lines = [re.sub(r'llc: /.*/llvm', 'llc: llvm', l) for l in lines]
+    return (lines, -1)
   with open(os.path.join(path, "costtest.s")) as f:
     lines = [l.strip() for l in f]
   # This tries to remove .declarations, comments etc
@@ -77,7 +79,7 @@ def checkcosts(llasm):
 
     lines, size = getasm(tmp, '')
 
-    gilines, gisize = getasm(tmp, '-global-isel')
+    gilines, gisize = getasm(tmp, '-global-isel -aarch64-enable-gisel-sve')
 
     sizes = getcost(tmp)
 
