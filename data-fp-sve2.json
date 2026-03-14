@@ -16922,7 +16922,7 @@
   "size": 3,
   "gisize": 4,
   "extrasize": 0,
-  "asm": "fcmgt v2.4h, v1.4h, v0.4h\nfcmgt v0.4h, v0.4h, v1.4h\nnbsl z0.d, z0.d, z2.d, z0.d\nret",
+  "asm": "fcmgt v2.4h, v0.4h, v1.4h\nfcmgt v0.4h, v1.4h, v0.4h\nnbsl z0.d, z0.d, z2.d, z0.d\nret",
   "giasm": "fcmgt v2.4h, v0.4h, v1.4h\nfcmgt v0.4h, v1.4h, v0.4h\norr v0.8b, v0.8b, v2.8b\nmvn v0.8b, v0.8b\nret",
   "ll": "define <4 x i1> @test(<4 x half> %a, <4 x half> %b) {\n  %r = fcmp ueq <4 x half> %a, %b\n  ret <4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i1> %r"
@@ -16938,7 +16938,7 @@
   "size": 3,
   "gisize": 4,
   "extrasize": 0,
-  "asm": "fcmlt v1.4h, v0.4h, #0.0\nfcmgt v0.4h, v0.4h, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nret",
+  "asm": "fcmgt v1.4h, v0.4h, #0.0\nfcmlt v0.4h, v0.4h, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nret",
   "giasm": "fcmgt v1.4h, v0.4h, #0.0\nfcmlt v0.4h, v0.4h, #0.0\norr v0.8b, v0.8b, v1.8b\nmvn v0.8b, v0.8b\nret",
   "ll": "define <4 x i1> @test(<4 x half> %a) {\n  %r = fcmp ueq <4 x half> %a, zeroinitializer\n  ret <4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <4 x half> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i1> %r"
@@ -16986,7 +16986,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmgt v2.8h, v1.8h, v0.8h\nfcmgt v0.8h, v0.8h, v1.8h\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.8b, v0.8h\nret",
+  "asm": "fcmgt v2.8h, v0.8h, v1.8h\nfcmgt v0.8h, v1.8h, v0.8h\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.8b, v0.8h\nret",
   "giasm": "fcmgt v2.8h, v0.8h, v1.8h\nfcmgt v0.8h, v1.8h, v0.8h\norr v0.16b, v0.16b, v2.16b\nmvn v0.16b, v0.16b\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x half> %a, <8 x half> %b) {\n  %r = fcmp ueq <8 x half> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -17002,7 +17002,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmlt v1.8h, v0.8h, #0.0\nfcmgt v0.8h, v0.8h, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nxtn v0.8b, v0.8h\nret",
+  "asm": "fcmgt v1.8h, v0.8h, #0.0\nfcmlt v0.8h, v0.8h, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nxtn v0.8b, v0.8h\nret",
   "giasm": "fcmgt v1.8h, v0.8h, #0.0\nfcmlt v0.8h, v0.8h, #0.0\norr v0.16b, v0.16b, v1.16b\nmvn v0.16b, v0.16b\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x half> %a) {\n  %r = fcmp ueq <8 x half> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <8 x half> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -17114,7 +17114,7 @@
   "size": 3,
   "gisize": 4,
   "extrasize": 0,
-  "asm": "fcmgt v2.2s, v1.2s, v0.2s\nfcmgt v0.2s, v0.2s, v1.2s\nnbsl z0.d, z0.d, z2.d, z0.d\nret",
+  "asm": "fcmgt v2.2s, v0.2s, v1.2s\nfcmgt v0.2s, v1.2s, v0.2s\nnbsl z0.d, z0.d, z2.d, z0.d\nret",
   "giasm": "fcmgt v2.2s, v0.2s, v1.2s\nfcmgt v0.2s, v1.2s, v0.2s\norr v0.8b, v0.8b, v2.8b\nmvn v0.8b, v0.8b\nret",
   "ll": "define <2 x i1> @test(<2 x float> %a, <2 x float> %b) {\n  %r = fcmp ueq <2 x float> %a, %b\n  ret <2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <2 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i1> %r"
@@ -17130,7 +17130,7 @@
   "size": 3,
   "gisize": 4,
   "extrasize": 0,
-  "asm": "fcmlt v1.2s, v0.2s, #0.0\nfcmgt v0.2s, v0.2s, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nret",
+  "asm": "fcmgt v1.2s, v0.2s, #0.0\nfcmlt v0.2s, v0.2s, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nret",
   "giasm": "fcmgt v1.2s, v0.2s, #0.0\nfcmlt v0.2s, v0.2s, #0.0\norr v0.8b, v0.8b, v1.8b\nmvn v0.8b, v0.8b\nret",
   "ll": "define <2 x i1> @test(<2 x float> %a) {\n  %r = fcmp ueq <2 x float> %a, zeroinitializer\n  ret <2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <2 x float> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i1> %r"
@@ -17178,7 +17178,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmgt v2.4s, v1.4s, v0.4s\nfcmgt v0.4s, v0.4s, v1.4s\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.4h, v0.4s\nret",
+  "asm": "fcmgt v2.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.4h, v0.4s\nret",
   "giasm": "fcmgt v2.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v0.16b, v0.16b, v2.16b\nmvn v0.16b, v0.16b\nxtn v0.4h, v0.4s\nret",
   "ll": "define <4 x i1> @test(<4 x float> %a, <4 x float> %b) {\n  %r = fcmp ueq <4 x float> %a, %b\n  ret <4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <4 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i1> %r"
@@ -17194,7 +17194,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmlt v1.4s, v0.4s, #0.0\nfcmgt v0.4s, v0.4s, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nxtn v0.4h, v0.4s\nret",
+  "asm": "fcmgt v1.4s, v0.4s, #0.0\nfcmlt v0.4s, v0.4s, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nxtn v0.4h, v0.4s\nret",
   "giasm": "fcmgt v1.4s, v0.4s, #0.0\nfcmlt v0.4s, v0.4s, #0.0\norr v0.16b, v0.16b, v1.16b\nmvn v0.16b, v0.16b\nxtn v0.4h, v0.4s\nret",
   "ll": "define <4 x i1> @test(<4 x float> %a) {\n  %r = fcmp ueq <4 x float> %a, zeroinitializer\n  ret <4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <4 x float> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i1> %r"
@@ -17306,7 +17306,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmgt v2.2d, v1.2d, v0.2d\nfcmgt v0.2d, v0.2d, v1.2d\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.2s, v0.2d\nret",
+  "asm": "fcmgt v2.2d, v0.2d, v1.2d\nfcmgt v0.2d, v1.2d, v0.2d\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.2s, v0.2d\nret",
   "giasm": "fcmgt v2.2d, v0.2d, v1.2d\nfcmgt v0.2d, v1.2d, v0.2d\norr v0.16b, v0.16b, v2.16b\nmvn v0.16b, v0.16b\nxtn v0.2s, v0.2d\nret",
   "ll": "define <2 x i1> @test(<2 x double> %a, <2 x double> %b) {\n  %r = fcmp ueq <2 x double> %a, %b\n  ret <2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <2 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i1> %r"
@@ -17322,7 +17322,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmlt v1.2d, v0.2d, #0.0\nfcmgt v0.2d, v0.2d, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nxtn v0.2s, v0.2d\nret",
+  "asm": "fcmgt v1.2d, v0.2d, #0.0\nfcmlt v0.2d, v0.2d, #0.0\nnbsl z0.d, z0.d, z1.d, z0.d\nxtn v0.2s, v0.2d\nret",
   "giasm": "fcmgt v1.2d, v0.2d, #0.0\nfcmlt v0.2d, v0.2d, #0.0\norr v0.16b, v0.16b, v1.16b\nmvn v0.16b, v0.16b\nxtn v0.2s, v0.2d\nret",
   "ll": "define <2 x i1> @test(<2 x double> %a) {\n  %r = fcmp ueq <2 x double> %a, zeroinitializer\n  ret <2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp ueq <2 x double> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i1> %r"
@@ -24218,7 +24218,7 @@
   "size": 3,
   "gisize": 4,
   "extrasize": 0,
-  "asm": "fcmgt v2.4h, v1.4h, v0.4h\nfcmge v0.4h, v0.4h, v1.4h\nnbsl z0.d, z0.d, z2.d, z0.d\nret",
+  "asm": "fcmge v2.4h, v0.4h, v1.4h\nfcmgt v0.4h, v1.4h, v0.4h\nnbsl z0.d, z0.d, z2.d, z0.d\nret",
   "giasm": "fcmge v2.4h, v0.4h, v1.4h\nfcmgt v0.4h, v1.4h, v0.4h\norr v0.8b, v0.8b, v2.8b\nmvn v0.8b, v0.8b\nret",
   "ll": "define <4 x i1> @test(<4 x half> %a, <4 x half> %b) {\n  %r = fcmp uno <4 x half> %a, %b\n  ret <4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp uno <4 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i1> %r"
@@ -24282,7 +24282,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmgt v2.8h, v1.8h, v0.8h\nfcmge v0.8h, v0.8h, v1.8h\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.8b, v0.8h\nret",
+  "asm": "fcmge v2.8h, v0.8h, v1.8h\nfcmgt v0.8h, v1.8h, v0.8h\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.8b, v0.8h\nret",
   "giasm": "fcmge v2.8h, v0.8h, v1.8h\nfcmgt v0.8h, v1.8h, v0.8h\norr v0.16b, v0.16b, v2.16b\nmvn v0.16b, v0.16b\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x half> %a, <8 x half> %b) {\n  %r = fcmp uno <8 x half> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp uno <8 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -24410,7 +24410,7 @@
   "size": 3,
   "gisize": 4,
   "extrasize": 0,
-  "asm": "fcmgt v2.2s, v1.2s, v0.2s\nfcmge v0.2s, v0.2s, v1.2s\nnbsl z0.d, z0.d, z2.d, z0.d\nret",
+  "asm": "fcmge v2.2s, v0.2s, v1.2s\nfcmgt v0.2s, v1.2s, v0.2s\nnbsl z0.d, z0.d, z2.d, z0.d\nret",
   "giasm": "fcmge v2.2s, v0.2s, v1.2s\nfcmgt v0.2s, v1.2s, v0.2s\norr v0.8b, v0.8b, v2.8b\nmvn v0.8b, v0.8b\nret",
   "ll": "define <2 x i1> @test(<2 x float> %a, <2 x float> %b) {\n  %r = fcmp uno <2 x float> %a, %b\n  ret <2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp uno <2 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i1> %r"
@@ -24474,7 +24474,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmgt v2.4s, v1.4s, v0.4s\nfcmge v0.4s, v0.4s, v1.4s\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.4h, v0.4s\nret",
+  "asm": "fcmge v2.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.4h, v0.4s\nret",
   "giasm": "fcmge v2.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v0.16b, v0.16b, v2.16b\nmvn v0.16b, v0.16b\nxtn v0.4h, v0.4s\nret",
   "ll": "define <4 x i1> @test(<4 x float> %a, <4 x float> %b) {\n  %r = fcmp uno <4 x float> %a, %b\n  ret <4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp uno <4 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i1> %r"
@@ -24602,7 +24602,7 @@
   "size": 4,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "fcmgt v2.2d, v1.2d, v0.2d\nfcmge v0.2d, v0.2d, v1.2d\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.2s, v0.2d\nret",
+  "asm": "fcmge v2.2d, v0.2d, v1.2d\nfcmgt v0.2d, v1.2d, v0.2d\nnbsl z0.d, z0.d, z2.d, z0.d\nxtn v0.2s, v0.2d\nret",
   "giasm": "fcmge v2.2d, v0.2d, v1.2d\nfcmgt v0.2d, v1.2d, v0.2d\norr v0.16b, v0.16b, v2.16b\nmvn v0.16b, v0.16b\nxtn v0.2s, v0.2d\nret",
   "ll": "define <2 x i1> @test(<2 x double> %a, <2 x double> %b) {\n  %r = fcmp uno <2 x double> %a, %b\n  ret <2 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:6 SizeLat:3 for:   %r = fcmp uno <2 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i1> %r"
