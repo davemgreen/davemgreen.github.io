@@ -6762,7 +6762,7 @@
   "size": 5,
   "gisize": 7,
   "extrasize": 0,
-  "asm": "movi v1.8b, #147\nsmulh z1.b, z0.b, z1.b\nadd v0.8b, v1.8b, v0.8b\nsshr v0.8b, v0.8b, #2\nusra v0.8b, v0.8b, #7\nret",
+  "asm": "mov z1.b, #-109                     // =0xffffffffffffff93\nsmulh z1.b, z0.b, z1.b\nadd v0.8b, v1.8b, v0.8b\nsshr v0.8b, v0.8b, #2\nusra v0.8b, v0.8b, #7\nret",
   "giasm": "movi v1.8b, #147\nsmull v1.8h, v0.8b, v1.8b\nshrn v1.8b, v1.8h, #8\nadd v1.8b, v1.8b, v0.8b\nsshr v0.8b, v1.8b, #2\nushr v0.8b, v0.8b, #7\nssra v0.8b, v1.8b, #2\nret",
   "ll": "define <8 x i8> @test(<8 x i8> %a) {\n  %r = sdiv <8 x i8> %a, splat (i8 7)\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <8 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
@@ -6826,7 +6826,7 @@
   "size": 5,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "movi v1.16b, #147\nsmulh z1.b, z0.b, z1.b\nadd v0.16b, v1.16b, v0.16b\nsshr v0.16b, v0.16b, #2\nusra v0.16b, v0.16b, #7\nret",
+  "asm": "mov z1.b, #-109                     // =0xffffffffffffff93\nsmulh z1.b, z0.b, z1.b\nadd v0.16b, v1.16b, v0.16b\nsshr v0.16b, v0.16b, #2\nusra v0.16b, v0.16b, #7\nret",
   "giasm": "movi v1.16b, #147\nsmull2 v2.8h, v0.16b, v1.16b\nsmull v1.8h, v0.8b, v1.8b\nuzp2 v1.16b, v1.16b, v2.16b\nadd v1.16b, v1.16b, v0.16b\nsshr v0.16b, v1.16b, #2\nushr v0.16b, v0.16b, #7\nssra v0.16b, v1.16b, #2\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a) {\n  %r = sdiv <16 x i8> %a, splat (i8 7)\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <16 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
@@ -6890,7 +6890,7 @@
   "size": 9,
   "gisize": 105,
   "extrasize": 0,
-  "asm": "movi v2.16b, #147\nsmulh z3.b, z0.b, z2.b\nsmulh z2.b, z1.b, z2.b\nadd v0.16b, v3.16b, v0.16b\nadd v1.16b, v2.16b, v1.16b\nsshr v0.16b, v0.16b, #2\nsshr v1.16b, v1.16b, #2\nusra v0.16b, v0.16b, #7\nusra v1.16b, v1.16b, #7\nret",
+  "asm": "mov z2.b, #-109                     // =0xffffffffffffff93\nsmulh z3.b, z0.b, z2.b\nsmulh z2.b, z1.b, z2.b\nadd v0.16b, v3.16b, v0.16b\nadd v1.16b, v2.16b, v1.16b\nsshr v0.16b, v0.16b, #2\nsshr v1.16b, v1.16b, #2\nusra v0.16b, v0.16b, #7\nusra v1.16b, v1.16b, #7\nret",
   "giasm": "stp x26, x25, [sp, #-64]!           // 16-byte Folded Spill\nstp x24, x23, [sp, #16]             // 16-byte Folded Spill\nstp x22, x21, [sp, #32]             // 16-byte Folded Spill\nstp x20, x19, [sp, #48]             // 16-byte Folded Spill\nsmov w9, v0.b[0]\nmov w8, #7                          // =0x7\nsmov w5, v1.b[0]\nsmov w26, v1.b[9]\nsdiv w25, w9, w8\nsmov w9, v0.b[1]\nsdiv w4, w9, w8\nsmov w9, v0.b[2]\nsdiv w3, w9, w8\nsmov w9, v0.b[3]\nsdiv w2, w9, w8\nsmov w9, v0.b[4]\nsdiv w1, w9, w8\nsmov w9, v0.b[5]\nsdiv w0, w9, w8\nsmov w9, v0.b[6]\nsdiv w18, w9, w8\nsmov w9, v0.b[7]\nsdiv w17, w9, w8\nsmov w9, v0.b[8]\nsdiv w16, w9, w8\nsmov w9, v0.b[9]\nsdiv w15, w9, w8\nsmov w9, v0.b[10]\nsdiv w14, w9, w8\nsmov w9, v0.b[11]\nsdiv w24, w5, w8\nsmov w5, v1.b[1]\nsdiv w13, w9, w8\nsmov w9, v0.b[12]\nfmov s2, w24\nsdiv w23, w5, w8\nsmov w5, v1.b[2]\nsdiv w12, w9, w8\nsmov w9, v0.b[13]\nmov v2.b[1], w23\nsdiv w22, w5, w8\nsmov w5, v1.b[3]\nsdiv w11, w9, w8\nsmov w9, v0.b[14]\nmov v2.b[2], w22\nsdiv w21, w5, w8\nsmov w5, v1.b[4]\nsdiv w10, w9, w8\nsmov w9, v0.b[15]\nfmov s0, w25\nmov v2.b[3], w21\nldp x22, x21, [sp, #32]             // 16-byte Folded Reload\nmov v0.b[1], w4\nsmov w4, v1.b[10]\nmov v0.b[2], w3\nsdiv w20, w5, w8\nsmov w5, v1.b[5]\nmov v0.b[3], w2\nsmov w2, v1.b[11]\nmov v0.b[4], w1\nsdiv w19, w5, w8\nsmov w5, v1.b[6]\nmov v2.b[4], w20\nmov v0.b[5], w0\nsmov w0, v1.b[12]\nmov v0.b[6], w18\nsdiv w7, w5, w8\nsmov w5, v1.b[7]\nmov v2.b[5], w19\nldp x20, x19, [sp, #48]             // 16-byte Folded Reload\nmov v0.b[7], w17\nsmov w17, v1.b[13]\nmov v0.b[8], w16\nsdiv w6, w5, w8\nsmov w5, v1.b[8]\nmov v2.b[6], w7\nmov v0.b[9], w15\nsmov w15, v1.b[14]\nmov v0.b[10], w14\nsdiv w5, w5, w8\nmov v2.b[7], w6\nmov v0.b[11], w13\nsmov w13, v1.b[15]\nmov v0.b[12], w12\nsdiv w24, w26, w8\nmov v2.b[8], w5\nmov v0.b[13], w11\nmov v0.b[14], w10\nsdiv w3, w4, w8\nmov v2.b[9], w24\nldp x24, x23, [sp, #16]             // 16-byte Folded Reload\nsdiv w1, w2, w8\nmov v2.b[10], w3\nsdiv w18, w0, w8\nmov v2.b[11], w1\nsdiv w16, w17, w8\nmov v2.b[12], w18\nsdiv w14, w15, w8\nmov v2.b[13], w16\nsdiv w9, w9, w8\nmov v2.b[14], w14\nsdiv w8, w13, w8\nmov v0.b[15], w9\nmov v2.b[15], w8\nmov v1.16b, v2.16b\nldp x26, x25, [sp], #64             // 16-byte Folded Reload\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a) {\n  %r = sdiv <32 x i8> %a, splat (i8 7)\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <32 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
@@ -6954,7 +6954,7 @@
   "size": 5,
   "gisize": 7,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\ndup v1.4h, w8\nsmulh z0.h, z0.h, z1.h\nsshr v0.4h, v0.4h, #1\nusra v0.4h, v0.4h, #15\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmov z1.h, w8\nsmulh z0.h, z0.h, z1.h\nsshr v0.4h, v0.4h, #1\nusra v0.4h, v0.4h, #15\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nsmull v0.4s, v0.4h, v1.4h\nshrn v1.4h, v0.4s, #16\nsshr v0.4h, v1.4h, #1\nushr v0.4h, v0.4h, #15\nssra v0.4h, v1.4h, #1\nret",
   "ll": "define <4 x i16> @test(<4 x i16> %a) {\n  %r = sdiv <4 x i16> %a, splat (i16 7)\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <4 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
@@ -7018,7 +7018,7 @@
   "size": 5,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\ndup v1.8h, w8\nsmulh z0.h, z0.h, z1.h\nsshr v0.8h, v0.8h, #1\nusra v0.8h, v0.8h, #15\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmov z1.h, w8\nsmulh z0.h, z0.h, z1.h\nsshr v0.8h, v0.8h, #1\nusra v0.8h, v0.8h, #15\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q1, [x8, :lo12:.LCPI0_0]\nsmull2 v2.4s, v0.8h, v1.8h\nsmull v0.4s, v0.4h, v1.4h\nuzp2 v1.8h, v0.8h, v2.8h\nsshr v0.8h, v1.8h, #1\nushr v0.8h, v0.8h, #15\nssra v0.8h, v1.8h, #1\nret",
   "ll": "define <8 x i16> @test(<8 x i16> %a) {\n  %r = sdiv <8 x i16> %a, splat (i16 7)\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <8 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
@@ -7082,7 +7082,7 @@
   "size": 8,
   "gisize": 49,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\ndup v2.8h, w8\nsmulh z0.h, z0.h, z2.h\nsmulh z1.h, z1.h, z2.h\nsshr v0.8h, v0.8h, #1\nsshr v1.8h, v1.8h, #1\nusra v0.8h, v0.8h, #15\nusra v1.8h, v1.8h, #15\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmov z2.h, w8\nsmulh z0.h, z0.h, z2.h\nsmulh z1.h, z1.h, z2.h\nsshr v0.8h, v0.8h, #1\nsshr v1.8h, v1.8h, #1\nusra v0.8h, v0.8h, #15\nusra v1.8h, v1.8h, #15\nret",
   "giasm": "smov w17, v1.h[0]\nmov w8, #7                          // =0x7\nsmov w9, v0.h[0]\nsmov w18, v1.h[1]\nsmov w10, v0.h[1]\nsmov w0, v1.h[2]\nsmov w11, v0.h[2]\nsmov w1, v1.h[3]\nsmov w12, v0.h[3]\nsmov w13, v0.h[4]\nsmov w14, v0.h[5]\nsmov w15, v0.h[6]\nsdiv w17, w17, w8\nsmov w16, v0.h[7]\nsmov w2, v1.h[4]\nsmov w3, v1.h[5]\nsdiv w9, w9, w8\nfmov s2, w17\nsdiv w18, w18, w8\nfmov s0, w9\nsdiv w10, w10, w8\nmov v2.h[1], w18\nsdiv w0, w0, w8\nmov v0.h[1], w10\nsmov w10, v1.h[6]\nsdiv w11, w11, w8\nmov v2.h[2], w0\nsdiv w1, w1, w8\nmov v0.h[2], w11\nsmov w11, v1.h[7]\nsdiv w12, w12, w8\nmov v2.h[3], w1\nsdiv w2, w2, w8\nmov v0.h[3], w12\nsdiv w13, w13, w8\nmov v2.h[4], w2\nsdiv w9, w3, w8\nmov v0.h[4], w13\nsdiv w14, w14, w8\nmov v2.h[5], w9\nsdiv w10, w10, w8\nmov v0.h[5], w14\nsdiv w15, w15, w8\nmov v2.h[6], w10\nsdiv w16, w16, w8\nmov v0.h[6], w15\nsdiv w8, w11, w8\nmov v0.h[7], w16\nmov v2.h[7], w8\nmov v1.16b, v2.16b\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a) {\n  %r = sdiv <16 x i16> %a, splat (i16 7)\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <16 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
@@ -7146,7 +7146,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\ndup v1.2s, w8\nsmulh z1.s, z0.s, z1.s\nadd v1.2s, v1.2s, v0.2s\nsshr v0.2s, v1.2s, #2\nusra v0.2s, v1.2s, #31\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\nmov z1.s, w8\nsmulh z1.s, z0.s, z1.s\nadd v1.2s, v1.2s, v0.2s\nsshr v0.2s, v1.2s, #2\nusra v0.2s, v1.2s, #31\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nsmull v1.2d, v0.2s, v1.2s\nshrn v1.2s, v1.2d, #32\nadd v1.2s, v1.2s, v0.2s\nsshr v0.2s, v1.2s, #2\nushr v0.2s, v0.2s, #31\nssra v0.2s, v1.2s, #2\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) {\n  %r = sdiv <2 x i32> %a, splat (i32 7)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <2 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
@@ -7210,7 +7210,7 @@
   "size": 7,
   "gisize": 9,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\ndup v1.4s, w8\nsmulh z1.s, z0.s, z1.s\nadd v1.4s, v1.4s, v0.4s\nsshr v0.4s, v1.4s, #2\nusra v0.4s, v1.4s, #31\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\nmov z1.s, w8\nsmulh z1.s, z0.s, z1.s\nadd v1.4s, v1.4s, v0.4s\nsshr v0.4s, v1.4s, #2\nusra v0.4s, v1.4s, #31\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q1, [x8, :lo12:.LCPI0_0]\nsmull2 v2.2d, v0.4s, v1.4s\nsmull v1.2d, v0.2s, v1.2s\nuzp2 v1.4s, v1.4s, v2.4s\nadd v1.4s, v1.4s, v0.4s\nsshr v0.4s, v1.4s, #2\nushr v0.4s, v0.4s, #31\nssra v0.4s, v1.4s, #2\nret",
   "ll": "define <4 x i32> @test(<4 x i32> %a) {\n  %r = sdiv <4 x i32> %a, splat (i32 7)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <4 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
@@ -7274,7 +7274,7 @@
   "size": 11,
   "gisize": 25,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\ndup v2.4s, w8\nsmulh z3.s, z0.s, z2.s\nsmulh z2.s, z1.s, z2.s\nadd v3.4s, v3.4s, v0.4s\nadd v2.4s, v2.4s, v1.4s\nsshr v0.4s, v3.4s, #2\nsshr v1.4s, v2.4s, #2\nusra v0.4s, v3.4s, #31\nusra v1.4s, v2.4s, #31\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\nmov z2.s, w8\nsmulh z3.s, z0.s, z2.s\nsmulh z2.s, z1.s, z2.s\nadd v3.4s, v3.4s, v0.4s\nadd v2.4s, v2.4s, v1.4s\nsshr v0.4s, v3.4s, #2\nsshr v1.4s, v2.4s, #2\nusra v0.4s, v3.4s, #31\nusra v1.4s, v2.4s, #31\nret",
   "giasm": "fmov w9, s0\nfmov w13, s1\nmov w8, #7                          // =0x7\nmov w10, v0.s[1]\nmov w14, v1.s[1]\nmov w11, v0.s[2]\nmov w15, v1.s[2]\nmov w12, v0.s[3]\nmov w16, v1.s[3]\nsdiv w9, w9, w8\nsdiv w13, w13, w8\nfmov s0, w9\nsdiv w10, w10, w8\nfmov s1, w13\nsdiv w14, w14, w8\nmov v0.s[1], w10\nsdiv w11, w11, w8\nmov v1.s[1], w14\nsdiv w15, w15, w8\nmov v0.s[2], w11\nsdiv w12, w12, w8\nmov v1.s[2], w15\nsdiv w8, w16, w8\nmov v0.s[3], w12\nmov v1.s[3], w8\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a) {\n  %r = sdiv <8 x i32> %a, splat (i32 7)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <8 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
@@ -7338,7 +7338,7 @@
   "size": 8,
   "gisize": 7,
   "extrasize": 0,
-  "asm": "mov x8, #18725                      // =0x4925\nmovk x8, #9362, lsl #16\nmovk x8, #37449, lsl #32\nmovk x8, #18724, lsl #48\ndup v1.2d, x8\nsmulh z1.d, z0.d, z1.d\nsshr v0.2d, v1.2d, #1\nusra v0.2d, v1.2d, #63\nret",
+  "asm": "mov x8, #18725                      // =0x4925\nmovk x8, #9362, lsl #16\nmovk x8, #37449, lsl #32\nmovk x8, #18724, lsl #48\nmov z1.d, x8\nsmulh z1.d, z0.d, z1.d\nsshr v0.2d, v1.2d, #1\nusra v0.2d, v1.2d, #63\nret",
   "giasm": "fmov x9, d0\nmov w8, #7                          // =0x7\nmov x10, v0.d[1]\nsdiv x9, x9, x8\nsdiv x8, x10, x8\nfmov d0, x9\nmov v0.d[1], x8\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) {\n  %r = sdiv <2 x i64> %a, splat (i64 7)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <2 x i64> %a, splat (i64 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
@@ -7402,7 +7402,7 @@
   "size": 11,
   "gisize": 13,
   "extrasize": 0,
-  "asm": "mov x8, #18725                      // =0x4925\nmovk x8, #9362, lsl #16\nmovk x8, #37449, lsl #32\nmovk x8, #18724, lsl #48\ndup v2.2d, x8\nsmulh z3.d, z0.d, z2.d\nsmulh z2.d, z1.d, z2.d\nsshr v0.2d, v3.2d, #1\nsshr v1.2d, v2.2d, #1\nusra v0.2d, v3.2d, #63\nusra v1.2d, v2.2d, #63\nret",
+  "asm": "mov x8, #18725                      // =0x4925\nmovk x8, #9362, lsl #16\nmovk x8, #37449, lsl #32\nmovk x8, #18724, lsl #48\nmov z2.d, x8\nsmulh z3.d, z0.d, z2.d\nsmulh z2.d, z1.d, z2.d\nsshr v0.2d, v3.2d, #1\nsshr v1.2d, v2.2d, #1\nusra v0.2d, v3.2d, #63\nusra v1.2d, v2.2d, #63\nret",
   "giasm": "fmov x9, d0\nfmov x11, d1\nmov w8, #7                          // =0x7\nmov x10, v0.d[1]\nmov x12, v1.d[1]\nsdiv x9, x9, x8\nsdiv x11, x11, x8\nfmov d0, x9\nsdiv x10, x10, x8\nfmov d1, x11\nsdiv x8, x12, x8\nmov v0.d[1], x10\nmov v1.d[1], x8\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a) {\n  %r = sdiv <4 x i64> %a, splat (i64 7)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:4 Lat:4 SizeLat:4 for:   %r = sdiv <4 x i64> %a, splat (i64 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
@@ -8122,7 +8122,7 @@
   "size": 7,
   "gisize": 9,
   "extrasize": 0,
-  "asm": "movi v1.8b, #147\nmovi v2.8b, #7\nsmulh z1.b, z0.b, z1.b\nadd v1.8b, v1.8b, v0.8b\nsshr v1.8b, v1.8b, #2\nusra v1.8b, v1.8b, #7\nmls v0.8b, v1.8b, v2.8b\nret",
+  "asm": "mov z1.b, #-109                     // =0xffffffffffffff93\nmovi v2.8b, #7\nsmulh z1.b, z0.b, z1.b\nadd v1.8b, v1.8b, v0.8b\nsshr v1.8b, v1.8b, #2\nusra v1.8b, v1.8b, #7\nmls v0.8b, v1.8b, v2.8b\nret",
   "giasm": "movi v1.8b, #147\nmovi v3.8b, #7\nsmull v1.8h, v0.8b, v1.8b\nshrn v1.8b, v1.8h, #8\nadd v1.8b, v1.8b, v0.8b\nsshr v2.8b, v1.8b, #2\nushr v2.8b, v2.8b, #7\nssra v2.8b, v1.8b, #2\nmls v0.8b, v2.8b, v3.8b\nret",
   "ll": "define <8 x i8> @test(<8 x i8> %a) {\n  %r = srem <8 x i8> %a, splat (i8 7)\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <8 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
@@ -8186,7 +8186,7 @@
   "size": 7,
   "gisize": 10,
   "extrasize": 0,
-  "asm": "movi v1.16b, #147\nsmulh z1.b, z0.b, z1.b\nadd v1.16b, v1.16b, v0.16b\nsshr v1.16b, v1.16b, #2\nusra v1.16b, v1.16b, #7\nmul z1.b, z1.b, #7\nsub v0.16b, v0.16b, v1.16b\nret",
+  "asm": "mov z1.b, #-109                     // =0xffffffffffffff93\nsmulh z1.b, z0.b, z1.b\nadd v1.16b, v1.16b, v0.16b\nsshr v1.16b, v1.16b, #2\nusra v1.16b, v1.16b, #7\nmul z1.b, z1.b, #7\nsub v0.16b, v0.16b, v1.16b\nret",
   "giasm": "movi v1.16b, #147\nmovi v3.16b, #7\nsmull2 v2.8h, v0.16b, v1.16b\nsmull v1.8h, v0.8b, v1.8b\nuzp2 v1.16b, v1.16b, v2.16b\nadd v1.16b, v1.16b, v0.16b\nsshr v2.16b, v1.16b, #2\nushr v2.16b, v2.16b, #7\nssra v2.16b, v1.16b, #2\nmls v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a) {\n  %r = srem <16 x i8> %a, splat (i8 7)\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <16 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
@@ -8250,7 +8250,7 @@
   "size": 13,
   "gisize": 151,
   "extrasize": 0,
-  "asm": "movi v2.16b, #147\nsmulh z3.b, z0.b, z2.b\nsmulh z2.b, z1.b, z2.b\nadd v3.16b, v3.16b, v0.16b\nadd v2.16b, v2.16b, v1.16b\nsshr v3.16b, v3.16b, #2\nsshr v2.16b, v2.16b, #2\nusra v3.16b, v3.16b, #7\nusra v2.16b, v2.16b, #7\nmul z3.b, z3.b, #7\nmul z2.b, z2.b, #7\nsub v0.16b, v0.16b, v3.16b\nsub v1.16b, v1.16b, v2.16b\nret",
+  "asm": "mov z2.b, #-109                     // =0xffffffffffffff93\nsmulh z3.b, z0.b, z2.b\nsmulh z2.b, z1.b, z2.b\nadd v3.16b, v3.16b, v0.16b\nadd v2.16b, v2.16b, v1.16b\nsshr v3.16b, v3.16b, #2\nsshr v2.16b, v2.16b, #2\nusra v3.16b, v3.16b, #7\nusra v2.16b, v2.16b, #7\nmul z3.b, z3.b, #7\nmul z2.b, z2.b, #7\nsub v0.16b, v0.16b, v3.16b\nsub v1.16b, v1.16b, v2.16b\nret",
   "giasm": "sub sp, sp, #112\nstp x29, x30, [sp, #16]             // 16-byte Folded Spill\nstp x28, x27, [sp, #32]             // 16-byte Folded Spill\nstp x26, x25, [sp, #48]             // 16-byte Folded Spill\nstp x24, x23, [sp, #64]             // 16-byte Folded Spill\nstp x22, x21, [sp, #80]             // 16-byte Folded Spill\nstp x20, x19, [sp, #96]             // 16-byte Folded Spill\nsshll v2.8h, v0.8b, #0\nmov w8, #7                          // =0x7\nsshll v4.8h, v1.8b, #0\nmovi v20.8b, #7\nsshll v3.4s, v2.4h, #0\nsshll2 v2.4s, v2.8h, #0\nsshll v5.4s, v4.4h, #0\nsshll2 v4.4s, v4.8h, #0\nsshll v20.8h, v20.8b, #0\nfmov w9, s3\nfmov w10, s2\nfmov w4, s5\nfmov w19, s4\nsshll v23.4s, v20.4h, #0\nsshll2 v20.4s, v20.8h, #0\nsdiv w12, w9, w8\nmov w9, v3.s[1]\nsdiv w17, w10, w8\nmov w10, v2.s[1]\nfmov s6, w12\nsdiv w13, w9, w8\nmov w9, v3.s[2]\nfmov s7, w17\nsdiv w18, w10, w8\nmov w10, v2.s[2]\nmov v6.s[1], w13\nsdiv w11, w9, w8\nmov w9, v3.s[3]\nsshll2 v3.8h, v0.16b, #0\nmov v7.s[1], w18\nsshll v0.8h, v0.8b, #0\nsshll v24.4s, v0.4h, #0\nsshll2 v0.4s, v0.8h, #0\nsdiv w16, w10, w8\nmov w10, v2.s[3]\nsshll v2.4s, v3.4h, #0\nmov v6.s[2], w11\nfmov w14, s2\nsdiv w23, w19, w8\nmov w19, v4.s[1]\nmov v7.s[2], w16\nsdiv w20, w4, w8\nmov w4, v5.s[1]\nfmov s19, w23\nsdiv w24, w19, w8\nmov w19, v4.s[2]\nfmov s18, w20\nsdiv w2, w14, w8\nmov w14, v2.s[1]\nmov v19.s[1], w24\nldp x24, x23, [sp, #64]             // 16-byte Folded Reload\nsdiv w21, w4, w8\nmov w4, v5.s[2]\nfmov s16, w2\nsdiv w22, w19, w8\nmov w19, v4.s[3]\nsshll2 v4.8h, v1.16b, #0\nmov v18.s[1], w21\nsshll v1.8h, v1.8b, #0\nsshll v25.4s, v1.4h, #0\nsshll2 v1.4s, v1.8h, #0\nsdiv w1, w14, w8\nmov w14, v2.s[2]\nmov v19.s[2], w22\nldp x22, x21, [sp, #80]             // 16-byte Folded Reload\nsdiv w7, w4, w8\nmov w4, v5.s[3]\nsshll v5.4s, v4.4h, #0\nmov v16.s[1], w1\nfmov w25, s5\nmov w26, v5.s[1]\nmov w27, v5.s[2]\nmov w28, v5.s[3]\nsshll2 v5.4s, v4.8h, #0\nsshll v4.4s, v4.4h, #0\nfmov w29, s5\nmov w30, v5.s[1]\nmov w11, v5.s[3]\nsdiv w15, w14, w8\nmov w14, v2.s[3]\nsshll2 v2.4s, v3.8h, #0\nmov v18.s[2], w7\nsshll v3.4s, v3.4h, #0\nfmov w0, s2\nsdiv w9, w9, w8\nmov v16.s[2], w15\nsdiv w6, w0, w8\nmov w0, v2.s[1]\nstr w9, [sp, #12]                   // 4-byte Spill\nmov w9, v5.s[2]\nsdiv w25, w25, w8\nfmov s17, w6\nsdiv w29, w29, w8\nfmov s21, w25\nsdiv w5, w0, w8\nmov w0, v2.s[2]\nfmov s22, w29\nsdiv w26, w26, w8\nmov v17.s[1], w5\nsdiv w30, w30, w8\nmov v21.s[1], w26\nldp x26, x25, [sp, #48]             // 16-byte Folded Reload\nsdiv w3, w0, w8\nmov w0, v2.s[3]\nmov v22.s[1], w30\nldp x29, x30, [sp, #16]             // 16-byte Folded Reload\nsdiv w27, w27, w8\nmov v17.s[2], w3\nsdiv w9, w9, w8\nmov v21.s[2], w27\nsdiv w10, w10, w8\nmov v22.s[2], w9\nsdiv w14, w14, w8\nmov v7.s[3], w10\nmls v0.4s, v7.4s, v20.4s\nsdiv w0, w0, w8\nmov v16.s[3], w14\nmls v3.4s, v16.4s, v23.4s\nsdiv w4, w4, w8\nmov v17.s[3], w0\nmls v2.4s, v17.4s, v20.4s\nsdiv w19, w19, w8\nmov v18.s[3], w4\nuzp1 v2.8h, v3.8h, v2.8h\nmls v25.4s, v18.4s, v23.4s\nsdiv w28, w28, w8\nmov v19.s[3], w19\nldp x20, x19, [sp, #96]             // 16-byte Folded Reload\nmls v1.4s, v19.4s, v20.4s\nsdiv w8, w11, w8\nldr w11, [sp, #12]                  // 4-byte Reload\nmov v21.s[3], w28\nuzp1 v1.8h, v25.8h, v1.8h\nldp x28, x27, [sp, #32]             // 16-byte Folded Reload\nmov v6.s[3], w11\nmls v4.4s, v21.4s, v23.4s\nmls v24.4s, v6.4s, v23.4s\nmov v22.s[3], w8\nuzp1 v0.8h, v24.8h, v0.8h\nmls v5.4s, v22.4s, v20.4s\nuzp1 v0.16b, v0.16b, v2.16b\nuzp1 v3.8h, v4.8h, v5.8h\nuzp1 v1.16b, v1.16b, v3.16b\nadd sp, sp, #112\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a) {\n  %r = srem <32 x i8> %a, splat (i8 7)\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <32 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
@@ -8314,7 +8314,7 @@
   "size": 7,
   "gisize": 9,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\nmovi v2.4h, #7\ndup v1.4h, w8\nsmulh z1.h, z0.h, z1.h\nsshr v1.4h, v1.4h, #1\nusra v1.4h, v1.4h, #15\nmls v0.4h, v1.4h, v2.4h\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmovi v2.4h, #7\nmov z1.h, w8\nsmulh z1.h, z0.h, z1.h\nsshr v1.4h, v1.4h, #1\nusra v1.4h, v1.4h, #15\nmls v0.4h, v1.4h, v2.4h\nret",
   "giasm": "adrp x8, .LCPI0_0\nmovi v3.4h, #7\nldr d1, [x8, :lo12:.LCPI0_0]\nsmull v1.4s, v0.4h, v1.4h\nshrn v1.4h, v1.4s, #16\nsshr v2.4h, v1.4h, #1\nushr v2.4h, v2.4h, #15\nssra v2.4h, v1.4h, #1\nmls v0.4h, v2.4h, v3.4h\nret",
   "ll": "define <4 x i16> @test(<4 x i16> %a) {\n  %r = srem <4 x i16> %a, splat (i16 7)\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <4 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
@@ -8378,7 +8378,7 @@
   "size": 7,
   "gisize": 10,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\ndup v1.8h, w8\nsmulh z1.h, z0.h, z1.h\nsshr v1.8h, v1.8h, #1\nusra v1.8h, v1.8h, #15\nmul z1.h, z1.h, #7\nsub v0.8h, v0.8h, v1.8h\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmov z1.h, w8\nsmulh z1.h, z0.h, z1.h\nsshr v1.8h, v1.8h, #1\nusra v1.8h, v1.8h, #15\nmul z1.h, z1.h, #7\nsub v0.8h, v0.8h, v1.8h\nret",
   "giasm": "adrp x8, .LCPI0_0\nmovi v3.8h, #7\nldr q1, [x8, :lo12:.LCPI0_0]\nsmull2 v2.4s, v0.8h, v1.8h\nsmull v1.4s, v0.4h, v1.4h\nuzp2 v1.8h, v1.8h, v2.8h\nsshr v2.8h, v1.8h, #1\nushr v2.8h, v2.8h, #15\nssra v2.8h, v1.8h, #1\nmls v0.8h, v2.8h, v3.8h\nret",
   "ll": "define <8 x i16> @test(<8 x i16> %a) {\n  %r = srem <8 x i16> %a, splat (i16 7)\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <8 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
@@ -8442,7 +8442,7 @@
   "size": 12,
   "gisize": 63,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\ndup v2.8h, w8\nsmulh z3.h, z0.h, z2.h\nsmulh z2.h, z1.h, z2.h\nsshr v3.8h, v3.8h, #1\nsshr v2.8h, v2.8h, #1\nusra v3.8h, v3.8h, #15\nusra v2.8h, v2.8h, #15\nmul z3.h, z3.h, #7\nmul z2.h, z2.h, #7\nsub v0.8h, v0.8h, v3.8h\nsub v1.8h, v1.8h, v2.8h\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmov z2.h, w8\nsmulh z3.h, z0.h, z2.h\nsmulh z2.h, z1.h, z2.h\nsshr v3.8h, v3.8h, #1\nsshr v2.8h, v2.8h, #1\nusra v3.8h, v3.8h, #15\nusra v2.8h, v2.8h, #15\nmul z3.h, z3.h, #7\nmul z2.h, z2.h, #7\nsub v0.8h, v0.8h, v3.8h\nsub v1.8h, v1.8h, v2.8h\nret",
   "giasm": "sshll v2.4s, v0.4h, #0\nmov w8, #7                          // =0x7\nsshll v3.4s, v1.4h, #0\nmovi v16.4h, #7\nfmov w9, s2\nfmov w17, s3\nmov w18, v3.s[1]\nmov w0, v3.s[2]\nmov w1, v3.s[3]\nsshll2 v3.4s, v1.8h, #0\nsshll v16.4s, v16.4h, #0\nsshll v1.4s, v1.4h, #0\nsdiv w11, w9, w8\nmov w9, v2.s[1]\nfmov w2, s3\nmov w3, v3.s[1]\nmov w4, v3.s[2]\nmov w5, v3.s[3]\nsdiv w12, w9, w8\nmov w9, v2.s[2]\nfmov s4, w11\nsdiv w10, w9, w8\nmov w9, v2.s[3]\nsshll2 v2.4s, v0.8h, #0\nmov v4.s[1], w12\nsshll v0.4s, v0.4h, #0\nfmov w13, s2\nmov w14, v2.s[1]\nmov w15, v2.s[2]\nmov w16, v2.s[3]\nsdiv w13, w13, w8\nmov v4.s[2], w10\nsdiv w17, w17, w8\nfmov s5, w13\nsdiv w2, w2, w8\nfmov s6, w17\nsdiv w14, w14, w8\nfmov s7, w2\nsdiv w18, w18, w8\nmov v5.s[1], w14\nsdiv w3, w3, w8\nmov v6.s[1], w18\nsdiv w15, w15, w8\nmov v7.s[1], w3\nsdiv w0, w0, w8\nmov v5.s[2], w15\nsdiv w4, w4, w8\nmov v6.s[2], w0\nsdiv w9, w9, w8\nmov v7.s[2], w4\nsdiv w16, w16, w8\nmov v4.s[3], w9\nmls v0.4s, v4.4s, v16.4s\nsdiv w1, w1, w8\nmov v5.s[3], w16\nmls v2.4s, v5.4s, v16.4s\nsdiv w8, w5, w8\nmov v6.s[3], w1\nuzp1 v0.8h, v0.8h, v2.8h\nmls v1.4s, v6.4s, v16.4s\nmov v7.s[3], w8\nmls v3.4s, v7.4s, v16.4s\nuzp1 v1.8h, v1.8h, v3.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a) {\n  %r = srem <16 x i16> %a, splat (i16 7)\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <16 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
@@ -8506,7 +8506,7 @@
   "size": 9,
   "gisize": 10,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\nmovi v3.2s, #7\nmovk w8, #37449, lsl #16\ndup v1.2s, w8\nsmulh z1.s, z0.s, z1.s\nadd v1.2s, v1.2s, v0.2s\nsshr v2.2s, v1.2s, #2\nusra v2.2s, v1.2s, #31\nmls v0.2s, v2.2s, v3.2s\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmovi v3.2s, #7\nmovk w8, #37449, lsl #16\nmov z1.s, w8\nsmulh z1.s, z0.s, z1.s\nadd v1.2s, v1.2s, v0.2s\nsshr v2.2s, v1.2s, #2\nusra v2.2s, v1.2s, #31\nmls v0.2s, v2.2s, v3.2s\nret",
   "giasm": "adrp x8, .LCPI0_0\nmovi v3.2s, #7\nldr d1, [x8, :lo12:.LCPI0_0]\nsmull v1.2d, v0.2s, v1.2s\nshrn v1.2s, v1.2d, #32\nadd v1.2s, v1.2s, v0.2s\nsshr v2.2s, v1.2s, #2\nushr v2.2s, v2.2s, #31\nssra v2.2s, v1.2s, #2\nmls v0.2s, v2.2s, v3.2s\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) {\n  %r = srem <2 x i32> %a, splat (i32 7)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <2 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
@@ -8570,7 +8570,7 @@
   "size": 9,
   "gisize": 11,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\ndup v1.4s, w8\nsmulh z1.s, z0.s, z1.s\nadd v1.4s, v1.4s, v0.4s\nsshr v2.4s, v1.4s, #2\nusra v2.4s, v1.4s, #31\nmul z2.s, z2.s, #7\nsub v0.4s, v0.4s, v2.4s\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\nmov z1.s, w8\nsmulh z1.s, z0.s, z1.s\nadd v1.4s, v1.4s, v0.4s\nsshr v2.4s, v1.4s, #2\nusra v2.4s, v1.4s, #31\nmul z2.s, z2.s, #7\nsub v0.4s, v0.4s, v2.4s\nret",
   "giasm": "adrp x8, .LCPI0_0\nmovi v3.4s, #7\nldr q1, [x8, :lo12:.LCPI0_0]\nsmull2 v2.2d, v0.4s, v1.4s\nsmull v1.2d, v0.2s, v1.2s\nuzp2 v1.4s, v1.4s, v2.4s\nadd v1.4s, v1.4s, v0.4s\nsshr v2.4s, v1.4s, #2\nushr v2.4s, v2.4s, #31\nssra v2.4s, v1.4s, #2\nmls v0.4s, v2.4s, v3.4s\nret",
   "ll": "define <4 x i32> @test(<4 x i32> %a) {\n  %r = srem <4 x i32> %a, splat (i32 7)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <4 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
@@ -8634,7 +8634,7 @@
   "size": 15,
   "gisize": 28,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\ndup v2.4s, w8\nsmulh z3.s, z0.s, z2.s\nsmulh z2.s, z1.s, z2.s\nadd v3.4s, v3.4s, v0.4s\nadd v2.4s, v2.4s, v1.4s\nsshr v4.4s, v3.4s, #2\nsshr v5.4s, v2.4s, #2\nusra v4.4s, v3.4s, #31\nusra v5.4s, v2.4s, #31\nmul z4.s, z4.s, #7\nmul z5.s, z5.s, #7\nsub v0.4s, v0.4s, v4.4s\nsub v1.4s, v1.4s, v5.4s\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmovk w8, #37449, lsl #16\nmov z2.s, w8\nsmulh z3.s, z0.s, z2.s\nsmulh z2.s, z1.s, z2.s\nadd v3.4s, v3.4s, v0.4s\nadd v2.4s, v2.4s, v1.4s\nsshr v4.4s, v3.4s, #2\nsshr v5.4s, v2.4s, #2\nusra v4.4s, v3.4s, #31\nusra v5.4s, v2.4s, #31\nmul z4.s, z4.s, #7\nmul z5.s, z5.s, #7\nsub v0.4s, v0.4s, v4.4s\nsub v1.4s, v1.4s, v5.4s\nret",
   "giasm": "fmov w9, s0\nfmov w13, s1\nmov w8, #7                          // =0x7\nmov w10, v0.s[1]\nmov w14, v1.s[1]\nmov w11, v0.s[2]\nmov w15, v1.s[2]\nmov w12, v0.s[3]\nmov w16, v1.s[3]\nsdiv w9, w9, w8\nmovi v4.4s, #7\nsdiv w13, w13, w8\nfmov s2, w9\nsdiv w10, w10, w8\nfmov s3, w13\nsdiv w14, w14, w8\nmov v2.s[1], w10\nsdiv w11, w11, w8\nmov v3.s[1], w14\nsdiv w15, w15, w8\nmov v2.s[2], w11\nsdiv w12, w12, w8\nmov v3.s[2], w15\nsdiv w8, w16, w8\nmov v2.s[3], w12\nmls v0.4s, v2.4s, v4.4s\nmov v3.s[3], w8\nmls v1.4s, v3.4s, v4.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a) {\n  %r = srem <8 x i32> %a, splat (i32 7)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <8 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
@@ -8698,7 +8698,7 @@
   "size": 10,
   "gisize": 18,
   "extrasize": 0,
-  "asm": "mov x8, #18725                      // =0x4925\nptrue p0.d, vl2\nmovk x8, #9362, lsl #16\nmovk x8, #37449, lsl #32\nmovk x8, #18724, lsl #48\ndup v1.2d, x8\nsmulh z1.d, z0.d, z1.d\nsshr v2.2d, v1.2d, #1\nusra v2.2d, v1.2d, #63\nmov z1.d, #7                        // =0x7\nmls z0.d, p0/m, z2.d, z1.d\nret",
+  "asm": "mov x8, #18725                      // =0x4925\nptrue p0.d, vl2\nmovk x8, #9362, lsl #16\nmovk x8, #37449, lsl #32\nmovk x8, #18724, lsl #48\nmov z1.d, x8\nsmulh z1.d, z0.d, z1.d\nsshr v2.2d, v1.2d, #1\nusra v2.2d, v1.2d, #63\nmov z1.d, #7                        // =0x7\nmls z0.d, p0/m, z2.d, z1.d\nret",
   "giasm": "fmov x9, d0\nmov w8, #7                          // =0x7\nmov x10, v0.d[1]\nsdiv x9, x9, x8\nsdiv x8, x10, x8\nfmov d1, x9\nmov v1.d[1], x8\nadrp x8, .LCPI0_0\nldr q2, [x8, :lo12:.LCPI0_0]\nfmov x11, d2\nmov x9, v2.d[1]\nfmov x10, d1\nmov x8, v1.d[1]\nmul x10, x10, x11\nmul x8, x8, x9\nfmov d1, x10\nmov v1.d[1], x8\nsub v0.2d, v0.2d, v1.2d\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) {\n  %r = srem <2 x i64> %a, splat (i64 7)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <2 x i64> %a, splat (i64 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
@@ -8762,7 +8762,7 @@
   "size": 14,
   "gisize": 31,
   "extrasize": 0,
-  "asm": "mov x8, #18725                      // =0x4925\nptrue p0.d, vl2\nmovk x8, #9362, lsl #16\nmovk x8, #37449, lsl #32\nmovk x8, #18724, lsl #48\ndup v2.2d, x8\nsmulh z3.d, z0.d, z2.d\nsmulh z2.d, z1.d, z2.d\nsshr v4.2d, v3.2d, #1\nsshr v5.2d, v2.2d, #1\nusra v4.2d, v3.2d, #63\nusra v5.2d, v2.2d, #63\nmov z2.d, #7                        // =0x7\nmls z0.d, p0/m, z4.d, z2.d\nmls z1.d, p0/m, z5.d, z2.d\nret",
+  "asm": "mov x8, #18725                      // =0x4925\nptrue p0.d, vl2\nmovk x8, #9362, lsl #16\nmovk x8, #37449, lsl #32\nmovk x8, #18724, lsl #48\nmov z2.d, x8\nsmulh z3.d, z0.d, z2.d\nsmulh z2.d, z1.d, z2.d\nsshr v4.2d, v3.2d, #1\nsshr v5.2d, v2.2d, #1\nusra v4.2d, v3.2d, #63\nusra v5.2d, v2.2d, #63\nmov z2.d, #7                        // =0x7\nmls z0.d, p0/m, z4.d, z2.d\nmls z1.d, p0/m, z5.d, z2.d\nret",
   "giasm": "fmov x9, d0\nfmov x11, d1\nmov w8, #7                          // =0x7\nmov x10, v0.d[1]\nmov x12, v1.d[1]\nsdiv x9, x9, x8\nsdiv x11, x11, x8\nfmov d2, x9\nadrp x9, .LCPI0_0\nldr q4, [x9, :lo12:.LCPI0_0]\nfmov x9, d4\nsdiv x10, x10, x8\nfmov d3, x11\nmov x11, v4.d[1]\nsdiv x8, x12, x8\nmov v2.d[1], x10\nmov x10, v2.d[1]\nmul x10, x10, x11\nmov v3.d[1], x8\nfmov x8, d2\nmul x8, x8, x9\nfmov x12, d3\nmov x13, v3.d[1]\nmul x9, x12, x9\nfmov d2, x8\nmul x11, x13, x11\nmov v2.d[1], x10\nfmov d3, x9\nmov v3.d[1], x11\nsub v0.2d, v0.2d, v2.2d\nsub v1.2d, v1.2d, v3.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a) {\n  %r = srem <4 x i64> %a, splat (i64 7)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <4 x i64> %a, splat (i64 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
@@ -9482,7 +9482,7 @@
   "size": 5,
   "gisize": 6,
   "extrasize": 0,
-  "asm": "movi v1.8b, #37\numulh z1.b, z0.b, z1.b\nsub v0.8b, v0.8b, v1.8b\nusra v1.8b, v0.8b, #1\nushr v0.8b, v1.8b, #2\nret",
+  "asm": "mov z1.b, #37                       // =0x25\numulh z1.b, z0.b, z1.b\nsub v0.8b, v0.8b, v1.8b\nusra v1.8b, v0.8b, #1\nushr v0.8b, v1.8b, #2\nret",
   "giasm": "movi v1.8b, #37\numull v1.8h, v0.8b, v1.8b\nshrn v1.8b, v1.8h, #8\nsub v0.8b, v0.8b, v1.8b\nusra v1.8b, v0.8b, #1\nushr v0.8b, v1.8b, #2\nret",
   "ll": "define <8 x i8> @test(<8 x i8> %a) {\n  %r = udiv <8 x i8> %a, splat (i8 7)\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <8 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
@@ -9546,7 +9546,7 @@
   "size": 5,
   "gisize": 7,
   "extrasize": 0,
-  "asm": "movi v1.16b, #37\numulh z1.b, z0.b, z1.b\nsub v0.16b, v0.16b, v1.16b\nusra v1.16b, v0.16b, #1\nushr v0.16b, v1.16b, #2\nret",
+  "asm": "mov z1.b, #37                       // =0x25\numulh z1.b, z0.b, z1.b\nsub v0.16b, v0.16b, v1.16b\nusra v1.16b, v0.16b, #1\nushr v0.16b, v1.16b, #2\nret",
   "giasm": "movi v1.16b, #37\numull2 v2.8h, v0.16b, v1.16b\numull v1.8h, v0.8b, v1.8b\nuzp2 v1.16b, v1.16b, v2.16b\nsub v0.16b, v0.16b, v1.16b\nusra v1.16b, v0.16b, #1\nushr v0.16b, v1.16b, #2\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a) {\n  %r = udiv <16 x i8> %a, splat (i8 7)\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <16 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
@@ -9610,7 +9610,7 @@
   "size": 9,
   "gisize": 15,
   "extrasize": 0,
-  "asm": "movi v2.16b, #37\numulh z3.b, z0.b, z2.b\numulh z2.b, z1.b, z2.b\nsub v0.16b, v0.16b, v3.16b\nsub v1.16b, v1.16b, v2.16b\nusra v3.16b, v0.16b, #1\nusra v2.16b, v1.16b, #1\nushr v0.16b, v3.16b, #2\nushr v1.16b, v2.16b, #2\nret",
+  "asm": "mov z2.b, #37                       // =0x25\numulh z3.b, z0.b, z2.b\numulh z2.b, z1.b, z2.b\nsub v0.16b, v0.16b, v3.16b\nsub v1.16b, v1.16b, v2.16b\nusra v3.16b, v0.16b, #1\nusra v2.16b, v1.16b, #1\nushr v0.16b, v3.16b, #2\nushr v1.16b, v2.16b, #2\nret",
   "giasm": "movi v2.8b, #37\nmov d3, v0.d[1]\nmov d4, v1.d[1]\numull v5.8h, v0.8b, v2.8b\numull v3.8h, v3.8b, v2.8b\numull v6.8h, v1.8b, v2.8b\numull v2.8h, v4.8b, v2.8b\nuzp2 v3.16b, v5.16b, v3.16b\nuzp2 v2.16b, v6.16b, v2.16b\nsub v0.16b, v0.16b, v3.16b\nsub v1.16b, v1.16b, v2.16b\nusra v3.16b, v0.16b, #1\nusra v2.16b, v1.16b, #1\nushr v0.16b, v3.16b, #2\nushr v1.16b, v2.16b, #2\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a) {\n  %r = udiv <32 x i8> %a, splat (i8 7)\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <32 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
@@ -9674,7 +9674,7 @@
   "size": 6,
   "gisize": 7,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\ndup v1.4h, w8\numulh z1.h, z0.h, z1.h\nsub v0.4h, v0.4h, v1.4h\nusra v1.4h, v0.4h, #1\nushr v0.4h, v1.4h, #2\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmov z1.h, w8\numulh z1.h, z0.h, z1.h\nsub v0.4h, v0.4h, v1.4h\nusra v1.4h, v0.4h, #1\nushr v0.4h, v1.4h, #2\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\numull v1.4s, v0.4h, v1.4h\nshrn v1.4h, v1.4s, #16\nsub v0.4h, v0.4h, v1.4h\nusra v1.4h, v0.4h, #1\nushr v0.4h, v1.4h, #2\nret",
   "ll": "define <4 x i16> @test(<4 x i16> %a) {\n  %r = udiv <4 x i16> %a, splat (i16 7)\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <4 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
@@ -9738,7 +9738,7 @@
   "size": 6,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\ndup v1.8h, w8\numulh z1.h, z0.h, z1.h\nsub v0.8h, v0.8h, v1.8h\nusra v1.8h, v0.8h, #1\nushr v0.8h, v1.8h, #2\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmov z1.h, w8\numulh z1.h, z0.h, z1.h\nsub v0.8h, v0.8h, v1.8h\nusra v1.8h, v0.8h, #1\nushr v0.8h, v1.8h, #2\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q1, [x8, :lo12:.LCPI0_0]\numull2 v2.4s, v0.8h, v1.8h\numull v1.4s, v0.4h, v1.4h\nuzp2 v1.8h, v1.8h, v2.8h\nsub v0.8h, v0.8h, v1.8h\nusra v1.8h, v0.8h, #1\nushr v0.8h, v1.8h, #2\nret",
   "ll": "define <8 x i16> @test(<8 x i16> %a) {\n  %r = udiv <8 x i16> %a, splat (i16 7)\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <8 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
@@ -9802,7 +9802,7 @@
   "size": 10,
   "gisize": 16,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\ndup v2.8h, w8\numulh z3.h, z0.h, z2.h\numulh z2.h, z1.h, z2.h\nsub v0.8h, v0.8h, v3.8h\nsub v1.8h, v1.8h, v2.8h\nusra v3.8h, v0.8h, #1\nusra v2.8h, v1.8h, #1\nushr v0.8h, v3.8h, #2\nushr v1.8h, v2.8h, #2\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmov z2.h, w8\numulh z3.h, z0.h, z2.h\numulh z2.h, z1.h, z2.h\nsub v0.8h, v0.8h, v3.8h\nsub v1.8h, v1.8h, v2.8h\nusra v3.8h, v0.8h, #1\nusra v2.8h, v1.8h, #1\nushr v0.8h, v3.8h, #2\nushr v1.8h, v2.8h, #2\nret",
   "giasm": "mov d2, v0.d[1]\nmov d3, v1.d[1]\nadrp x8, .LCPI0_0\nldr d4, [x8, :lo12:.LCPI0_0]\numull v5.4s, v0.4h, v4.4h\numull v6.4s, v1.4h, v4.4h\numull v2.4s, v2.4h, v4.4h\numull v3.4s, v3.4h, v4.4h\nuzp2 v2.8h, v5.8h, v2.8h\nuzp2 v3.8h, v6.8h, v3.8h\nsub v0.8h, v0.8h, v2.8h\nsub v1.8h, v1.8h, v3.8h\nusra v2.8h, v0.8h, #1\nusra v3.8h, v1.8h, #1\nushr v0.8h, v2.8h, #2\nushr v1.8h, v3.8h, #2\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a) {\n  %r = udiv <16 x i16> %a, splat (i16 7)\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <16 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
@@ -9866,7 +9866,7 @@
   "size": 7,
   "gisize": 7,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\ndup v1.2s, w8\numulh z1.s, z0.s, z1.s\nsub v0.2s, v0.2s, v1.2s\nusra v1.2s, v0.2s, #1\nushr v0.2s, v1.2s, #2\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\nmov z1.s, w8\numulh z1.s, z0.s, z1.s\nsub v0.2s, v0.2s, v1.2s\nusra v1.2s, v0.2s, #1\nushr v0.2s, v1.2s, #2\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\numull v1.2d, v0.2s, v1.2s\nshrn v1.2s, v1.2d, #32\nsub v0.2s, v0.2s, v1.2s\nusra v1.2s, v0.2s, #1\nushr v0.2s, v1.2s, #2\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) {\n  %r = udiv <2 x i32> %a, splat (i32 7)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <2 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
@@ -9930,7 +9930,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\ndup v1.4s, w8\numulh z1.s, z0.s, z1.s\nsub v0.4s, v0.4s, v1.4s\nusra v1.4s, v0.4s, #1\nushr v0.4s, v1.4s, #2\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\nmov z1.s, w8\numulh z1.s, z0.s, z1.s\nsub v0.4s, v0.4s, v1.4s\nusra v1.4s, v0.4s, #1\nushr v0.4s, v1.4s, #2\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q1, [x8, :lo12:.LCPI0_0]\numull2 v2.2d, v0.4s, v1.4s\numull v1.2d, v0.2s, v1.2s\nuzp2 v1.4s, v1.4s, v2.4s\nsub v0.4s, v0.4s, v1.4s\nusra v1.4s, v0.4s, #1\nushr v0.4s, v1.4s, #2\nret",
   "ll": "define <4 x i32> @test(<4 x i32> %a) {\n  %r = udiv <4 x i32> %a, splat (i32 7)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <4 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
@@ -9994,7 +9994,7 @@
   "size": 11,
   "gisize": 16,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\ndup v2.4s, w8\numulh z3.s, z0.s, z2.s\numulh z2.s, z1.s, z2.s\nsub v0.4s, v0.4s, v3.4s\nsub v1.4s, v1.4s, v2.4s\nusra v3.4s, v0.4s, #1\nusra v2.4s, v1.4s, #1\nushr v0.4s, v3.4s, #2\nushr v1.4s, v2.4s, #2\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\nmov z2.s, w8\numulh z3.s, z0.s, z2.s\numulh z2.s, z1.s, z2.s\nsub v0.4s, v0.4s, v3.4s\nsub v1.4s, v1.4s, v2.4s\nusra v3.4s, v0.4s, #1\nusra v2.4s, v1.4s, #1\nushr v0.4s, v3.4s, #2\nushr v1.4s, v2.4s, #2\nret",
   "giasm": "mov d2, v0.d[1]\nmov d3, v1.d[1]\nadrp x8, .LCPI0_0\nldr d4, [x8, :lo12:.LCPI0_0]\numull v5.2d, v0.2s, v4.2s\numull v6.2d, v1.2s, v4.2s\numull v2.2d, v2.2s, v4.2s\numull v3.2d, v3.2s, v4.2s\nuzp2 v2.4s, v5.4s, v2.4s\nuzp2 v3.4s, v6.4s, v3.4s\nsub v0.4s, v0.4s, v2.4s\nsub v1.4s, v1.4s, v3.4s\nusra v2.4s, v0.4s, #1\nusra v3.4s, v1.4s, #1\nushr v0.4s, v2.4s, #2\nushr v1.4s, v3.4s, #2\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a) {\n  %r = udiv <8 x i32> %a, splat (i32 7)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <8 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
@@ -10058,7 +10058,7 @@
   "size": 9,
   "gisize": 13,
   "extrasize": 0,
-  "asm": "mov x8, #9363                       // =0x2493\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\ndup v1.2d, x8\numulh z1.d, z0.d, z1.d\nsub v0.2d, v0.2d, v1.2d\nusra v1.2d, v0.2d, #1\nushr v0.2d, v1.2d, #2\nret",
+  "asm": "mov x8, #9363                       // =0x2493\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\nmov z1.d, x8\numulh z1.d, z0.d, z1.d\nsub v0.2d, v0.2d, v1.2d\nusra v1.2d, v0.2d, #1\nushr v0.2d, v1.2d, #2\nret",
   "giasm": "mov x8, #9363                       // =0x2493\nfmov x10, d0\nmov x9, v0.d[1]\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\numulh x10, x10, x8\numulh x8, x9, x8\nfmov d1, x10\nmov v1.d[1], x8\nsub v0.2d, v0.2d, v1.2d\nusra v1.2d, v0.2d, #1\nushr v0.2d, v1.2d, #2\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) {\n  %r = udiv <2 x i64> %a, splat (i64 7)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <2 x i64> %a, splat (i64 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
@@ -10122,7 +10122,7 @@
   "size": 13,
   "gisize": 22,
   "extrasize": 0,
-  "asm": "mov x8, #9363                       // =0x2493\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\ndup v2.2d, x8\numulh z3.d, z0.d, z2.d\numulh z2.d, z1.d, z2.d\nsub v0.2d, v0.2d, v3.2d\nsub v1.2d, v1.2d, v2.2d\nusra v3.2d, v0.2d, #1\nusra v2.2d, v1.2d, #1\nushr v0.2d, v3.2d, #2\nushr v1.2d, v2.2d, #2\nret",
+  "asm": "mov x8, #9363                       // =0x2493\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\nmov z2.d, x8\numulh z3.d, z0.d, z2.d\numulh z2.d, z1.d, z2.d\nsub v0.2d, v0.2d, v3.2d\nsub v1.2d, v1.2d, v2.2d\nusra v3.2d, v0.2d, #1\nusra v2.2d, v1.2d, #1\nushr v0.2d, v3.2d, #2\nushr v1.2d, v2.2d, #2\nret",
   "giasm": "mov x8, #9363                       // =0x2493\nfmov x9, d0\nfmov x11, d1\nmovk x8, #37449, lsl #16\nmov x10, v0.d[1]\nmov x12, v1.d[1]\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\numulh x9, x9, x8\numulh x11, x11, x8\numulh x10, x10, x8\nfmov d2, x9\numulh x8, x12, x8\nfmov d3, x11\nmov v2.d[1], x10\nmov v3.d[1], x8\nsub v0.2d, v0.2d, v2.2d\nsub v1.2d, v1.2d, v3.2d\nusra v2.2d, v0.2d, #1\nusra v3.2d, v1.2d, #1\nushr v0.2d, v2.2d, #2\nushr v1.2d, v3.2d, #2\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a) {\n  %r = udiv <4 x i64> %a, splat (i64 7)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:12 CodeSize:4 Lat:4 SizeLat:4 for:   %r = udiv <4 x i64> %a, splat (i64 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
@@ -10842,7 +10842,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "movi v1.8b, #37\numulh z1.b, z0.b, z1.b\nsub v2.8b, v0.8b, v1.8b\nusra v1.8b, v2.8b, #1\nmovi v2.8b, #7\nushr v1.8b, v1.8b, #2\nmls v0.8b, v1.8b, v2.8b\nret",
+  "asm": "mov z1.b, #37                       // =0x25\numulh z1.b, z0.b, z1.b\nsub v2.8b, v0.8b, v1.8b\nusra v1.8b, v2.8b, #1\nmovi v2.8b, #7\nushr v1.8b, v1.8b, #2\nmls v0.8b, v1.8b, v2.8b\nret",
   "giasm": "movi v1.8b, #37\numull v1.8h, v0.8b, v1.8b\nshrn v1.8b, v1.8h, #8\nsub v2.8b, v0.8b, v1.8b\nusra v1.8b, v2.8b, #1\nmovi v2.8b, #7\nushr v1.8b, v1.8b, #2\nmls v0.8b, v1.8b, v2.8b\nret",
   "ll": "define <8 x i8> @test(<8 x i8> %a) {\n  %r = urem <8 x i8> %a, splat (i8 7)\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <8 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
@@ -10906,7 +10906,7 @@
   "size": 7,
   "gisize": 9,
   "extrasize": 0,
-  "asm": "movi v1.16b, #37\numulh z1.b, z0.b, z1.b\nsub v2.16b, v0.16b, v1.16b\nusra v1.16b, v2.16b, #1\nushr v1.16b, v1.16b, #2\nmul z1.b, z1.b, #7\nsub v0.16b, v0.16b, v1.16b\nret",
+  "asm": "mov z1.b, #37                       // =0x25\numulh z1.b, z0.b, z1.b\nsub v2.16b, v0.16b, v1.16b\nusra v1.16b, v2.16b, #1\nushr v1.16b, v1.16b, #2\nmul z1.b, z1.b, #7\nsub v0.16b, v0.16b, v1.16b\nret",
   "giasm": "movi v1.16b, #37\numull2 v2.8h, v0.16b, v1.16b\numull v1.8h, v0.8b, v1.8b\nuzp2 v1.16b, v1.16b, v2.16b\nsub v2.16b, v0.16b, v1.16b\nusra v1.16b, v2.16b, #1\nmovi v2.16b, #7\nushr v1.16b, v1.16b, #2\nmls v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a) {\n  %r = urem <16 x i8> %a, splat (i8 7)\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <16 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
@@ -10970,7 +10970,7 @@
   "size": 13,
   "gisize": 18,
   "extrasize": 0,
-  "asm": "movi v2.16b, #37\numulh z3.b, z0.b, z2.b\numulh z2.b, z1.b, z2.b\nsub v4.16b, v0.16b, v3.16b\nsub v5.16b, v1.16b, v2.16b\nusra v3.16b, v4.16b, #1\nusra v2.16b, v5.16b, #1\nushr v3.16b, v3.16b, #2\nushr v2.16b, v2.16b, #2\nmul z3.b, z3.b, #7\nmul z2.b, z2.b, #7\nsub v0.16b, v0.16b, v3.16b\nsub v1.16b, v1.16b, v2.16b\nret",
+  "asm": "mov z2.b, #37                       // =0x25\numulh z3.b, z0.b, z2.b\numulh z2.b, z1.b, z2.b\nsub v4.16b, v0.16b, v3.16b\nsub v5.16b, v1.16b, v2.16b\nusra v3.16b, v4.16b, #1\nusra v2.16b, v5.16b, #1\nushr v3.16b, v3.16b, #2\nushr v2.16b, v2.16b, #2\nmul z3.b, z3.b, #7\nmul z2.b, z2.b, #7\nsub v0.16b, v0.16b, v3.16b\nsub v1.16b, v1.16b, v2.16b\nret",
   "giasm": "movi v2.8b, #37\nmov d3, v0.d[1]\nmov d4, v1.d[1]\numull v5.8h, v0.8b, v2.8b\numull v3.8h, v3.8b, v2.8b\numull v6.8h, v1.8b, v2.8b\numull v2.8h, v4.8b, v2.8b\nuzp2 v3.16b, v5.16b, v3.16b\nuzp2 v2.16b, v6.16b, v2.16b\nsub v4.16b, v0.16b, v3.16b\nsub v5.16b, v1.16b, v2.16b\nusra v3.16b, v4.16b, #1\nmovi v4.16b, #7\nusra v2.16b, v5.16b, #1\nushr v3.16b, v3.16b, #2\nushr v2.16b, v2.16b, #2\nmls v0.16b, v3.16b, v4.16b\nmls v1.16b, v2.16b, v4.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a) {\n  %r = urem <32 x i8> %a, splat (i8 7)\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <32 x i8> %a, splat (i8 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
@@ -11034,7 +11034,7 @@
   "size": 8,
   "gisize": 9,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\ndup v1.4h, w8\numulh z1.h, z0.h, z1.h\nsub v2.4h, v0.4h, v1.4h\nusra v1.4h, v2.4h, #1\nmovi v2.4h, #7\nushr v1.4h, v1.4h, #2\nmls v0.4h, v1.4h, v2.4h\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmov z1.h, w8\numulh z1.h, z0.h, z1.h\nsub v2.4h, v0.4h, v1.4h\nusra v1.4h, v2.4h, #1\nmovi v2.4h, #7\nushr v1.4h, v1.4h, #2\nmls v0.4h, v1.4h, v2.4h\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\numull v1.4s, v0.4h, v1.4h\nshrn v1.4h, v1.4s, #16\nsub v2.4h, v0.4h, v1.4h\nusra v1.4h, v2.4h, #1\nmovi v2.4h, #7\nushr v1.4h, v1.4h, #2\nmls v0.4h, v1.4h, v2.4h\nret",
   "ll": "define <4 x i16> @test(<4 x i16> %a) {\n  %r = urem <4 x i16> %a, splat (i16 7)\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <4 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
@@ -11098,7 +11098,7 @@
   "size": 8,
   "gisize": 10,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\ndup v1.8h, w8\numulh z1.h, z0.h, z1.h\nsub v2.8h, v0.8h, v1.8h\nusra v1.8h, v2.8h, #1\nushr v1.8h, v1.8h, #2\nmul z1.h, z1.h, #7\nsub v0.8h, v0.8h, v1.8h\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmov z1.h, w8\numulh z1.h, z0.h, z1.h\nsub v2.8h, v0.8h, v1.8h\nusra v1.8h, v2.8h, #1\nushr v1.8h, v1.8h, #2\nmul z1.h, z1.h, #7\nsub v0.8h, v0.8h, v1.8h\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q1, [x8, :lo12:.LCPI0_0]\numull2 v2.4s, v0.8h, v1.8h\numull v1.4s, v0.4h, v1.4h\nuzp2 v1.8h, v1.8h, v2.8h\nsub v2.8h, v0.8h, v1.8h\nusra v1.8h, v2.8h, #1\nmovi v2.8h, #7\nushr v1.8h, v1.8h, #2\nmls v0.8h, v1.8h, v2.8h\nret",
   "ll": "define <8 x i16> @test(<8 x i16> %a) {\n  %r = urem <8 x i16> %a, splat (i16 7)\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <8 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
@@ -11162,7 +11162,7 @@
   "size": 14,
   "gisize": 19,
   "extrasize": 0,
-  "asm": "mov w8, #9363                       // =0x2493\ndup v2.8h, w8\numulh z3.h, z0.h, z2.h\numulh z2.h, z1.h, z2.h\nsub v4.8h, v0.8h, v3.8h\nsub v5.8h, v1.8h, v2.8h\nusra v3.8h, v4.8h, #1\nusra v2.8h, v5.8h, #1\nushr v3.8h, v3.8h, #2\nushr v2.8h, v2.8h, #2\nmul z3.h, z3.h, #7\nmul z2.h, z2.h, #7\nsub v0.8h, v0.8h, v3.8h\nsub v1.8h, v1.8h, v2.8h\nret",
+  "asm": "mov w8, #9363                       // =0x2493\nmov z2.h, w8\numulh z3.h, z0.h, z2.h\numulh z2.h, z1.h, z2.h\nsub v4.8h, v0.8h, v3.8h\nsub v5.8h, v1.8h, v2.8h\nusra v3.8h, v4.8h, #1\nusra v2.8h, v5.8h, #1\nushr v3.8h, v3.8h, #2\nushr v2.8h, v2.8h, #2\nmul z3.h, z3.h, #7\nmul z2.h, z2.h, #7\nsub v0.8h, v0.8h, v3.8h\nsub v1.8h, v1.8h, v2.8h\nret",
   "giasm": "mov d2, v0.d[1]\nmov d3, v1.d[1]\nadrp x8, .LCPI0_0\nldr d4, [x8, :lo12:.LCPI0_0]\numull v5.4s, v0.4h, v4.4h\numull v6.4s, v1.4h, v4.4h\numull v2.4s, v2.4h, v4.4h\numull v3.4s, v3.4h, v4.4h\nuzp2 v2.8h, v5.8h, v2.8h\nuzp2 v3.8h, v6.8h, v3.8h\nsub v4.8h, v0.8h, v2.8h\nsub v5.8h, v1.8h, v3.8h\nusra v2.8h, v4.8h, #1\nusra v3.8h, v5.8h, #1\nmovi v4.8h, #7\nushr v2.8h, v2.8h, #2\nushr v3.8h, v3.8h, #2\nmls v0.8h, v2.8h, v4.8h\nmls v1.8h, v3.8h, v4.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a) {\n  %r = urem <16 x i16> %a, splat (i16 7)\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <16 x i16> %a, splat (i16 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
@@ -11226,7 +11226,7 @@
   "size": 9,
   "gisize": 9,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\ndup v1.2s, w8\numulh z1.s, z0.s, z1.s\nsub v2.2s, v0.2s, v1.2s\nusra v1.2s, v2.2s, #1\nmovi v2.2s, #7\nushr v1.2s, v1.2s, #2\nmls v0.2s, v1.2s, v2.2s\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\nmov z1.s, w8\numulh z1.s, z0.s, z1.s\nsub v2.2s, v0.2s, v1.2s\nusra v1.2s, v2.2s, #1\nmovi v2.2s, #7\nushr v1.2s, v1.2s, #2\nmls v0.2s, v1.2s, v2.2s\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\numull v1.2d, v0.2s, v1.2s\nshrn v1.2s, v1.2d, #32\nsub v2.2s, v0.2s, v1.2s\nusra v1.2s, v2.2s, #1\nmovi v2.2s, #7\nushr v1.2s, v1.2s, #2\nmls v0.2s, v1.2s, v2.2s\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) {\n  %r = urem <2 x i32> %a, splat (i32 7)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <2 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
@@ -11290,7 +11290,7 @@
   "size": 9,
   "gisize": 10,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\ndup v1.4s, w8\numulh z1.s, z0.s, z1.s\nsub v2.4s, v0.4s, v1.4s\nusra v1.4s, v2.4s, #1\nushr v1.4s, v1.4s, #2\nmul z1.s, z1.s, #7\nsub v0.4s, v0.4s, v1.4s\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\nmov z1.s, w8\numulh z1.s, z0.s, z1.s\nsub v2.4s, v0.4s, v1.4s\nusra v1.4s, v2.4s, #1\nushr v1.4s, v1.4s, #2\nmul z1.s, z1.s, #7\nsub v0.4s, v0.4s, v1.4s\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q1, [x8, :lo12:.LCPI0_0]\numull2 v2.2d, v0.4s, v1.4s\numull v1.2d, v0.2s, v1.2s\nuzp2 v1.4s, v1.4s, v2.4s\nsub v2.4s, v0.4s, v1.4s\nusra v1.4s, v2.4s, #1\nmovi v2.4s, #7\nushr v1.4s, v1.4s, #2\nmls v0.4s, v1.4s, v2.4s\nret",
   "ll": "define <4 x i32> @test(<4 x i32> %a) {\n  %r = urem <4 x i32> %a, splat (i32 7)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <4 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
@@ -11354,7 +11354,7 @@
   "size": 15,
   "gisize": 19,
   "extrasize": 0,
-  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\ndup v2.4s, w8\numulh z3.s, z0.s, z2.s\numulh z2.s, z1.s, z2.s\nsub v4.4s, v0.4s, v3.4s\nsub v5.4s, v1.4s, v2.4s\nusra v3.4s, v4.4s, #1\nusra v2.4s, v5.4s, #1\nushr v3.4s, v3.4s, #2\nushr v2.4s, v2.4s, #2\nmul z3.s, z3.s, #7\nmul z2.s, z2.s, #7\nsub v0.4s, v0.4s, v3.4s\nsub v1.4s, v1.4s, v2.4s\nret",
+  "asm": "mov w8, #18725                      // =0x4925\nmovk w8, #9362, lsl #16\nmov z2.s, w8\numulh z3.s, z0.s, z2.s\numulh z2.s, z1.s, z2.s\nsub v4.4s, v0.4s, v3.4s\nsub v5.4s, v1.4s, v2.4s\nusra v3.4s, v4.4s, #1\nusra v2.4s, v5.4s, #1\nushr v3.4s, v3.4s, #2\nushr v2.4s, v2.4s, #2\nmul z3.s, z3.s, #7\nmul z2.s, z2.s, #7\nsub v0.4s, v0.4s, v3.4s\nsub v1.4s, v1.4s, v2.4s\nret",
   "giasm": "mov d2, v0.d[1]\nmov d3, v1.d[1]\nadrp x8, .LCPI0_0\nldr d4, [x8, :lo12:.LCPI0_0]\numull v5.2d, v0.2s, v4.2s\numull v6.2d, v1.2s, v4.2s\numull v2.2d, v2.2s, v4.2s\numull v3.2d, v3.2s, v4.2s\nuzp2 v2.4s, v5.4s, v2.4s\nuzp2 v3.4s, v6.4s, v3.4s\nsub v4.4s, v0.4s, v2.4s\nsub v5.4s, v1.4s, v3.4s\nusra v2.4s, v4.4s, #1\nusra v3.4s, v5.4s, #1\nmovi v4.4s, #7\nushr v2.4s, v2.4s, #2\nushr v3.4s, v3.4s, #2\nmls v0.4s, v2.4s, v4.4s\nmls v1.4s, v3.4s, v4.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a) {\n  %r = urem <8 x i32> %a, splat (i32 7)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <8 x i32> %a, splat (i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
@@ -11418,7 +11418,7 @@
   "size": 11,
   "gisize": 24,
   "extrasize": 0,
-  "asm": "mov x8, #9363                       // =0x2493\nptrue p0.d, vl2\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\ndup v1.2d, x8\numulh z1.d, z0.d, z1.d\nsub v2.2d, v0.2d, v1.2d\nusra v1.2d, v2.2d, #1\nmov z2.d, #7                        // =0x7\nushr v1.2d, v1.2d, #2\nmls z0.d, p0/m, z1.d, z2.d\nret",
+  "asm": "mov x8, #9363                       // =0x2493\nptrue p0.d, vl2\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\nmov z1.d, x8\numulh z1.d, z0.d, z1.d\nsub v2.2d, v0.2d, v1.2d\nusra v1.2d, v2.2d, #1\nmov z2.d, #7                        // =0x7\nushr v1.2d, v1.2d, #2\nmls z0.d, p0/m, z1.d, z2.d\nret",
   "giasm": "mov x8, #9363                       // =0x2493\nfmov x10, d0\nmov x9, v0.d[1]\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\numulh x10, x10, x8\numulh x8, x9, x8\nfmov d1, x10\nmov v1.d[1], x8\nadrp x8, .LCPI0_0\nsub v2.2d, v0.2d, v1.2d\nusra v1.2d, v2.2d, #1\nldr q2, [x8, :lo12:.LCPI0_0]\nfmov x11, d2\nmov x9, v2.d[1]\nushr v1.2d, v1.2d, #2\nfmov x10, d1\nmov x8, v1.d[1]\nmul x10, x10, x11\nmul x8, x8, x9\nfmov d1, x10\nmov v1.d[1], x8\nsub v0.2d, v0.2d, v1.2d\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) {\n  %r = urem <2 x i64> %a, splat (i64 7)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <2 x i64> %a, splat (i64 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
@@ -11482,7 +11482,7 @@
   "size": 16,
   "gisize": 40,
   "extrasize": 0,
-  "asm": "mov x8, #9363                       // =0x2493\nptrue p0.d, vl2\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\ndup v2.2d, x8\numulh z3.d, z0.d, z2.d\numulh z2.d, z1.d, z2.d\nsub v4.2d, v0.2d, v3.2d\nsub v5.2d, v1.2d, v2.2d\nusra v3.2d, v4.2d, #1\nusra v2.2d, v5.2d, #1\nmov z4.d, #7                        // =0x7\nushr v3.2d, v3.2d, #2\nushr v2.2d, v2.2d, #2\nmls z0.d, p0/m, z3.d, z4.d\nmls z1.d, p0/m, z2.d, z4.d\nret",
+  "asm": "mov x8, #9363                       // =0x2493\nptrue p0.d, vl2\nmovk x8, #37449, lsl #16\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\nmov z2.d, x8\numulh z3.d, z0.d, z2.d\numulh z2.d, z1.d, z2.d\nsub v4.2d, v0.2d, v3.2d\nsub v5.2d, v1.2d, v2.2d\nusra v3.2d, v4.2d, #1\nusra v2.2d, v5.2d, #1\nmov z4.d, #7                        // =0x7\nushr v3.2d, v3.2d, #2\nushr v2.2d, v2.2d, #2\nmls z0.d, p0/m, z3.d, z4.d\nmls z1.d, p0/m, z2.d, z4.d\nret",
   "giasm": "mov x8, #9363                       // =0x2493\nfmov x9, d0\nfmov x11, d1\nmovk x8, #37449, lsl #16\nmov x10, v0.d[1]\nmov x12, v1.d[1]\nmovk x8, #18724, lsl #32\nmovk x8, #9362, lsl #48\numulh x9, x9, x8\numulh x11, x11, x8\numulh x10, x10, x8\nfmov d2, x9\numulh x8, x12, x8\nfmov d3, x11\nmov v2.d[1], x10\nmov v3.d[1], x8\nadrp x8, .LCPI0_0\nsub v4.2d, v0.2d, v2.2d\nsub v5.2d, v1.2d, v3.2d\nusra v2.2d, v4.2d, #1\nldr q4, [x8, :lo12:.LCPI0_0]\nusra v3.2d, v5.2d, #1\nfmov x8, d4\nmov x10, v4.d[1]\nushr v2.2d, v2.2d, #2\nushr v3.2d, v3.2d, #2\nfmov x9, d2\nmov x11, v2.d[1]\nfmov x12, d3\nmov x13, v3.d[1]\nmul x9, x9, x8\nmul x8, x12, x8\nmul x11, x11, x10\nfmov d2, x9\nmul x10, x13, x10\nfmov d3, x8\nmov v2.d[1], x11\nmov v3.d[1], x10\nsub v0.2d, v0.2d, v2.2d\nsub v1.2d, v1.2d, v3.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a) {\n  %r = urem <4 x i64> %a, splat (i64 7)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <4 x i64> %a, splat (i64 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
