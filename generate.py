@@ -38,7 +38,7 @@ def getcost(path):
     text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind=all -disable-output")
   except subprocess.CalledProcessError as e:
     shutil.copyfile(os.path.join(path, 'costtest.ll'), 'costtest.ll')
-    raise
+    return (-1, -1, -1, -1, str(e))
   if print:
     logging.debug(text.strip())
   costs = [x for x in text.split('\n') if 'for:   ret ' not in x]
@@ -55,6 +55,8 @@ def getasm(path, extraflags):
   except subprocess.CalledProcessError as e:
     lines = [e.output.decode('utf-8').split('\n')[0]]
     lines = [re.sub(r'llc: /.*/llvm', 'llc: llvm', l) for l in lines]
+    if "unable to legalize" in lines[0] or "cannot select" in lines[0] or "unable to translate" in lines[0]:
+      return (lines, -2)
     return (lines, -1)
   with open(os.path.join(path, "costtest.s")) as f:
     lines = [l.strip() for l in f]
@@ -335,7 +337,7 @@ if args.type == 'all' or args.type == 'int':
     # Int unops
     for instr in ['abs', 'bitreverse', 'bswap', 'ctlz', 'cttz', 'ctpop']:
       for ty in inttypes():
-        if instr == 'bswap' and (ty.scalar == 'i1' or ty.scalar == 'i8'):
+        if instr == 'bswap' and ty.scalarsize() % 16 != 0:
           continue
         yield (instr, 'unop', ty, ty, 0, None)
     for instr in ['xor']:
