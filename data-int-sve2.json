@@ -15882,7 +15882,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "index z1.s, #0, #1\nmov z2.d, z1.d\nsub z1.s, z1.s, #7                  // =0x7\nadd z2.s, z2.s, #25                 // =0x19\nushl v1.2s, v0.2s, v1.2s\nushl v0.2s, v0.2s, v2.2s\norr v0.8b, v1.8b, v0.8b\nret",
+  "asm": "index z1.s, #0, #1\nmovprfx z2, z1\nadd z2.s, z2.s, #25                 // =0x19\nsub z1.s, z1.s, #7                  // =0x7\nushl v2.2s, v0.2s, v2.2s\nushl v0.2s, v0.2s, v1.2s\norr v0.8b, v0.8b, v2.8b\nret",
   "giasm": "adrp x8, .LCPI0_1\nldr d1, [x8, :lo12:.LCPI0_1]\nadrp x8, .LCPI0_0\nldr d2, [x8, :lo12:.LCPI0_0]\nneg v1.2s, v1.2s\nushl v1.2s, v0.2s, v1.2s\nushl v0.2s, v0.2s, v2.2s\norr v0.8b, v1.8b, v0.8b\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) {\n  %r = call <2 x i32> @llvm.fshr(<2 x i32> %a, <2 x i32> %a, <2 x i32> <i32 7, i32 6>)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call <2 x i32> @llvm.fshr.v2i32(<2 x i32> %a, <2 x i32> %a, <2 x i32> <i32 7, i32 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
@@ -16074,7 +16074,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "index z1.d, #0, #1\nmov z2.d, z1.d\nsub z1.d, z1.d, #7                  // =0x7\nadd z2.d, z2.d, #57                 // =0x39\nushl v1.2d, v0.2d, v1.2d\nushl v0.2d, v0.2d, v2.2d\norr v0.16b, v1.16b, v0.16b\nret",
+  "asm": "index z1.d, #0, #1\nmovprfx z2, z1\nadd z2.d, z2.d, #57                 // =0x39\nsub z1.d, z1.d, #7                  // =0x7\nushl v2.2d, v0.2d, v2.2d\nushl v0.2d, v0.2d, v1.2d\norr v0.16b, v0.16b, v2.16b\nret",
   "giasm": "adrp x8, .LCPI0_1\nldr q1, [x8, :lo12:.LCPI0_1]\nadrp x8, .LCPI0_0\nldr q2, [x8, :lo12:.LCPI0_0]\nneg v1.2d, v1.2d\nushl v1.2d, v0.2d, v1.2d\nushl v0.2d, v0.2d, v2.2d\norr v0.16b, v1.16b, v0.16b\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) {\n  %r = call <2 x i64> @llvm.fshr(<2 x i64> %a, <2 x i64> %a, <2 x i64> <i64 7, i64 6>)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call <2 x i64> @llvm.fshr.v2i64(<2 x i64> %a, <2 x i64> %a, <2 x i64> <i64 7, i64 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
@@ -16138,7 +16138,7 @@
   "size": 10,
   "gisize": 11,
   "extrasize": 0,
-  "asm": "index z2.d, #0, #1\nmov z3.d, z2.d\nsub z2.d, z2.d, #7                  // =0x7\nadd z3.d, z3.d, #57                 // =0x39\nushl v4.2d, v0.2d, v2.2d\nushl v0.2d, v0.2d, v3.2d\nushl v3.2d, v1.2d, v3.2d\nushl v1.2d, v1.2d, v2.2d\norr v0.16b, v4.16b, v0.16b\norr v1.16b, v1.16b, v3.16b\nret",
+  "asm": "index z2.d, #0, #1\nmovprfx z3, z2\nadd z3.d, z3.d, #57                 // =0x39\nsub z2.d, z2.d, #7                  // =0x7\nushl v4.2d, v0.2d, v3.2d\nushl v0.2d, v0.2d, v2.2d\nushl v3.2d, v1.2d, v3.2d\nushl v1.2d, v1.2d, v2.2d\norr v0.16b, v0.16b, v4.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "giasm": "adrp x8, .LCPI0_1\nldr q2, [x8, :lo12:.LCPI0_1]\nadrp x8, .LCPI0_0\nldr q3, [x8, :lo12:.LCPI0_0]\nneg v2.2d, v2.2d\nushl v4.2d, v0.2d, v2.2d\nushl v2.2d, v1.2d, v2.2d\nushl v0.2d, v0.2d, v3.2d\nushl v1.2d, v1.2d, v3.2d\norr v0.16b, v4.16b, v0.16b\norr v1.16b, v2.16b, v1.16b\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a) {\n  %r = call <4 x i64> @llvm.fshr(<4 x i64> %a, <4 x i64> %a, <4 x i64> <i64 7, i64 6, i64 7, i64 6>)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:3 Lat:3 SizeLat:3 for:   %r = call <4 x i64> @llvm.fshr.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> <i64 7, i64 6, i64 7, i64 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
@@ -16186,7 +16186,7 @@
   "size": 9,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.h, z1.h, #0                  // =0x0\nmov z3.d, z0.d\nptrue p0.h\nand z3.h, z3.h, #0xff\nand z2.h, z2.h, #0x7\nand z1.h, z1.h, #0x7\nlsl z0.h, p0/m, z0.h, z1.h\nlsrr z2.h, p0/m, z2.h, z3.h\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.h, z2.h, #0                  // =0x0\nmov z3.d, z0.d\nand z1.h, z1.h, #0x7\nptrue p0.h\nand z3.h, z3.h, #0xff\nand z2.h, z2.h, #0x7\nlsl z0.h, p0/m, z0.h, z2.h\nlsrr z1.h, p0/m, z1.h, z3.h\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i8> @test(<vscale x 8 x i8> %a, <vscale x 8 x i8> %b) {\n  %r = call <vscale x 8 x i8> @llvm.fshr(<vscale x 8 x i8> %a, <vscale x 8 x i8> %a, <vscale x 8 x i8> %b)\n  ret <vscale x 8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 8 x i8> @llvm.fshr.nxv8i8(<vscale x 8 x i8> %a, <vscale x 8 x i8> %a, <vscale x 8 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i8> %r"
@@ -16202,7 +16202,7 @@
   "size": 10,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, w0\nmov z3.d, z0.d\nptrue p0.h\nmov z2.d, z1.d\nsubr z1.h, z1.h, #0                  // =0x0\nand z3.h, z3.h, #0xff\nand z2.h, z2.h, #0x7\nand z1.h, z1.h, #0x7\nlsl z0.h, p0/m, z0.h, z1.h\nlsrr z2.h, p0/m, z2.h, z3.h\norr z0.d, z2.d, z0.d\nret",
+  "asm": "mov z1.h, w0\nmov z3.d, z0.d\nptrue p0.h\nmovprfx z2, z1\nsubr z2.h, z2.h, #0                  // =0x0\nand z3.h, z3.h, #0xff\nand z1.h, z1.h, #0x7\nand z2.h, z2.h, #0x7\nlsrr z1.h, p0/m, z1.h, z3.h\nlsl z0.h, p0/m, z0.h, z2.h\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i8> @test(<vscale x 8 x i8> %a, i8 %bs) {\n  %i = insertelement <vscale x 8 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <vscale x 8 x i8> %i, <vscale x 8 x i8> poison, <vscale x 8 x i32> zeroinitializer\n  %r = call <vscale x 8 x i8> @llvm.fshr(<vscale x 8 x i8> %a, <vscale x 8 x i8> %a, <vscale x 8 x i8> %b)\n  ret <vscale x 8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 8 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of 1 for:   %b = shufflevector <vscale x 8 x i8> %i, <vscale x 8 x i8> poison, <vscale x 8 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <vscale x 8 x i8> @llvm.fshr.nxv8i8(<vscale x 8 x i8> %a, <vscale x 8 x i8> %a, <vscale x 8 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i8> %r"
@@ -16234,7 +16234,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.b, z1.b, #0                  // =0x0\nptrue p0.b\nand z2.b, z2.b, #0x7\nand z1.b, z1.b, #0x7\nlsrr z2.b, p0/m, z2.b, z0.b\nlsl z0.b, p0/m, z0.b, z1.b\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.b, z2.b, #0                  // =0x0\nand z1.b, z1.b, #0x7\nptrue p0.b\nand z2.b, z2.b, #0x7\nlsrr z1.b, p0/m, z1.b, z0.b\nlsl z0.b, p0/m, z0.b, z2.b\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 16 x i8> @test(<vscale x 16 x i8> %a, <vscale x 16 x i8> %b) {\n  %r = call <vscale x 16 x i8> @llvm.fshr(<vscale x 16 x i8> %a, <vscale x 16 x i8> %a, <vscale x 16 x i8> %b)\n  ret <vscale x 16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 16 x i8> @llvm.fshr.nxv16i8(<vscale x 16 x i8> %a, <vscale x 16 x i8> %a, <vscale x 16 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i8> %r"
@@ -16250,7 +16250,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.b, w0\nptrue p0.b\nmov z2.d, z1.d\nsubr z1.b, z1.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z1.b, z1.b, #0x7\nlsrr z2.b, p0/m, z2.b, z0.b\nlsl z0.b, p0/m, z0.b, z1.b\norr z0.d, z2.d, z0.d\nret",
+  "asm": "mov z1.b, w0\nptrue p0.b\nmovprfx z2, z1\nsubr z2.b, z2.b, #0                  // =0x0\nand z1.b, z1.b, #0x7\nand z2.b, z2.b, #0x7\nlsrr z1.b, p0/m, z1.b, z0.b\nlsl z0.b, p0/m, z0.b, z2.b\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 16 x i8> @test(<vscale x 16 x i8> %a, i8 %bs) {\n  %i = insertelement <vscale x 16 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <vscale x 16 x i8> %i, <vscale x 16 x i8> poison, <vscale x 16 x i32> zeroinitializer\n  %r = call <vscale x 16 x i8> @llvm.fshr(<vscale x 16 x i8> %a, <vscale x 16 x i8> %a, <vscale x 16 x i8> %b)\n  ret <vscale x 16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 16 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of 1 for:   %b = shufflevector <vscale x 16 x i8> %i, <vscale x 16 x i8> poison, <vscale x 16 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <vscale x 16 x i8> @llvm.fshr.nxv16i8(<vscale x 16 x i8> %a, <vscale x 16 x i8> %a, <vscale x 16 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i8> %r"
@@ -16282,7 +16282,7 @@
   "size": 14,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z4.d, z2.d\nsubr z2.b, z2.b, #0                  // =0x0\nmov z5.d, z3.d\nsubr z3.b, z3.b, #0                  // =0x0\nptrue p0.b\nand z4.b, z4.b, #0x7\nand z2.b, z2.b, #0x7\nand z5.b, z5.b, #0x7\nand z3.b, z3.b, #0x7\nlsrr z4.b, p0/m, z4.b, z0.b\nlsl z0.b, p0/m, z0.b, z2.b\nlsrr z5.b, p0/m, z5.b, z1.b\nlsl z1.b, p0/m, z1.b, z3.b\norr z0.d, z4.d, z0.d\norr z1.d, z5.d, z1.d\nret",
+  "asm": "movprfx z4, z2\nsubr z4.b, z4.b, #0                  // =0x0\nmovprfx z5, z3\nsubr z5.b, z5.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z3.b, z3.b, #0x7\nptrue p0.b\nand z4.b, z4.b, #0x7\nand z5.b, z5.b, #0x7\nlsrr z2.b, p0/m, z2.b, z0.b\nlsrr z3.b, p0/m, z3.b, z1.b\nlsl z0.b, p0/m, z0.b, z4.b\nlsl z1.b, p0/m, z1.b, z5.b\norr z0.d, z2.d, z0.d\norr z1.d, z3.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 32 x i8> @test(<vscale x 32 x i8> %a, <vscale x 32 x i8> %b) {\n  %r = call <vscale x 32 x i8> @llvm.fshr(<vscale x 32 x i8> %a, <vscale x 32 x i8> %a, <vscale x 32 x i8> %b)\n  ret <vscale x 32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 32 x i8> @llvm.fshr.nxv32i8(<vscale x 32 x i8> %a, <vscale x 32 x i8> %a, <vscale x 32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 32 x i8> %r"
@@ -16298,7 +16298,7 @@
   "size": 12,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.b, w0\nptrue p0.b\nmov z3.d, z2.d\nsubr z2.b, z2.b, #0                  // =0x0\nand z3.b, z3.b, #0x7\nand z2.b, z2.b, #0x7\nmovprfx z4, z0\nlsr z4.b, p0/m, z4.b, z3.b\nlsl z0.b, p0/m, z0.b, z2.b\nlsrr z3.b, p0/m, z3.b, z1.b\nlsl z1.b, p0/m, z1.b, z2.b\norr z0.d, z4.d, z0.d\norr z1.d, z3.d, z1.d\nret",
+  "asm": "mov z2.b, w0\nptrue p0.b\nmovprfx z3, z2\nsubr z3.b, z3.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z3.b, z3.b, #0x7\nmovprfx z4, z0\nlsr z4.b, p0/m, z4.b, z2.b\nlsrr z2.b, p0/m, z2.b, z1.b\nlsl z0.b, p0/m, z0.b, z3.b\nlsl z1.b, p0/m, z1.b, z3.b\norr z0.d, z4.d, z0.d\norr z1.d, z2.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 32 x i8> @test(<vscale x 32 x i8> %a, i8 %bs) {\n  %i = insertelement <vscale x 32 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <vscale x 32 x i8> %i, <vscale x 32 x i8> poison, <vscale x 32 x i32> zeroinitializer\n  %r = call <vscale x 32 x i8> @llvm.fshr(<vscale x 32 x i8> %a, <vscale x 32 x i8> %a, <vscale x 32 x i8> %b)\n  ret <vscale x 32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of 2 for:   %b = shufflevector <vscale x 32 x i8> %i, <vscale x 32 x i8> poison, <vscale x 32 x i32> zeroinitializer\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 32 x i8> @llvm.fshr.nxv32i8(<vscale x 32 x i8> %a, <vscale x 32 x i8> %a, <vscale x 32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 32 x i8> %r"
@@ -16330,7 +16330,7 @@
   "size": 9,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.s, z1.s, #0                  // =0x0\nmov z3.d, z0.d\nptrue p0.s\nand z3.s, z3.s, #0xffff\nand z2.s, z2.s, #0xf\nand z1.s, z1.s, #0xf\nlsl z0.s, p0/m, z0.s, z1.s\nlsrr z2.s, p0/m, z2.s, z3.s\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.s, z2.s, #0                  // =0x0\nmov z3.d, z0.d\nand z1.s, z1.s, #0xf\nptrue p0.s\nand z3.s, z3.s, #0xffff\nand z2.s, z2.s, #0xf\nlsl z0.s, p0/m, z0.s, z2.s\nlsrr z1.s, p0/m, z1.s, z3.s\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 4 x i16> @test(<vscale x 4 x i16> %a, <vscale x 4 x i16> %b) {\n  %r = call <vscale x 4 x i16> @llvm.fshr(<vscale x 4 x i16> %a, <vscale x 4 x i16> %a, <vscale x 4 x i16> %b)\n  ret <vscale x 4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 4 x i16> @llvm.fshr.nxv4i16(<vscale x 4 x i16> %a, <vscale x 4 x i16> %a, <vscale x 4 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i16> %r"
@@ -16378,7 +16378,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.h, z1.h, #0                  // =0x0\nptrue p0.h\nand z2.h, z2.h, #0xf\nand z1.h, z1.h, #0xf\nlsrr z2.h, p0/m, z2.h, z0.h\nlsl z0.h, p0/m, z0.h, z1.h\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.h, z2.h, #0                  // =0x0\nand z1.h, z1.h, #0xf\nptrue p0.h\nand z2.h, z2.h, #0xf\nlsrr z1.h, p0/m, z1.h, z0.h\nlsl z0.h, p0/m, z0.h, z2.h\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x i16> @test(<vscale x 8 x i16> %a, <vscale x 8 x i16> %b) {\n  %r = call <vscale x 8 x i16> @llvm.fshr(<vscale x 8 x i16> %a, <vscale x 8 x i16> %a, <vscale x 8 x i16> %b)\n  ret <vscale x 8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 8 x i16> @llvm.fshr.nxv8i16(<vscale x 8 x i16> %a, <vscale x 8 x i16> %a, <vscale x 8 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i16> %r"
@@ -16394,7 +16394,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, w0\nptrue p0.h\nmov z2.d, z1.d\nsubr z1.h, z1.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z1.h, z1.h, #0xf\nlsrr z2.h, p0/m, z2.h, z0.h\nlsl z0.h, p0/m, z0.h, z1.h\norr z0.d, z2.d, z0.d\nret",
+  "asm": "mov z1.h, w0\nptrue p0.h\nmovprfx z2, z1\nsubr z2.h, z2.h, #0                  // =0x0\nand z1.h, z1.h, #0xf\nand z2.h, z2.h, #0xf\nlsrr z1.h, p0/m, z1.h, z0.h\nlsl z0.h, p0/m, z0.h, z2.h\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x i16> @test(<vscale x 8 x i16> %a, i16 %bs) {\n  %i = insertelement <vscale x 8 x i16> poison, i16 %bs, i64 0\n  %b = shufflevector <vscale x 8 x i16> %i, <vscale x 8 x i16> poison, <vscale x 8 x i32> zeroinitializer\n  %r = call <vscale x 8 x i16> @llvm.fshr(<vscale x 8 x i16> %a, <vscale x 8 x i16> %a, <vscale x 8 x i16> %b)\n  ret <vscale x 8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 8 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of 1 for:   %b = shufflevector <vscale x 8 x i16> %i, <vscale x 8 x i16> poison, <vscale x 8 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <vscale x 8 x i16> @llvm.fshr.nxv8i16(<vscale x 8 x i16> %a, <vscale x 8 x i16> %a, <vscale x 8 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i16> %r"
@@ -16426,7 +16426,7 @@
   "size": 14,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z4.d, z2.d\nsubr z2.h, z2.h, #0                  // =0x0\nmov z5.d, z3.d\nsubr z3.h, z3.h, #0                  // =0x0\nptrue p0.h\nand z4.h, z4.h, #0xf\nand z2.h, z2.h, #0xf\nand z5.h, z5.h, #0xf\nand z3.h, z3.h, #0xf\nlsrr z4.h, p0/m, z4.h, z0.h\nlsl z0.h, p0/m, z0.h, z2.h\nlsrr z5.h, p0/m, z5.h, z1.h\nlsl z1.h, p0/m, z1.h, z3.h\norr z0.d, z4.d, z0.d\norr z1.d, z5.d, z1.d\nret",
+  "asm": "movprfx z4, z2\nsubr z4.h, z4.h, #0                  // =0x0\nmovprfx z5, z3\nsubr z5.h, z5.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z3.h, z3.h, #0xf\nptrue p0.h\nand z4.h, z4.h, #0xf\nand z5.h, z5.h, #0xf\nlsrr z2.h, p0/m, z2.h, z0.h\nlsrr z3.h, p0/m, z3.h, z1.h\nlsl z0.h, p0/m, z0.h, z4.h\nlsl z1.h, p0/m, z1.h, z5.h\norr z0.d, z2.d, z0.d\norr z1.d, z3.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 16 x i16> @test(<vscale x 16 x i16> %a, <vscale x 16 x i16> %b) {\n  %r = call <vscale x 16 x i16> @llvm.fshr(<vscale x 16 x i16> %a, <vscale x 16 x i16> %a, <vscale x 16 x i16> %b)\n  ret <vscale x 16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 16 x i16> @llvm.fshr.nxv16i16(<vscale x 16 x i16> %a, <vscale x 16 x i16> %a, <vscale x 16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i16> %r"
@@ -16442,7 +16442,7 @@
   "size": 12,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.h, w0\nptrue p0.h\nmov z3.d, z2.d\nsubr z2.h, z2.h, #0                  // =0x0\nand z3.h, z3.h, #0xf\nand z2.h, z2.h, #0xf\nmovprfx z4, z0\nlsr z4.h, p0/m, z4.h, z3.h\nlsl z0.h, p0/m, z0.h, z2.h\nlsrr z3.h, p0/m, z3.h, z1.h\nlsl z1.h, p0/m, z1.h, z2.h\norr z0.d, z4.d, z0.d\norr z1.d, z3.d, z1.d\nret",
+  "asm": "mov z2.h, w0\nptrue p0.h\nmovprfx z3, z2\nsubr z3.h, z3.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z3.h, z3.h, #0xf\nmovprfx z4, z0\nlsr z4.h, p0/m, z4.h, z2.h\nlsrr z2.h, p0/m, z2.h, z1.h\nlsl z0.h, p0/m, z0.h, z3.h\nlsl z1.h, p0/m, z1.h, z3.h\norr z0.d, z4.d, z0.d\norr z1.d, z2.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 16 x i16> @test(<vscale x 16 x i16> %a, i16 %bs) {\n  %i = insertelement <vscale x 16 x i16> poison, i16 %bs, i64 0\n  %b = shufflevector <vscale x 16 x i16> %i, <vscale x 16 x i16> poison, <vscale x 16 x i32> zeroinitializer\n  %r = call <vscale x 16 x i16> @llvm.fshr(<vscale x 16 x i16> %a, <vscale x 16 x i16> %a, <vscale x 16 x i16> %b)\n  ret <vscale x 16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of 2 for:   %b = shufflevector <vscale x 16 x i16> %i, <vscale x 16 x i16> poison, <vscale x 16 x i32> zeroinitializer\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 16 x i16> @llvm.fshr.nxv16i16(<vscale x 16 x i16> %a, <vscale x 16 x i16> %a, <vscale x 16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i16> %r"
@@ -16474,7 +16474,7 @@
   "size": 9,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.d, z1.d, #0                  // =0x0\nmov z3.d, z0.d\nptrue p0.d\nand z3.d, z3.d, #0xffffffff\nand z2.d, z2.d, #0x1f\nand z1.d, z1.d, #0x1f\nlsl z0.d, p0/m, z0.d, z1.d\nlsrr z2.d, p0/m, z2.d, z3.d\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.d, z2.d, #0                  // =0x0\nmov z3.d, z0.d\nand z1.d, z1.d, #0x1f\nptrue p0.d\nand z3.d, z3.d, #0xffffffff\nand z2.d, z2.d, #0x1f\nlsl z0.d, p0/m, z0.d, z2.d\nlsrr z1.d, p0/m, z1.d, z3.d\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 2 x i32> @test(<vscale x 2 x i32> %a, <vscale x 2 x i32> %b) {\n  %r = call <vscale x 2 x i32> @llvm.fshr(<vscale x 2 x i32> %a, <vscale x 2 x i32> %a, <vscale x 2 x i32> %b)\n  ret <vscale x 2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 2 x i32> @llvm.fshr.nxv2i32(<vscale x 2 x i32> %a, <vscale x 2 x i32> %a, <vscale x 2 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i32> %r"
@@ -16522,7 +16522,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.s, z1.s, #0                  // =0x0\nptrue p0.s\nand z2.s, z2.s, #0x1f\nand z1.s, z1.s, #0x1f\nlsrr z2.s, p0/m, z2.s, z0.s\nlsl z0.s, p0/m, z0.s, z1.s\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.s, z2.s, #0                  // =0x0\nand z1.s, z1.s, #0x1f\nptrue p0.s\nand z2.s, z2.s, #0x1f\nlsrr z1.s, p0/m, z1.s, z0.s\nlsl z0.s, p0/m, z0.s, z2.s\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x i32> %a, <vscale x 4 x i32> %b) {\n  %r = call <vscale x 4 x i32> @llvm.fshr(<vscale x 4 x i32> %a, <vscale x 4 x i32> %a, <vscale x 4 x i32> %b)\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 4 x i32> @llvm.fshr.nxv4i32(<vscale x 4 x i32> %a, <vscale x 4 x i32> %a, <vscale x 4 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
@@ -16570,7 +16570,7 @@
   "size": 14,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z4.d, z2.d\nsubr z2.s, z2.s, #0                  // =0x0\nmov z5.d, z3.d\nsubr z3.s, z3.s, #0                  // =0x0\nptrue p0.s\nand z4.s, z4.s, #0x1f\nand z2.s, z2.s, #0x1f\nand z5.s, z5.s, #0x1f\nand z3.s, z3.s, #0x1f\nlsrr z4.s, p0/m, z4.s, z0.s\nlsl z0.s, p0/m, z0.s, z2.s\nlsrr z5.s, p0/m, z5.s, z1.s\nlsl z1.s, p0/m, z1.s, z3.s\norr z0.d, z4.d, z0.d\norr z1.d, z5.d, z1.d\nret",
+  "asm": "movprfx z4, z2\nsubr z4.s, z4.s, #0                  // =0x0\nmovprfx z5, z3\nsubr z5.s, z5.s, #0                  // =0x0\nand z2.s, z2.s, #0x1f\nand z3.s, z3.s, #0x1f\nptrue p0.s\nand z4.s, z4.s, #0x1f\nand z5.s, z5.s, #0x1f\nlsrr z2.s, p0/m, z2.s, z0.s\nlsrr z3.s, p0/m, z3.s, z1.s\nlsl z0.s, p0/m, z0.s, z4.s\nlsl z1.s, p0/m, z1.s, z5.s\norr z0.d, z2.d, z0.d\norr z1.d, z3.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i32> @test(<vscale x 8 x i32> %a, <vscale x 8 x i32> %b) {\n  %r = call <vscale x 8 x i32> @llvm.fshr(<vscale x 8 x i32> %a, <vscale x 8 x i32> %a, <vscale x 8 x i32> %b)\n  ret <vscale x 8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 8 x i32> @llvm.fshr.nxv8i32(<vscale x 8 x i32> %a, <vscale x 8 x i32> %a, <vscale x 8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i32> %r"
@@ -16618,7 +16618,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.d, z1.d, #0                  // =0x0\nptrue p0.d\nand z2.d, z2.d, #0x3f\nand z1.d, z1.d, #0x3f\nlsrr z2.d, p0/m, z2.d, z0.d\nlsl z0.d, p0/m, z0.d, z1.d\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.d, z2.d, #0                  // =0x0\nand z1.d, z1.d, #0x3f\nptrue p0.d\nand z2.d, z2.d, #0x3f\nlsrr z1.d, p0/m, z1.d, z0.d\nlsl z0.d, p0/m, z0.d, z2.d\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x i64> %a, <vscale x 2 x i64> %b) {\n  %r = call <vscale x 2 x i64> @llvm.fshr(<vscale x 2 x i64> %a, <vscale x 2 x i64> %a, <vscale x 2 x i64> %b)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 2 x i64> @llvm.fshr.nxv2i64(<vscale x 2 x i64> %a, <vscale x 2 x i64> %a, <vscale x 2 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -16666,7 +16666,7 @@
   "size": 14,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z4.d, z2.d\nsubr z2.d, z2.d, #0                  // =0x0\nmov z5.d, z3.d\nsubr z3.d, z3.d, #0                  // =0x0\nptrue p0.d\nand z4.d, z4.d, #0x3f\nand z2.d, z2.d, #0x3f\nand z5.d, z5.d, #0x3f\nand z3.d, z3.d, #0x3f\nlsrr z4.d, p0/m, z4.d, z0.d\nlsl z0.d, p0/m, z0.d, z2.d\nlsrr z5.d, p0/m, z5.d, z1.d\nlsl z1.d, p0/m, z1.d, z3.d\norr z0.d, z4.d, z0.d\norr z1.d, z5.d, z1.d\nret",
+  "asm": "movprfx z4, z2\nsubr z4.d, z4.d, #0                  // =0x0\nmovprfx z5, z3\nsubr z5.d, z5.d, #0                  // =0x0\nand z2.d, z2.d, #0x3f\nand z3.d, z3.d, #0x3f\nptrue p0.d\nand z4.d, z4.d, #0x3f\nand z5.d, z5.d, #0x3f\nlsrr z2.d, p0/m, z2.d, z0.d\nlsrr z3.d, p0/m, z3.d, z1.d\nlsl z0.d, p0/m, z0.d, z4.d\nlsl z1.d, p0/m, z1.d, z5.d\norr z0.d, z2.d, z0.d\norr z1.d, z3.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x i64> %a, <vscale x 4 x i64> %b) {\n  %r = call <vscale x 4 x i64> @llvm.fshr(<vscale x 4 x i64> %a, <vscale x 4 x i64> %a, <vscale x 4 x i64> %b)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 4 x i64> @llvm.fshr.nxv4i64(<vscale x 4 x i64> %a, <vscale x 4 x i64> %a, <vscale x 4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -17242,7 +17242,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "index z1.s, #0, #-1\nmov z2.d, z1.d\nadd z1.s, z1.s, #7                  // =0x7\nsub z2.s, z2.s, #25                 // =0x19\nushl v1.2s, v0.2s, v1.2s\nushl v0.2s, v0.2s, v2.2s\norr v0.8b, v1.8b, v0.8b\nret",
+  "asm": "index z1.s, #0, #-1\nmovprfx z2, z1\nsub z2.s, z2.s, #25                 // =0x19\nadd z1.s, z1.s, #7                  // =0x7\nushl v2.2s, v0.2s, v2.2s\nushl v0.2s, v0.2s, v1.2s\norr v0.8b, v0.8b, v2.8b\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nadrp x8, .LCPI0_1\nldr d2, [x8, :lo12:.LCPI0_1]\nneg v1.2s, v1.2s\nushl v2.2s, v0.2s, v2.2s\nushl v0.2s, v0.2s, v1.2s\norr v0.8b, v2.8b, v0.8b\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) {\n  %r = call <2 x i32> @llvm.fshl(<2 x i32> %a, <2 x i32> %a, <2 x i32> <i32 7, i32 6>)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call <2 x i32> @llvm.fshl.v2i32(<2 x i32> %a, <2 x i32> %a, <2 x i32> <i32 7, i32 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
@@ -17434,7 +17434,7 @@
   "size": 7,
   "gisize": 8,
   "extrasize": 0,
-  "asm": "index z1.d, #0, #-1\nmov z2.d, z1.d\nadd z1.d, z1.d, #7                  // =0x7\nsub z2.d, z2.d, #57                 // =0x39\nushl v1.2d, v0.2d, v1.2d\nushl v0.2d, v0.2d, v2.2d\norr v0.16b, v1.16b, v0.16b\nret",
+  "asm": "index z1.d, #0, #-1\nmovprfx z2, z1\nsub z2.d, z2.d, #57                 // =0x39\nadd z1.d, z1.d, #7                  // =0x7\nushl v2.2d, v0.2d, v2.2d\nushl v0.2d, v0.2d, v1.2d\norr v0.16b, v0.16b, v2.16b\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q1, [x8, :lo12:.LCPI0_0]\nadrp x8, .LCPI0_1\nldr q2, [x8, :lo12:.LCPI0_1]\nneg v1.2d, v1.2d\nushl v2.2d, v0.2d, v2.2d\nushl v0.2d, v0.2d, v1.2d\norr v0.16b, v2.16b, v0.16b\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) {\n  %r = call <2 x i64> @llvm.fshl(<2 x i64> %a, <2 x i64> %a, <2 x i64> <i64 7, i64 6>)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call <2 x i64> @llvm.fshl.v2i64(<2 x i64> %a, <2 x i64> %a, <2 x i64> <i64 7, i64 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
@@ -17498,7 +17498,7 @@
   "size": 10,
   "gisize": 11,
   "extrasize": 0,
-  "asm": "index z2.d, #0, #-1\nmov z3.d, z2.d\nadd z2.d, z2.d, #7                  // =0x7\nsub z3.d, z3.d, #57                 // =0x39\nushl v4.2d, v0.2d, v2.2d\nushl v0.2d, v0.2d, v3.2d\nushl v3.2d, v1.2d, v3.2d\nushl v1.2d, v1.2d, v2.2d\norr v0.16b, v4.16b, v0.16b\norr v1.16b, v1.16b, v3.16b\nret",
+  "asm": "index z2.d, #0, #-1\nmovprfx z3, z2\nsub z3.d, z3.d, #57                 // =0x39\nadd z2.d, z2.d, #7                  // =0x7\nushl v4.2d, v0.2d, v3.2d\nushl v0.2d, v0.2d, v2.2d\nushl v3.2d, v1.2d, v3.2d\nushl v1.2d, v1.2d, v2.2d\norr v0.16b, v0.16b, v4.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "giasm": "adrp x8, .LCPI0_0\nldr q2, [x8, :lo12:.LCPI0_0]\nadrp x8, .LCPI0_1\nldr q3, [x8, :lo12:.LCPI0_1]\nneg v2.2d, v2.2d\nushl v4.2d, v0.2d, v3.2d\nushl v3.2d, v1.2d, v3.2d\nushl v0.2d, v0.2d, v2.2d\nushl v1.2d, v1.2d, v2.2d\norr v0.16b, v4.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a) {\n  %r = call <4 x i64> @llvm.fshl(<4 x i64> %a, <4 x i64> %a, <4 x i64> <i64 7, i64 6, i64 7, i64 6>)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:3 Lat:3 SizeLat:3 for:   %r = call <4 x i64> @llvm.fshl.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> <i64 7, i64 6, i64 7, i64 6>)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
@@ -17546,7 +17546,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.h, z1.h, #0                  // =0x0\nptrue p0.h\nand z2.h, z2.h, #0x7\nand z1.h, z1.h, #0x7\nlslr z2.h, p0/m, z2.h, z0.h\nand z0.h, z0.h, #0xff\nlsr z0.h, p0/m, z0.h, z1.h\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.h, z2.h, #0                  // =0x0\nand z1.h, z1.h, #0x7\nptrue p0.h\nlslr z1.h, p0/m, z1.h, z0.h\nand z0.h, z0.h, #0xff\nand z2.h, z2.h, #0x7\nlsr z0.h, p0/m, z0.h, z2.h\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i8> @test(<vscale x 8 x i8> %a, <vscale x 8 x i8> %b) {\n  %r = call <vscale x 8 x i8> @llvm.fshl(<vscale x 8 x i8> %a, <vscale x 8 x i8> %a, <vscale x 8 x i8> %b)\n  ret <vscale x 8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 8 x i8> @llvm.fshl.nxv8i8(<vscale x 8 x i8> %a, <vscale x 8 x i8> %a, <vscale x 8 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i8> %r"
@@ -17562,7 +17562,7 @@
   "size": 9,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, w0\nptrue p0.h\nmov z2.d, z1.d\nsubr z1.h, z1.h, #0                  // =0x0\nand z2.h, z2.h, #0x7\nand z1.h, z1.h, #0x7\nlslr z2.h, p0/m, z2.h, z0.h\nand z0.h, z0.h, #0xff\nlsr z0.h, p0/m, z0.h, z1.h\norr z0.d, z2.d, z0.d\nret",
+  "asm": "mov z1.h, w0\nptrue p0.h\nmovprfx z2, z1\nsubr z2.h, z2.h, #0                  // =0x0\nand z1.h, z1.h, #0x7\nlslr z1.h, p0/m, z1.h, z0.h\nand z0.h, z0.h, #0xff\nand z2.h, z2.h, #0x7\nlsr z0.h, p0/m, z0.h, z2.h\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i8> @test(<vscale x 8 x i8> %a, i8 %bs) {\n  %i = insertelement <vscale x 8 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <vscale x 8 x i8> %i, <vscale x 8 x i8> poison, <vscale x 8 x i32> zeroinitializer\n  %r = call <vscale x 8 x i8> @llvm.fshl(<vscale x 8 x i8> %a, <vscale x 8 x i8> %a, <vscale x 8 x i8> %b)\n  ret <vscale x 8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 8 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of 1 for:   %b = shufflevector <vscale x 8 x i8> %i, <vscale x 8 x i8> poison, <vscale x 8 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <vscale x 8 x i8> @llvm.fshl.nxv8i8(<vscale x 8 x i8> %a, <vscale x 8 x i8> %a, <vscale x 8 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i8> %r"
@@ -17594,7 +17594,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.b, z1.b, #0                  // =0x0\nptrue p0.b\nand z2.b, z2.b, #0x7\nand z1.b, z1.b, #0x7\nlslr z2.b, p0/m, z2.b, z0.b\nlsr z0.b, p0/m, z0.b, z1.b\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.b, z2.b, #0                  // =0x0\nand z1.b, z1.b, #0x7\nptrue p0.b\nand z2.b, z2.b, #0x7\nlslr z1.b, p0/m, z1.b, z0.b\nlsr z0.b, p0/m, z0.b, z2.b\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 16 x i8> @test(<vscale x 16 x i8> %a, <vscale x 16 x i8> %b) {\n  %r = call <vscale x 16 x i8> @llvm.fshl(<vscale x 16 x i8> %a, <vscale x 16 x i8> %a, <vscale x 16 x i8> %b)\n  ret <vscale x 16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 16 x i8> @llvm.fshl.nxv16i8(<vscale x 16 x i8> %a, <vscale x 16 x i8> %a, <vscale x 16 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i8> %r"
@@ -17610,7 +17610,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.b, w0\nptrue p0.b\nmov z2.d, z1.d\nsubr z1.b, z1.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z1.b, z1.b, #0x7\nlslr z2.b, p0/m, z2.b, z0.b\nlsr z0.b, p0/m, z0.b, z1.b\norr z0.d, z2.d, z0.d\nret",
+  "asm": "mov z1.b, w0\nptrue p0.b\nmovprfx z2, z1\nsubr z2.b, z2.b, #0                  // =0x0\nand z1.b, z1.b, #0x7\nand z2.b, z2.b, #0x7\nlslr z1.b, p0/m, z1.b, z0.b\nlsr z0.b, p0/m, z0.b, z2.b\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 16 x i8> @test(<vscale x 16 x i8> %a, i8 %bs) {\n  %i = insertelement <vscale x 16 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <vscale x 16 x i8> %i, <vscale x 16 x i8> poison, <vscale x 16 x i32> zeroinitializer\n  %r = call <vscale x 16 x i8> @llvm.fshl(<vscale x 16 x i8> %a, <vscale x 16 x i8> %a, <vscale x 16 x i8> %b)\n  ret <vscale x 16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 16 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of 1 for:   %b = shufflevector <vscale x 16 x i8> %i, <vscale x 16 x i8> poison, <vscale x 16 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <vscale x 16 x i8> @llvm.fshl.nxv16i8(<vscale x 16 x i8> %a, <vscale x 16 x i8> %a, <vscale x 16 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i8> %r"
@@ -17642,7 +17642,7 @@
   "size": 14,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z4.d, z2.d\nsubr z2.b, z2.b, #0                  // =0x0\nmov z5.d, z3.d\nsubr z3.b, z3.b, #0                  // =0x0\nptrue p0.b\nand z4.b, z4.b, #0x7\nand z2.b, z2.b, #0x7\nand z5.b, z5.b, #0x7\nand z3.b, z3.b, #0x7\nlslr z4.b, p0/m, z4.b, z0.b\nlsr z0.b, p0/m, z0.b, z2.b\nlslr z5.b, p0/m, z5.b, z1.b\nlsr z1.b, p0/m, z1.b, z3.b\norr z0.d, z4.d, z0.d\norr z1.d, z5.d, z1.d\nret",
+  "asm": "movprfx z4, z2\nsubr z4.b, z4.b, #0                  // =0x0\nmovprfx z5, z3\nsubr z5.b, z5.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z3.b, z3.b, #0x7\nptrue p0.b\nand z4.b, z4.b, #0x7\nand z5.b, z5.b, #0x7\nlslr z2.b, p0/m, z2.b, z0.b\nlslr z3.b, p0/m, z3.b, z1.b\nlsr z0.b, p0/m, z0.b, z4.b\nlsr z1.b, p0/m, z1.b, z5.b\norr z0.d, z2.d, z0.d\norr z1.d, z3.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 32 x i8> @test(<vscale x 32 x i8> %a, <vscale x 32 x i8> %b) {\n  %r = call <vscale x 32 x i8> @llvm.fshl(<vscale x 32 x i8> %a, <vscale x 32 x i8> %a, <vscale x 32 x i8> %b)\n  ret <vscale x 32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 32 x i8> @llvm.fshl.nxv32i8(<vscale x 32 x i8> %a, <vscale x 32 x i8> %a, <vscale x 32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 32 x i8> %r"
@@ -17658,7 +17658,7 @@
   "size": 12,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.b, w0\nptrue p0.b\nmov z3.d, z2.d\nsubr z2.b, z2.b, #0                  // =0x0\nand z3.b, z3.b, #0x7\nand z2.b, z2.b, #0x7\nmovprfx z4, z0\nlsl z4.b, p0/m, z4.b, z3.b\nlsr z0.b, p0/m, z0.b, z2.b\nlslr z3.b, p0/m, z3.b, z1.b\nlsr z1.b, p0/m, z1.b, z2.b\norr z0.d, z4.d, z0.d\norr z1.d, z3.d, z1.d\nret",
+  "asm": "mov z2.b, w0\nptrue p0.b\nmovprfx z3, z2\nsubr z3.b, z3.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z3.b, z3.b, #0x7\nmovprfx z4, z0\nlsl z4.b, p0/m, z4.b, z2.b\nlslr z2.b, p0/m, z2.b, z1.b\nlsr z0.b, p0/m, z0.b, z3.b\nlsr z1.b, p0/m, z1.b, z3.b\norr z0.d, z4.d, z0.d\norr z1.d, z2.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 32 x i8> @test(<vscale x 32 x i8> %a, i8 %bs) {\n  %i = insertelement <vscale x 32 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <vscale x 32 x i8> %i, <vscale x 32 x i8> poison, <vscale x 32 x i32> zeroinitializer\n  %r = call <vscale x 32 x i8> @llvm.fshl(<vscale x 32 x i8> %a, <vscale x 32 x i8> %a, <vscale x 32 x i8> %b)\n  ret <vscale x 32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of 2 for:   %b = shufflevector <vscale x 32 x i8> %i, <vscale x 32 x i8> poison, <vscale x 32 x i32> zeroinitializer\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 32 x i8> @llvm.fshl.nxv32i8(<vscale x 32 x i8> %a, <vscale x 32 x i8> %a, <vscale x 32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 32 x i8> %r"
@@ -17690,7 +17690,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.s, z1.s, #0                  // =0x0\nptrue p0.s\nand z2.s, z2.s, #0xf\nand z1.s, z1.s, #0xf\nlslr z2.s, p0/m, z2.s, z0.s\nand z0.s, z0.s, #0xffff\nlsr z0.s, p0/m, z0.s, z1.s\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.s, z2.s, #0                  // =0x0\nand z1.s, z1.s, #0xf\nptrue p0.s\nlslr z1.s, p0/m, z1.s, z0.s\nand z0.s, z0.s, #0xffff\nand z2.s, z2.s, #0xf\nlsr z0.s, p0/m, z0.s, z2.s\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 4 x i16> @test(<vscale x 4 x i16> %a, <vscale x 4 x i16> %b) {\n  %r = call <vscale x 4 x i16> @llvm.fshl(<vscale x 4 x i16> %a, <vscale x 4 x i16> %a, <vscale x 4 x i16> %b)\n  ret <vscale x 4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 4 x i16> @llvm.fshl.nxv4i16(<vscale x 4 x i16> %a, <vscale x 4 x i16> %a, <vscale x 4 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i16> %r"
@@ -17738,7 +17738,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.h, z1.h, #0                  // =0x0\nptrue p0.h\nand z2.h, z2.h, #0xf\nand z1.h, z1.h, #0xf\nlslr z2.h, p0/m, z2.h, z0.h\nlsr z0.h, p0/m, z0.h, z1.h\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.h, z2.h, #0                  // =0x0\nand z1.h, z1.h, #0xf\nptrue p0.h\nand z2.h, z2.h, #0xf\nlslr z1.h, p0/m, z1.h, z0.h\nlsr z0.h, p0/m, z0.h, z2.h\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x i16> @test(<vscale x 8 x i16> %a, <vscale x 8 x i16> %b) {\n  %r = call <vscale x 8 x i16> @llvm.fshl(<vscale x 8 x i16> %a, <vscale x 8 x i16> %a, <vscale x 8 x i16> %b)\n  ret <vscale x 8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 8 x i16> @llvm.fshl.nxv8i16(<vscale x 8 x i16> %a, <vscale x 8 x i16> %a, <vscale x 8 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i16> %r"
@@ -17754,7 +17754,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z1.h, w0\nptrue p0.h\nmov z2.d, z1.d\nsubr z1.h, z1.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z1.h, z1.h, #0xf\nlslr z2.h, p0/m, z2.h, z0.h\nlsr z0.h, p0/m, z0.h, z1.h\norr z0.d, z2.d, z0.d\nret",
+  "asm": "mov z1.h, w0\nptrue p0.h\nmovprfx z2, z1\nsubr z2.h, z2.h, #0                  // =0x0\nand z1.h, z1.h, #0xf\nand z2.h, z2.h, #0xf\nlslr z1.h, p0/m, z1.h, z0.h\nlsr z0.h, p0/m, z0.h, z2.h\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x i16> @test(<vscale x 8 x i16> %a, i16 %bs) {\n  %i = insertelement <vscale x 8 x i16> poison, i16 %bs, i64 0\n  %b = shufflevector <vscale x 8 x i16> %i, <vscale x 8 x i16> poison, <vscale x 8 x i32> zeroinitializer\n  %r = call <vscale x 8 x i16> @llvm.fshl(<vscale x 8 x i16> %a, <vscale x 8 x i16> %a, <vscale x 8 x i16> %b)\n  ret <vscale x 8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 8 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of 1 for:   %b = shufflevector <vscale x 8 x i16> %i, <vscale x 8 x i16> poison, <vscale x 8 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <vscale x 8 x i16> @llvm.fshl.nxv8i16(<vscale x 8 x i16> %a, <vscale x 8 x i16> %a, <vscale x 8 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i16> %r"
@@ -17786,7 +17786,7 @@
   "size": 14,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z4.d, z2.d\nsubr z2.h, z2.h, #0                  // =0x0\nmov z5.d, z3.d\nsubr z3.h, z3.h, #0                  // =0x0\nptrue p0.h\nand z4.h, z4.h, #0xf\nand z2.h, z2.h, #0xf\nand z5.h, z5.h, #0xf\nand z3.h, z3.h, #0xf\nlslr z4.h, p0/m, z4.h, z0.h\nlsr z0.h, p0/m, z0.h, z2.h\nlslr z5.h, p0/m, z5.h, z1.h\nlsr z1.h, p0/m, z1.h, z3.h\norr z0.d, z4.d, z0.d\norr z1.d, z5.d, z1.d\nret",
+  "asm": "movprfx z4, z2\nsubr z4.h, z4.h, #0                  // =0x0\nmovprfx z5, z3\nsubr z5.h, z5.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z3.h, z3.h, #0xf\nptrue p0.h\nand z4.h, z4.h, #0xf\nand z5.h, z5.h, #0xf\nlslr z2.h, p0/m, z2.h, z0.h\nlslr z3.h, p0/m, z3.h, z1.h\nlsr z0.h, p0/m, z0.h, z4.h\nlsr z1.h, p0/m, z1.h, z5.h\norr z0.d, z2.d, z0.d\norr z1.d, z3.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 16 x i16> @test(<vscale x 16 x i16> %a, <vscale x 16 x i16> %b) {\n  %r = call <vscale x 16 x i16> @llvm.fshl(<vscale x 16 x i16> %a, <vscale x 16 x i16> %a, <vscale x 16 x i16> %b)\n  ret <vscale x 16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 16 x i16> @llvm.fshl.nxv16i16(<vscale x 16 x i16> %a, <vscale x 16 x i16> %a, <vscale x 16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i16> %r"
@@ -17802,7 +17802,7 @@
   "size": 12,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.h, w0\nptrue p0.h\nmov z3.d, z2.d\nsubr z2.h, z2.h, #0                  // =0x0\nand z3.h, z3.h, #0xf\nand z2.h, z2.h, #0xf\nmovprfx z4, z0\nlsl z4.h, p0/m, z4.h, z3.h\nlsr z0.h, p0/m, z0.h, z2.h\nlslr z3.h, p0/m, z3.h, z1.h\nlsr z1.h, p0/m, z1.h, z2.h\norr z0.d, z4.d, z0.d\norr z1.d, z3.d, z1.d\nret",
+  "asm": "mov z2.h, w0\nptrue p0.h\nmovprfx z3, z2\nsubr z3.h, z3.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z3.h, z3.h, #0xf\nmovprfx z4, z0\nlsl z4.h, p0/m, z4.h, z2.h\nlslr z2.h, p0/m, z2.h, z1.h\nlsr z0.h, p0/m, z0.h, z3.h\nlsr z1.h, p0/m, z1.h, z3.h\norr z0.d, z4.d, z0.d\norr z1.d, z2.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 16 x i16> @test(<vscale x 16 x i16> %a, i16 %bs) {\n  %i = insertelement <vscale x 16 x i16> poison, i16 %bs, i64 0\n  %b = shufflevector <vscale x 16 x i16> %i, <vscale x 16 x i16> poison, <vscale x 16 x i32> zeroinitializer\n  %r = call <vscale x 16 x i16> @llvm.fshl(<vscale x 16 x i16> %a, <vscale x 16 x i16> %a, <vscale x 16 x i16> %b)\n  ret <vscale x 16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <vscale x 16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of 2 for:   %b = shufflevector <vscale x 16 x i16> %i, <vscale x 16 x i16> poison, <vscale x 16 x i32> zeroinitializer\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 16 x i16> @llvm.fshl.nxv16i16(<vscale x 16 x i16> %a, <vscale x 16 x i16> %a, <vscale x 16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i16> %r"
@@ -17834,7 +17834,7 @@
   "size": 8,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.d, z1.d, #0                  // =0x0\nptrue p0.d\nand z2.d, z2.d, #0x1f\nand z1.d, z1.d, #0x1f\nlslr z2.d, p0/m, z2.d, z0.d\nand z0.d, z0.d, #0xffffffff\nlsr z0.d, p0/m, z0.d, z1.d\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.d, z2.d, #0                  // =0x0\nand z1.d, z1.d, #0x1f\nptrue p0.d\nlslr z1.d, p0/m, z1.d, z0.d\nand z0.d, z0.d, #0xffffffff\nand z2.d, z2.d, #0x1f\nlsr z0.d, p0/m, z0.d, z2.d\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 2 x i32> @test(<vscale x 2 x i32> %a, <vscale x 2 x i32> %b) {\n  %r = call <vscale x 2 x i32> @llvm.fshl(<vscale x 2 x i32> %a, <vscale x 2 x i32> %a, <vscale x 2 x i32> %b)\n  ret <vscale x 2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 2 x i32> @llvm.fshl.nxv2i32(<vscale x 2 x i32> %a, <vscale x 2 x i32> %a, <vscale x 2 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i32> %r"
@@ -17882,7 +17882,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.s, z1.s, #0                  // =0x0\nptrue p0.s\nand z2.s, z2.s, #0x1f\nand z1.s, z1.s, #0x1f\nlslr z2.s, p0/m, z2.s, z0.s\nlsr z0.s, p0/m, z0.s, z1.s\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.s, z2.s, #0                  // =0x0\nand z1.s, z1.s, #0x1f\nptrue p0.s\nand z2.s, z2.s, #0x1f\nlslr z1.s, p0/m, z1.s, z0.s\nlsr z0.s, p0/m, z0.s, z2.s\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x i32> %a, <vscale x 4 x i32> %b) {\n  %r = call <vscale x 4 x i32> @llvm.fshl(<vscale x 4 x i32> %a, <vscale x 4 x i32> %a, <vscale x 4 x i32> %b)\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 4 x i32> @llvm.fshl.nxv4i32(<vscale x 4 x i32> %a, <vscale x 4 x i32> %a, <vscale x 4 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
@@ -17930,7 +17930,7 @@
   "size": 14,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z4.d, z2.d\nsubr z2.s, z2.s, #0                  // =0x0\nmov z5.d, z3.d\nsubr z3.s, z3.s, #0                  // =0x0\nptrue p0.s\nand z4.s, z4.s, #0x1f\nand z2.s, z2.s, #0x1f\nand z5.s, z5.s, #0x1f\nand z3.s, z3.s, #0x1f\nlslr z4.s, p0/m, z4.s, z0.s\nlsr z0.s, p0/m, z0.s, z2.s\nlslr z5.s, p0/m, z5.s, z1.s\nlsr z1.s, p0/m, z1.s, z3.s\norr z0.d, z4.d, z0.d\norr z1.d, z5.d, z1.d\nret",
+  "asm": "movprfx z4, z2\nsubr z4.s, z4.s, #0                  // =0x0\nmovprfx z5, z3\nsubr z5.s, z5.s, #0                  // =0x0\nand z2.s, z2.s, #0x1f\nand z3.s, z3.s, #0x1f\nptrue p0.s\nand z4.s, z4.s, #0x1f\nand z5.s, z5.s, #0x1f\nlslr z2.s, p0/m, z2.s, z0.s\nlslr z3.s, p0/m, z3.s, z1.s\nlsr z0.s, p0/m, z0.s, z4.s\nlsr z1.s, p0/m, z1.s, z5.s\norr z0.d, z2.d, z0.d\norr z1.d, z3.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i32> @test(<vscale x 8 x i32> %a, <vscale x 8 x i32> %b) {\n  %r = call <vscale x 8 x i32> @llvm.fshl(<vscale x 8 x i32> %a, <vscale x 8 x i32> %a, <vscale x 8 x i32> %b)\n  ret <vscale x 8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 8 x i32> @llvm.fshl.nxv8i32(<vscale x 8 x i32> %a, <vscale x 8 x i32> %a, <vscale x 8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i32> %r"
@@ -17978,7 +17978,7 @@
   "size": 7,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z2.d, z1.d\nsubr z1.d, z1.d, #0                  // =0x0\nptrue p0.d\nand z2.d, z2.d, #0x3f\nand z1.d, z1.d, #0x3f\nlslr z2.d, p0/m, z2.d, z0.d\nlsr z0.d, p0/m, z0.d, z1.d\norr z0.d, z2.d, z0.d\nret",
+  "asm": "movprfx z2, z1\nsubr z2.d, z2.d, #0                  // =0x0\nand z1.d, z1.d, #0x3f\nptrue p0.d\nand z2.d, z2.d, #0x3f\nlslr z1.d, p0/m, z1.d, z0.d\nlsr z0.d, p0/m, z0.d, z2.d\norr z0.d, z1.d, z0.d\nret",
   "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x i64> %a, <vscale x 2 x i64> %b) {\n  %r = call <vscale x 2 x i64> @llvm.fshl(<vscale x 2 x i64> %a, <vscale x 2 x i64> %a, <vscale x 2 x i64> %b)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <vscale x 2 x i64> @llvm.fshl.nxv2i64(<vscale x 2 x i64> %a, <vscale x 2 x i64> %a, <vscale x 2 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -18026,7 +18026,7 @@
   "size": 14,
   "gisize": -1,
   "extrasize": 0,
-  "asm": "mov z4.d, z2.d\nsubr z2.d, z2.d, #0                  // =0x0\nmov z5.d, z3.d\nsubr z3.d, z3.d, #0                  // =0x0\nptrue p0.d\nand z4.d, z4.d, #0x3f\nand z2.d, z2.d, #0x3f\nand z5.d, z5.d, #0x3f\nand z3.d, z3.d, #0x3f\nlslr z4.d, p0/m, z4.d, z0.d\nlsr z0.d, p0/m, z0.d, z2.d\nlslr z5.d, p0/m, z5.d, z1.d\nlsr z1.d, p0/m, z1.d, z3.d\norr z0.d, z4.d, z0.d\norr z1.d, z5.d, z1.d\nret",
+  "asm": "movprfx z4, z2\nsubr z4.d, z4.d, #0                  // =0x0\nmovprfx z5, z3\nsubr z5.d, z5.d, #0                  // =0x0\nand z2.d, z2.d, #0x3f\nand z3.d, z3.d, #0x3f\nptrue p0.d\nand z4.d, z4.d, #0x3f\nand z5.d, z5.d, #0x3f\nlslr z2.d, p0/m, z2.d, z0.d\nlslr z3.d, p0/m, z3.d, z1.d\nlsr z0.d, p0/m, z0.d, z4.d\nlsr z1.d, p0/m, z1.d, z5.d\norr z0.d, z2.d, z0.d\norr z1.d, z3.d, z1.d\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x i64> %a, <vscale x 4 x i64> %b) {\n  %r = call <vscale x 4 x i64> @llvm.fshl(<vscale x 4 x i64> %a, <vscale x 4 x i64> %a, <vscale x 4 x i64> %b)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <vscale x 4 x i64> @llvm.fshl.nxv4i64(<vscale x 4 x i64> %a, <vscale x 4 x i64> %a, <vscale x 4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -20954,7 +20954,7 @@
   "size": 4,
   "gisize": 4,
   "extrasize": 0,
-  "asm": "mov z1.d, z0.d\nsub z1.b, z1.b, #1                  // =0x1\nbic v0.16b, v1.16b, v0.16b\ncnt v0.16b, v0.16b\nret",
+  "asm": "movprfx z1, z0\nsub z1.b, z1.b, #1                  // =0x1\nbic v0.16b, v1.16b, v0.16b\ncnt v0.16b, v0.16b\nret",
   "giasm": "movi v1.2d, #0xffffffffffffffff\nadd v1.16b, v0.16b, v1.16b\nbic v0.16b, v1.16b, v0.16b\ncnt v0.16b, v0.16b\nret",
   "ll": "define <16 x i8> @test(<16 x i8> %a) {\n  %r = call <16 x i8> @llvm.cttz(<16 x i8> %a, i1 0)\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:80 CodeSize:48 Lat:80 SizeLat:80 for:   %r = call <16 x i8> @llvm.cttz.v16i8(<16 x i8> %a, i1 false)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
@@ -20970,7 +20970,7 @@
   "size": 8,
   "gisize": 7,
   "extrasize": 0,
-  "asm": "mov z2.d, z0.d\nmov z3.d, z1.d\nsub z2.b, z2.b, #1                  // =0x1\nsub z3.b, z3.b, #1                  // =0x1\nbic v0.16b, v2.16b, v0.16b\nbic v1.16b, v3.16b, v1.16b\ncnt v0.16b, v0.16b\ncnt v1.16b, v1.16b\nret",
+  "asm": "movprfx z2, z0\nsub z2.b, z2.b, #1                  // =0x1\nmovprfx z3, z1\nsub z3.b, z3.b, #1                  // =0x1\nbic v0.16b, v2.16b, v0.16b\nbic v1.16b, v3.16b, v1.16b\ncnt v0.16b, v0.16b\ncnt v1.16b, v1.16b\nret",
   "giasm": "movi v2.2d, #0xffffffffffffffff\nadd v3.16b, v0.16b, v2.16b\nadd v2.16b, v1.16b, v2.16b\nbic v0.16b, v3.16b, v0.16b\nbic v1.16b, v2.16b, v1.16b\ncnt v0.16b, v0.16b\ncnt v1.16b, v1.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a) {\n  %r = call <32 x i8> @llvm.cttz(<32 x i8> %a, i1 0)\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:160 CodeSize:96 Lat:160 SizeLat:160 for:   %r = call <32 x i8> @llvm.cttz.v32i8(<32 x i8> %a, i1 false)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
@@ -21002,7 +21002,7 @@
   "size": 6,
   "gisize": 5,
   "extrasize": 0,
-  "asm": "mov z2.d, z0.d\nmovi v1.8h, #16\nsub z2.h, z2.h, #1                  // =0x1\nbic v0.16b, v2.16b, v0.16b\nclz v0.8h, v0.8h\nsub v0.8h, v1.8h, v0.8h\nret",
+  "asm": "movprfx z2, z0\nsub z2.h, z2.h, #1                  // =0x1\nmovi v1.8h, #16\nbic v0.16b, v2.16b, v0.16b\nclz v0.8h, v0.8h\nsub v0.8h, v1.8h, v0.8h\nret",
   "giasm": "movi v1.2d, #0xffffffffffffffff\nadd v1.8h, v0.8h, v1.8h\nbic v0.16b, v1.16b, v0.16b\ncnt v0.16b, v0.16b\nuaddlp v0.8h, v0.16b\nret",
   "ll": "define <8 x i16> @test(<8 x i16> %a) {\n  %r = call <8 x i16> @llvm.cttz(<8 x i16> %a, i1 0)\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:40 CodeSize:24 Lat:40 SizeLat:40 for:   %r = call <8 x i16> @llvm.cttz.v8i16(<8 x i16> %a, i1 false)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
@@ -21018,7 +21018,7 @@
   "size": 11,
   "gisize": 9,
   "extrasize": 0,
-  "asm": "mov z3.d, z0.d\nmov z4.d, z1.d\nmovi v2.8h, #16\nsub z3.h, z3.h, #1                  // =0x1\nsub z4.h, z4.h, #1                  // =0x1\nbic v0.16b, v3.16b, v0.16b\nbic v1.16b, v4.16b, v1.16b\nclz v0.8h, v0.8h\nclz v1.8h, v1.8h\nsub v0.8h, v2.8h, v0.8h\nsub v1.8h, v2.8h, v1.8h\nret",
+  "asm": "movprfx z3, z0\nsub z3.h, z3.h, #1                  // =0x1\nmovprfx z4, z1\nsub z4.h, z4.h, #1                  // =0x1\nmovi v2.8h, #16\nbic v0.16b, v3.16b, v0.16b\nbic v1.16b, v4.16b, v1.16b\nclz v0.8h, v0.8h\nclz v1.8h, v1.8h\nsub v0.8h, v2.8h, v0.8h\nsub v1.8h, v2.8h, v1.8h\nret",
   "giasm": "movi v2.2d, #0xffffffffffffffff\nadd v3.8h, v0.8h, v2.8h\nadd v2.8h, v1.8h, v2.8h\nbic v0.16b, v3.16b, v0.16b\nbic v1.16b, v2.16b, v1.16b\ncnt v0.16b, v0.16b\ncnt v1.16b, v1.16b\nuaddlp v0.8h, v0.16b\nuaddlp v1.8h, v1.16b\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a) {\n  %r = call <16 x i16> @llvm.cttz(<16 x i16> %a, i1 0)\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:80 CodeSize:48 Lat:80 SizeLat:80 for:   %r = call <16 x i16> @llvm.cttz.v16i16(<16 x i16> %a, i1 false)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
@@ -21050,7 +21050,7 @@
   "size": 6,
   "gisize": 6,
   "extrasize": 0,
-  "asm": "mov z2.d, z0.d\nmovi v1.4s, #32\nsub z2.s, z2.s, #1                  // =0x1\nbic v0.16b, v2.16b, v0.16b\nclz v0.4s, v0.4s\nsub v0.4s, v1.4s, v0.4s\nret",
+  "asm": "movprfx z2, z0\nsub z2.s, z2.s, #1                  // =0x1\nmovi v1.4s, #32\nbic v0.16b, v2.16b, v0.16b\nclz v0.4s, v0.4s\nsub v0.4s, v1.4s, v0.4s\nret",
   "giasm": "movi v1.2d, #0xffffffffffffffff\nadd v1.4s, v0.4s, v1.4s\nbic v0.16b, v1.16b, v0.16b\ncnt v0.16b, v0.16b\nuaddlp v0.8h, v0.16b\nuaddlp v0.4s, v0.8h\nret",
   "ll": "define <4 x i32> @test(<4 x i32> %a) {\n  %r = call <4 x i32> @llvm.cttz(<4 x i32> %a, i1 0)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:20 CodeSize:12 Lat:20 SizeLat:20 for:   %r = call <4 x i32> @llvm.cttz.v4i32(<4 x i32> %a, i1 false)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
@@ -21066,7 +21066,7 @@
   "size": 11,
   "gisize": 11,
   "extrasize": 0,
-  "asm": "mov z3.d, z0.d\nmov z4.d, z1.d\nmovi v2.4s, #32\nsub z3.s, z3.s, #1                  // =0x1\nsub z4.s, z4.s, #1                  // =0x1\nbic v0.16b, v3.16b, v0.16b\nbic v1.16b, v4.16b, v1.16b\nclz v0.4s, v0.4s\nclz v1.4s, v1.4s\nsub v0.4s, v2.4s, v0.4s\nsub v1.4s, v2.4s, v1.4s\nret",
+  "asm": "movprfx z3, z0\nsub z3.s, z3.s, #1                  // =0x1\nmovprfx z4, z1\nsub z4.s, z4.s, #1                  // =0x1\nmovi v2.4s, #32\nbic v0.16b, v3.16b, v0.16b\nbic v1.16b, v4.16b, v1.16b\nclz v0.4s, v0.4s\nclz v1.4s, v1.4s\nsub v0.4s, v2.4s, v0.4s\nsub v1.4s, v2.4s, v1.4s\nret",
   "giasm": "movi v2.2d, #0xffffffffffffffff\nadd v3.4s, v0.4s, v2.4s\nadd v2.4s, v1.4s, v2.4s\nbic v0.16b, v3.16b, v0.16b\nbic v1.16b, v2.16b, v1.16b\ncnt v0.16b, v0.16b\ncnt v1.16b, v1.16b\nuaddlp v0.8h, v0.16b\nuaddlp v1.8h, v1.16b\nuaddlp v0.4s, v0.8h\nuaddlp v1.4s, v1.8h\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a) {\n  %r = call <8 x i32> @llvm.cttz(<8 x i32> %a, i1 0)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:40 CodeSize:24 Lat:40 SizeLat:40 for:   %r = call <8 x i32> @llvm.cttz.v8i32(<8 x i32> %a, i1 false)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
@@ -21082,7 +21082,7 @@
   "size": 4,
   "gisize": 7,
   "extrasize": 0,
-  "asm": "mov z1.d, z0.d\nptrue p0.d, vl2\nsub z1.d, z1.d, #1                  // =0x1\nbic v0.16b, v1.16b, v0.16b\ncnt z0.d, p0/m, z0.d\nret",
+  "asm": "movprfx z1, z0\nsub z1.d, z1.d, #1                  // =0x1\nptrue p0.d, vl2\nbic v0.16b, v1.16b, v0.16b\ncnt z0.d, p0/m, z0.d\nret",
   "giasm": "movi v1.2d, #0xffffffffffffffff\nadd v1.2d, v0.2d, v1.2d\nbic v0.16b, v1.16b, v0.16b\ncnt v0.16b, v0.16b\nuaddlp v0.8h, v0.16b\nuaddlp v0.4s, v0.8h\nuaddlp v0.2d, v0.4s\nret",
   "ll": "define <2 x i64> @test(<2 x i64> %a) {\n  %r = call <2 x i64> @llvm.cttz(<2 x i64> %a, i1 0)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:6 Lat:10 SizeLat:10 for:   %r = call <2 x i64> @llvm.cttz.v2i64(<2 x i64> %a, i1 false)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
@@ -21098,7 +21098,7 @@
   "size": 8,
   "gisize": 13,
   "extrasize": 0,
-  "asm": "mov z2.d, z0.d\nmov z3.d, z1.d\nptrue p0.d, vl2\nsub z2.d, z2.d, #1                  // =0x1\nsub z3.d, z3.d, #1                  // =0x1\nbic v0.16b, v2.16b, v0.16b\nbic v1.16b, v3.16b, v1.16b\ncnt z0.d, p0/m, z0.d\ncnt z1.d, p0/m, z1.d\nret",
+  "asm": "movprfx z2, z0\nsub z2.d, z2.d, #1                  // =0x1\nmovprfx z3, z1\nsub z3.d, z3.d, #1                  // =0x1\nptrue p0.d, vl2\nbic v0.16b, v2.16b, v0.16b\nbic v1.16b, v3.16b, v1.16b\ncnt z0.d, p0/m, z0.d\ncnt z1.d, p0/m, z1.d\nret",
   "giasm": "movi v2.2d, #0xffffffffffffffff\nadd v3.2d, v0.2d, v2.2d\nadd v2.2d, v1.2d, v2.2d\nbic v0.16b, v3.16b, v0.16b\nbic v1.16b, v2.16b, v1.16b\ncnt v0.16b, v0.16b\ncnt v1.16b, v1.16b\nuaddlp v0.8h, v0.16b\nuaddlp v1.8h, v1.16b\nuaddlp v0.4s, v0.8h\nuaddlp v1.4s, v1.8h\nuaddlp v0.2d, v0.4s\nuaddlp v1.2d, v1.4s\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a) {\n  %r = call <4 x i64> @llvm.cttz(<4 x i64> %a, i1 0)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:20 CodeSize:12 Lat:20 SizeLat:20 for:   %r = call <4 x i64> @llvm.cttz.v4i64(<4 x i64> %a, i1 false)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
