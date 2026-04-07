@@ -2363,7 +2363,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ldr z0, [x0, #9, mul vl]\nldr z1, [x0, #8, mul vl]\nldr z2, [x0, #11, mul vl]\nldr z3, [x0, #15, mul vl]\nldr z4, [x0, #14, mul vl]\nldr z5, [x0, #1, mul vl]\nldr z6, [x0, #5, mul vl]\nldr z7, [x0, #4, mul vl]\nldr z24, [x0, #7, mul vl]\nuzp1 z0.s, z1.s, z0.s\nldr z25, [x0, #6, mul vl]\nldr z26, [x0]\nuzp1 z3.s, z4.s, z3.s\nldr z27, [x0, #3, mul vl]\nldr z28, [x0, #2, mul vl]\nuzp1 z6.s, z7.s, z6.s\nldr z29, [x0, #10, mul vl]\nldr z30, [x0, #13, mul vl]\nuzp1 z24.s, z25.s, z24.s\nuzp1 z5.s, z26.s, z5.s\nldr z31, [x0, #12, mul vl]\nuzp1 z7.s, z28.s, z27.s\nuzp1 z2.s, z29.s, z2.s\nuzp1 z4.s, z31.s, z30.s\nuzp1 z1.h, z6.h, z24.h\nuzp1 z5.h, z5.h, z7.h\nuzp1 z2.h, z0.h, z2.h\nuzp1 z3.h, z4.h, z3.h\nuzp1 z0.b, z5.b, z1.b\nuzp1 z1.b, z2.b, z3.b\nret",
-  "giasm": "llc: llvm/lib/CodeGen/GlobalISel/MachineIRBuilder.cpp:1232: void llvm::MachineIRBuilder::validateTruncExt(llvm::LLT, llvm::LLT, bool): Assertion `SrcTy.isVector() && \"mismatched cast between vector and non-vector\"' failed.",
+  "giasm": "llc: llvm/lib/CodeGen/GlobalISel/MachineIRBuilder.cpp:1231: void llvm::MachineIRBuilder::validateTruncExt(llvm::LLT, llvm::LLT, bool): Assertion `SrcTy.isVector() && \"mismatched cast between vector and non-vector\"' failed.",
   "ll": "define <vscale x 32 x i8> @test(<vscale x 32 x i64> %a) {\n  %r = trunc <vscale x 32 x i64> %a to <vscale x 32 x i8>\n  ret <vscale x 32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 14 for:   %r = trunc <vscale x 32 x i64> %a to <vscale x 32 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 32 x i8> %r"
  },
@@ -2379,7 +2379,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ldr z0, [x0, #13, mul vl]\nldr z1, [x0, #12, mul vl]\nldr z2, [x0, #15, mul vl]\nldr z3, [x0, #11, mul vl]\nldr z4, [x0, #10, mul vl]\nldr z5, [x0, #5, mul vl]\nldr z6, [x0, #1, mul vl]\nldr z7, [x0]\nldr z24, [x0, #3, mul vl]\nldr z25, [x0, #2, mul vl]\nldr z26, [x0, #4, mul vl]\nldr z27, [x0, #7, mul vl]\nuzp1 z3.s, z4.s, z3.s\nldr z28, [x0, #6, mul vl]\nldr z29, [x0, #14, mul vl]\nuzp1 z6.s, z7.s, z6.s\nldr z30, [x0, #9, mul vl]\nldr z31, [x0, #8, mul vl]\nuzp1 z24.s, z25.s, z24.s\nuzp1 z5.s, z26.s, z5.s\nuzp1 z26.s, z1.s, z0.s\nuzp1 z7.s, z28.s, z27.s\nuzp1 z25.s, z29.s, z2.s\nuzp1 z4.s, z31.s, z30.s\nuzp1 z0.h, z6.h, z24.h\nuzp1 z1.h, z5.h, z7.h\nuzp1 z2.h, z4.h, z3.h\nuzp1 z3.h, z26.h, z25.h\nret",
-  "giasm": "llc: llvm/lib/CodeGen/GlobalISel/MachineIRBuilder.cpp:1232: void llvm::MachineIRBuilder::validateTruncExt(llvm::LLT, llvm::LLT, bool): Assertion `SrcTy.isVector() && \"mismatched cast between vector and non-vector\"' failed.",
+  "giasm": "llc: llvm/lib/CodeGen/GlobalISel/MachineIRBuilder.cpp:1231: void llvm::MachineIRBuilder::validateTruncExt(llvm::LLT, llvm::LLT, bool): Assertion `SrcTy.isVector() && \"mismatched cast between vector and non-vector\"' failed.",
   "ll": "define <vscale x 32 x i16> @test(<vscale x 32 x i64> %a) {\n  %r = trunc <vscale x 32 x i64> %a to <vscale x 32 x i16>\n  ret <vscale x 32 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 12 for:   %r = trunc <vscale x 32 x i64> %a to <vscale x 32 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 32 x i16> %r"
  },
@@ -2395,7 +2395,7 @@
   "gisize": -1,
   "extrasize": 0,
   "asm": "ldr z7, [x0, #15, mul vl]\nldr z24, [x0, #14, mul vl]\nldr z6, [x0, #13, mul vl]\nldr z4, [x0, #9, mul vl]\nldr z5, [x0, #8, mul vl]\nldr z3, [x0, #7, mul vl]\nldr z1, [x0, #3, mul vl]\nldr z2, [x0, #2, mul vl]\nldr z0, [x0, #1, mul vl]\nuzp1 z7.s, z24.s, z7.s\nldr z25, [x0]\nldr z26, [x0, #6, mul vl]\nuzp1 z4.s, z5.s, z4.s\nldr z27, [x0, #5, mul vl]\nldr z28, [x0, #4, mul vl]\nuzp1 z1.s, z2.s, z1.s\nldr z29, [x0, #12, mul vl]\nldr z30, [x0, #11, mul vl]\nuzp1 z0.s, z25.s, z0.s\nuzp1 z3.s, z26.s, z3.s\nldr z31, [x0, #10, mul vl]\nuzp1 z2.s, z28.s, z27.s\nuzp1 z6.s, z29.s, z6.s\nuzp1 z5.s, z31.s, z30.s\nret",
-  "giasm": "llc: llvm/lib/CodeGen/GlobalISel/MachineIRBuilder.cpp:1232: void llvm::MachineIRBuilder::validateTruncExt(llvm::LLT, llvm::LLT, bool): Assertion `SrcTy.isVector() && \"mismatched cast between vector and non-vector\"' failed.",
+  "giasm": "llc: llvm/lib/CodeGen/GlobalISel/MachineIRBuilder.cpp:1231: void llvm::MachineIRBuilder::validateTruncExt(llvm::LLT, llvm::LLT, bool): Assertion `SrcTy.isVector() && \"mismatched cast between vector and non-vector\"' failed.",
   "ll": "define <vscale x 32 x i32> @test(<vscale x 32 x i64> %a) {\n  %r = trunc <vscale x 32 x i64> %a to <vscale x 32 x i32>\n  ret <vscale x 32 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = trunc <vscale x 32 x i64> %a to <vscale x 32 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 32 x i32> %r"
  }

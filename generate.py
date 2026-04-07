@@ -260,8 +260,7 @@ class Ty:
     return f"{self.elts}"
   def __repr__(self):
     return self.str()
-fptymap = { 16:'half', 32:'float', 64:'double', 128:"fp128",
-            'half':16, 'float':32, 'double':64, "fp128":128 }
+fptymap = { 'half':16, 'bfloat':16, 'float':32, 'double':64, "fp128":128 }
 
 def inttypes(highsizes = False, lowsizes = False):
   # TODO: i128, other type sizes?
@@ -281,18 +280,18 @@ def inttypes(highsizes = False, lowsizes = False):
 def fptypes(highsizes = False, lowsizes = False):
   # TODO: f128? They are just libcalls
   # TODO: More sizes for more operations
-  for bits in [16, 32, 64]:
-    yield Ty(fptymap[bits])
+  for bits in ['half', 'bfloat', 'float', 'double']:
+    yield Ty(bits)
   for scalable in [0,1]:
     if scalable == 1 and (not args.mattr or 'sve' not in args.mattr):
       continue
-    for bits in [16, 32, 64]:
+    for bits in ['half', 'bfloat', 'float', 'double']:
       for s in [2, 4, 8, 16, 32]:
-        if not highsizes and s * bits > 256:
+        if not highsizes and s * fptymap[bits] > 256:
           continue
-        if not lowsizes and s * bits < 64:
+        if not lowsizes and s * fptymap[bits] < 64:
           continue
-        yield Ty(fptymap[bits], s, scalable)
+        yield Ty(bits, s, scalable)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--type', choices=['all', 'int', 'fp', 'castint', 'castfp', 'vec'], default='all')
@@ -470,11 +469,15 @@ if args.type == 'all' or args.type == 'castfp':
         for ty2 in fptypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() >= ty2.scalarsize():
             continue
+          if fptymap[ty1.scalar] < 32 and fptymap[ty2.scalar] < 32:
+            continue
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
     for instr in ['fptrunc']:
       for ty1 in fptypes(True):
         for ty2 in fptypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() <= ty2.scalarsize():
+            continue
+          if fptymap[ty1.scalar] < 32 and fptymap[ty2.scalar] < 32:
             continue
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
 
