@@ -305,14 +305,14 @@ def getFileName(mid):
   return f"data-{mid}{'-'+args.mattr if args.mattr else ''}{'-'+str(128*int(args.vscale)) if args.vscale else ''}.json"
 
 
-def do(instr, variant, ty, ty2, extrasize, tyoverride):
+def do(instr, variant, ty, ty2, tyoverride):
   try:
     logging.info(f"{variant} {instr} with {ty.str()}")
     (size, gisize, costs, ll, asm, giasm) = checkcosts(generate(variant, instr, ty, ty2))
     tystr = str(ty) if not tyoverride else tyoverride
-    if costs[0] != size - extrasize:
-      logging.warning(f">>> {variant} {instr} with {tystr}  size = {size} vs cost = {costs[0]} (expected extrasize={extrasize})")
-    return {"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[1], "thru":costs[0], "lat":costs[2], "sizelat":costs[3], "size":size, "gisize":gisize, "extrasize":extrasize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[4]}
+    if costs[0] != size:
+      logging.warning(f">>> {variant} {instr} with {tystr}  size = {size} vs cost = {costs[0]}")
+    return {"instr":instr, "ty":tystr, "variant":variant, "codesize":costs[1], "thru":costs[0], "lat":costs[2], "sizelat":costs[3], "size":size, "gisize":gisize, "asm":asm, "giasm":giasm, "ll":ll, "costoutput":costs[4]}
   except:
     logging.error(f"error in: {variant} {instr} with {ty.str()} {ty2.str()}")
     raise
@@ -325,38 +325,38 @@ if args.type == 'all' or args.type == 'int':
     # Int Binops
     for instr in ['add', 'sub', 'mul', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'sdiv', 'srem', 'udiv', 'urem', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl', 'clmul', 'scmp', 'ucmp']:
       for ty in inttypes():
-        yield (instr, 'binop', ty, ty, 0, None)
+        yield (instr, 'binop', ty, ty, None)
         if instr in ['sdiv', 'srem', 'udiv', 'urem', 'shl', 'ashr', 'lshr', 'rotr', 'rotl']:
           if not ty.scalable:
-            yield (instr, 'binopconst', ty, ty, 0, None)
+            yield (instr, 'binopconst', ty, ty, None)
           if ty.elts > 1:
-            yield (instr, 'binopsplat', ty, ty, 0, None)
-            yield (instr, 'binopconstsplat', ty, ty, 0, None)
+            yield (instr, 'binopsplat', ty, ty, None)
+            yield (instr, 'binopconstsplat', ty, ty, None)
 
     # Int unops
     for instr in ['abs', 'bitreverse', 'bswap', 'ctlz', 'cttz', 'ctpop']:
       for ty in inttypes():
         if instr == 'bswap' and ty.scalarsize() % 16 != 0:
           continue
-        yield (instr, 'unop', ty, ty, 0, None)
+        yield (instr, 'unop', ty, ty, None)
     for instr in ['xor']:
       for ty in inttypes():
-        yield (instr, 'mvn', ty, ty, 0, None)
+        yield (instr, 'mvn', ty, ty, None)
 
     # Int triops
     for instr in ['fshl', 'fshr', 'select']:
       for ty in inttypes():
-        yield (instr, 'triop', ty, ty, 0, None)
+        yield (instr, 'triop', ty, ty, None)
         if instr != 'select':
-          yield (instr, 'triopconstsplat', ty, ty, 0, None)
+          yield (instr, 'triopconstsplat', ty, ty, None)
 
     # icmp + icmp+select
     for op in ['eq', 'ne', 'slt', 'sle', 'sgt', 'sge', 'ult', 'ule', 'ugt', 'uge']:
       for ty in inttypes():
-        yield ('icmp'+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
-        yield ('icmp'+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
-        yield ('selecticmp'+op, 'cmp', ty, ty, 0, None)
-        yield ('selecticmp'+op, 'cmp0', ty, ty, 0, None)
+        yield ('icmp'+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), None)
+        yield ('icmp'+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), None)
+        yield ('selecticmp'+op, 'cmp', ty, ty, None)
+        yield ('selecticmp'+op, 'cmp0', ty, ty, None)
     # TODO: mla?
 
     # TODO: uaddo, usubo, uadde, usube?
@@ -373,7 +373,7 @@ if args.type == 'all' or args.type == 'int':
       for ty in inttypes():
         if ty.elts == 1:
           continue
-        yield ("reduce."+instr, 'reduce', ty, Ty(ty.scalar), 0, None)
+        yield ("reduce."+instr, 'reduce', ty, Ty(ty.scalar), None)
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumint())
@@ -386,31 +386,31 @@ if args.type == 'all' or args.type == 'fp':
     # Floating point Binops
     for instr in ['fadd', 'fsub', 'fmul', 'fdiv', 'frem', 'minnum', 'maxnum', 'minimum', 'maximum', 'copysign', 'pow']:
       for ty in fptypes():
-        yield (instr, 'binop', ty, ty, 0, None)
+        yield (instr, 'binop', ty, ty, None)
     for instr in ['ldexp']:
       for ty in fptypes():
-        yield (instr, 'binopi', ty, Ty('i32', ty.elts, ty.scalable), 0, None)
+        yield (instr, 'binopi', ty, Ty('i32', ty.elts, ty.scalable), None)
     for instr in ['powi']:
       for ty in fptypes():
-        yield (instr, 'binopi', ty, Ty('i32'), 0, None)
+        yield (instr, 'binopi', ty, Ty('i32'), None)
 
     # FP unops
     for instr in ['fneg', 'fabs', 'sqrt', 'ceil', 'floor', 'trunc', 'rint', 'nearbyint', 'round', 'roundeven', 'exp']:
       for ty in fptypes():
-        yield (instr, 'unop', ty, ty, 0, None)
+        yield (instr, 'unop', ty, ty, None)
 
     # FP triops
     for instr in ['fma', 'fmuladd', 'select']:
       for ty in fptypes():
-        yield (instr, 'triop', ty, ty, 0, None)
+        yield (instr, 'triop', ty, ty, None)
 
     # fcmps
     for op in ['oeq', 'ogt', 'oge', 'olt', 'ole', 'one', 'ord', 'ueq', 'ugt', 'uge', 'ult', 'ule', 'une', 'uno']:
       for ty in fptypes():
-        yield ('fcmp'+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
-        yield ('fcmp'+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), 0, None)
-        yield ('selectfcmp'+op, 'cmp', ty, ty, 0, None)
-        yield ('selectfcmp'+op, 'cmp0', ty, ty, 0, None)
+        yield ('fcmp'+op, 'cmp', ty, Ty('i1', ty.elts, ty.scalable), None)
+        yield ('fcmp'+op, 'cmp0', ty, Ty('i1', ty.elts, ty.scalable), None)
+        yield ('selectfcmp'+op, 'cmp', ty, ty, None)
+        yield ('selectfcmp'+op, 'cmp0', ty, ty, None)
 
     # TODO: fmul+fadd?
     # TODO: fminimumnum, fmaximumnum
@@ -423,8 +423,8 @@ if args.type == 'all' or args.type == 'fp':
       for ty in fptypes():
         if ty.elts == 1:
           continue
-        yield ("reduce."+instr, 'reduce', ty, Ty(ty.scalar), 0, None)
-        yield ("reduce."+instr, 'reducefast', ty, Ty(ty.scalar), 0, None)
+        yield ("reduce."+instr, 'reduce', ty, Ty(ty.scalar), None)
+        yield ("reduce."+instr, 'reducefast', ty, Ty(ty.scalar), None)
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumfp())
@@ -439,10 +439,10 @@ if args.type == 'all' or args.type == 'castint':
         if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
           continue
         if ty1.scalarsize() < ty2.scalarsize():
-          yield ('zext', 'cast '+ty2.scalar, ty1, ty2, 0, None)
-          yield ('sext', 'cast '+ty2.scalar, ty1, ty2, 0, None)
+          yield ('zext', 'cast '+ty2.scalar, ty1, ty2, None)
+          yield ('sext', 'cast '+ty2.scalar, ty1, ty2, None)
         if ty1.scalarsize() > ty2.scalarsize():
-          yield ('trunc', 'cast '+ty2.scalar, ty1, ty2, 0, None)
+          yield ('trunc', 'cast '+ty2.scalar, ty1, ty2, None)
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumcast())
@@ -457,13 +457,13 @@ if args.type == 'all' or args.type == 'castfp':
         for ty2 in inttypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
-          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
+          yield (instr, 'cast '+ty2.scalar, ty1, ty2, None)
     for instr in ['sitofp', 'uitofp']:
       for ty1 in fptypes(True):
         for ty2 in inttypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
-          yield (instr, 'cast '+ty2.scalar, ty2, ty1, 0, str(ty1))
+          yield (instr, 'cast '+ty2.scalar, ty2, ty1, str(ty1))
     for instr in ['fpext']:
       for ty1 in fptypes(True):
         for ty2 in fptypes(True):
@@ -471,7 +471,7 @@ if args.type == 'all' or args.type == 'castfp':
             continue
           if fptymap[ty1.scalar] < 32 and fptymap[ty2.scalar] < 32:
             continue
-          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
+          yield (instr, 'cast '+ty2.scalar, ty1, ty2, None)
     for instr in ['fptrunc']:
       for ty1 in fptypes(True):
         for ty2 in fptypes(True):
@@ -479,13 +479,13 @@ if args.type == 'all' or args.type == 'castfp':
             continue
           if fptymap[ty1.scalar] < 32 and fptymap[ty2.scalar] < 32:
             continue
-          yield (instr, 'cast '+ty2.scalar, ty1, ty2, 0, None)
+          yield (instr, 'cast '+ty2.scalar, ty1, ty2, None)
 
     for instr in ['lrint', 'llrint', 'lround', 'llround']:
       for ty1 in fptypes(True):
-        yield (instr, 'cast i64', ty1, Ty('i64', ty1.elts, ty1.scalable), 0, None)
+        yield (instr, 'cast i64', ty1, Ty('i64', ty1.elts, ty1.scalable), None)
         if not instr.startswith('ll'):
-          yield (instr, 'cast i32', ty1, Ty('i32', ty1.elts, ty1.scalable), 0, None)
+          yield (instr, 'cast i32', ty1, Ty('i32', ty1.elts, ty1.scalable), None)
 
     # TODO: fptosisat, fptouisat
 
@@ -510,7 +510,7 @@ if args.type == 'all' or args.type == 'vec':
             continue
           if variant in ['splice2'] and src.elts != dst.elts:
             continue
-          yield ('shuffleu', variant+' v'+str(dst.elts), src, dst, 0, None)
+          yield ('shuffleu', variant+' v'+str(dst.elts), src, dst, None)
       for dst in fptypes(True, True):
         for src in fptypes(True, True):
           if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
@@ -521,7 +521,7 @@ if args.type == 'all' or args.type == 'vec':
             continue
           if variant in ['splice2'] and src.elts != dst.elts:
             continue
-          yield ('shuffleu', variant+' v'+str(dst.elts), src, dst, 0, None)
+          yield ('shuffleu', variant+' v'+str(dst.elts), src, dst, None)
     #  TODO: subvector_insert
     #  TODO: subvector_extract
     #  TODO: Others? random, replicate, 
@@ -538,7 +538,7 @@ if args.type == 'all' or args.type == 'vec':
             continue
           if variant in ['splice2'] and src.elts != dst.elts:
             continue
-          yield ('shuffleb', variant+' v'+str(dst.elts), src, dst, 0, None)
+          yield ('shuffleb', variant+' v'+str(dst.elts), src, dst, None)
       for dst in fptypes(True, True):
         for src in fptypes(True, True):
           if src.elts == 1 or dst.elts == 1 or src.scalar != dst.scalar or src.scalable or dst.scalable:
@@ -549,7 +549,7 @@ if args.type == 'all' or args.type == 'vec':
             continue
           if variant in ['splice2'] and src.elts != dst.elts:
             continue
-          yield ('shuffleb', variant+' v'+str(dst.elts), src, dst, 0, None)
+          yield ('shuffleb', variant+' v'+str(dst.elts), src, dst, None)
 
     # 2src:
     #  TODO: select?
@@ -562,12 +562,12 @@ if args.type == 'all' or args.type == 'vec':
         if ty.elts == 1:
           continue
         for variant in ['vecop0', 'vecop1', 'vecopvar']:
-          yield (instr, variant, ty, ty, 0, None)
+          yield (instr, variant, ty, ty, None)
       for ty in fptypes():
         if ty.elts == 1:
           continue
         for variant in ['vecop0', 'vecop1', 'vecopvar']:
-          yield (instr, variant, ty, ty, 0, None)
+          yield (instr, variant, ty, ty, None)
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumvec())
