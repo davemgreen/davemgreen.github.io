@@ -607,9 +607,9 @@
   "thru": 1,
   "lat": 1,
   "sizelat": 1,
-  "size": 16,
+  "size": 1,
   "gisize": 1,
-  "asm": "umov w8, v0.h[0]\numov w9, v0.h[1]\nfmov s1, w8\numov w8, v0.h[2]\nmov v1.b[1], w9\nmov v1.b[2], w8\numov w8, v0.h[3]\nmov v1.b[3], w8\numov w8, v0.h[4]\nmov v1.b[4], w8\numov w8, v0.h[5]\nmov v1.b[5], w8\numov w8, v0.h[6]\nmov v1.b[6], w8\numov w8, v0.h[7]\nmov v1.b[7], w8\nfmov d0, d1\nret",
+  "asm": "xtn v0.8b, v0.8h\nret",
   "giasm": "xtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i8> @test(<8 x i16> %a) vscale_range(2, 2){\n  %r = trunc <8 x i16> %a to <8 x i8>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = trunc <8 x i16> %a to <8 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
@@ -862,9 +862,9 @@
   "thru": 1,
   "lat": 1,
   "sizelat": 1,
-  "size": 6,
+  "size": 1,
   "gisize": 1,
-  "asm": "mov w8, v0.s[1]\nmov v1.16b, v0.16b\nmov w9, v0.s[2]\nmov v1.h[1], w8\nmov w8, v0.s[3]\nmov v1.h[2], w9\nmov v1.h[3], w8\nfmov d0, d1\nret",
+  "asm": "xtn v0.4h, v0.4s\nret",
   "giasm": "xtn v0.4h, v0.4s\nret",
   "ll": "define <4 x i16> @test(<4 x i32> %a) vscale_range(2, 2){\n  %r = trunc <4 x i32> %a to <4 x i16>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = trunc <4 x i32> %a to <4 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
