@@ -34,6 +34,15 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(document.location.search);
+            if (params.has("arch"))
+                document.getElementById("arch").value = params.get("arch");
+            if (params.has("from"))
+                document.getElementById("from").value = params.get("from");
+            if (params.has("to"))
+                document.getElementById("to").value = params.get("to");
+            if (params.has("perc"))
+                document.getElementById("perc").value = params.get("perc");
             reload()
         });
         
