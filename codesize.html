@@ -4,19 +4,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AArch64 Cost model tests</title>
     <script>
-        function load(label, type, from, to) {
+        function load(label, type, from, to, perc) {
             fetch("data-" + label + type + ".json")
                 .then(response => {
                     if (!response.ok) {
                         fetch("data-" + label + ".json")
                             .then(response => response.json())
-                            .then(json => drawTable(json, label, from, to))
+                            .then(json => drawTable(json, label, from, to, perc))
                             .catch(reason => console.log(reason));
                         return Promise.reject()
                     }
                     return response.json()
                 })
-                .then(json => drawTable(json, label, from, to))
+                .then(json => drawTable(json, label, from, to, perc))
                 .catch(reason => console.log(reason));
         }
 
@@ -24,19 +24,20 @@
             arch = document.getElementById("arch").value
             from = document.getElementById("from").value
             to = document.getElementById("to").value
+            perc = document.getElementById("perc").value
 
-            load("int", arch, from, to)
-            load("fp", arch, from, to)
-            load("castint", arch, from, to)
-            load("castfp", arch, from, to)
-            load("vec", arch, from, to)
+            load("int", arch, from, to, perc)
+            load("fp", arch, from, to, perc)
+            load("castint", arch, from, to, perc)
+            load("castfp", arch, from, to, perc)
+            load("vec", arch, from, to, perc)
         }
 
         document.addEventListener("DOMContentLoaded", function() {
             reload()
         });
         
-        function drawTable(json, label, from, to) {
+        function drawTable(json, label, from, to, perc) {
             var instrs = {};
             var tys = []
             json.forEach(j => {
@@ -81,6 +82,13 @@
                                 cell.innerHTML = "I - " + j[to]
                             } else if (j[to] < 0) {
                                 cell.innerHTML = j[from] + " - I"
+                            } else if (perc == 'perc') {
+                                if (j[to] == 0)
+                                  cell.innerHTML = j[from] + "/0"
+                                else
+                                  cell.innerHTML = parseFloat(j[from]/ j[to]).toFixed(2)
+                            } else if (perc == 'fract') {
+                                cell.innerHTML = j[from] + "/" + j[to]
                             } else {
                                 cell.innerHTML = j[from] - j[to]
                             }
@@ -181,6 +189,12 @@
           <option value='-fullfp16'>FP16</option>
           <option value='-sve2'>SVE</option>
           <option value='-sve2-256'>SVE256</option>
+        </select>
+        abs/%:
+        <select id="perc" onchange="reload()">
+          <option value='abs'>abs</option>
+          <option value='perc'>%</option>
+          <option value='fract'>a/b</option>
         </select>
     </div>
     <h3>Integer diffs</h3>
