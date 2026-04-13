@@ -44,6 +44,13 @@
             if (params.has("perc"))
                 document.getElementById("perc").value = params.get("perc");
             reload()
+
+            if (params.has("instr")) {
+                function scroll() {
+                    document.getElementById(params.get("instr")).scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+                }
+                setTimeout(scroll, 1000);
+            }
         });
         
         function drawTable(json, label, from, to, perc) {
@@ -74,7 +81,7 @@
                 for (var variant in instrs[instr]) {
                     tr = body.insertRow();
                     if (first) {
-                        tr.insertCell().outerHTML = "<th rowspan='"+Object.keys(instrs[instr]).length+"' valign='top'>"+instr+"</th>"
+                        tr.insertCell().outerHTML = "<th id='"+instr+"' rowspan='"+Object.keys(instrs[instr]).length+"' valign='top'>"+instr+"</th>"
                         first = false
                     }
                     tr.insertCell().outerHTML = "<th>"+variant+"</th>"
