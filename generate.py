@@ -206,6 +206,8 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"  %r = {instr} {tystr} %a\n"
   elif instr == 'abs' or instr == 'ctlz' or instr == 'cttz':
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, i1 0)\n"
+  elif instr == 'fptosi.sat' or instr == 'fptoui.sat':
+    instrstr += f"  %r = call {rettystr} @llvm.{instr}({tystr} %a)\n"
   elif variant == 'unop':
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a)\n"
   elif variant == 'binopi':
@@ -452,7 +454,7 @@ if args.type == 'all' or args.type == 'castint':
 
 if args.type == 'all' or args.type == 'castfp':
   def enumcast():
-    for instr in ['fptosi', 'fptoui']:
+    for instr in ['fptosi', 'fptoui', 'fptosi.sat', 'fptoui.sat']:
       for ty1 in fptypes(True):
         for ty2 in inttypes(True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
@@ -487,7 +489,6 @@ if args.type == 'all' or args.type == 'castfp':
         if not instr.startswith('ll'):
           yield (instr, 'cast i32', ty1, Ty('i32', ty1.elts, ty1.scalable), None)
 
-    # TODO: fptosisat, fptouisat
 
   pool = multiprocessing.Pool(16)
   data = pool.starmap(do, enumcast())
