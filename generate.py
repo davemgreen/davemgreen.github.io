@@ -264,7 +264,7 @@ class Ty:
     return self.str()
 fptymap = { 'half':16, 'bfloat':16, 'float':32, 'double':64, "fp128":128 }
 
-def inttypes(highsizes = False, lowsizes = False):
+def inttypes(lowsizes = False, highsizes = False):
   # TODO: i128, other type sizes?
   # TODO: More sizes for more operations
   for bits in [8, 16, 32, 64]:
@@ -279,7 +279,7 @@ def inttypes(highsizes = False, lowsizes = False):
         if not lowsizes and s * bits < 64:
           continue
         yield Ty('i'+str(bits), s, scalable)
-def fptypes(highsizes = False, lowsizes = False):
+def fptypes(lowsizes = False, highsizes = False):
   # TODO: f128? They are just libcalls
   # TODO: More sizes for more operations
   for bits in ['half', 'bfloat', 'float', 'double']:
@@ -436,9 +436,11 @@ if args.type == 'all' or args.type == 'fp':
 
 if args.type == 'all' or args.type == 'castint':
   def enumcast():
-    for ty1 in inttypes(True):
-      for ty2 in inttypes(True):
+    for ty1 in inttypes(True, True):
+      for ty2 in inttypes(True, True):
         if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
+          continue
+        if ty1.elts * min(ty1.scalarsize(), ty2.scalarsize()) > 256:
           continue
         if ty1.scalarsize() < ty2.scalarsize():
           yield ('zext', 'cast '+ty2.scalar, ty1, ty2, None)
@@ -455,28 +457,28 @@ if args.type == 'all' or args.type == 'castint':
 if args.type == 'all' or args.type == 'castfp':
   def enumcast():
     for instr in ['fptosi', 'fptoui', 'fptosi.sat', 'fptoui.sat']:
-      for ty1 in fptypes(True):
-        for ty2 in inttypes(True):
+      for ty1 in fptypes(True, False):
+        for ty2 in inttypes(True, True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, None)
     for instr in ['sitofp', 'uitofp']:
-      for ty1 in fptypes(True):
-        for ty2 in inttypes(True):
+      for ty1 in fptypes(True, False):
+        for ty2 in inttypes(True, True):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable:
             continue
           yield (instr, 'cast '+ty2.scalar, ty2, ty1, str(ty1))
     for instr in ['fpext']:
-      for ty1 in fptypes(True):
-        for ty2 in fptypes(True):
+      for ty1 in fptypes(True, False):
+        for ty2 in fptypes(True, False):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() >= ty2.scalarsize():
             continue
           if fptymap[ty1.scalar] < 32 and fptymap[ty2.scalar] < 32:
             continue
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, None)
     for instr in ['fptrunc']:
-      for ty1 in fptypes(True):
-        for ty2 in fptypes(True):
+      for ty1 in fptypes(True, False):
+        for ty2 in fptypes(True, False):
           if ty1.elts != ty2.elts or ty1.scalable != ty2.scalable or ty1.scalarsize() <= ty2.scalarsize():
             continue
           if fptymap[ty1.scalar] < 32 and fptymap[ty2.scalar] < 32:
@@ -484,7 +486,7 @@ if args.type == 'all' or args.type == 'castfp':
           yield (instr, 'cast '+ty2.scalar, ty1, ty2, None)
 
     for instr in ['lrint', 'llrint', 'lround', 'llround']:
-      for ty1 in fptypes(True):
+      for ty1 in fptypes(True, False):
         yield (instr, 'cast i64', ty1, Ty('i64', ty1.elts, ty1.scalable), None)
         if not instr.startswith('ll'):
           yield (instr, 'cast i32', ty1, Ty('i32', ty1.elts, ty1.scalable), None)
