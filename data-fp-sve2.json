@@ -20919,7 +20919,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z3.h\nfcmuo p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z3.h\nfcmuo p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 16 x s16>) = G_FCMP floatpred(ord), %0:_(<vscale x 16 x s16>), %1:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %b) {\n  %r = fcmp ord <vscale x 16 x half> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ord <vscale x 16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -20934,7 +20934,7 @@
   "sizelat": 2,
   "size": 6,
   "gisize": -2,
-  "asm": "movi v2.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z2.h\nfcmuo p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.h\nfcmuo p1.h, p0/z, z1.h, z2.h\nfcmuo p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 16 x s16>) = G_FCMP floatpred(ord), %0:_(<vscale x 16 x s16>), %3:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a) {\n  %r = fcmp ord <vscale x 16 x half> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ord <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -21039,7 +21039,7 @@
   "sizelat": 11,
   "size": 10,
   "gisize": -2,
-  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nfcmuo p1.s, p0/z, z4.s, z3.s\nfcmuo p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nfcmuo p1.s, p0/z, z4.s, z3.s\nfcmuo p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b) {\n  %r = fcmp ord <vscale x 8 x bfloat> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %r = fcmp ord <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -21054,7 +21054,7 @@
   "sizelat": 7,
   "size": 8,
   "gisize": -2,
-  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmuo p1.s, p0/z, z2.s, z1.s\nfcmuo p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmuo p1.s, p0/z, z2.s, z1.s\nfcmuo p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a) {\n  %r = fcmp ord <vscale x 8 x bfloat> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %r = fcmp ord <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -21069,7 +21069,7 @@
   "sizelat": 12,
   "size": 11,
   "gisize": -2,
-  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nfcmuo p1.s, p0/z, z6.s, z5.s\nfcmuo p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
+  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nfcmuo p1.s, p0/z, z6.s, z5.s\nfcmuo p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp ord <vscale x 8 x bfloat> %a, %b\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %c = fcmp ord <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -21084,7 +21084,7 @@
   "sizelat": 8,
   "size": 9,
   "gisize": -2,
-  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmuo p1.s, p0/z, z4.s, z3.s\nfcmuo p2.s, p0/z, z0.s, z3.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmuo p1.s, p0/z, z4.s, z3.s\nfcmuo p2.s, p0/z, z0.s, z3.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp ord <vscale x 8 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %c = fcmp ord <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -21099,7 +21099,7 @@
   "sizelat": 22,
   "size": 26,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z3.h\nzip2 z6.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip2 z7.h, z4.h, z2.h\nzip2 z24.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nfcmuo p1.s, p0/z, z6.s, z5.s\nfcmuo p2.s, p0/z, z1.s, z3.s\nfcmuo p3.s, p0/z, z24.s, z7.s\nfcmuo p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z3.h\nzip2 z6.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip2 z7.h, z4.h, z2.h\nzip2 z24.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nfcmuo p1.s, p0/z, z6.s, z5.s\nfcmuo p2.s, p0/z, z1.s, z3.s\nfcmuo p3.s, p0/z, z24.s, z7.s\nfcmuo p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b) {\n  %r = fcmp ord <vscale x 16 x bfloat> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %r = fcmp ord <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -21114,7 +21114,7 @@
   "sizelat": 14,
   "size": 22,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmuo p1.s, p0/z, z3.s, z2.s\nfcmuo p2.s, p0/z, z1.s, z2.s\nfcmuo p3.s, p0/z, z4.s, z2.s\nfcmuo p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmuo p1.s, p0/z, z3.s, z2.s\nfcmuo p2.s, p0/z, z1.s, z2.s\nfcmuo p3.s, p0/z, z4.s, z2.s\nfcmuo p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a) {\n  %r = fcmp ord <vscale x 16 x bfloat> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %r = fcmp ord <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -21129,7 +21129,7 @@
   "sizelat": 24,
   "size": 27,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z3.h\nzip2 z26.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip2 z27.h, z24.h, z2.h\nzip2 z28.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nfcmuo p1.s, p0/z, z26.s, z25.s\nfcmuo p2.s, p0/z, z1.s, z3.s\nfcmuo p3.s, p0/z, z28.s, z27.s\nfcmuo p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z5.h, z7.h\nsel z0.h, p0, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z3.h\nzip2 z26.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip2 z27.h, z24.h, z2.h\nzip2 z28.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nfcmuo p1.s, p0/z, z26.s, z25.s\nfcmuo p2.s, p0/z, z1.s, z3.s\nfcmuo p3.s, p0/z, z28.s, z27.s\nfcmuo p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z5.h, z7.h\nsel z0.h, p1, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp ord <vscale x 16 x bfloat> %a, %b\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %c = fcmp ord <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -21144,7 +21144,7 @@
   "sizelat": 16,
   "size": 23,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmuo p1.s, p0/z, z7.s, z6.s\nfcmuo p2.s, p0/z, z1.s, z6.s\nfcmuo p3.s, p0/z, z24.s, z6.s\nfcmuo p4.s, p0/z, z0.s, z6.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmuo p1.s, p0/z, z7.s, z6.s\nfcmuo p2.s, p0/z, z1.s, z6.s\nfcmuo p3.s, p0/z, z24.s, z6.s\nfcmuo p4.s, p0/z, z0.s, z6.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z3.h, z5.h\nsel z0.h, p1, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp ord <vscale x 16 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %c = fcmp ord <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -21279,7 +21279,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z3.s\nfcmuo p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z3.s\nfcmuo p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 8 x s32>) = G_FCMP floatpred(ord), %0:_(<vscale x 8 x s32>), %1:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %b) {\n  %r = fcmp ord <vscale x 8 x float> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ord <vscale x 8 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -21294,7 +21294,7 @@
   "sizelat": 2,
   "size": 6,
   "gisize": -2,
-  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z2.s\nfcmuo p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nfcmuo p1.s, p0/z, z1.s, z2.s\nfcmuo p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 8 x s32>) = G_FCMP floatpred(ord), %0:_(<vscale x 8 x s32>), %3:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a) {\n  %r = fcmp ord <vscale x 8 x float> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ord <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -21399,7 +21399,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z3.d\nfcmuo p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z3.d\nfcmuo p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 4 x s64>) = G_FCMP floatpred(ord), %0:_(<vscale x 4 x s64>), %1:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %b) {\n  %r = fcmp ord <vscale x 4 x double> %a, %b\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ord <vscale x 4 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -21414,7 +21414,7 @@
   "sizelat": 2,
   "size": 6,
   "gisize": -2,
-  "asm": "movi v2.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z2.d\nfcmuo p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.d\nfcmuo p1.d, p0/z, z1.d, z2.d\nfcmuo p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 4 x s64>) = G_FCMP floatpred(ord), %0:_(<vscale x 4 x s64>), %3:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a) {\n  %r = fcmp ord <vscale x 4 x double> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ord <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -24039,7 +24039,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmge p1.h, p0/z, z3.h, z1.h\nfcmge p2.h, p0/z, z2.h, z0.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmge p1.h, p0/z, z3.h, z1.h\nfcmge p2.h, p0/z, z2.h, z0.h\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 16 x s16>) = G_FCMP floatpred(ugt), %0:_(<vscale x 16 x s16>), %1:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %b) {\n  %r = fcmp ugt <vscale x 16 x half> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ugt <vscale x 16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -24054,7 +24054,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmle p1.h, p0/z, z1.h, #0.0\nfcmle p2.h, p0/z, z0.h, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmle p1.h, p0/z, z1.h, #0.0\nfcmle p2.h, p0/z, z0.h, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 16 x s16>) = G_FCMP floatpred(ugt), %0:_(<vscale x 16 x s16>), %3:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a) {\n  %r = fcmp ugt <vscale x 16 x half> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ugt <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -24159,7 +24159,7 @@
   "sizelat": 11,
   "size": 10,
   "gisize": -2,
-  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z0.h\nzip2 z4.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nfcmge p1.s, p0/z, z4.s, z3.s\nfcmge p2.s, p0/z, z1.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z0.h\nzip2 z4.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nfcmge p1.s, p0/z, z4.s, z3.s\nfcmge p2.s, p0/z, z1.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b) {\n  %r = fcmp ugt <vscale x 8 x bfloat> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %r = fcmp ugt <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -24174,7 +24174,7 @@
   "sizelat": 7,
   "size": 8,
   "gisize": -2,
-  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmle p1.s, p0/z, z2.s, #0.0\nfcmle p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmle p1.s, p0/z, z2.s, #0.0\nfcmle p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a) {\n  %r = fcmp ugt <vscale x 8 x bfloat> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %r = fcmp ugt <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -24189,7 +24189,7 @@
   "sizelat": 12,
   "size": 11,
   "gisize": -2,
-  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z0.h\nzip2 z6.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nfcmge p1.s, p0/z, z6.s, z5.s\nfcmge p2.s, p0/z, z1.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
+  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z0.h\nzip2 z6.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nfcmge p1.s, p0/z, z6.s, z5.s\nfcmge p2.s, p0/z, z1.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp ugt <vscale x 8 x bfloat> %a, %b\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %c = fcmp ugt <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -24204,7 +24204,7 @@
   "sizelat": 8,
   "size": 9,
   "gisize": -2,
-  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmle p1.s, p0/z, z4.s, #0.0\nfcmle p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmle p1.s, p0/z, z4.s, #0.0\nfcmle p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp ugt <vscale x 8 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %c = fcmp ugt <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -24219,7 +24219,7 @@
   "sizelat": 22,
   "size": 26,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip2 z7.h, z4.h, z0.h\nzip2 z24.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nfcmge p1.s, p0/z, z6.s, z5.s\nfcmge p2.s, p0/z, z3.s, z1.s\nfcmge p3.s, p0/z, z24.s, z7.s\nfcmge p4.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip2 z7.h, z4.h, z0.h\nzip2 z24.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nfcmge p1.s, p0/z, z6.s, z5.s\nfcmge p2.s, p0/z, z3.s, z1.s\nfcmge p3.s, p0/z, z24.s, z7.s\nfcmge p4.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b) {\n  %r = fcmp ugt <vscale x 16 x bfloat> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %r = fcmp ugt <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -24234,7 +24234,7 @@
   "sizelat": 14,
   "size": 22,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmle p1.s, p0/z, z3.s, #0.0\nfcmle p2.s, p0/z, z1.s, #0.0\nfcmle p3.s, p0/z, z4.s, #0.0\nfcmle p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmle p1.s, p0/z, z3.s, #0.0\nfcmle p2.s, p0/z, z1.s, #0.0\nfcmle p3.s, p0/z, z4.s, #0.0\nfcmle p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a) {\n  %r = fcmp ugt <vscale x 16 x bfloat> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %r = fcmp ugt <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -24249,7 +24249,7 @@
   "sizelat": 24,
   "size": 27,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z1.h\nzip2 z26.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip2 z27.h, z24.h, z0.h\nzip2 z28.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nfcmge p1.s, p0/z, z26.s, z25.s\nfcmge p2.s, p0/z, z3.s, z1.s\nfcmge p3.s, p0/z, z28.s, z27.s\nfcmge p4.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z5.h, z7.h\nsel z0.h, p0, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z1.h\nzip2 z26.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip2 z27.h, z24.h, z0.h\nzip2 z28.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nfcmge p1.s, p0/z, z26.s, z25.s\nfcmge p2.s, p0/z, z3.s, z1.s\nfcmge p3.s, p0/z, z28.s, z27.s\nfcmge p4.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z5.h, z7.h\nsel z0.h, p1, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp ugt <vscale x 16 x bfloat> %a, %b\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %c = fcmp ugt <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -24264,7 +24264,7 @@
   "sizelat": 16,
   "size": 23,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmle p1.s, p0/z, z7.s, #0.0\nfcmle p2.s, p0/z, z1.s, #0.0\nfcmle p3.s, p0/z, z24.s, #0.0\nfcmle p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmle p1.s, p0/z, z7.s, #0.0\nfcmle p2.s, p0/z, z1.s, #0.0\nfcmle p3.s, p0/z, z24.s, #0.0\nfcmle p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z3.h, z5.h\nsel z0.h, p1, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp ugt <vscale x 16 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %c = fcmp ugt <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -24399,7 +24399,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmge p1.s, p0/z, z3.s, z1.s\nfcmge p2.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmge p1.s, p0/z, z3.s, z1.s\nfcmge p2.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 8 x s32>) = G_FCMP floatpred(ugt), %0:_(<vscale x 8 x s32>), %1:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %b) {\n  %r = fcmp ugt <vscale x 8 x float> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ugt <vscale x 8 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -24414,7 +24414,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmle p1.s, p0/z, z1.s, #0.0\nfcmle p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmle p1.s, p0/z, z1.s, #0.0\nfcmle p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 8 x s32>) = G_FCMP floatpred(ugt), %0:_(<vscale x 8 x s32>), %3:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a) {\n  %r = fcmp ugt <vscale x 8 x float> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ugt <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -24519,7 +24519,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmge p1.d, p0/z, z3.d, z1.d\nfcmge p2.d, p0/z, z2.d, z0.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmge p1.d, p0/z, z3.d, z1.d\nfcmge p2.d, p0/z, z2.d, z0.d\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 4 x s64>) = G_FCMP floatpred(ugt), %0:_(<vscale x 4 x s64>), %1:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %b) {\n  %r = fcmp ugt <vscale x 4 x double> %a, %b\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ugt <vscale x 4 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -24534,7 +24534,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmle p1.d, p0/z, z1.d, #0.0\nfcmle p2.d, p0/z, z0.d, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmle p1.d, p0/z, z1.d, #0.0\nfcmle p2.d, p0/z, z0.d, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 4 x s64>) = G_FCMP floatpred(ugt), %0:_(<vscale x 4 x s64>), %3:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a) {\n  %r = fcmp ugt <vscale x 4 x double> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ugt <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -25599,7 +25599,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmgt p1.h, p0/z, z3.h, z1.h\nfcmgt p2.h, p0/z, z2.h, z0.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmgt p1.h, p0/z, z3.h, z1.h\nfcmgt p2.h, p0/z, z2.h, z0.h\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 16 x s16>) = G_FCMP floatpred(uge), %0:_(<vscale x 16 x s16>), %1:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %b) {\n  %r = fcmp uge <vscale x 16 x half> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp uge <vscale x 16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -25614,7 +25614,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmlt p1.h, p0/z, z1.h, #0.0\nfcmlt p2.h, p0/z, z0.h, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmlt p1.h, p0/z, z1.h, #0.0\nfcmlt p2.h, p0/z, z0.h, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 16 x s16>) = G_FCMP floatpred(uge), %0:_(<vscale x 16 x s16>), %3:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a) {\n  %r = fcmp uge <vscale x 16 x half> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp uge <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -25719,7 +25719,7 @@
   "sizelat": 11,
   "size": 10,
   "gisize": -2,
-  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z0.h\nzip2 z4.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nfcmgt p1.s, p0/z, z4.s, z3.s\nfcmgt p2.s, p0/z, z1.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z0.h\nzip2 z4.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nfcmgt p1.s, p0/z, z4.s, z3.s\nfcmgt p2.s, p0/z, z1.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b) {\n  %r = fcmp uge <vscale x 8 x bfloat> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %r = fcmp uge <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -25734,7 +25734,7 @@
   "sizelat": 7,
   "size": 8,
   "gisize": -2,
-  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmlt p1.s, p0/z, z2.s, #0.0\nfcmlt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmlt p1.s, p0/z, z2.s, #0.0\nfcmlt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a) {\n  %r = fcmp uge <vscale x 8 x bfloat> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %r = fcmp uge <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -25749,7 +25749,7 @@
   "sizelat": 12,
   "size": 11,
   "gisize": -2,
-  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z0.h\nzip2 z6.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nfcmgt p1.s, p0/z, z6.s, z5.s\nfcmgt p2.s, p0/z, z1.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
+  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z0.h\nzip2 z6.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nfcmgt p1.s, p0/z, z6.s, z5.s\nfcmgt p2.s, p0/z, z1.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp uge <vscale x 8 x bfloat> %a, %b\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %c = fcmp uge <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -25764,7 +25764,7 @@
   "sizelat": 8,
   "size": 9,
   "gisize": -2,
-  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmlt p1.s, p0/z, z4.s, #0.0\nfcmlt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmlt p1.s, p0/z, z4.s, #0.0\nfcmlt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp uge <vscale x 8 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %c = fcmp uge <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -25779,7 +25779,7 @@
   "sizelat": 22,
   "size": 26,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip2 z7.h, z4.h, z0.h\nzip2 z24.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nfcmgt p1.s, p0/z, z6.s, z5.s\nfcmgt p2.s, p0/z, z3.s, z1.s\nfcmgt p3.s, p0/z, z24.s, z7.s\nfcmgt p4.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip2 z7.h, z4.h, z0.h\nzip2 z24.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nfcmgt p1.s, p0/z, z6.s, z5.s\nfcmgt p2.s, p0/z, z3.s, z1.s\nfcmgt p3.s, p0/z, z24.s, z7.s\nfcmgt p4.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b) {\n  %r = fcmp uge <vscale x 16 x bfloat> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %r = fcmp uge <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -25794,7 +25794,7 @@
   "sizelat": 14,
   "size": 22,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmlt p1.s, p0/z, z3.s, #0.0\nfcmlt p2.s, p0/z, z1.s, #0.0\nfcmlt p3.s, p0/z, z4.s, #0.0\nfcmlt p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmlt p1.s, p0/z, z3.s, #0.0\nfcmlt p2.s, p0/z, z1.s, #0.0\nfcmlt p3.s, p0/z, z4.s, #0.0\nfcmlt p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a) {\n  %r = fcmp uge <vscale x 16 x bfloat> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %r = fcmp uge <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -25809,7 +25809,7 @@
   "sizelat": 24,
   "size": 27,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z1.h\nzip2 z26.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip2 z27.h, z24.h, z0.h\nzip2 z28.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nfcmgt p1.s, p0/z, z26.s, z25.s\nfcmgt p2.s, p0/z, z3.s, z1.s\nfcmgt p3.s, p0/z, z28.s, z27.s\nfcmgt p4.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z5.h, z7.h\nsel z0.h, p0, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z1.h\nzip2 z26.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip2 z27.h, z24.h, z0.h\nzip2 z28.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nfcmgt p1.s, p0/z, z26.s, z25.s\nfcmgt p2.s, p0/z, z3.s, z1.s\nfcmgt p3.s, p0/z, z28.s, z27.s\nfcmgt p4.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z5.h, z7.h\nsel z0.h, p1, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp uge <vscale x 16 x bfloat> %a, %b\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %c = fcmp uge <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -25824,7 +25824,7 @@
   "sizelat": 16,
   "size": 23,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmlt p1.s, p0/z, z7.s, #0.0\nfcmlt p2.s, p0/z, z1.s, #0.0\nfcmlt p3.s, p0/z, z24.s, #0.0\nfcmlt p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmlt p1.s, p0/z, z7.s, #0.0\nfcmlt p2.s, p0/z, z1.s, #0.0\nfcmlt p3.s, p0/z, z24.s, #0.0\nfcmlt p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z3.h, z5.h\nsel z0.h, p1, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp uge <vscale x 16 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %c = fcmp uge <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -25959,7 +25959,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmgt p1.s, p0/z, z3.s, z1.s\nfcmgt p2.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmgt p1.s, p0/z, z3.s, z1.s\nfcmgt p2.s, p0/z, z2.s, z0.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 8 x s32>) = G_FCMP floatpred(uge), %0:_(<vscale x 8 x s32>), %1:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %b) {\n  %r = fcmp uge <vscale x 8 x float> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp uge <vscale x 8 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -25974,7 +25974,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmlt p1.s, p0/z, z1.s, #0.0\nfcmlt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmlt p1.s, p0/z, z1.s, #0.0\nfcmlt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 8 x s32>) = G_FCMP floatpred(uge), %0:_(<vscale x 8 x s32>), %3:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a) {\n  %r = fcmp uge <vscale x 8 x float> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp uge <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -26079,7 +26079,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmgt p1.d, p0/z, z3.d, z1.d\nfcmgt p2.d, p0/z, z2.d, z0.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmgt p1.d, p0/z, z3.d, z1.d\nfcmgt p2.d, p0/z, z2.d, z0.d\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 4 x s64>) = G_FCMP floatpred(uge), %0:_(<vscale x 4 x s64>), %1:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %b) {\n  %r = fcmp uge <vscale x 4 x double> %a, %b\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp uge <vscale x 4 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -26094,7 +26094,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmlt p1.d, p0/z, z1.d, #0.0\nfcmlt p2.d, p0/z, z0.d, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmlt p1.d, p0/z, z1.d, #0.0\nfcmlt p2.d, p0/z, z0.d, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 4 x s64>) = G_FCMP floatpred(uge), %0:_(<vscale x 4 x s64>), %3:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a) {\n  %r = fcmp uge <vscale x 4 x double> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp uge <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -27159,7 +27159,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmge p1.h, p0/z, z1.h, z3.h\nfcmge p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmge p1.h, p0/z, z1.h, z3.h\nfcmge p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 16 x s16>) = G_FCMP floatpred(ult), %0:_(<vscale x 16 x s16>), %1:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %b) {\n  %r = fcmp ult <vscale x 16 x half> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ult <vscale x 16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -27174,7 +27174,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmge p1.h, p0/z, z1.h, #0.0\nfcmge p2.h, p0/z, z0.h, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmge p1.h, p0/z, z1.h, #0.0\nfcmge p2.h, p0/z, z0.h, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 16 x s16>) = G_FCMP floatpred(ult), %0:_(<vscale x 16 x s16>), %3:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a) {\n  %r = fcmp ult <vscale x 16 x half> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ult <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -27279,7 +27279,7 @@
   "sizelat": 11,
   "size": 10,
   "gisize": -2,
-  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nfcmge p1.s, p0/z, z4.s, z3.s\nfcmge p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nfcmge p1.s, p0/z, z4.s, z3.s\nfcmge p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b) {\n  %r = fcmp ult <vscale x 8 x bfloat> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %r = fcmp ult <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -27294,7 +27294,7 @@
   "sizelat": 7,
   "size": 8,
   "gisize": -2,
-  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmge p1.s, p0/z, z2.s, #0.0\nfcmge p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmge p1.s, p0/z, z2.s, #0.0\nfcmge p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a) {\n  %r = fcmp ult <vscale x 8 x bfloat> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %r = fcmp ult <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -27309,7 +27309,7 @@
   "sizelat": 12,
   "size": 11,
   "gisize": -2,
-  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nfcmge p1.s, p0/z, z6.s, z5.s\nfcmge p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
+  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nfcmge p1.s, p0/z, z6.s, z5.s\nfcmge p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp ult <vscale x 8 x bfloat> %a, %b\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %c = fcmp ult <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -27324,7 +27324,7 @@
   "sizelat": 8,
   "size": 9,
   "gisize": -2,
-  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmge p1.s, p0/z, z4.s, #0.0\nfcmge p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmge p1.s, p0/z, z4.s, #0.0\nfcmge p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp ult <vscale x 8 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %c = fcmp ult <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -27339,7 +27339,7 @@
   "sizelat": 22,
   "size": 26,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z3.h\nzip2 z6.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip2 z7.h, z4.h, z2.h\nzip2 z24.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nfcmge p1.s, p0/z, z6.s, z5.s\nfcmge p2.s, p0/z, z1.s, z3.s\nfcmge p3.s, p0/z, z24.s, z7.s\nfcmge p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z3.h\nzip2 z6.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip2 z7.h, z4.h, z2.h\nzip2 z24.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nfcmge p1.s, p0/z, z6.s, z5.s\nfcmge p2.s, p0/z, z1.s, z3.s\nfcmge p3.s, p0/z, z24.s, z7.s\nfcmge p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b) {\n  %r = fcmp ult <vscale x 16 x bfloat> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %r = fcmp ult <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -27354,7 +27354,7 @@
   "sizelat": 14,
   "size": 22,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmge p1.s, p0/z, z3.s, #0.0\nfcmge p2.s, p0/z, z1.s, #0.0\nfcmge p3.s, p0/z, z4.s, #0.0\nfcmge p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmge p1.s, p0/z, z3.s, #0.0\nfcmge p2.s, p0/z, z1.s, #0.0\nfcmge p3.s, p0/z, z4.s, #0.0\nfcmge p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a) {\n  %r = fcmp ult <vscale x 16 x bfloat> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %r = fcmp ult <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -27369,7 +27369,7 @@
   "sizelat": 24,
   "size": 27,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z3.h\nzip2 z26.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip2 z27.h, z24.h, z2.h\nzip2 z28.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nfcmge p1.s, p0/z, z26.s, z25.s\nfcmge p2.s, p0/z, z1.s, z3.s\nfcmge p3.s, p0/z, z28.s, z27.s\nfcmge p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z5.h, z7.h\nsel z0.h, p0, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z3.h\nzip2 z26.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip2 z27.h, z24.h, z2.h\nzip2 z28.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nfcmge p1.s, p0/z, z26.s, z25.s\nfcmge p2.s, p0/z, z1.s, z3.s\nfcmge p3.s, p0/z, z28.s, z27.s\nfcmge p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z5.h, z7.h\nsel z0.h, p1, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp ult <vscale x 16 x bfloat> %a, %b\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %c = fcmp ult <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -27384,7 +27384,7 @@
   "sizelat": 16,
   "size": 23,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmge p1.s, p0/z, z7.s, #0.0\nfcmge p2.s, p0/z, z1.s, #0.0\nfcmge p3.s, p0/z, z24.s, #0.0\nfcmge p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmge p1.s, p0/z, z7.s, #0.0\nfcmge p2.s, p0/z, z1.s, #0.0\nfcmge p3.s, p0/z, z24.s, #0.0\nfcmge p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z3.h, z5.h\nsel z0.h, p1, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp ult <vscale x 16 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %c = fcmp ult <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -27519,7 +27519,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmge p1.s, p0/z, z1.s, z3.s\nfcmge p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmge p1.s, p0/z, z1.s, z3.s\nfcmge p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 8 x s32>) = G_FCMP floatpred(ult), %0:_(<vscale x 8 x s32>), %1:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %b) {\n  %r = fcmp ult <vscale x 8 x float> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ult <vscale x 8 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -27534,7 +27534,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmge p1.s, p0/z, z1.s, #0.0\nfcmge p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmge p1.s, p0/z, z1.s, #0.0\nfcmge p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 8 x s32>) = G_FCMP floatpred(ult), %0:_(<vscale x 8 x s32>), %3:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a) {\n  %r = fcmp ult <vscale x 8 x float> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ult <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -27639,7 +27639,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmge p1.d, p0/z, z1.d, z3.d\nfcmge p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmge p1.d, p0/z, z1.d, z3.d\nfcmge p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 4 x s64>) = G_FCMP floatpred(ult), %0:_(<vscale x 4 x s64>), %1:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %b) {\n  %r = fcmp ult <vscale x 4 x double> %a, %b\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ult <vscale x 4 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -27654,7 +27654,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmge p1.d, p0/z, z1.d, #0.0\nfcmge p2.d, p0/z, z0.d, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmge p1.d, p0/z, z1.d, #0.0\nfcmge p2.d, p0/z, z0.d, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 4 x s64>) = G_FCMP floatpred(ult), %0:_(<vscale x 4 x s64>), %3:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a) {\n  %r = fcmp ult <vscale x 4 x double> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ult <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -28719,7 +28719,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmgt p1.h, p0/z, z1.h, z3.h\nfcmgt p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmgt p1.h, p0/z, z1.h, z3.h\nfcmgt p2.h, p0/z, z0.h, z2.h\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 16 x s16>) = G_FCMP floatpred(ule), %0:_(<vscale x 16 x s16>), %1:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a, <vscale x 16 x half> %b) {\n  %r = fcmp ule <vscale x 16 x half> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ule <vscale x 16 x half> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -28734,7 +28734,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.h\nfcmgt p1.h, p0/z, z1.h, #0.0\nfcmgt p2.h, p0/z, z0.h, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.b, p0.b, p1.b\nret",
+  "asm": "ptrue p0.h\nfcmgt p1.h, p0/z, z1.h, #0.0\nfcmgt p2.h, p0/z, z0.h, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.b, p2.b, p1.b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 16 x s16>) = G_FCMP floatpred(ule), %0:_(<vscale x 16 x s16>), %3:_ (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x half> %a) {\n  %r = fcmp ule <vscale x 16 x half> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ule <vscale x 16 x half> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -28839,7 +28839,7 @@
   "sizelat": 11,
   "size": 10,
   "gisize": -2,
-  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nfcmgt p1.s, p0/z, z4.s, z3.s\nfcmgt p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z1.h, z2.h, z1.h\nzip1 z0.h, z2.h, z0.h\nfcmgt p1.s, p0/z, z4.s, z3.s\nfcmgt p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b) {\n  %r = fcmp ule <vscale x 8 x bfloat> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %r = fcmp ule <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -28854,7 +28854,7 @@
   "sizelat": 7,
   "size": 8,
   "gisize": -2,
-  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmgt p1.s, p0/z, z2.s, #0.0\nfcmgt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "movi v1.2d, #0000000000000000\nptrue p0.s\nzip2 z2.h, z1.h, z0.h\nzip1 z0.h, z1.h, z0.h\nfcmgt p1.s, p0/z, z2.s, #0.0\nfcmgt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x bfloat> %a) {\n  %r = fcmp ule <vscale x 8 x bfloat> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %r = fcmp ule <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -28869,7 +28869,7 @@
   "sizelat": 12,
   "size": 11,
   "gisize": -2,
-  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nfcmgt p1.s, p0/z, z6.s, z5.s\nfcmgt p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
+  "asm": "movi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z1.h\nzip2 z6.h, z4.h, z0.h\nzip1 z1.h, z4.h, z1.h\nzip1 z0.h, z4.h, z0.h\nfcmgt p1.s, p0/z, z6.s, z5.s\nfcmgt p2.s, p0/z, z0.s, z1.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z2.h, z3.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %b, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp ule <vscale x 8 x bfloat> %a, %b\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:13 CodeSize:11 Lat:11 SizeLat:11 for:   %c = fcmp ule <vscale x 8 x bfloat> %a, %b\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -28884,7 +28884,7 @@
   "sizelat": 8,
   "size": 9,
   "gisize": -2,
-  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmgt p1.s, p0/z, z4.s, #0.0\nfcmgt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
+  "asm": "movi v3.2d, #0000000000000000\nptrue p0.s\nzip2 z4.h, z3.h, z0.h\nzip1 z0.h, z3.h, z0.h\nfcmgt p1.s, p0/z, z4.s, #0.0\nfcmgt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nsel z0.h, p0, z1.h, z2.h\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e) {\n  %c = fcmp ule <vscale x 8 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:9 CodeSize:7 Lat:7 SizeLat:7 for:   %c = fcmp ule <vscale x 8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 1 for:   %r = select <vscale x 8 x i1> %c, <vscale x 8 x bfloat> %d, <vscale x 8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -28899,7 +28899,7 @@
   "sizelat": 22,
   "size": 26,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z3.h\nzip2 z6.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip2 z7.h, z4.h, z2.h\nzip2 z24.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nfcmgt p1.s, p0/z, z6.s, z5.s\nfcmgt p2.s, p0/z, z1.s, z3.s\nfcmgt p3.s, p0/z, z24.s, z7.s\nfcmgt p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v4.2d, #0000000000000000\nptrue p0.s\nzip2 z5.h, z4.h, z3.h\nzip2 z6.h, z4.h, z1.h\nzip1 z3.h, z4.h, z3.h\nzip1 z1.h, z4.h, z1.h\nzip2 z7.h, z4.h, z2.h\nzip2 z24.h, z4.h, z0.h\nzip1 z2.h, z4.h, z2.h\nzip1 z0.h, z4.h, z0.h\nfcmgt p1.s, p0/z, z6.s, z5.s\nfcmgt p2.s, p0/z, z1.s, z3.s\nfcmgt p3.s, p0/z, z24.s, z7.s\nfcmgt p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b) {\n  %r = fcmp ule <vscale x 16 x bfloat> %a, %b\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %r = fcmp ule <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -28914,7 +28914,7 @@
   "sizelat": 14,
   "size": 22,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmgt p1.s, p0/z, z3.s, #0.0\nfcmgt p2.s, p0/z, z1.s, #0.0\nfcmgt p3.s, p0/z, z4.s, #0.0\nfcmgt p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nuzp1 p0.b, p0.b, p1.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v2.2d, #0000000000000000\nptrue p0.s\nzip2 z3.h, z2.h, z1.h\nzip1 z1.h, z2.h, z1.h\nzip2 z4.h, z2.h, z0.h\nzip1 z0.h, z2.h, z0.h\nfcmgt p1.s, p0/z, z3.s, #0.0\nfcmgt p2.s, p0/z, z1.s, #0.0\nfcmgt p3.s, p0/z, z4.s, #0.0\nfcmgt p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p0.b, p1.b, p0.b\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x i1> @test(<vscale x 16 x bfloat> %a) {\n  %r = fcmp ule <vscale x 16 x bfloat> %a, zeroinitializer\n  ret <vscale x 16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %r = fcmp ule <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i1> %r"
@@ -28929,7 +28929,7 @@
   "sizelat": 24,
   "size": 27,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z3.h\nzip2 z26.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip2 z27.h, z24.h, z2.h\nzip2 z28.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nfcmgt p1.s, p0/z, z26.s, z25.s\nfcmgt p2.s, p0/z, z1.s, z3.s\nfcmgt p3.s, p0/z, z28.s, z27.s\nfcmgt p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z5.h, z7.h\nsel z0.h, p0, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v24.2d, #0000000000000000\nptrue p0.s\nzip2 z25.h, z24.h, z3.h\nzip2 z26.h, z24.h, z1.h\nzip1 z3.h, z24.h, z3.h\nzip1 z1.h, z24.h, z1.h\nzip2 z27.h, z24.h, z2.h\nzip2 z28.h, z24.h, z0.h\nzip1 z2.h, z24.h, z2.h\nzip1 z0.h, z24.h, z0.h\nfcmgt p1.s, p0/z, z26.s, z25.s\nfcmgt p2.s, p0/z, z1.s, z3.s\nfcmgt p3.s, p0/z, z28.s, z27.s\nfcmgt p4.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z5.h, z7.h\nsel z0.h, p1, z4.h, z6.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %b, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp ule <vscale x 16 x bfloat> %a, %b\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:26 CodeSize:22 Lat:20 SizeLat:22 for:   %c = fcmp ule <vscale x 16 x bfloat> %a, %b\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -28944,7 +28944,7 @@
   "sizelat": 16,
   "size": 23,
   "gisize": -2,
-  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmgt p1.s, p0/z, z7.s, #0.0\nfcmgt p2.s, p0/z, z1.s, #0.0\nfcmgt p3.s, p0/z, z24.s, #0.0\nfcmgt p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p0.b, p0/z, p4.b\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nuzp1 p1.h, p2.h, p1.h\nuzp1 p0.h, p0.h, p3.h\nsel z1.h, p1, z3.h, z5.h\nsel z0.h, p0, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
+  "asm": "str x29, [sp, #-16]!                // 8-byte Folded Spill\naddvl sp, sp, #-1\nstr p4, [sp, #7, mul vl]            // 2-byte Spill\nmovi v6.2d, #0000000000000000\nptrue p0.s\nzip2 z7.h, z6.h, z1.h\nzip1 z1.h, z6.h, z1.h\nzip2 z24.h, z6.h, z0.h\nzip1 z0.h, z6.h, z0.h\nfcmgt p1.s, p0/z, z7.s, #0.0\nfcmgt p2.s, p0/z, z1.s, #0.0\nfcmgt p3.s, p0/z, z24.s, #0.0\nfcmgt p4.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nnot p3.b, p0/z, p3.b\nnot p4.b, p0/z, p4.b\nuzp1 p0.h, p2.h, p1.h\nuzp1 p1.h, p4.h, p3.h\nldr p4, [sp, #7, mul vl]            // 2-byte Reload\nsel z1.h, p0, z3.h, z5.h\nsel z0.h, p1, z2.h, z4.h\naddvl sp, sp, #1\nldr x29, [sp], #16                  // 8-byte Folded Reload\nret",
   "giasm": "LLVM ERROR: unable to translate instruction: fcmp (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e) {\n  %c = fcmp ule <vscale x 16 x bfloat> %a, zeroinitializer\n  %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:14 Lat:12 SizeLat:14 for:   %c = fcmp ule <vscale x 16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of 2 for:   %r = select <vscale x 16 x i1> %c, <vscale x 16 x bfloat> %d, <vscale x 16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -29079,7 +29079,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmgt p1.s, p0/z, z1.s, z3.s\nfcmgt p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmgt p1.s, p0/z, z1.s, z3.s\nfcmgt p2.s, p0/z, z0.s, z2.s\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 8 x s32>) = G_FCMP floatpred(ule), %0:_(<vscale x 8 x s32>), %1:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a, <vscale x 8 x float> %b) {\n  %r = fcmp ule <vscale x 8 x float> %a, %b\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ule <vscale x 8 x float> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -29094,7 +29094,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.s\nfcmgt p1.s, p0/z, z1.s, #0.0\nfcmgt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.h, p0.h, p1.h\nret",
+  "asm": "ptrue p0.s\nfcmgt p1.s, p0/z, z1.s, #0.0\nfcmgt p2.s, p0/z, z0.s, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.h, p2.h, p1.h\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 8 x s32>) = G_FCMP floatpred(ule), %0:_(<vscale x 8 x s32>), %3:_ (in function: test)",
   "ll": "define <vscale x 8 x i1> @test(<vscale x 8 x float> %a) {\n  %r = fcmp ule <vscale x 8 x float> %a, zeroinitializer\n  ret <vscale x 8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ule <vscale x 8 x float> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i1> %r"
@@ -29199,7 +29199,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmgt p1.d, p0/z, z1.d, z3.d\nfcmgt p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmgt p1.d, p0/z, z1.d, z3.d\nfcmgt p2.d, p0/z, z0.d, z2.d\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %7:_(<vscale x 4 x s64>) = G_FCMP floatpred(ule), %0:_(<vscale x 4 x s64>), %1:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a, <vscale x 4 x double> %b) {\n  %r = fcmp ule <vscale x 4 x double> %a, %b\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ule <vscale x 4 x double> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"
@@ -29214,7 +29214,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "ptrue p0.d\nfcmgt p1.d, p0/z, z1.d, #0.0\nfcmgt p2.d, p0/z, z0.d, #0.0\nnot p1.b, p0/z, p1.b\nnot p0.b, p0/z, p2.b\nuzp1 p0.s, p0.s, p1.s\nret",
+  "asm": "ptrue p0.d\nfcmgt p1.d, p0/z, z1.d, #0.0\nfcmgt p2.d, p0/z, z0.d, #0.0\nnot p1.b, p0/z, p1.b\nnot p2.b, p0/z, p2.b\nuzp1 p0.s, p2.s, p1.s\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(<vscale x 4 x s64>) = G_FCMP floatpred(ule), %0:_(<vscale x 4 x s64>), %3:_ (in function: test)",
   "ll": "define <vscale x 4 x i1> @test(<vscale x 4 x double> %a) {\n  %r = fcmp ule <vscale x 4 x double> %a, zeroinitializer\n  ret <vscale x 4 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:2 Lat:2 SizeLat:2 for:   %r = fcmp ule <vscale x 4 x double> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i1> %r"

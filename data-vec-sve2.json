@@ -33879,7 +33879,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -1,
-  "asm": "mov w8, #1                          // =0x1\nindex z1.h, #0, #1\nptrue p0.h\nmov z2.h, w8\ncmpeq p0.h, p0/z, z1.h, z2.h\nmov z0.h, p0/m, w0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z1.h, #0, #1\nptrue p0.h\nmov z2.h, w8\ncmpeq p1.h, p0/z, z1.h, z2.h\nmov z0.h, p1/m, w0\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i8> @test(<vscale x 8 x i8> %a, i8 %bs) {\n  %r = insertelement <vscale x 8 x i8> %a, i8 %bs, i32 1\n  ret <vscale x 8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x i8> %a, i8 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i8> %r"
@@ -33894,7 +33894,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -1,
-  "asm": "index z1.h, #0, #1\nmov w8, w1\nptrue p0.h\nmov z2.h, w8\ncmpeq p0.h, p0/z, z1.h, z2.h\nmov z0.h, p0/m, w0\nret",
+  "asm": "index z1.h, #0, #1\nmov w8, w1\nptrue p0.h\nmov z2.h, w8\ncmpeq p1.h, p0/z, z1.h, z2.h\nmov z0.h, p1/m, w0\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i8> @test(<vscale x 8 x i8> %a, i8 %bs, i32 %c) {\n  %r = insertelement <vscale x 8 x i8> %a, i8 %bs, i32 %c\n  ret <vscale x 8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x i8> %a, i8 %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i8> %r"
@@ -33924,7 +33924,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z1.b, #0, #1\nptrue p0.b\nmov z2.b, w8\ncmpeq p0.b, p0/z, z1.b, z2.b\nmov z0.b, p0/m, w0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z1.b, #0, #1\nptrue p0.b\nmov z2.b, w8\ncmpeq p1.b, p0/z, z1.b, z2.b\nmov z0.b, p1/m, w0\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x s8>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s8), %4:_(s64) (in function: test)",
   "ll": "define <vscale x 16 x i8> @test(<vscale x 16 x i8> %a, i8 %bs) {\n  %r = insertelement <vscale x 16 x i8> %a, i8 %bs, i32 1\n  ret <vscale x 16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 16 x i8> %a, i8 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i8> %r"
@@ -33939,7 +33939,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "index z1.b, #0, #1\nmov w8, w1\nptrue p0.b\nmov z2.b, w8\ncmpeq p0.b, p0/z, z1.b, z2.b\nmov z0.b, p0/m, w0\nret",
+  "asm": "index z1.b, #0, #1\nmov w8, w1\nptrue p0.b\nmov z2.b, w8\ncmpeq p1.b, p0/z, z1.b, z2.b\nmov z0.b, p1/m, w0\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(<vscale x 16 x s8>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s8), %5:_(s64) (in function: test)",
   "ll": "define <vscale x 16 x i8> @test(<vscale x 16 x i8> %a, i8 %bs, i32 %c) {\n  %r = insertelement <vscale x 16 x i8> %a, i8 %bs, i32 %c\n  ret <vscale x 16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 16 x i8> %a, i8 %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i8> %r"
@@ -33969,7 +33969,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.b, #0, #1\nptrue p0.b\nmov z3.b, w8\ncmpeq p0.b, p0/z, z2.b, z3.b\nmov z0.b, p0/m, w0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.b, #0, #1\nptrue p0.b\nmov z3.b, w8\ncmpeq p1.b, p0/z, z2.b, z3.b\nmov z0.b, p1/m, w0\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %5:_(<vscale x 32 x s8>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s8), %6:_(s64) (in function: test)",
   "ll": "define <vscale x 32 x i8> @test(<vscale x 32 x i8> %a, i8 %bs) {\n  %r = insertelement <vscale x 32 x i8> %a, i8 %bs, i32 1\n  ret <vscale x 32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 32 x i8> %a, i8 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 32 x i8> %r"
@@ -34014,7 +34014,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -1,
-  "asm": "mov w8, #1                          // =0x1\nindex z1.s, #0, #1\nptrue p0.s\nmov z2.s, w8\ncmpeq p0.s, p0/z, z1.s, z2.s\nmov z0.s, p0/m, w0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z1.s, #0, #1\nptrue p0.s\nmov z2.s, w8\ncmpeq p1.s, p0/z, z1.s, z2.s\nmov z0.s, p1/m, w0\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 4 x i16> @test(<vscale x 4 x i16> %a, i16 %bs) {\n  %r = insertelement <vscale x 4 x i16> %a, i16 %bs, i32 1\n  ret <vscale x 4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x i16> %a, i16 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i16> %r"
@@ -34029,7 +34029,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -1,
-  "asm": "index z1.s, #0, #1\nmov w8, w1\nptrue p0.s\nmov z2.s, w8\ncmpeq p0.s, p0/z, z1.s, z2.s\nmov z0.s, p0/m, w0\nret",
+  "asm": "index z1.s, #0, #1\nmov w8, w1\nptrue p0.s\nmov z2.s, w8\ncmpeq p1.s, p0/z, z1.s, z2.s\nmov z0.s, p1/m, w0\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 4 x i16> @test(<vscale x 4 x i16> %a, i16 %bs, i32 %c) {\n  %r = insertelement <vscale x 4 x i16> %a, i16 %bs, i32 %c\n  ret <vscale x 4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x i16> %a, i16 %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i16> %r"
@@ -34059,7 +34059,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z1.h, #0, #1\nptrue p0.h\nmov z2.h, w8\ncmpeq p0.h, p0/z, z1.h, z2.h\nmov z0.h, p0/m, w0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z1.h, #0, #1\nptrue p0.h\nmov z2.h, w8\ncmpeq p1.h, p0/z, z1.h, z2.h\nmov z0.h, p1/m, w0\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 8 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %4:_(s64) (in function: test)",
   "ll": "define <vscale x 8 x i16> @test(<vscale x 8 x i16> %a, i16 %bs) {\n  %r = insertelement <vscale x 8 x i16> %a, i16 %bs, i32 1\n  ret <vscale x 8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x i16> %a, i16 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i16> %r"
@@ -34074,7 +34074,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "index z1.h, #0, #1\nmov w8, w1\nptrue p0.h\nmov z2.h, w8\ncmpeq p0.h, p0/z, z1.h, z2.h\nmov z0.h, p0/m, w0\nret",
+  "asm": "index z1.h, #0, #1\nmov w8, w1\nptrue p0.h\nmov z2.h, w8\ncmpeq p1.h, p0/z, z1.h, z2.h\nmov z0.h, p1/m, w0\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(<vscale x 8 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %5:_(s64) (in function: test)",
   "ll": "define <vscale x 8 x i16> @test(<vscale x 8 x i16> %a, i16 %bs, i32 %c) {\n  %r = insertelement <vscale x 8 x i16> %a, i16 %bs, i32 %c\n  ret <vscale x 8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x i16> %a, i16 %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i16> %r"
@@ -34104,7 +34104,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.h, #0, #1\nptrue p0.h\nmov z3.h, w8\ncmpeq p0.h, p0/z, z2.h, z3.h\nmov z0.h, p0/m, w0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.h, #0, #1\nptrue p0.h\nmov z3.h, w8\ncmpeq p1.h, p0/z, z2.h, z3.h\nmov z0.h, p1/m, w0\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %5:_(<vscale x 16 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %6:_(s64) (in function: test)",
   "ll": "define <vscale x 16 x i16> @test(<vscale x 16 x i16> %a, i16 %bs) {\n  %r = insertelement <vscale x 16 x i16> %a, i16 %bs, i32 1\n  ret <vscale x 16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 16 x i16> %a, i16 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i16> %r"
@@ -34149,7 +34149,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -1,
-  "asm": "mov w8, #1                          // =0x1\nindex z1.d, #0, #1\nptrue p0.d\nmov z2.d, x8\ncmpeq p0.d, p0/z, z1.d, z2.d\nmov z0.d, p0/m, x0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z1.d, #0, #1\nptrue p0.d\nmov z2.d, x8\ncmpeq p1.d, p0/z, z1.d, z2.d\nmov z0.d, p1/m, x0\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 2 x i32> @test(<vscale x 2 x i32> %a, i32 %bs) {\n  %r = insertelement <vscale x 2 x i32> %a, i32 %bs, i32 1\n  ret <vscale x 2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x i32> %a, i32 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i32> %r"
@@ -34164,7 +34164,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -1,
-  "asm": "index z1.d, #0, #1\nmov w8, w1\nptrue p0.d\nmov z2.d, x8\ncmpeq p0.d, p0/z, z1.d, z2.d\nmov z0.d, p0/m, x0\nret",
+  "asm": "index z1.d, #0, #1\nmov w8, w1\nptrue p0.d\nmov z2.d, x8\ncmpeq p1.d, p0/z, z1.d, z2.d\nmov z0.d, p1/m, x0\nret",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 2 x i32> @test(<vscale x 2 x i32> %a, i32 %bs, i32 %c) {\n  %r = insertelement <vscale x 2 x i32> %a, i32 %bs, i32 %c\n  ret <vscale x 2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x i32> %a, i32 %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i32> %r"
@@ -34180,7 +34180,7 @@
   "size": 1,
   "gisize": 5,
   "asm": "ptrue p0.s, vl1\nmov z0.s, p0/m, w0\nret",
-  "giasm": "mov w8, wzr\nindex z1.s, #0, #1\nptrue p0.s\nmov z2.s, w8\ncmpeq p0.s, p0/z, z1.s, z2.s\nmov z0.s, p0/m, w0\nret",
+  "giasm": "mov w8, wzr\nindex z1.s, #0, #1\nptrue p0.s\nmov z2.s, w8\ncmpeq p1.s, p0/z, z1.s, z2.s\nmov z0.s, p1/m, w0\nret",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x i32> %a, i32 %bs) {\n  %r = insertelement <vscale x 4 x i32> %a, i32 %bs, i32 0\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x i32> %a, i32 %bs, i32 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
  },
@@ -34194,8 +34194,8 @@
   "sizelat": 2,
   "size": 5,
   "gisize": 5,
-  "asm": "mov w8, #1                          // =0x1\nindex z1.s, #0, #1\nptrue p0.s\nmov z2.s, w8\ncmpeq p0.s, p0/z, z1.s, z2.s\nmov z0.s, p0/m, w0\nret",
-  "giasm": "mov w8, #1                          // =0x1\nindex z1.s, #0, #1\nptrue p0.s\nmov z2.s, w8\ncmpeq p0.s, p0/z, z1.s, z2.s\nmov z0.s, p0/m, w0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z1.s, #0, #1\nptrue p0.s\nmov z2.s, w8\ncmpeq p1.s, p0/z, z1.s, z2.s\nmov z0.s, p1/m, w0\nret",
+  "giasm": "mov w8, #1                          // =0x1\nindex z1.s, #0, #1\nptrue p0.s\nmov z2.s, w8\ncmpeq p1.s, p0/z, z1.s, z2.s\nmov z0.s, p1/m, w0\nret",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x i32> %a, i32 %bs) {\n  %r = insertelement <vscale x 4 x i32> %a, i32 %bs, i32 1\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x i32> %a, i32 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
  },
@@ -34209,8 +34209,8 @@
   "sizelat": 2,
   "size": 5,
   "gisize": 5,
-  "asm": "index z1.s, #0, #1\nmov w8, w1\nptrue p0.s\nmov z2.s, w8\ncmpeq p0.s, p0/z, z1.s, z2.s\nmov z0.s, p0/m, w0\nret",
-  "giasm": "index z1.s, #0, #1\nmov w8, w1\nptrue p0.s\nmov z2.s, w8\ncmpeq p0.s, p0/z, z1.s, z2.s\nmov z0.s, p0/m, w0\nret",
+  "asm": "index z1.s, #0, #1\nmov w8, w1\nptrue p0.s\nmov z2.s, w8\ncmpeq p1.s, p0/z, z1.s, z2.s\nmov z0.s, p1/m, w0\nret",
+  "giasm": "index z1.s, #0, #1\nmov w8, w1\nptrue p0.s\nmov z2.s, w8\ncmpeq p1.s, p0/z, z1.s, z2.s\nmov z0.s, p1/m, w0\nret",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x i32> %a, i32 %bs, i32 %c) {\n  %r = insertelement <vscale x 4 x i32> %a, i32 %bs, i32 %c\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x i32> %a, i32 %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
  },
@@ -34239,7 +34239,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.s, p0/m, w0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.s, p1/m, w0\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(<vscale x 8 x s32>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s32), %5:_(s64) (in function: test)",
   "ll": "define <vscale x 8 x i32> @test(<vscale x 8 x i32> %a, i32 %bs) {\n  %r = insertelement <vscale x 8 x i32> %a, i32 %bs, i32 1\n  ret <vscale x 8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x i32> %a, i32 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i32> %r"
@@ -34270,7 +34270,7 @@
   "size": 1,
   "gisize": 5,
   "asm": "ptrue p0.d, vl1\nmov z0.d, p0/m, x0\nret",
-  "giasm": "mov x8, xzr\nindex z1.d, #0, #1\nptrue p0.d\nmov z2.d, x8\ncmpeq p0.d, p0/z, z1.d, z2.d\nmov z0.d, p0/m, x0\nret",
+  "giasm": "mov x8, xzr\nindex z1.d, #0, #1\nptrue p0.d\nmov z2.d, x8\ncmpeq p1.d, p0/z, z1.d, z2.d\nmov z0.d, p1/m, x0\nret",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x i64> %a, i64 %bs) {\n  %r = insertelement <vscale x 2 x i64> %a, i64 %bs, i32 0\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x i64> %a, i64 %bs, i32 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
  },
@@ -34284,8 +34284,8 @@
   "sizelat": 2,
   "size": 5,
   "gisize": 5,
-  "asm": "mov w8, #1                          // =0x1\nindex z1.d, #0, #1\nptrue p0.d\nmov z2.d, x8\ncmpeq p0.d, p0/z, z1.d, z2.d\nmov z0.d, p0/m, x0\nret",
-  "giasm": "mov w8, #1                          // =0x1\nindex z1.d, #0, #1\nptrue p0.d\nmov z2.d, x8\ncmpeq p0.d, p0/z, z1.d, z2.d\nmov z0.d, p0/m, x0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z1.d, #0, #1\nptrue p0.d\nmov z2.d, x8\ncmpeq p1.d, p0/z, z1.d, z2.d\nmov z0.d, p1/m, x0\nret",
+  "giasm": "mov w8, #1                          // =0x1\nindex z1.d, #0, #1\nptrue p0.d\nmov z2.d, x8\ncmpeq p1.d, p0/z, z1.d, z2.d\nmov z0.d, p1/m, x0\nret",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x i64> %a, i64 %bs) {\n  %r = insertelement <vscale x 2 x i64> %a, i64 %bs, i32 1\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x i64> %a, i64 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
  },
@@ -34299,8 +34299,8 @@
   "sizelat": 2,
   "size": 5,
   "gisize": 5,
-  "asm": "index z1.d, #0, #1\nmov w8, w1\nptrue p0.d\nmov z2.d, x8\ncmpeq p0.d, p0/z, z1.d, z2.d\nmov z0.d, p0/m, x0\nret",
-  "giasm": "index z1.d, #0, #1\nmov w8, w1\nptrue p0.d\nmov z2.d, x8\ncmpeq p0.d, p0/z, z1.d, z2.d\nmov z0.d, p0/m, x0\nret",
+  "asm": "index z1.d, #0, #1\nmov w8, w1\nptrue p0.d\nmov z2.d, x8\ncmpeq p1.d, p0/z, z1.d, z2.d\nmov z0.d, p1/m, x0\nret",
+  "giasm": "index z1.d, #0, #1\nmov w8, w1\nptrue p0.d\nmov z2.d, x8\ncmpeq p1.d, p0/z, z1.d, z2.d\nmov z0.d, p1/m, x0\nret",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x i64> %a, i64 %bs, i32 %c) {\n  %r = insertelement <vscale x 2 x i64> %a, i64 %bs, i32 %c\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x i64> %a, i64 %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
  },
@@ -34329,7 +34329,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.d, p0/m, x0\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.d, p1/m, x0\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(<vscale x 4 x s64>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s64), %5:_(s64) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x i64> %a, i64 %bs) {\n  %r = insertelement <vscale x 4 x i64> %a, i64 %bs, i32 1\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x i64> %a, i64 %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -34854,7 +34854,7 @@
   "sizelat": 0,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, wzr\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.h, p0/m, h1\nret",
+  "asm": "mov w8, wzr\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<vscale x 4 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %3:_(s64) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, half %bs) {\n  %r = insertelement <vscale x 4 x half> %a, half %bs, i32 0\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = insertelement <vscale x 4 x half> %a, half %bs, i32 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
@@ -34869,7 +34869,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.h, p0/m, h1\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<vscale x 4 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %3:_(s64) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, half %bs) {\n  %r = insertelement <vscale x 4 x half> %a, half %bs, i32 1\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x half> %a, half %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
@@ -34884,7 +34884,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "index z2.s, #0, #1\nmov w8, w0\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.h, p0/m, h1\nret",
+  "asm": "index z2.s, #0, #1\nmov w8, w0\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 4 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %4:_(s64) (in function: test)",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x half> %a, half %bs, i32 %c) {\n  %r = insertelement <vscale x 4 x half> %a, half %bs, i32 %c\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x half> %a, half %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
@@ -34914,7 +34914,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.h, #0, #1\nptrue p0.h\nmov z3.h, w8\ncmpeq p0.h, p0/z, z2.h, z3.h\nmov z0.h, p0/m, h1\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.h, #0, #1\nptrue p0.h\nmov z3.h, w8\ncmpeq p1.h, p0/z, z2.h, z3.h\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<vscale x 8 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %3:_(s64) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, half %bs) {\n  %r = insertelement <vscale x 8 x half> %a, half %bs, i32 1\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x half> %a, half %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x half> %r"
@@ -34929,7 +34929,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "index z2.h, #0, #1\nmov w8, w0\nptrue p0.h\nmov z3.h, w8\ncmpeq p0.h, p0/z, z2.h, z3.h\nmov z0.h, p0/m, h1\nret",
+  "asm": "index z2.h, #0, #1\nmov w8, w0\nptrue p0.h\nmov z3.h, w8\ncmpeq p1.h, p0/z, z2.h, z3.h\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 8 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %4:_(s64) (in function: test)",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x half> %a, half %bs, i32 %c) {\n  %r = insertelement <vscale x 8 x half> %a, half %bs, i32 %c\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x half> %a, half %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x half> %r"
@@ -34959,7 +34959,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z3.h, #0, #1\nptrue p0.h\nmov z4.h, w8\ncmpeq p0.h, p0/z, z3.h, z4.h\nmov z0.h, p0/m, h2\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z3.h, #0, #1\nptrue p0.h\nmov z4.h, w8\ncmpeq p1.h, p0/z, z3.h, z4.h\nmov z0.h, p1/m, h2\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(<vscale x 16 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %5:_(s64) (in function: test)",
   "ll": "define <vscale x 16 x half> @test(<vscale x 16 x half> %a, half %bs) {\n  %r = insertelement <vscale x 16 x half> %a, half %bs, i32 1\n  ret <vscale x 16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 16 x half> %a, half %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x half> %r"
@@ -34989,7 +34989,7 @@
   "sizelat": 0,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, wzr\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.h, p0/m, h1\nret",
+  "asm": "mov w8, wzr\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<vscale x 4 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %3:_(s64) (in function: test)",
   "ll": "define <vscale x 4 x bfloat> @test(<vscale x 4 x bfloat> %a, bfloat %bs) {\n  %r = insertelement <vscale x 4 x bfloat> %a, bfloat %bs, i32 0\n  ret <vscale x 4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = insertelement <vscale x 4 x bfloat> %a, bfloat %bs, i32 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x bfloat> %r"
@@ -35004,7 +35004,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.h, p0/m, h1\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<vscale x 4 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %3:_(s64) (in function: test)",
   "ll": "define <vscale x 4 x bfloat> @test(<vscale x 4 x bfloat> %a, bfloat %bs) {\n  %r = insertelement <vscale x 4 x bfloat> %a, bfloat %bs, i32 1\n  ret <vscale x 4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x bfloat> %a, bfloat %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x bfloat> %r"
@@ -35019,7 +35019,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "index z2.s, #0, #1\nmov w8, w0\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.h, p0/m, h1\nret",
+  "asm": "index z2.s, #0, #1\nmov w8, w0\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 4 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %4:_(s64) (in function: test)",
   "ll": "define <vscale x 4 x bfloat> @test(<vscale x 4 x bfloat> %a, bfloat %bs, i32 %c) {\n  %r = insertelement <vscale x 4 x bfloat> %a, bfloat %bs, i32 %c\n  ret <vscale x 4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x bfloat> %a, bfloat %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x bfloat> %r"
@@ -35049,7 +35049,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.h, #0, #1\nptrue p0.h\nmov z3.h, w8\ncmpeq p0.h, p0/z, z2.h, z3.h\nmov z0.h, p0/m, h1\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.h, #0, #1\nptrue p0.h\nmov z3.h, w8\ncmpeq p1.h, p0/z, z2.h, z3.h\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<vscale x 8 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %3:_(s64) (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, bfloat %bs) {\n  %r = insertelement <vscale x 8 x bfloat> %a, bfloat %bs, i32 1\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x bfloat> %a, bfloat %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -35064,7 +35064,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "index z2.h, #0, #1\nmov w8, w0\nptrue p0.h\nmov z3.h, w8\ncmpeq p0.h, p0/z, z2.h, z3.h\nmov z0.h, p0/m, h1\nret",
+  "asm": "index z2.h, #0, #1\nmov w8, w0\nptrue p0.h\nmov z3.h, w8\ncmpeq p1.h, p0/z, z2.h, z3.h\nmov z0.h, p1/m, h1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 8 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %4:_(s64) (in function: test)",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x bfloat> %a, bfloat %bs, i32 %c) {\n  %r = insertelement <vscale x 8 x bfloat> %a, bfloat %bs, i32 %c\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x bfloat> %a, bfloat %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
@@ -35094,7 +35094,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z3.h, #0, #1\nptrue p0.h\nmov z4.h, w8\ncmpeq p0.h, p0/z, z3.h, z4.h\nmov z0.h, p0/m, h2\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z3.h, #0, #1\nptrue p0.h\nmov z4.h, w8\ncmpeq p1.h, p0/z, z3.h, z4.h\nmov z0.h, p1/m, h2\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(<vscale x 16 x s16>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s16), %5:_(s64) (in function: test)",
   "ll": "define <vscale x 16 x bfloat> @test(<vscale x 16 x bfloat> %a, bfloat %bs) {\n  %r = insertelement <vscale x 16 x bfloat> %a, bfloat %bs, i32 1\n  ret <vscale x 16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 16 x bfloat> %a, bfloat %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x bfloat> %r"
@@ -35124,7 +35124,7 @@
   "sizelat": 0,
   "size": 5,
   "gisize": -2,
-  "asm": "mov x8, xzr\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.s, p0/m, s1\nret",
+  "asm": "mov x8, xzr\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.s, p1/m, s1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<vscale x 2 x s32>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s32), %3:_(s64) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, float %bs) {\n  %r = insertelement <vscale x 2 x float> %a, float %bs, i32 0\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = insertelement <vscale x 2 x float> %a, float %bs, i32 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
@@ -35139,7 +35139,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.s, p0/m, s1\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.s, p1/m, s1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<vscale x 2 x s32>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s32), %3:_(s64) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, float %bs) {\n  %r = insertelement <vscale x 2 x float> %a, float %bs, i32 1\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x float> %a, float %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
@@ -35154,7 +35154,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "index z2.d, #0, #1\nmov w8, w0\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.s, p0/m, s1\nret",
+  "asm": "index z2.d, #0, #1\nmov w8, w0\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.s, p1/m, s1\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 2 x s32>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s32), %4:_(s64) (in function: test)",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x float> %a, float %bs, i32 %c) {\n  %r = insertelement <vscale x 2 x float> %a, float %bs, i32 %c\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x float> %a, float %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
@@ -35170,7 +35170,7 @@
   "size": 1,
   "gisize": 5,
   "asm": "ptrue p0.s, vl1\nmov z0.s, p0/m, z1.s\nret",
-  "giasm": "mov w8, wzr\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.s, p0/m, s1\nret",
+  "giasm": "mov w8, wzr\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.s, p1/m, s1\nret",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, float %bs) {\n  %r = insertelement <vscale x 4 x float> %a, float %bs, i32 0\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = insertelement <vscale x 4 x float> %a, float %bs, i32 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
  },
@@ -35184,8 +35184,8 @@
   "sizelat": 2,
   "size": 5,
   "gisize": 5,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.s, p0/m, s1\nret",
-  "giasm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.s, p0/m, s1\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.s, p1/m, s1\nret",
+  "giasm": "mov w8, #1                          // =0x1\nindex z2.s, #0, #1\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.s, p1/m, s1\nret",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, float %bs) {\n  %r = insertelement <vscale x 4 x float> %a, float %bs, i32 1\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x float> %a, float %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
  },
@@ -35199,8 +35199,8 @@
   "sizelat": 2,
   "size": 5,
   "gisize": 5,
-  "asm": "index z2.s, #0, #1\nmov w8, w0\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.s, p0/m, s1\nret",
-  "giasm": "index z2.s, #0, #1\nmov w8, w0\nptrue p0.s\nmov z3.s, w8\ncmpeq p0.s, p0/z, z2.s, z3.s\nmov z0.s, p0/m, s1\nret",
+  "asm": "index z2.s, #0, #1\nmov w8, w0\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.s, p1/m, s1\nret",
+  "giasm": "index z2.s, #0, #1\nmov w8, w0\nptrue p0.s\nmov z3.s, w8\ncmpeq p1.s, p0/z, z2.s, z3.s\nmov z0.s, p1/m, s1\nret",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x float> %a, float %bs, i32 %c) {\n  %r = insertelement <vscale x 4 x float> %a, float %bs, i32 %c\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x float> %a, float %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
  },
@@ -35229,7 +35229,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z3.s, #0, #1\nptrue p0.s\nmov z4.s, w8\ncmpeq p0.s, p0/z, z3.s, z4.s\nmov z0.s, p0/m, s2\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z3.s, #0, #1\nptrue p0.s\nmov z4.s, w8\ncmpeq p1.s, p0/z, z3.s, z4.s\nmov z0.s, p1/m, s2\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(<vscale x 8 x s32>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s32), %5:_(s64) (in function: test)",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x float> %a, float %bs) {\n  %r = insertelement <vscale x 8 x float> %a, float %bs, i32 1\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 8 x float> %a, float %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x float> %r"
@@ -35260,7 +35260,7 @@
   "size": 1,
   "gisize": 5,
   "asm": "ptrue p0.d, vl1\nmov z0.d, p0/m, z1.d\nret",
-  "giasm": "mov x8, xzr\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.d, p0/m, d1\nret",
+  "giasm": "mov x8, xzr\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.d, p1/m, d1\nret",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, double %bs) {\n  %r = insertelement <vscale x 2 x double> %a, double %bs, i32 0\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = insertelement <vscale x 2 x double> %a, double %bs, i32 0\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -35274,8 +35274,8 @@
   "sizelat": 2,
   "size": 5,
   "gisize": 5,
-  "asm": "mov w8, #1                          // =0x1\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.d, p0/m, d1\nret",
-  "giasm": "mov w8, #1                          // =0x1\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.d, p0/m, d1\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.d, p1/m, d1\nret",
+  "giasm": "mov w8, #1                          // =0x1\nindex z2.d, #0, #1\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.d, p1/m, d1\nret",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, double %bs) {\n  %r = insertelement <vscale x 2 x double> %a, double %bs, i32 1\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x double> %a, double %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -35289,8 +35289,8 @@
   "sizelat": 2,
   "size": 5,
   "gisize": 5,
-  "asm": "index z2.d, #0, #1\nmov w8, w0\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.d, p0/m, d1\nret",
-  "giasm": "index z2.d, #0, #1\nmov w8, w0\nptrue p0.d\nmov z3.d, x8\ncmpeq p0.d, p0/z, z2.d, z3.d\nmov z0.d, p0/m, d1\nret",
+  "asm": "index z2.d, #0, #1\nmov w8, w0\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.d, p1/m, d1\nret",
+  "giasm": "index z2.d, #0, #1\nmov w8, w0\nptrue p0.d\nmov z3.d, x8\ncmpeq p1.d, p0/z, z2.d, z3.d\nmov z0.d, p1/m, d1\nret",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x double> %a, double %bs, i32 %c) {\n  %r = insertelement <vscale x 2 x double> %a, double %bs, i32 %c\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 2 x double> %a, double %bs, i32 %c\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -35319,7 +35319,7 @@
   "sizelat": 2,
   "size": 5,
   "gisize": -2,
-  "asm": "mov w8, #1                          // =0x1\nindex z3.d, #0, #1\nptrue p0.d\nmov z4.d, x8\ncmpeq p0.d, p0/z, z3.d, z4.d\nmov z0.d, p0/m, d2\nret",
+  "asm": "mov w8, #1                          // =0x1\nindex z3.d, #0, #1\nptrue p0.d\nmov z4.d, x8\ncmpeq p1.d, p0/z, z3.d, z4.d\nmov z0.d, p1/m, d2\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(<vscale x 4 x s64>) = G_INSERT_VECTOR_ELT %0:_, %1:_(s64), %5:_(s64) (in function: test)",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x double> %a, double %bs) {\n  %r = insertelement <vscale x 4 x double> %a, double %bs, i32 1\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %r = insertelement <vscale x 4 x double> %a, double %bs, i32 1\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
