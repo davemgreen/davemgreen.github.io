@@ -35,7 +35,7 @@ def parseCostLine(line):
   return [cost, cost, cost, cost]
 def getcost(path):
   try:
-    text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind=all -disable-output")
+    text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.attr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind=all -disable-output")
   except subprocess.CalledProcessError as e:
     shutil.copyfile(os.path.join(path, 'costtest.ll'), 'costtest.ll')
     return (-1, -1, -1, -1, str(e))
@@ -51,7 +51,7 @@ def getcost(path):
 
 def getasm(path, extraflags):
   try:
-    run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} {extraflags} {os.path.join(path, 'costtest.ll')} -o {os.path.join(path, 'costtest.s')}")
+    run(f"llc {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.attr if args.mattr else ''} {extraflags} {os.path.join(path, 'costtest.ll')} -o {os.path.join(path, 'costtest.s')}")
   except subprocess.CalledProcessError as e:
     lines = [e.output.decode('utf-8').split('\n')[0]]
     lines = [re.sub(r'llc: /.*/llvm', 'llc: llvm', l) for l in lines]
@@ -90,7 +90,7 @@ def checkcosts(llasm):
 
   # TODOD:
   #if args.checkopted:
-  #  run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.mattr if args.mattr else ''} costtest.ll -O1 -S -o -")
+  #  run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.attr if args.mattr else ''} costtest.ll -O1 -S -o -")
 
 
 def generate_const(ty, sameval):
@@ -270,7 +270,7 @@ def inttypes(lowsizes = False, highsizes = False):
   for bits in [8, 16, 32, 64]:
     yield Ty('i'+str(bits))
   for scalable in [0,1]:
-    if scalable == 1 and (not args.mattr or 'sve' not in args.mattr):
+    if scalable == 1 and (not args.mattr or 'sve' not in args.attr):
       continue
     for bits in [8, 16, 32, 64]:
       for s in [2, 4, 8, 16, 32]:
@@ -285,7 +285,7 @@ def fptypes(lowsizes = False, highsizes = False):
   for bits in ['half', 'bfloat', 'float', 'double']:
     yield Ty(bits)
   for scalable in [0,1]:
-    if scalable == 1 and (not args.mattr or 'sve' not in args.mattr):
+    if scalable == 1 and (not args.mattr or 'sve' not in args.attr):
       continue
     for bits in ['half', 'bfloat', 'float', 'double']:
       for s in [2, 4, 8, 16, 32]:
@@ -302,6 +302,10 @@ parser.add_argument('-mattr', default=None)
 parser.add_argument('-vscale', default=None)
 #parser.add_argument('--checkopted', action='store_true')
 args = parser.parse_args()
+
+args.attr = args.mattr
+if args.attr == 'all':
+  args.attr = '+aes,+altnzcv,+am,+amvs,+bf16,+brbe,+bti,+btie,+ccdp,+ccidx,+ccpp,+chk,+clrbhb,+cmpbr,+complxnum,+cpa,+crc,+crypto,+cssc,+d128,+dit,+dotprod,+ecv,+ete,+f16f32dot,+f16f32mm,+f16mm,+f32mm,+f64mm,+f8f16mm,+f8f32mm,+faminmax,+fgt,+flagm,+fp-armv8,+fp16fml,+fp8,+fp8dot2,+fp8dot4,+fp8fma,+fpac,+fprcvt,+fptoint,+fullfp16,+gcie,+gcs,+hbc,+hcx,+i8mm,+ite,+jsconv,+lor,+ls64,+lscp,+lse,+lse128,+lse2,+lsfe,+lsui,+lut,+mec,+mops,+mops-go,+mpam,+mpamv2,+mte,+mtetc,+neon,+nmi,+nv,+occmo,+pan,+pan-rwv,+pauth,+pauth-lr,+perfmon,+poe2,+pops,+predres,+prfm-slc-target,+rand,+ras,+rasv2,+rcpc,+rcpc-immo,+rcpc3,+rdm,+rme,+sb,+sel2,+sha2,+sha3,+sm4,+sme,+sme-b16b16,+sme-f16f16,+sme-f64f64,+sme-f8f16,+sme-f8f32,+sme-fa64,+sme-i16i64,+sme-lutv2,+sme-mop4,+sme-tmop,+sme2,+sme2p1,+sme2p2,+sme2p3,+spe,+spe-eef,+specres2,+specrestrict,+ssbs,+ssve-aes,+ssve-bitperm,+ssve-fexpa,+ssve-fp8dot2,+ssve-fp8dot4,+ssve-fp8fma,+sve,+sve-aes,+sve-aes2,+sve-b16b16,+sve-b16mm,+sve-bfscale,+sve-bitperm,+sve-f16f32mm,+sve-sha3,+sve-sm4,+sve2,+sve2-aes,+sve2-bitperm,+sve2-sha3,+sve2-sm4,+sve2p1,+sve2p2,+sve2p3,+tagged-globals,+tev,+the,+tlb-rmi,+tlbid,+tlbiw,+tpidr-el1,+tpidr-el2,+tpidr-el3,+tpidrro-el0,+tracev8.4,+trbe,+uaops,+v8.1a,+v8.2a,+v8.3a,+v8.4a,+v8.5a,+v8.6a,+v8.7a,+v8.8a,+v8.9a,+v9.1a,+v9.2a,+v9.3a,+v9.4a,+v9.5a,+v9.6a,+v9.7a,+v9a,+vh,+wfxt,+xs'
 
 def getFileName(mid):
   return f"data-{mid}{'-'+args.mattr if args.mattr else ''}{'-'+str(128*int(args.vscale)) if args.vscale else ''}.json"
