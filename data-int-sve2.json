@@ -19988,9 +19988,9 @@
   "lat": 5,
   "sizelat": 5,
   "size": 3,
-  "gisize": 4,
+  "gisize": 5,
   "asm": "fmov s0, w0\nptrue p0.s\ncnt z0.s, p0/m, z0.s\nfmov w0, s0\nret",
-  "giasm": "fmov s0, w0\ncnt v0.8b, v0.8b\nuaddlv h0, v0.8b\nfmov w0, s0\nret",
+  "giasm": "mov w8, w0\nfmov d0, x8\ncnt v0.8b, v0.8b\nuaddlv h0, v0.8b\nfmov w0, s0\nret",
   "ll": "define i32 @test(i32 %a) {\n  %r = call i32 @llvm.ctpop(i32 %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call i32 @llvm.ctpop.i32(i32 %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
