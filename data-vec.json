@@ -1960,7 +1960,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "dup v0.8b, v0.b[0]\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(s16) = G_MERGE_VALUES %33:_(s8), %33:_(s8) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(i16) = G_MERGE_VALUES %33:_(i8), %33:_(i8) (in function: test)",
   "ll": "define <8 x i8> @test(<2 x i8> %a) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> poison, <8 x i32> <i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i8> %a, <2 x i8> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
  },
@@ -2035,7 +2035,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "dup v0.16b, v0.b[0]\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(s16) = G_MERGE_VALUES %41:_(s8), %41:_(s8) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(i16) = G_MERGE_VALUES %41:_(i8), %41:_(i8) (in function: test)",
   "ll": "define <16 x i8> @test(<2 x i8> %a) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> poison, <16 x i32> <i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0>\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i8> %a, <2 x i8> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
  },
@@ -2110,7 +2110,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "dup v0.16b, v0.b[0]\nmov v1.16b, v0.16b\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %35:_(s16) = G_MERGE_VALUES %41:_(s8), %41:_(s8) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %35:_(i16) = G_MERGE_VALUES %41:_(i8), %41:_(i8) (in function: test)",
   "ll": "define <32 x i8> @test(<2 x i8> %a) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> poison, <32 x i32> <i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0>\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i8> %a, <2 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
@@ -4960,7 +4960,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "dup v0.8b, v0.b[4]\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(s16) = G_MERGE_VALUES %33:_(s8), %33:_(s8) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(i16) = G_MERGE_VALUES %33:_(i8), %33:_(i8) (in function: test)",
   "ll": "define <8 x i8> @test(<2 x i8> %a) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> poison, <8 x i32> <i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i8> %a, <2 x i8> poison, <8 x i32> <i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
  },
@@ -5035,7 +5035,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "dup v0.16b, v0.b[4]\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(s16) = G_MERGE_VALUES %41:_(s8), %41:_(s8) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(i16) = G_MERGE_VALUES %41:_(i8), %41:_(i8) (in function: test)",
   "ll": "define <16 x i8> @test(<2 x i8> %a) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> poison, <16 x i32> <i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1>\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i8> %a, <2 x i8> poison, <16 x i32> <i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
  },
@@ -5110,7 +5110,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "dup v0.16b, v0.b[4]\nmov v1.16b, v0.16b\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %35:_(s16) = G_MERGE_VALUES %41:_(s8), %41:_(s8) (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %35:_(i16) = G_MERGE_VALUES %41:_(i8), %41:_(i8) (in function: test)",
   "ll": "define <32 x i8> @test(<2 x i8> %a) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> poison, <32 x i32> <i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1>\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i8> %a, <2 x i8> poison, <32 x i32> <i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },

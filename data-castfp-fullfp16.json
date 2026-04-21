@@ -70,7 +70,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i8 @test(bfloat %a) {\n  %r = fptosi bfloat %a to i8\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi bfloat %a to i8\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -85,7 +85,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i16 @test(bfloat %a) {\n  %r = fptosi bfloat %a to i16\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi bfloat %a to i16\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -100,7 +100,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = fptosi bfloat %a to i32\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi bfloat %a to i32\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -115,7 +115,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs x0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(s64) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = fptosi bfloat %a to i64\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi bfloat %a to i64\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -490,7 +490,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(<4 x i16>) = G_FPTOSI %9:_(<4 x bf16>) (in function: test)",
   "ll": "define <2 x i8> @test(<2 x bfloat> %a) {\n  %r = fptosi <2 x bfloat> %a to <2 x i8>\n  ret <2 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi <2 x bfloat> %a to <2 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i8> %r"
  },
@@ -505,7 +505,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(<4 x i16>) = G_FPTOSI %8:_(<4 x bf16>) (in function: test)",
   "ll": "define <2 x i16> @test(<2 x bfloat> %a) {\n  %r = fptosi <2 x bfloat> %a to <2 x i16>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi <2 x bfloat> %a to <2 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -520,7 +520,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(s32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <2 x i32> @test(<2 x bfloat> %a) {\n  %r = fptosi <2 x bfloat> %a to <2 x i32>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi <2 x bfloat> %a to <2 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
  },
@@ -535,7 +535,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfcvtzs x8, s0\nfcvtzs x9, s1\nfmov d0, x8\nmov v0.d[1], x9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(f32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <2 x i64> @test(<2 x bfloat> %a) {\n  %r = fptosi <2 x bfloat> %a to <2 x i64>\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:6 Lat:10 SizeLat:10 for:   %r = fptosi <2 x bfloat> %a to <2 x i64>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
  },
@@ -550,7 +550,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nxtn v0.4h, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<4 x i16>) = G_FPTOSI %0:_(<4 x bf16>) (in function: test)",
   "ll": "define <4 x i8> @test(<4 x bfloat> %a) {\n  %r = fptosi <4 x bfloat> %a to <4 x i8>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi <4 x bfloat> %a to <4 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -565,7 +565,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nxtn v0.4h, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x i16>) = G_FPTOSI %0:_(<4 x bf16>) (in function: test)",
   "ll": "define <4 x i16> @test(<4 x bfloat> %a) {\n  %r = fptosi <4 x bfloat> %a to <4 x i16>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi <4 x bfloat> %a to <4 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
  },
@@ -580,7 +580,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(s32) = G_FPEXT %6:_(bf16) (in function: test)",
   "ll": "define <4 x i32> @test(<4 x bfloat> %a) {\n  %r = fptosi <4 x bfloat> %a to <4 x i32>\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:20 CodeSize:12 Lat:20 SizeLat:20 for:   %r = fptosi <4 x bfloat> %a to <4 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
  },
@@ -595,7 +595,7 @@
   "size": 15,
   "gisize": -2,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nshll v2.4s, v2.4h, #16\nshll v3.4s, v3.4h, #16\nfcvtzs x8, s0\nfcvtzs x9, s1\nfcvtzs x10, s2\nfcvtzs x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(f32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x bfloat> %a) {\n  %r = fptosi <4 x bfloat> %a to <4 x i64>\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:21 CodeSize:13 Lat:21 SizeLat:21 for:   %r = fptosi <4 x bfloat> %a to <4 x i64>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -610,7 +610,7 @@
   "size": 6,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzs v1.4s, v1.4s\nfcvtzs v0.4s, v0.4s\nuzp1 v0.8h, v0.8h, v1.8h\nxtn v0.8b, v0.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<8 x i16>) = G_FPTOSI %0:_(<8 x bf16>) (in function: test)",
   "ll": "define <8 x i8> @test(<8 x bfloat> %a) {\n  %r = fptosi <8 x bfloat> %a to <8 x i8>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:40 CodeSize:24 Lat:40 SizeLat:40 for:   %r = fptosi <8 x bfloat> %a to <8 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
  },
@@ -625,7 +625,7 @@
   "size": 5,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzs v1.4s, v1.4s\nfcvtzs v0.4s, v0.4s\nuzp1 v0.8h, v0.8h, v1.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x i16>) = G_FPTOSI %0:_(<8 x bf16>) (in function: test)",
   "ll": "define <8 x i16> @test(<8 x bfloat> %a) {\n  %r = fptosi <8 x bfloat> %a to <8 x i16>\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi <8 x bfloat> %a to <8 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
  },
@@ -640,7 +640,7 @@
   "size": 4,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzs v1.4s, v1.4s\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %20:_(s32) = G_FPEXT %16:_(bf16) (in function: test)",
   "ll": "define <8 x i32> @test(<8 x bfloat> %a) {\n  %r = fptosi <8 x bfloat> %a to <8 x i32>\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:41 CodeSize:25 Lat:41 SizeLat:41 for:   %r = fptosi <8 x bfloat> %a to <8 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
@@ -655,7 +655,7 @@
   "size": 31,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nshll v0.4s, v0.4h, #16\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nshll v1.4s, v1.4h, #16\nshll v4.4s, v4.4h, #16\nshll v3.4s, v3.4h, #16\nshll v7.4s, v7.4h, #16\nfcvtzs x9, s0\nshll v2.4s, v2.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfcvtzs x8, s1\nfcvtzs x12, s4\nfcvtzs x11, s3\nfcvtzs x15, s7\nfmov d0, x9\nfcvtzs x10, s2\nfcvtzs x13, s5\nfcvtzs x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %35:_(f32) = G_FPEXT %31:_(bf16) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x bfloat> %a) {\n  %r = fptosi <8 x bfloat> %a to <8 x i64>\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:43 CodeSize:27 Lat:43 SizeLat:43 for:   %r = fptosi <8 x bfloat> %a to <8 x i64>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -670,7 +670,7 @@
   "size": 11,
   "gisize": -2,
   "asm": "shll2 v2.4s, v1.8h, #16\nshll v1.4s, v1.4h, #16\nshll2 v3.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzs v2.4s, v2.4s\nfcvtzs v1.4s, v1.4s\nfcvtzs v3.4s, v3.4s\nfcvtzs v0.4s, v0.4s\nuzp1 v1.8h, v1.8h, v2.8h\nuzp1 v0.8h, v0.8h, v3.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %8:_(<8 x i16>) = G_FPTOSI %6:_(<8 x bf16>) (in function: test)",
   "ll": "define <16 x i8> @test(<16 x bfloat> %a) {\n  %r = fptosi <16 x bfloat> %a to <16 x i8>\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:81 CodeSize:49 Lat:81 SizeLat:81 for:   %r = fptosi <16 x bfloat> %a to <16 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
  },
@@ -685,7 +685,7 @@
   "size": 10,
   "gisize": -2,
   "asm": "shll2 v2.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nshll2 v3.4s, v1.8h, #16\nshll v1.4s, v1.4h, #16\nfcvtzs v2.4s, v2.4s\nfcvtzs v0.4s, v0.4s\nfcvtzs v3.4s, v3.4s\nfcvtzs v1.4s, v1.4s\nuzp1 v0.8h, v0.8h, v2.8h\nuzp1 v1.8h, v1.8h, v3.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(<8 x i16>) = G_FPTOSI %7:_(<8 x bf16>) (in function: test)",
   "ll": "define <16 x i16> @test(<16 x bfloat> %a) {\n  %r = fptosi <16 x bfloat> %a to <16 x i16>\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = fptosi <16 x bfloat> %a to <16 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
@@ -700,7 +700,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "shll v2.4s, v0.4h, #16\nshll2 v3.4s, v0.8h, #16\nshll2 v4.4s, v1.8h, #16\nshll v5.4s, v1.4h, #16\nfcvtzs v0.4s, v2.4s\nfcvtzs v1.4s, v3.4s\nfcvtzs v3.4s, v4.4s\nfcvtzs v2.4s, v5.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %32:_(s32) = G_FPEXT %28:_(bf16) (in function: test)",
   "ll": "define <16 x i32> @test(<16 x bfloat> %a) {\n  %r = fptosi <16 x bfloat> %a to <16 x i32>\n  ret <16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:82 CodeSize:50 Lat:82 SizeLat:82 for:   %r = fptosi <16 x bfloat> %a to <16 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i32> %r"
  },
@@ -715,7 +715,7 @@
   "size": 62,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[1]\next v3.16b, v1.16b, v1.16b, #8\nshll v6.4s, v0.4h, #16\nmov h18, v0.h[2]\nmov h0, v0.h[3]\nmov h5, v2.h[1]\nmov h16, v2.h[2]\nshll v4.4s, v4.4h, #16\nmov h19, v3.h[2]\nshll v7.4s, v2.4h, #16\nshll v17.4s, v3.4h, #16\nfcvtzs x8, s6\nshll v0.4s, v0.4h, #16\nfcvtzs x11, s4\nmov h4, v1.h[2]\nshll v5.4s, v5.4h, #16\nshll v6.4s, v16.4h, #16\nfcvtzs x9, s7\nfcvtzs x10, s17\nshll v7.4s, v1.4h, #16\nshll v16.4s, v18.4h, #16\nshll v17.4s, v19.4h, #16\nmov h18, v2.h[3]\nmov h19, v3.h[3]\nfcvtzs x12, s5\nmov h5, v1.h[1]\nfcvtzs x13, s6\nmov h6, v3.h[1]\nmov h1, v1.h[3]\nshll v4.4s, v4.4h, #16\nfcvtzs x14, s17\nfcvtzs x15, s16\nfmov d2, x9\nfcvtzs x9, s7\nshll v16.4s, v18.4h, #16\nshll v18.4s, v19.4h, #16\nshll v5.4s, v5.4h, #16\nfmov d3, x13\nfcvtzs x13, s0\nshll v17.4s, v6.4h, #16\nshll v1.4s, v1.4h, #16\nfmov d6, x10\nfcvtzs x10, s4\nfmov d7, x14\nfcvtzs x14, s16\nfcvtzs x16, s5\nfcvtzs x18, s18\nfmov d0, x8\nfcvtzs x17, s17\nfcvtzs x0, s1\nfmov d1, x15\nfmov d4, x9\nmov v2.d[1], x12\nfmov d5, x10\nmov v0.d[1], x11\nmov v3.d[1], x14\nmov v1.d[1], x13\nmov v7.d[1], x18\nmov v4.d[1], x16\nmov v6.d[1], x17\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptosi (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %61:_(f32) = G_FPEXT %57:_(bf16) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x bfloat> %a) {\n  %r = fptosi <16 x bfloat> %a to <16 x i64>\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:86 CodeSize:54 Lat:86 SizeLat:86 for:   %r = fptosi <16 x bfloat> %a to <16 x i64>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -1090,7 +1090,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i8 @test(bfloat %a) {\n  %r = fptoui bfloat %a to i8\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui bfloat %a to i8\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -1105,7 +1105,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %4:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i16 @test(bfloat %a) {\n  %r = fptoui bfloat %a to i16\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui bfloat %a to i16\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -1120,7 +1120,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = fptoui bfloat %a to i32\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui bfloat %a to i32\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -1135,7 +1135,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu x0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(s64) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = fptoui bfloat %a to i64\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui bfloat %a to i64\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -1510,7 +1510,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(<4 x i16>) = G_FPTOUI %9:_(<4 x bf16>) (in function: test)",
   "ll": "define <2 x i8> @test(<2 x bfloat> %a) {\n  %r = fptoui <2 x bfloat> %a to <2 x i8>\n  ret <2 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui <2 x bfloat> %a to <2 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i8> %r"
  },
@@ -1525,7 +1525,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(<4 x i16>) = G_FPTOUI %8:_(<4 x bf16>) (in function: test)",
   "ll": "define <2 x i16> @test(<2 x bfloat> %a) {\n  %r = fptoui <2 x bfloat> %a to <2 x i16>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui <2 x bfloat> %a to <2 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -1540,7 +1540,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(s32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <2 x i32> @test(<2 x bfloat> %a) {\n  %r = fptoui <2 x bfloat> %a to <2 x i32>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui <2 x bfloat> %a to <2 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
  },
@@ -1555,7 +1555,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfcvtzu x8, s0\nfcvtzu x9, s1\nfmov d0, x8\nmov v0.d[1], x9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(f32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <2 x i64> @test(<2 x bfloat> %a) {\n  %r = fptoui <2 x bfloat> %a to <2 x i64>\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:6 Lat:10 SizeLat:10 for:   %r = fptoui <2 x bfloat> %a to <2 x i64>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
  },
@@ -1570,7 +1570,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nxtn v0.4h, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<4 x i16>) = G_FPTOUI %0:_(<4 x bf16>) (in function: test)",
   "ll": "define <4 x i8> @test(<4 x bfloat> %a) {\n  %r = fptoui <4 x bfloat> %a to <4 x i8>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui <4 x bfloat> %a to <4 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -1585,7 +1585,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu v0.4s, v0.4s\nxtn v0.4h, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x i16>) = G_FPTOUI %0:_(<4 x bf16>) (in function: test)",
   "ll": "define <4 x i16> @test(<4 x bfloat> %a) {\n  %r = fptoui <4 x bfloat> %a to <4 x i16>\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui <4 x bfloat> %a to <4 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
  },
@@ -1600,7 +1600,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(s32) = G_FPEXT %6:_(bf16) (in function: test)",
   "ll": "define <4 x i32> @test(<4 x bfloat> %a) {\n  %r = fptoui <4 x bfloat> %a to <4 x i32>\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:20 CodeSize:12 Lat:20 SizeLat:20 for:   %r = fptoui <4 x bfloat> %a to <4 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
  },
@@ -1615,7 +1615,7 @@
   "size": 15,
   "gisize": -2,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nshll v2.4s, v2.4h, #16\nshll v3.4s, v3.4h, #16\nfcvtzu x8, s0\nfcvtzu x9, s1\nfcvtzu x10, s2\nfcvtzu x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(f32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x bfloat> %a) {\n  %r = fptoui <4 x bfloat> %a to <4 x i64>\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:21 CodeSize:13 Lat:21 SizeLat:21 for:   %r = fptoui <4 x bfloat> %a to <4 x i64>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -1630,7 +1630,7 @@
   "size": 6,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzu v1.4s, v1.4s\nfcvtzu v0.4s, v0.4s\nuzp1 v0.8h, v0.8h, v1.8h\nxtn v0.8b, v0.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<8 x i16>) = G_FPTOUI %0:_(<8 x bf16>) (in function: test)",
   "ll": "define <8 x i8> @test(<8 x bfloat> %a) {\n  %r = fptoui <8 x bfloat> %a to <8 x i8>\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:40 CodeSize:24 Lat:40 SizeLat:40 for:   %r = fptoui <8 x bfloat> %a to <8 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
  },
@@ -1645,7 +1645,7 @@
   "size": 5,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzu v1.4s, v1.4s\nfcvtzu v0.4s, v0.4s\nuzp1 v0.8h, v0.8h, v1.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x i16>) = G_FPTOUI %0:_(<8 x bf16>) (in function: test)",
   "ll": "define <8 x i16> @test(<8 x bfloat> %a) {\n  %r = fptoui <8 x bfloat> %a to <8 x i16>\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui <8 x bfloat> %a to <8 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
  },
@@ -1660,7 +1660,7 @@
   "size": 4,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzu v1.4s, v1.4s\nfcvtzu v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %20:_(s32) = G_FPEXT %16:_(bf16) (in function: test)",
   "ll": "define <8 x i32> @test(<8 x bfloat> %a) {\n  %r = fptoui <8 x bfloat> %a to <8 x i32>\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:41 CodeSize:25 Lat:41 SizeLat:41 for:   %r = fptoui <8 x bfloat> %a to <8 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
@@ -1675,7 +1675,7 @@
   "size": 31,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nshll v0.4s, v0.4h, #16\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nshll v1.4s, v1.4h, #16\nshll v4.4s, v4.4h, #16\nshll v3.4s, v3.4h, #16\nshll v7.4s, v7.4h, #16\nfcvtzu x9, s0\nshll v2.4s, v2.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfcvtzu x8, s1\nfcvtzu x12, s4\nfcvtzu x11, s3\nfcvtzu x15, s7\nfmov d0, x9\nfcvtzu x10, s2\nfcvtzu x13, s5\nfcvtzu x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %35:_(f32) = G_FPEXT %31:_(bf16) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x bfloat> %a) {\n  %r = fptoui <8 x bfloat> %a to <8 x i64>\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:43 CodeSize:27 Lat:43 SizeLat:43 for:   %r = fptoui <8 x bfloat> %a to <8 x i64>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -1690,7 +1690,7 @@
   "size": 11,
   "gisize": -2,
   "asm": "shll2 v2.4s, v1.8h, #16\nshll v1.4s, v1.4h, #16\nshll2 v3.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzu v2.4s, v2.4s\nfcvtzu v1.4s, v1.4s\nfcvtzu v3.4s, v3.4s\nfcvtzu v0.4s, v0.4s\nuzp1 v1.8h, v1.8h, v2.8h\nuzp1 v0.8h, v0.8h, v3.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %8:_(<8 x i16>) = G_FPTOUI %6:_(<8 x bf16>) (in function: test)",
   "ll": "define <16 x i8> @test(<16 x bfloat> %a) {\n  %r = fptoui <16 x bfloat> %a to <16 x i8>\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:81 CodeSize:49 Lat:81 SizeLat:81 for:   %r = fptoui <16 x bfloat> %a to <16 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
  },
@@ -1705,7 +1705,7 @@
   "size": 10,
   "gisize": -2,
   "asm": "shll2 v2.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nshll2 v3.4s, v1.8h, #16\nshll v1.4s, v1.4h, #16\nfcvtzu v2.4s, v2.4s\nfcvtzu v0.4s, v0.4s\nfcvtzu v3.4s, v3.4s\nfcvtzu v1.4s, v1.4s\nuzp1 v0.8h, v0.8h, v2.8h\nuzp1 v1.8h, v1.8h, v3.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(<8 x i16>) = G_FPTOUI %7:_(<8 x bf16>) (in function: test)",
   "ll": "define <16 x i16> @test(<16 x bfloat> %a) {\n  %r = fptoui <16 x bfloat> %a to <16 x i16>\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = fptoui <16 x bfloat> %a to <16 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
@@ -1720,7 +1720,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "shll v2.4s, v0.4h, #16\nshll2 v3.4s, v0.8h, #16\nshll2 v4.4s, v1.8h, #16\nshll v5.4s, v1.4h, #16\nfcvtzu v0.4s, v2.4s\nfcvtzu v1.4s, v3.4s\nfcvtzu v3.4s, v4.4s\nfcvtzu v2.4s, v5.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %32:_(s32) = G_FPEXT %28:_(bf16) (in function: test)",
   "ll": "define <16 x i32> @test(<16 x bfloat> %a) {\n  %r = fptoui <16 x bfloat> %a to <16 x i32>\n  ret <16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:82 CodeSize:50 Lat:82 SizeLat:82 for:   %r = fptoui <16 x bfloat> %a to <16 x i32>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i32> %r"
  },
@@ -1735,7 +1735,7 @@
   "size": 62,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[1]\next v3.16b, v1.16b, v1.16b, #8\nshll v6.4s, v0.4h, #16\nmov h18, v0.h[2]\nmov h0, v0.h[3]\nmov h5, v2.h[1]\nmov h16, v2.h[2]\nshll v4.4s, v4.4h, #16\nmov h19, v3.h[2]\nshll v7.4s, v2.4h, #16\nshll v17.4s, v3.4h, #16\nfcvtzu x8, s6\nshll v0.4s, v0.4h, #16\nfcvtzu x11, s4\nmov h4, v1.h[2]\nshll v5.4s, v5.4h, #16\nshll v6.4s, v16.4h, #16\nfcvtzu x9, s7\nfcvtzu x10, s17\nshll v7.4s, v1.4h, #16\nshll v16.4s, v18.4h, #16\nshll v17.4s, v19.4h, #16\nmov h18, v2.h[3]\nmov h19, v3.h[3]\nfcvtzu x12, s5\nmov h5, v1.h[1]\nfcvtzu x13, s6\nmov h6, v3.h[1]\nmov h1, v1.h[3]\nshll v4.4s, v4.4h, #16\nfcvtzu x14, s17\nfcvtzu x15, s16\nfmov d2, x9\nfcvtzu x9, s7\nshll v16.4s, v18.4h, #16\nshll v18.4s, v19.4h, #16\nshll v5.4s, v5.4h, #16\nfmov d3, x13\nfcvtzu x13, s0\nshll v17.4s, v6.4h, #16\nshll v1.4s, v1.4h, #16\nfmov d6, x10\nfcvtzu x10, s4\nfmov d7, x14\nfcvtzu x14, s16\nfcvtzu x16, s5\nfcvtzu x18, s18\nfmov d0, x8\nfcvtzu x17, s17\nfcvtzu x0, s1\nfmov d1, x15\nfmov d4, x9\nmov v2.d[1], x12\nfmov d5, x10\nmov v0.d[1], x11\nmov v3.d[1], x14\nmov v1.d[1], x13\nmov v7.d[1], x18\nmov v4.d[1], x16\nmov v6.d[1], x17\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptoui (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %61:_(f32) = G_FPEXT %57:_(bf16) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x bfloat> %a) {\n  %r = fptoui <16 x bfloat> %a to <16 x i64>\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:86 CodeSize:54 Lat:86 SizeLat:86 for:   %r = fptoui <16 x bfloat> %a to <16 x i64>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -2110,7 +2110,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "mov w8, #127                        // =0x7f\nshll v0.4s, v0.4h, #16\nfcvtzs w9, s0\ncmp w9, #127\ncsel w8, w9, w8, lt\nmov w9, #-128                       // =0xffffff80\ncmn w8, #128\ncsel w0, w8, w9, gt\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.i8.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %8:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i8 @test(bfloat %a) {\n  %r = call i8 @llvm.fptosi.sat(bfloat %a)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:7 Lat:8 SizeLat:7 for:   %r = call i8 @llvm.fptosi.sat.i8.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -2125,7 +2125,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "mov w9, #32767                      // =0x7fff\nshll v0.4s, v0.4h, #16\nfcvtzs w8, s0\ncmp w8, w9\ncsel w8, w8, w9, lt\nmov w9, #-32768                     // =0xffff8000\ncmn w8, #8, lsl #12                 // =32768\ncsel w0, w8, w9, gt\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.i16.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %8:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i16 @test(bfloat %a) {\n  %r = call i16 @llvm.fptosi.sat(bfloat %a)\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:7 Lat:8 SizeLat:7 for:   %r = call i16 @llvm.fptosi.sat.i16.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -2140,7 +2140,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.i32.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = call i32 @llvm.fptosi.sat(bfloat %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:7 Lat:8 SizeLat:7 for:   %r = call i32 @llvm.fptosi.sat.i32.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -2155,7 +2155,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs x0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.i64.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(s64) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = call i64 @llvm.fptosi.sat(bfloat %a)\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:7 Lat:8 SizeLat:7 for:   %r = call i64 @llvm.fptosi.sat.i64.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -2530,7 +2530,7 @@
   "size": 6,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nmovi v1.2s, #127\nfcvtzs v0.4s, v0.4s\nsmin v0.2s, v0.2s, v1.2s\nmvni v1.2s, #127\nsmax v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v2i8.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %16:_(<4 x i16>) = G_FPTOSI_SAT %15:_(<4 x bf16>) (in function: test)",
   "ll": "define <2 x i8> @test(<2 x bfloat> %a) {\n  %r = call <2 x i8> @llvm.fptosi.sat(<2 x bfloat> %a)\n  ret <2 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:63 CodeSize:41 Lat:66 SizeLat:63 for:   %r = call <2 x i8> @llvm.fptosi.sat.v2i8.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i8> %r"
  },
@@ -2545,7 +2545,7 @@
   "size": 6,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nmovi v1.2s, #127, msl #8\nfcvtzs v0.4s, v0.4s\nsmin v0.2s, v0.2s, v1.2s\nmvni v1.2s, #127, msl #8\nsmax v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v2i16.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(<4 x i16>) = G_FPTOSI_SAT %8:_(<4 x bf16>) (in function: test)",
   "ll": "define <2 x i16> @test(<2 x bfloat> %a) {\n  %r = call <2 x i16> @llvm.fptosi.sat(<2 x bfloat> %a)\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:63 CodeSize:41 Lat:66 SizeLat:63 for:   %r = call <2 x i16> @llvm.fptosi.sat.v2i16.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -2560,7 +2560,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v2i32.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(s32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <2 x i32> @test(<2 x bfloat> %a) {\n  %r = call <2 x i32> @llvm.fptosi.sat(<2 x bfloat> %a)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:82 CodeSize:52 Lat:85 SizeLat:82 for:   %r = call <2 x i32> @llvm.fptosi.sat.v2i32.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
  },
@@ -2575,7 +2575,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfcvtzs x8, s0\nfcvtzs x9, s1\nfmov d0, x8\nmov v0.d[1], x9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v2i64.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(f32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <2 x i64> @test(<2 x bfloat> %a) {\n  %r = call <2 x i64> @llvm.fptosi.sat(<2 x bfloat> %a)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:151 CodeSize:125 Lat:154 SizeLat:151 for:   %r = call <2 x i64> @llvm.fptosi.sat.v2i64.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
  },
@@ -2590,7 +2590,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nmovi v1.4s, #127\nfcvtzs v0.4s, v0.4s\nsmin v0.4s, v0.4s, v1.4s\nmvni v1.4s, #127\nsmax v0.4s, v0.4s, v1.4s\nxtn v0.4h, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v4i8.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<4 x i16>) = G_FPTOSI_SAT %0:_(<4 x bf16>) (in function: test)",
   "ll": "define <4 x i8> @test(<4 x bfloat> %a) {\n  %r = call <4 x i8> @llvm.fptosi.sat(<4 x bfloat> %a)\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:63 CodeSize:41 Lat:66 SizeLat:63 for:   %r = call <4 x i8> @llvm.fptosi.sat.v4i8.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -2605,7 +2605,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nsqxtn v0.4h, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v4i16.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x i16>) = G_FPTOSI_SAT %0:_(<4 x bf16>) (in function: test)",
   "ll": "define <4 x i16> @test(<4 x bfloat> %a) {\n  %r = call <4 x i16> @llvm.fptosi.sat(<4 x bfloat> %a)\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:63 CodeSize:41 Lat:66 SizeLat:63 for:   %r = call <4 x i16> @llvm.fptosi.sat.v4i16.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
  },
@@ -2620,7 +2620,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v4i32.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(s32) = G_FPEXT %6:_(bf16) (in function: test)",
   "ll": "define <4 x i32> @test(<4 x bfloat> %a) {\n  %r = call <4 x i32> @llvm.fptosi.sat(<4 x bfloat> %a)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:82 CodeSize:52 Lat:85 SizeLat:82 for:   %r = call <4 x i32> @llvm.fptosi.sat.v4i32.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
  },
@@ -2635,7 +2635,7 @@
   "size": 15,
   "gisize": -2,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nshll v2.4s, v2.4h, #16\nshll v3.4s, v3.4h, #16\nfcvtzs x8, s0\nfcvtzs x9, s1\nfcvtzs x10, s2\nfcvtzs x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v4i64.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(f32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x bfloat> %a) {\n  %r = call <4 x i64> @llvm.fptosi.sat(<4 x bfloat> %a)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:151 CodeSize:125 Lat:154 SizeLat:151 for:   %r = call <4 x i64> @llvm.fptosi.sat.v4i64.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -2650,7 +2650,7 @@
   "size": 12,
   "gisize": -2,
   "asm": "shll2 v2.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nmovi v1.4s, #127\nmvni v3.4s, #127\nfcvtzs v2.4s, v2.4s\nfcvtzs v0.4s, v0.4s\nsmin v2.4s, v2.4s, v1.4s\nsmin v0.4s, v0.4s, v1.4s\nsmax v1.4s, v2.4s, v3.4s\nsmax v0.4s, v0.4s, v3.4s\nuzp1 v0.8h, v0.8h, v1.8h\nxtn v0.8b, v0.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v8i8.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<8 x i16>) = G_FPTOSI_SAT %0:_(<8 x bf16>) (in function: test)",
   "ll": "define <8 x i8> @test(<8 x bfloat> %a) {\n  %r = call <8 x i8> @llvm.fptosi.sat(<8 x bfloat> %a)\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:175 CodeSize:109 Lat:175 SizeLat:175 for:   %r = call <8 x i8> @llvm.fptosi.sat.v8i8.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
  },
@@ -2665,7 +2665,7 @@
   "size": 6,
   "gisize": -2,
   "asm": "shll v1.4s, v0.4h, #16\nshll2 v2.4s, v0.8h, #16\nfcvtzs v1.4s, v1.4s\nsqxtn v0.4h, v1.4s\nfcvtzs v1.4s, v2.4s\nsqxtn2 v0.8h, v1.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v8i16.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x i16>) = G_FPTOSI_SAT %0:_(<8 x bf16>) (in function: test)",
   "ll": "define <8 x i16> @test(<8 x bfloat> %a) {\n  %r = call <8 x i16> @llvm.fptosi.sat(<8 x bfloat> %a)\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:136 CodeSize:86 Lat:136 SizeLat:136 for:   %r = call <8 x i16> @llvm.fptosi.sat.v8i16.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
  },
@@ -2680,7 +2680,7 @@
   "size": 4,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzs v1.4s, v1.4s\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v8i32.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %20:_(s32) = G_FPEXT %16:_(bf16) (in function: test)",
   "ll": "define <8 x i32> @test(<8 x bfloat> %a) {\n  %r = call <8 x i32> @llvm.fptosi.sat(<8 x bfloat> %a)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:160 CodeSize:102 Lat:160 SizeLat:160 for:   %r = call <8 x i32> @llvm.fptosi.sat.v8i32.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
@@ -2695,7 +2695,7 @@
   "size": 31,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nshll v0.4s, v0.4h, #16\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nshll v1.4s, v1.4h, #16\nshll v4.4s, v4.4h, #16\nshll v3.4s, v3.4h, #16\nshll v7.4s, v7.4h, #16\nfcvtzs x9, s0\nshll v2.4s, v2.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfcvtzs x8, s1\nfcvtzs x12, s4\nfcvtzs x11, s3\nfcvtzs x15, s7\nfmov d0, x9\nfcvtzs x10, s2\nfcvtzs x13, s5\nfcvtzs x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v8i64.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %35:_(f32) = G_FPEXT %31:_(bf16) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x bfloat> %a) {\n  %r = call <8 x i64> @llvm.fptosi.sat(<8 x bfloat> %a)\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:314 CodeSize:256 Lat:314 SizeLat:314 for:   %r = call <8 x i64> @llvm.fptosi.sat.v8i64.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -2710,7 +2710,7 @@
   "size": 21,
   "gisize": -2,
   "asm": "shll2 v3.4s, v1.8h, #16\nshll v1.4s, v1.4h, #16\nshll2 v4.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nmovi v2.4s, #127\nmvni v5.4s, #127\nfcvtzs v3.4s, v3.4s\nfcvtzs v1.4s, v1.4s\nfcvtzs v4.4s, v4.4s\nfcvtzs v0.4s, v0.4s\nsmin v3.4s, v3.4s, v2.4s\nsmin v1.4s, v1.4s, v2.4s\nsmin v4.4s, v4.4s, v2.4s\nsmin v0.4s, v0.4s, v2.4s\nsmax v2.4s, v3.4s, v5.4s\nsmax v1.4s, v1.4s, v5.4s\nsmax v3.4s, v4.4s, v5.4s\nsmax v0.4s, v0.4s, v5.4s\nuzp1 v1.8h, v1.8h, v2.8h\nuzp1 v0.8h, v0.8h, v3.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v16i8.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %14:_(<8 x i16>) = G_FPTOSI_SAT %12:_(<8 x bf16>) (in function: test)",
   "ll": "define <16 x i8> @test(<16 x bfloat> %a) {\n  %r = call <16 x i8> @llvm.fptosi.sat(<16 x bfloat> %a)\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:350 CodeSize:218 Lat:350 SizeLat:350 for:   %r = call <16 x i8> @llvm.fptosi.sat.v16i8.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
  },
@@ -2725,7 +2725,7 @@
   "size": 12,
   "gisize": -2,
   "asm": "shll v2.4s, v0.4h, #16\nshll v3.4s, v1.4h, #16\nshll2 v4.4s, v0.8h, #16\nshll2 v5.4s, v1.8h, #16\nfcvtzs v2.4s, v2.4s\nfcvtzs v3.4s, v3.4s\nsqxtn v0.4h, v2.4s\nfcvtzs v2.4s, v4.4s\nsqxtn v1.4h, v3.4s\nfcvtzs v3.4s, v5.4s\nsqxtn2 v0.8h, v2.4s\nsqxtn2 v1.8h, v3.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v16i16.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(<8 x i16>) = G_FPTOSI_SAT %7:_(<8 x bf16>) (in function: test)",
   "ll": "define <16 x i16> @test(<16 x bfloat> %a) {\n  %r = call <16 x i16> @llvm.fptosi.sat(<16 x bfloat> %a)\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:272 CodeSize:172 Lat:272 SizeLat:272 for:   %r = call <16 x i16> @llvm.fptosi.sat.v16i16.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
@@ -2740,7 +2740,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "shll v2.4s, v0.4h, #16\nshll2 v3.4s, v0.8h, #16\nshll2 v4.4s, v1.8h, #16\nshll v5.4s, v1.4h, #16\nfcvtzs v0.4s, v2.4s\nfcvtzs v1.4s, v3.4s\nfcvtzs v3.4s, v4.4s\nfcvtzs v2.4s, v5.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v16i32.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %32:_(s32) = G_FPEXT %28:_(bf16) (in function: test)",
   "ll": "define <16 x i32> @test(<16 x bfloat> %a) {\n  %r = call <16 x i32> @llvm.fptosi.sat(<16 x bfloat> %a)\n  ret <16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:320 CodeSize:204 Lat:320 SizeLat:320 for:   %r = call <16 x i32> @llvm.fptosi.sat.v16i32.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i32> %r"
  },
@@ -2755,7 +2755,7 @@
   "size": 62,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[1]\next v3.16b, v1.16b, v1.16b, #8\nshll v6.4s, v0.4h, #16\nmov h18, v0.h[2]\nmov h0, v0.h[3]\nmov h5, v2.h[1]\nmov h16, v2.h[2]\nshll v4.4s, v4.4h, #16\nmov h19, v3.h[2]\nshll v7.4s, v2.4h, #16\nshll v17.4s, v3.4h, #16\nfcvtzs x8, s6\nshll v0.4s, v0.4h, #16\nfcvtzs x11, s4\nmov h4, v1.h[2]\nshll v5.4s, v5.4h, #16\nshll v6.4s, v16.4h, #16\nfcvtzs x9, s7\nfcvtzs x10, s17\nshll v7.4s, v1.4h, #16\nshll v16.4s, v18.4h, #16\nshll v17.4s, v19.4h, #16\nmov h18, v2.h[3]\nmov h19, v3.h[3]\nfcvtzs x12, s5\nmov h5, v1.h[1]\nfcvtzs x13, s6\nmov h6, v3.h[1]\nmov h1, v1.h[3]\nshll v4.4s, v4.4h, #16\nfcvtzs x14, s17\nfcvtzs x15, s16\nfmov d2, x9\nfcvtzs x9, s7\nshll v16.4s, v18.4h, #16\nshll v18.4s, v19.4h, #16\nshll v5.4s, v5.4h, #16\nfmov d3, x13\nfcvtzs x13, s0\nshll v17.4s, v6.4h, #16\nshll v1.4s, v1.4h, #16\nfmov d6, x10\nfcvtzs x10, s4\nfmov d7, x14\nfcvtzs x14, s16\nfcvtzs x16, s5\nfcvtzs x18, s18\nfmov d0, x8\nfcvtzs x17, s17\nfcvtzs x0, s1\nfmov d1, x15\nfmov d4, x9\nmov v2.d[1], x12\nfmov d5, x10\nmov v0.d[1], x11\nmov v3.d[1], x14\nmov v1.d[1], x13\nmov v7.d[1], x18\nmov v4.d[1], x16\nmov v6.d[1], x17\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptosi.sat.v16i64.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %61:_(f32) = G_FPEXT %57:_(bf16) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x bfloat> %a) {\n  %r = call <16 x i64> @llvm.fptosi.sat(<16 x bfloat> %a)\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:628 CodeSize:512 Lat:628 SizeLat:628 for:   %r = call <16 x i64> @llvm.fptosi.sat.v16i64.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -3130,7 +3130,7 @@
   "size": 5,
   "gisize": -2,
   "asm": "mov w8, #255                        // =0xff\nshll v0.4s, v0.4h, #16\nfcvtzu w9, s0\ncmp w9, #255\ncsel w0, w9, w8, lo\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.i8.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i8 @test(bfloat %a) {\n  %r = call i8 @llvm.fptoui.sat(bfloat %a)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call i8 @llvm.fptoui.sat.i8.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -3145,7 +3145,7 @@
   "size": 5,
   "gisize": -2,
   "asm": "mov w9, #65535                      // =0xffff\nshll v0.4s, v0.4h, #16\nfcvtzu w8, s0\ncmp w8, w9\ncsel w0, w8, w9, lo\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.i16.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %6:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i16 @test(bfloat %a) {\n  %r = call i16 @llvm.fptoui.sat(bfloat %a)\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call i16 @llvm.fptoui.sat.i16.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -3160,7 +3160,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.i32.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(s32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = call i32 @llvm.fptoui.sat(bfloat %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call i32 @llvm.fptoui.sat.i32.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -3175,7 +3175,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu x0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.i64.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(s64) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = call i64 @llvm.fptoui.sat(bfloat %a)\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call i64 @llvm.fptoui.sat.i64.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -3550,7 +3550,7 @@
   "size": 4,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nmovi d1, #0x0000ff000000ff\nfcvtzu v0.4s, v0.4s\numin v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v2i8.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %13:_(<4 x i16>) = G_FPTOUI_SAT %12:_(<4 x bf16>) (in function: test)",
   "ll": "define <2 x i8> @test(<2 x bfloat> %a) {\n  %r = call <2 x i8> @llvm.fptoui.sat(<2 x bfloat> %a)\n  ret <2 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:45 CodeSize:27 Lat:45 SizeLat:45 for:   %r = call <2 x i8> @llvm.fptoui.sat.v2i8.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i8> %r"
  },
@@ -3565,7 +3565,7 @@
   "size": 4,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nmovi d1, #0x00ffff0000ffff\nfcvtzu v0.4s, v0.4s\numin v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v2i16.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(<4 x i16>) = G_FPTOUI_SAT %8:_(<4 x bf16>) (in function: test)",
   "ll": "define <2 x i16> @test(<2 x bfloat> %a) {\n  %r = call <2 x i16> @llvm.fptoui.sat(<2 x bfloat> %a)\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:45 CodeSize:27 Lat:45 SizeLat:45 for:   %r = call <2 x i16> @llvm.fptoui.sat.v2i16.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -3580,7 +3580,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v2i32.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(s32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <2 x i32> @test(<2 x bfloat> %a) {\n  %r = call <2 x i32> @llvm.fptoui.sat(<2 x bfloat> %a)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:64 CodeSize:38 Lat:64 SizeLat:64 for:   %r = call <2 x i32> @llvm.fptoui.sat.v2i32.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
  },
@@ -3595,7 +3595,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfcvtzu x8, s0\nfcvtzu x9, s1\nfmov d0, x8\nmov v0.d[1], x9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v2i64.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(f32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <2 x i64> @test(<2 x bfloat> %a) {\n  %r = call <2 x i64> @llvm.fptoui.sat(<2 x bfloat> %a)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:65 CodeSize:39 Lat:65 SizeLat:65 for:   %r = call <2 x i64> @llvm.fptoui.sat.v2i64.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
  },
@@ -3610,7 +3610,7 @@
   "size": 5,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nmovi v1.2d, #0x0000ff000000ff\nfcvtzu v0.4s, v0.4s\numin v0.4s, v0.4s, v1.4s\nxtn v0.4h, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v4i8.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<4 x i16>) = G_FPTOUI_SAT %0:_(<4 x bf16>) (in function: test)",
   "ll": "define <4 x i8> @test(<4 x bfloat> %a) {\n  %r = call <4 x i8> @llvm.fptoui.sat(<4 x bfloat> %a)\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:45 CodeSize:27 Lat:45 SizeLat:45 for:   %r = call <4 x i8> @llvm.fptoui.sat.v4i8.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -3625,7 +3625,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu v0.4s, v0.4s\nuqxtn v0.4h, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v4i16.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<4 x i16>) = G_FPTOUI_SAT %0:_(<4 x bf16>) (in function: test)",
   "ll": "define <4 x i16> @test(<4 x bfloat> %a) {\n  %r = call <4 x i16> @llvm.fptoui.sat(<4 x bfloat> %a)\n  ret <4 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:45 CodeSize:27 Lat:45 SizeLat:45 for:   %r = call <4 x i16> @llvm.fptoui.sat.v4i16.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i16> %r"
  },
@@ -3640,7 +3640,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v4i32.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(s32) = G_FPEXT %6:_(bf16) (in function: test)",
   "ll": "define <4 x i32> @test(<4 x bfloat> %a) {\n  %r = call <4 x i32> @llvm.fptoui.sat(<4 x bfloat> %a)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:64 CodeSize:38 Lat:64 SizeLat:64 for:   %r = call <4 x i32> @llvm.fptoui.sat.v4i32.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
  },
@@ -3655,7 +3655,7 @@
   "size": 15,
   "gisize": -2,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nshll v2.4s, v2.4h, #16\nshll v3.4s, v3.4h, #16\nfcvtzu x8, s0\nfcvtzu x9, s1\nfcvtzu x10, s2\nfcvtzu x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v4i64.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(f32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x bfloat> %a) {\n  %r = call <4 x i64> @llvm.fptoui.sat(<4 x bfloat> %a)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:65 CodeSize:39 Lat:65 SizeLat:65 for:   %r = call <4 x i64> @llvm.fptoui.sat.v4i64.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -3670,7 +3670,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "shll2 v2.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nmovi v1.2d, #0x0000ff000000ff\nfcvtzu v2.4s, v2.4s\nfcvtzu v0.4s, v0.4s\numin v2.4s, v2.4s, v1.4s\numin v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v0.8h, v2.8h\nxtn v0.8b, v0.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v8i8.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(<8 x i16>) = G_FPTOUI_SAT %0:_(<8 x bf16>) (in function: test)",
   "ll": "define <8 x i8> @test(<8 x bfloat> %a) {\n  %r = call <8 x i8> @llvm.fptoui.sat(<8 x bfloat> %a)\n  ret <8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:140 CodeSize:82 Lat:140 SizeLat:140 for:   %r = call <8 x i8> @llvm.fptoui.sat.v8i8.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i8> %r"
  },
@@ -3685,7 +3685,7 @@
   "size": 6,
   "gisize": -2,
   "asm": "shll v1.4s, v0.4h, #16\nshll2 v2.4s, v0.8h, #16\nfcvtzu v1.4s, v1.4s\nuqxtn v0.4h, v1.4s\nfcvtzu v1.4s, v2.4s\nuqxtn2 v0.8h, v1.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v8i16.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<8 x i16>) = G_FPTOUI_SAT %0:_(<8 x bf16>) (in function: test)",
   "ll": "define <8 x i16> @test(<8 x bfloat> %a) {\n  %r = call <8 x i16> @llvm.fptoui.sat(<8 x bfloat> %a)\n  ret <8 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:101 CodeSize:59 Lat:101 SizeLat:101 for:   %r = call <8 x i16> @llvm.fptoui.sat.v8i16.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i16> %r"
  },
@@ -3700,7 +3700,7 @@
   "size": 4,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nfcvtzu v1.4s, v1.4s\nfcvtzu v0.4s, v0.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v8i32.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %20:_(s32) = G_FPEXT %16:_(bf16) (in function: test)",
   "ll": "define <8 x i32> @test(<8 x bfloat> %a) {\n  %r = call <8 x i32> @llvm.fptoui.sat(<8 x bfloat> %a)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:141 CodeSize:83 Lat:141 SizeLat:141 for:   %r = call <8 x i32> @llvm.fptoui.sat.v8i32.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
@@ -3715,7 +3715,7 @@
   "size": 31,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nshll v0.4s, v0.4h, #16\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nshll v1.4s, v1.4h, #16\nshll v4.4s, v4.4h, #16\nshll v3.4s, v3.4h, #16\nshll v7.4s, v7.4h, #16\nfcvtzu x9, s0\nshll v2.4s, v2.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfcvtzu x8, s1\nfcvtzu x12, s4\nfcvtzu x11, s3\nfcvtzu x15, s7\nfmov d0, x9\nfcvtzu x10, s2\nfcvtzu x13, s5\nfcvtzu x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v8i64.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %35:_(f32) = G_FPEXT %31:_(bf16) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x bfloat> %a) {\n  %r = call <8 x i64> @llvm.fptoui.sat(<8 x bfloat> %a)\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:143 CodeSize:85 Lat:143 SizeLat:143 for:   %r = call <8 x i64> @llvm.fptoui.sat.v8i64.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -3730,7 +3730,7 @@
   "size": 16,
   "gisize": -2,
   "asm": "shll2 v3.4s, v1.8h, #16\nshll v1.4s, v1.4h, #16\nshll2 v4.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nmovi v2.2d, #0x0000ff000000ff\nfcvtzu v3.4s, v3.4s\nfcvtzu v1.4s, v1.4s\nfcvtzu v4.4s, v4.4s\nfcvtzu v0.4s, v0.4s\numin v3.4s, v3.4s, v2.4s\numin v1.4s, v1.4s, v2.4s\numin v4.4s, v4.4s, v2.4s\numin v0.4s, v0.4s, v2.4s\nuzp1 v1.8h, v1.8h, v3.8h\nuzp1 v0.8h, v0.8h, v4.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v16i8.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %11:_(<8 x i16>) = G_FPTOUI_SAT %9:_(<8 x bf16>) (in function: test)",
   "ll": "define <16 x i8> @test(<16 x bfloat> %a) {\n  %r = call <16 x i8> @llvm.fptoui.sat(<16 x bfloat> %a)\n  ret <16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:280 CodeSize:164 Lat:280 SizeLat:280 for:   %r = call <16 x i8> @llvm.fptoui.sat.v16i8.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i8> %r"
  },
@@ -3745,7 +3745,7 @@
   "size": 12,
   "gisize": -2,
   "asm": "shll v2.4s, v0.4h, #16\nshll v3.4s, v1.4h, #16\nshll2 v4.4s, v0.8h, #16\nshll2 v5.4s, v1.8h, #16\nfcvtzu v2.4s, v2.4s\nfcvtzu v3.4s, v3.4s\nuqxtn v0.4h, v2.4s\nfcvtzu v2.4s, v4.4s\nuqxtn v1.4h, v3.4s\nfcvtzu v3.4s, v5.4s\nuqxtn2 v0.8h, v2.4s\nuqxtn2 v1.8h, v3.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v16i16.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(<8 x i16>) = G_FPTOUI_SAT %7:_(<8 x bf16>) (in function: test)",
   "ll": "define <16 x i16> @test(<16 x bfloat> %a) {\n  %r = call <16 x i16> @llvm.fptoui.sat(<16 x bfloat> %a)\n  ret <16 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:202 CodeSize:118 Lat:202 SizeLat:202 for:   %r = call <16 x i16> @llvm.fptoui.sat.v16i16.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
@@ -3760,7 +3760,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "shll v2.4s, v0.4h, #16\nshll2 v3.4s, v0.8h, #16\nshll2 v4.4s, v1.8h, #16\nshll v5.4s, v1.4h, #16\nfcvtzu v0.4s, v2.4s\nfcvtzu v1.4s, v3.4s\nfcvtzu v3.4s, v4.4s\nfcvtzu v2.4s, v5.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v16i32.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %32:_(s32) = G_FPEXT %28:_(bf16) (in function: test)",
   "ll": "define <16 x i32> @test(<16 x bfloat> %a) {\n  %r = call <16 x i32> @llvm.fptoui.sat(<16 x bfloat> %a)\n  ret <16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:282 CodeSize:166 Lat:282 SizeLat:282 for:   %r = call <16 x i32> @llvm.fptoui.sat.v16i32.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i32> %r"
  },
@@ -3775,7 +3775,7 @@
   "size": 62,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[1]\next v3.16b, v1.16b, v1.16b, #8\nshll v6.4s, v0.4h, #16\nmov h18, v0.h[2]\nmov h0, v0.h[3]\nmov h5, v2.h[1]\nmov h16, v2.h[2]\nshll v4.4s, v4.4h, #16\nmov h19, v3.h[2]\nshll v7.4s, v2.4h, #16\nshll v17.4s, v3.4h, #16\nfcvtzu x8, s6\nshll v0.4s, v0.4h, #16\nfcvtzu x11, s4\nmov h4, v1.h[2]\nshll v5.4s, v5.4h, #16\nshll v6.4s, v16.4h, #16\nfcvtzu x9, s7\nfcvtzu x10, s17\nshll v7.4s, v1.4h, #16\nshll v16.4s, v18.4h, #16\nshll v17.4s, v19.4h, #16\nmov h18, v2.h[3]\nmov h19, v3.h[3]\nfcvtzu x12, s5\nmov h5, v1.h[1]\nfcvtzu x13, s6\nmov h6, v3.h[1]\nmov h1, v1.h[3]\nshll v4.4s, v4.4h, #16\nfcvtzu x14, s17\nfcvtzu x15, s16\nfmov d2, x9\nfcvtzu x9, s7\nshll v16.4s, v18.4h, #16\nshll v18.4s, v19.4h, #16\nshll v5.4s, v5.4h, #16\nfmov d3, x13\nfcvtzu x13, s0\nshll v17.4s, v6.4h, #16\nshll v1.4s, v1.4h, #16\nfmov d6, x10\nfcvtzu x10, s4\nfmov d7, x14\nfcvtzu x14, s16\nfcvtzu x16, s5\nfcvtzu x18, s18\nfmov d0, x8\nfcvtzu x17, s17\nfcvtzu x0, s1\nfmov d1, x15\nfmov d4, x9\nmov v2.d[1], x12\nfmov d5, x10\nmov v0.d[1], x11\nmov v3.d[1], x14\nmov v1.d[1], x13\nmov v7.d[1], x18\nmov v4.d[1], x16\nmov v6.d[1], x17\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.fptoui.sat.v16i64.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %61:_(f32) = G_FPEXT %57:_(bf16) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x bfloat> %a) {\n  %r = call <16 x i64> @llvm.fptoui.sat(<16 x bfloat> %a)\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:286 CodeSize:170 Lat:286 SizeLat:286 for:   %r = call <16 x i64> @llvm.fptoui.sat.v16i64.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -4150,7 +4150,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "sxtb w9, w0\nmov w8, #32767                      // =0x7fff\nscvtf s0, w9\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(bf16) = G_FPTRUNC %4:_(f32) (in function: test)",
   "ll": "define bfloat @test(i8 %a) {\n  %r = sitofp i8 %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp i8 %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -4165,7 +4165,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "sxth w9, w0\nmov w8, #32767                      // =0x7fff\nscvtf s0, w9\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(bf16) = G_FPTRUNC %4:_(f32) (in function: test)",
   "ll": "define bfloat @test(i16 %a) {\n  %r = sitofp i16 %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp i16 %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -4180,7 +4180,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "scvtf d0, w0\nmov w8, #32767                      // =0x7fff\nfcvtxn s0, d0\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(bf16) = G_FPTRUNC %2:_(f32) (in function: test)",
   "ll": "define bfloat @test(i32 %a) {\n  %r = sitofp i32 %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp i32 %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -4195,7 +4195,7 @@
   "size": 23,
   "gisize": -2,
   "asm": "cmp x0, #0\nand x11, x0, #0x8000000000000000\nmov w8, #32767                      // =0x7fff\ncneg x9, x0, mi\nlsr x10, x9, #53\ncmp x10, #0\nand x10, x9, #0xfffffffffffff000\ncsel x10, x10, x9, ne\nscvtf d0, x10\ncset w10, ne\ntst x9, #0xfff\ncsel w10, wzr, w10, eq\nfmov x9, d0\norr x9, x9, x11\norr x9, x9, x10\nfmov d0, x9\nfcvtxn s0, d0\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(bf16) = G_FPTRUNC %2:_(f32) (in function: test)",
   "ll": "define bfloat @test(i64 %a) {\n  %r = sitofp i64 %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp i64 %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -4570,7 +4570,7 @@
   "size": 20,
   "gisize": -2,
   "asm": "mov w9, v0.s[1]\nfmov w10, s0\nmov w8, #32767                      // =0x7fff\nsxtb w10, w10\nsxtb w9, w9\nscvtf s1, w10\nscvtf s0, w9\nfmov w10, s1\nfmov w9, s0\nubfx w12, w10, #16, #1\nubfx w11, w9, #16, #1\nadd w9, w9, w8\nadd w8, w10, w8\nadd w8, w12, w8\nadd w9, w11, w9\nlsr w8, w8, #16\nlsr w9, w9, #16\nfmov s0, w8\nfmov s1, w9\nmov v0.h[1], v1.h[0]\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(bf16) = G_FPTRUNC %22:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x i8> %a) {\n  %r = sitofp <2 x i8> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <2 x i8> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -4585,7 +4585,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "uzp1 v0.4h, v0.4h, v0.4h\nmovi v1.4s, #1\nsshll v0.4s, v0.4h, #0\nscvtf v0.4s, v0.4s\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(bf16) = G_FPTRUNC %22:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x i16> %a) {\n  %r = sitofp <2 x i16> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <2 x i16> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -4600,7 +4600,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "movi v1.4s, #1\nscvtf v0.4s, v0.4s\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %24:_(bf16) = G_FPTRUNC %20:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x i32> %a) {\n  %r = sitofp <2 x i32> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <2 x i32> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -4615,7 +4615,7 @@
   "size": 48,
   "gisize": -2,
   "asm": "mov x9, v0.d[1]\nmov w8, #32767                      // =0x7fff\ncmp x9, #0\ncneg x10, x9, mi\nand x9, x9, #0x8000000000000000\nlsr x11, x10, #53\nand x12, x10, #0xfffffffffffff000\ncmp x11, #0\ncsel x11, x12, x10, ne\ncset w12, ne\ntst x10, #0xfff\nfmov x10, d0\ncsel w12, wzr, w12, eq\nscvtf d0, x11\ncmp x10, #0\ncneg x13, x10, mi\nand x10, x10, #0x8000000000000000\nlsr x14, x13, #53\ncmp x14, #0\nand x14, x13, #0xfffffffffffff000\ncsel x11, x14, x13, ne\ncset w14, ne\ntst x13, #0xfff\nscvtf d1, x11\nfmov x11, d0\norr x9, x11, x9\ncsel w11, wzr, w14, eq\nfmov x13, d1\norr x9, x9, x12\nfmov d0, x9\norr x10, x13, x10\norr x10, x10, x11\nfcvtxn s0, d0\nfmov d1, x10\nfcvtxn s1, d1\nfmov w9, s0\nubfx w11, w9, #16, #1\nadd w9, w9, w8\nfmov w10, s1\nadd w9, w11, w9\nlsr w9, w9, #16\nubfx w12, w10, #16, #1\nadd w8, w10, w8\nfmov s1, w9\nadd w8, w12, w8\nlsr w8, w8, #16\nfmov s0, w8\nmov v0.h[1], v1.h[0]\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %25:_(bf16) = G_FPTRUNC %21:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x i64> %a) {\n  %r = sitofp <2 x i64> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <2 x i64> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -4630,7 +4630,7 @@
   "size": 10,
   "gisize": -2,
   "asm": "shl v0.4h, v0.4h, #8\nmovi v1.4s, #1\nsshr v0.4h, v0.4h, #8\nsshll v0.4s, v0.4h, #0\nscvtf v0.4s, v0.4s\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %12:_(bf16) = G_FPTRUNC %8:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x i8> %a) {\n  %r = sitofp <4 x i8> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <4 x i8> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -4645,7 +4645,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "sshll v0.4s, v0.4h, #0\nmovi v1.4s, #1\nscvtf v0.4s, v0.4s\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %11:_(bf16) = G_FPTRUNC %7:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x i16> %a) {\n  %r = sitofp <4 x i16> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <4 x i16> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -4660,7 +4660,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "scvtf v0.4s, v0.4s\nmovi v1.4s, #1\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(bf16) = G_FPTRUNC %6:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x i32> %a) {\n  %r = sitofp <4 x i32> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <4 x i32> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -4675,7 +4675,7 @@
   "size": 21,
   "gisize": -2,
   "asm": "mov x8, v0.d[1]\nfmov x9, d0\nscvtf s2, x9\nmov x9, v1.d[1]\nscvtf s0, x8\nfmov x8, d1\nscvtf s1, x8\nmov v2.s[1], v0.s[0]\nscvtf s0, x9\nmov v2.s[2], v1.s[0]\nmovi v1.4s, #127, msl #8\nmov v2.s[3], v0.s[0]\nmovi v0.4s, #1\nushr v3.4s, v2.4s, #16\nadd v1.4s, v2.4s, v1.4s\nand v0.16b, v3.16b, v0.16b\nfcmeq v3.4s, v2.4s, v2.4s\norr v2.4s, #64, lsl #16\nadd v0.4s, v0.4s, v1.4s\nbif v0.16b, v2.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %13:_(bf16) = G_FPTRUNC %9:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x i64> %a) {\n  %r = sitofp <4 x i64> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = sitofp <4 x i64> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -4690,7 +4690,7 @@
   "size": 15,
   "gisize": -2,
   "asm": "sshll v0.8h, v0.8b, #0\nmovi v1.4s, #1\nmovi v4.4s, #127, msl #8\nsshll v2.4s, v0.4h, #0\nsshll2 v0.4s, v0.8h, #0\nscvtf v2.4s, v2.4s\nscvtf v3.4s, v0.4s\nushr v0.4s, v2.4s, #16\nushr v5.4s, v3.4s, #16\nand v0.16b, v0.16b, v1.16b\nand v1.16b, v5.16b, v1.16b\nadd v0.4s, v0.4s, v4.4s\nadd v1.4s, v1.4s, v4.4s\naddhn v0.4h, v2.4s, v0.4s\naddhn2 v0.8h, v3.4s, v1.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %19:_(bf16) = G_FPTRUNC %15:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x i8> %a) {\n  %r = sitofp <8 x i8> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <8 x i8> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -4705,7 +4705,7 @@
   "size": 14,
   "gisize": -2,
   "asm": "sshll v2.4s, v0.4h, #0\nsshll2 v0.4s, v0.8h, #0\nmovi v1.4s, #1\nmovi v4.4s, #127, msl #8\nscvtf v2.4s, v2.4s\nscvtf v3.4s, v0.4s\nushr v0.4s, v2.4s, #16\nushr v5.4s, v3.4s, #16\nand v0.16b, v0.16b, v1.16b\nand v1.16b, v5.16b, v1.16b\nadd v0.4s, v0.4s, v4.4s\nadd v1.4s, v1.4s, v4.4s\naddhn v0.4h, v2.4s, v0.4s\naddhn2 v0.8h, v3.4s, v1.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %19:_(bf16) = G_FPTRUNC %15:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x i16> %a) {\n  %r = sitofp <8 x i16> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <8 x i16> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -4720,7 +4720,7 @@
   "size": 12,
   "gisize": -2,
   "asm": "scvtf v0.4s, v0.4s\nmovi v2.4s, #1\nscvtf v1.4s, v1.4s\nmovi v5.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nushr v4.4s, v1.4s, #16\nand v3.16b, v3.16b, v2.16b\nand v2.16b, v4.16b, v2.16b\nadd v0.4s, v3.4s, v0.4s\nadd v1.4s, v2.4s, v1.4s\naddhn v0.4h, v0.4s, v5.4s\naddhn2 v0.8h, v1.4s, v5.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %20:_(bf16) = G_FPTRUNC %16:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x i32> %a) {\n  %r = sitofp <8 x i32> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = sitofp <8 x i32> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -4735,7 +4735,7 @@
   "size": 39,
   "gisize": -2,
   "asm": "fmov x10, d2\nmov x8, v2.d[1]\nmov x9, v0.d[1]\nscvtf s2, x10\nfmov x10, d0\nscvtf s0, x8\nscvtf s5, x9\nfmov x9, d3\nmov x8, v3.d[1]\nscvtf s4, x10\nfmov x10, d1\nscvtf s3, x9\nmov x9, v1.d[1]\nmov v2.s[1], v0.s[0]\nscvtf s0, x10\nscvtf s1, x8\nmov v4.s[1], v5.s[0]\nmov v2.s[2], v3.s[0]\nscvtf s3, x9\nmov v4.s[2], v0.s[0]\nmovi v0.4s, #1\nmov v2.s[3], v1.s[0]\nmovi v1.4s, #127, msl #8\nmov v4.s[3], v3.s[0]\nushr v3.4s, v2.4s, #16\nadd v6.4s, v2.4s, v1.4s\nushr v5.4s, v4.4s, #16\nadd v1.4s, v4.4s, v1.4s\nand v3.16b, v3.16b, v0.16b\nand v0.16b, v5.16b, v0.16b\nfcmeq v5.4s, v2.4s, v2.4s\norr v2.4s, #64, lsl #16\nadd v3.4s, v3.4s, v6.4s\nfcmeq v6.4s, v4.4s, v4.4s\norr v4.4s, #64, lsl #16\nadd v0.4s, v0.4s, v1.4s\nmov v1.16b, v5.16b\nbif v0.16b, v4.16b, v6.16b\nbsl v1.16b, v3.16b, v2.16b\nuzp2 v0.8h, v0.8h, v1.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %19:_(bf16) = G_FPTRUNC %15:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x i64> %a) {\n  %r = sitofp <8 x i64> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = sitofp <8 x i64> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -4750,7 +4750,7 @@
   "size": 28,
   "gisize": -2,
   "asm": "sshll2 v2.8h, v0.16b, #0\nsshll v0.8h, v0.8b, #0\nmovi v1.4s, #1\nmovi v7.4s, #127, msl #8\nsshll v3.4s, v2.4h, #0\nsshll v4.4s, v0.4h, #0\nsshll2 v2.4s, v2.8h, #0\nsshll2 v0.4s, v0.8h, #0\nscvtf v3.4s, v3.4s\nscvtf v4.4s, v4.4s\nscvtf v2.4s, v2.4s\nscvtf v6.4s, v0.4s\nushr v5.4s, v3.4s, #16\nushr v0.4s, v4.4s, #16\nushr v16.4s, v2.4s, #16\nushr v17.4s, v6.4s, #16\nand v5.16b, v5.16b, v1.16b\nand v0.16b, v0.16b, v1.16b\nand v16.16b, v16.16b, v1.16b\nand v17.16b, v17.16b, v1.16b\nadd v5.4s, v5.4s, v7.4s\nadd v0.4s, v0.4s, v7.4s\naddhn v1.4h, v3.4s, v5.4s\naddhn v0.4h, v4.4s, v0.4s\nadd v3.4s, v16.4s, v7.4s\nadd v4.4s, v17.4s, v7.4s\naddhn2 v1.8h, v2.4s, v3.4s\naddhn2 v0.8h, v6.4s, v4.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %29:_(bf16) = G_FPTRUNC %25:_(f32) (in function: test)",
   "ll": "define <16 x bfloat> @test(<16 x i8> %a) {\n  %r = sitofp <16 x i8> %a to <16 x bfloat>\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = sitofp <16 x i8> %a to <16 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
  },
@@ -4765,7 +4765,7 @@
   "size": 26,
   "gisize": -2,
   "asm": "sshll v3.4s, v0.4h, #0\nsshll v4.4s, v1.4h, #0\nsshll2 v0.4s, v0.8h, #0\nsshll2 v1.4s, v1.8h, #0\nmovi v2.4s, #1\nmovi v7.4s, #127, msl #8\nscvtf v3.4s, v3.4s\nscvtf v4.4s, v4.4s\nscvtf v5.4s, v0.4s\nscvtf v6.4s, v1.4s\nushr v0.4s, v3.4s, #16\nushr v1.4s, v4.4s, #16\nushr v16.4s, v5.4s, #16\nushr v17.4s, v6.4s, #16\nand v0.16b, v0.16b, v2.16b\nand v1.16b, v1.16b, v2.16b\nand v16.16b, v16.16b, v2.16b\nand v2.16b, v17.16b, v2.16b\nadd v0.4s, v0.4s, v7.4s\nadd v1.4s, v1.4s, v7.4s\nadd v2.4s, v2.4s, v7.4s\naddhn v0.4h, v3.4s, v0.4s\naddhn v1.4h, v4.4s, v1.4s\nadd v3.4s, v16.4s, v7.4s\naddhn2 v0.8h, v5.4s, v3.4s\naddhn2 v1.8h, v6.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %31:_(bf16) = G_FPTRUNC %27:_(f32) (in function: test)",
   "ll": "define <16 x bfloat> @test(<16 x i16> %a) {\n  %r = sitofp <16 x i16> %a to <16 x bfloat>\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = sitofp <16 x i16> %a to <16 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
  },
@@ -4780,7 +4780,7 @@
   "size": 22,
   "gisize": -2,
   "asm": "scvtf v2.4s, v2.4s\nscvtf v0.4s, v0.4s\nscvtf v4.4s, v1.4s\nmovi v1.4s, #1\nscvtf v3.4s, v3.4s\nmovi v17.4s, #127, msl #8\nushr v5.4s, v0.4s, #16\nushr v6.4s, v2.4s, #16\nushr v7.4s, v4.4s, #16\nushr v16.4s, v3.4s, #16\nand v5.16b, v5.16b, v1.16b\nand v6.16b, v6.16b, v1.16b\nadd v0.4s, v5.4s, v0.4s\nadd v2.4s, v6.4s, v2.4s\nand v5.16b, v7.16b, v1.16b\nand v6.16b, v16.16b, v1.16b\naddhn v0.4h, v0.4s, v17.4s\naddhn v1.4h, v2.4s, v17.4s\nadd v2.4s, v5.4s, v4.4s\nadd v3.4s, v6.4s, v3.4s\naddhn2 v0.8h, v2.4s, v17.4s\naddhn2 v1.8h, v3.4s, v17.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %32:_(bf16) = G_FPTRUNC %28:_(f32) (in function: test)",
   "ll": "define <16 x bfloat> @test(<16 x i32> %a) {\n  %r = sitofp <16 x i32> %a to <16 x bfloat>\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = sitofp <16 x i32> %a to <16 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
  },
@@ -4795,7 +4795,7 @@
   "size": 76,
   "gisize": -2,
   "asm": "mov x8, v2.d[1]\nfmov x11, d0\nmov x9, v0.d[1]\nfmov x10, d2\nmov x12, v6.d[1]\nscvtf s2, x11\nfmov x11, d3\nscvtf s16, x8\nfmov x8, d6\nscvtf s0, x10\nmov x10, v4.d[1]\nscvtf s17, x9\nmov x9, v3.d[1]\nscvtf s6, x12\nfmov x12, d4\nscvtf s4, x11\nscvtf s3, x8\nfmov x11, d7\nmov x8, v1.d[1]\nmov v0.s[1], v16.s[0]\nscvtf s18, x10\nscvtf s19, x12\nfmov x10, d1\nmov v2.s[1], v17.s[0]\nmov x12, v5.d[1]\nmov v3.s[1], v6.s[0]\nscvtf s6, x11\nfmov x11, d5\nscvtf s1, x10\nmov x10, v7.d[1]\nscvtf s7, x9\nmov v19.s[1], v18.s[0]\nscvtf s16, x8\nmov v0.s[2], v4.s[0]\nscvtf s5, x11\nmov v3.s[2], v6.s[0]\nscvtf s4, x10\nmov v2.s[2], v1.s[0]\nscvtf s1, x12\nmov v0.s[3], v7.s[0]\nmov v19.s[2], v5.s[0]\nmov v2.s[3], v16.s[0]\nmov v3.s[3], v4.s[0]\nmovi v4.4s, #127, msl #8\nushr v5.4s, v0.4s, #16\nmov v19.s[3], v1.s[0]\nmovi v1.4s, #1\nushr v6.4s, v2.4s, #16\nushr v7.4s, v3.4s, #16\nadd v17.4s, v0.4s, v4.4s\nadd v18.4s, v2.4s, v4.4s\nadd v20.4s, v3.4s, v4.4s\nushr v16.4s, v19.4s, #16\nand v5.16b, v5.16b, v1.16b\nadd v4.4s, v19.4s, v4.4s\nand v6.16b, v6.16b, v1.16b\nand v7.16b, v7.16b, v1.16b\nand v1.16b, v16.16b, v1.16b\nadd v5.4s, v5.4s, v17.4s\nfcmeq v16.4s, v0.4s, v0.4s\nadd v6.4s, v6.4s, v18.4s\nfcmeq v17.4s, v2.4s, v2.4s\nfcmeq v18.4s, v3.4s, v3.4s\norr v0.4s, #64, lsl #16\nadd v7.4s, v7.4s, v20.4s\norr v2.4s, #64, lsl #16\nadd v1.4s, v1.4s, v4.4s\nfcmeq v4.4s, v19.4s, v19.4s\norr v3.4s, #64, lsl #16\norr v19.4s, #64, lsl #16\nbit v0.16b, v5.16b, v16.16b\nbit v2.16b, v6.16b, v17.16b\nbit v3.16b, v7.16b, v18.16b\nbif v1.16b, v19.16b, v4.16b\nuzp2 v0.8h, v2.8h, v0.8h\nuzp2 v1.8h, v1.8h, v3.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: sitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %29:_(bf16) = G_FPTRUNC %25:_(f32) (in function: test)",
   "ll": "define <16 x bfloat> @test(<16 x i64> %a) {\n  %r = sitofp <16 x i64> %a to <16 x bfloat>\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 14 for:   %r = sitofp <16 x i64> %a to <16 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
  },
@@ -5170,7 +5170,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "and w9, w0, #0xff\nmov w8, #32767                      // =0x7fff\nucvtf s0, w9\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(bf16) = G_FPTRUNC %4:_(f32) (in function: test)",
   "ll": "define bfloat @test(i8 %a) {\n  %r = uitofp i8 %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp i8 %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -5185,7 +5185,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "and w9, w0, #0xffff\nmov w8, #32767                      // =0x7fff\nucvtf s0, w9\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %2:_(bf16) = G_FPTRUNC %4:_(f32) (in function: test)",
   "ll": "define bfloat @test(i16 %a) {\n  %r = uitofp i16 %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp i16 %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -5200,7 +5200,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "ucvtf d0, w0\nmov w8, #32767                      // =0x7fff\nfcvtxn s0, d0\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(bf16) = G_FPTRUNC %2:_(f32) (in function: test)",
   "ll": "define bfloat @test(i32 %a) {\n  %r = uitofp i32 %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp i32 %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -5215,7 +5215,7 @@
   "size": 19,
   "gisize": -2,
   "asm": "lsr x9, x0, #53\nmov w8, #32767                      // =0x7fff\ncmp x9, #0\nand x9, x0, #0xfffffffffffff000\ncsel x9, x9, x0, ne\nucvtf d0, x9\ncset w9, ne\ntst x0, #0xfff\ncsel w9, wzr, w9, eq\nfmov x10, d0\norr x9, x10, x9\nfmov d0, x9\nfcvtxn s0, d0\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(bf16) = G_FPTRUNC %2:_(f32) (in function: test)",
   "ll": "define bfloat @test(i64 %a) {\n  %r = uitofp i64 %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp i64 %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -5590,7 +5590,7 @@
   "size": 20,
   "gisize": -2,
   "asm": "mov w9, v0.s[1]\nfmov w10, s0\nmov w8, #32767                      // =0x7fff\nand w10, w10, #0xff\nand w9, w9, #0xff\nucvtf s1, w10\nucvtf s0, w9\nfmov w10, s1\nfmov w9, s0\nubfx w12, w10, #16, #1\nubfx w11, w9, #16, #1\nadd w9, w9, w8\nadd w8, w10, w8\nadd w8, w12, w8\nadd w9, w11, w9\nlsr w8, w8, #16\nlsr w9, w9, #16\nfmov s0, w8\nfmov s1, w9\nmov v0.h[1], v1.h[0]\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(bf16) = G_FPTRUNC %22:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x i8> %a) {\n  %r = uitofp <2 x i8> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <2 x i8> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -5605,7 +5605,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "uzp1 v0.4h, v0.4h, v0.4h\nmovi v1.4s, #1\nushll v0.4s, v0.4h, #0\nucvtf v0.4s, v0.4s\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(bf16) = G_FPTRUNC %22:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x i16> %a) {\n  %r = uitofp <2 x i16> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <2 x i16> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -5620,7 +5620,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "movi v1.4s, #1\nucvtf v0.4s, v0.4s\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %24:_(bf16) = G_FPTRUNC %20:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x i32> %a) {\n  %r = uitofp <2 x i32> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <2 x i32> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -5635,7 +5635,7 @@
   "size": 40,
   "gisize": -2,
   "asm": "mov x9, v0.d[1]\nfmov x11, d0\nmov w8, #32767                      // =0x7fff\nlsr x10, x9, #53\nand x12, x9, #0xfffffffffffff000\ncmp x10, #0\nlsr x10, x11, #53\ncsel x12, x12, x9, ne\ncset w13, ne\ntst x9, #0xfff\ncsel w9, wzr, w13, eq\ncmp x10, #0\nand x10, x11, #0xfffffffffffff000\ncsel x10, x10, x11, ne\nucvtf d0, x12\nucvtf d1, x10\ncset w10, ne\ntst x11, #0xfff\ncsel w10, wzr, w10, eq\nfmov x11, d0\nfmov x12, d1\norr x9, x11, x9\norr x10, x12, x10\nfmov d0, x9\nfmov d1, x10\nfcvtxn s0, d0\nfcvtxn s1, d1\nfmov w9, s0\nfmov w10, s1\nubfx w11, w9, #16, #1\nadd w9, w9, w8\nubfx w12, w10, #16, #1\nadd w8, w10, w8\nadd w9, w11, w9\nadd w8, w12, w8\nlsr w9, w9, #16\nlsr w8, w8, #16\nfmov s1, w9\nfmov s0, w8\nmov v0.h[1], v1.h[0]\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %25:_(bf16) = G_FPTRUNC %21:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x i64> %a) {\n  %r = uitofp <2 x i64> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <2 x i64> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -5650,7 +5650,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "bic v0.4h, #255, lsl #8\nmovi v1.4s, #1\nushll v0.4s, v0.4h, #0\nucvtf v0.4s, v0.4s\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %12:_(bf16) = G_FPTRUNC %8:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x i8> %a) {\n  %r = uitofp <4 x i8> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <4 x i8> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -5665,7 +5665,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "ushll v0.4s, v0.4h, #0\nmovi v1.4s, #1\nucvtf v0.4s, v0.4s\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %11:_(bf16) = G_FPTRUNC %7:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x i16> %a) {\n  %r = uitofp <4 x i16> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <4 x i16> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -5680,7 +5680,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "ucvtf v0.4s, v0.4s\nmovi v1.4s, #1\nushr v2.4s, v0.4s, #16\nand v1.16b, v2.16b, v1.16b\nmovi v2.4s, #127, msl #8\nadd v0.4s, v1.4s, v0.4s\naddhn v0.4h, v0.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(bf16) = G_FPTRUNC %6:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x i32> %a) {\n  %r = uitofp <4 x i32> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <4 x i32> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -5695,7 +5695,7 @@
   "size": 21,
   "gisize": -2,
   "asm": "mov x8, v0.d[1]\nfmov x9, d0\nucvtf s2, x9\nmov x9, v1.d[1]\nucvtf s0, x8\nfmov x8, d1\nucvtf s1, x8\nmov v2.s[1], v0.s[0]\nucvtf s0, x9\nmov v2.s[2], v1.s[0]\nmovi v1.4s, #127, msl #8\nmov v2.s[3], v0.s[0]\nmovi v0.4s, #1\nushr v3.4s, v2.4s, #16\nadd v1.4s, v2.4s, v1.4s\nand v0.16b, v3.16b, v0.16b\nfcmeq v3.4s, v2.4s, v2.4s\norr v2.4s, #64, lsl #16\nadd v0.4s, v0.4s, v1.4s\nbif v0.16b, v2.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %13:_(bf16) = G_FPTRUNC %9:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x i64> %a) {\n  %r = uitofp <4 x i64> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = uitofp <4 x i64> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -5710,7 +5710,7 @@
   "size": 15,
   "gisize": -2,
   "asm": "ushll v0.8h, v0.8b, #0\nmovi v1.4s, #1\nmovi v4.4s, #127, msl #8\nushll v2.4s, v0.4h, #0\nushll2 v0.4s, v0.8h, #0\nucvtf v2.4s, v2.4s\nucvtf v3.4s, v0.4s\nushr v0.4s, v2.4s, #16\nushr v5.4s, v3.4s, #16\nand v0.16b, v0.16b, v1.16b\nand v1.16b, v5.16b, v1.16b\nadd v0.4s, v0.4s, v4.4s\nadd v1.4s, v1.4s, v4.4s\naddhn v0.4h, v2.4s, v0.4s\naddhn2 v0.8h, v3.4s, v1.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %19:_(bf16) = G_FPTRUNC %15:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x i8> %a) {\n  %r = uitofp <8 x i8> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <8 x i8> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -5725,7 +5725,7 @@
   "size": 14,
   "gisize": -2,
   "asm": "ushll v2.4s, v0.4h, #0\nushll2 v0.4s, v0.8h, #0\nmovi v1.4s, #1\nmovi v4.4s, #127, msl #8\nucvtf v2.4s, v2.4s\nucvtf v3.4s, v0.4s\nushr v0.4s, v2.4s, #16\nushr v5.4s, v3.4s, #16\nand v0.16b, v0.16b, v1.16b\nand v1.16b, v5.16b, v1.16b\nadd v0.4s, v0.4s, v4.4s\nadd v1.4s, v1.4s, v4.4s\naddhn v0.4h, v2.4s, v0.4s\naddhn2 v0.8h, v3.4s, v1.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %19:_(bf16) = G_FPTRUNC %15:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x i16> %a) {\n  %r = uitofp <8 x i16> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <8 x i16> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -5740,7 +5740,7 @@
   "size": 12,
   "gisize": -2,
   "asm": "ucvtf v0.4s, v0.4s\nmovi v2.4s, #1\nucvtf v1.4s, v1.4s\nmovi v5.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nushr v4.4s, v1.4s, #16\nand v3.16b, v3.16b, v2.16b\nand v2.16b, v4.16b, v2.16b\nadd v0.4s, v3.4s, v0.4s\nadd v1.4s, v2.4s, v1.4s\naddhn v0.4h, v0.4s, v5.4s\naddhn2 v0.8h, v1.4s, v5.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %20:_(bf16) = G_FPTRUNC %16:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x i32> %a) {\n  %r = uitofp <8 x i32> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = uitofp <8 x i32> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -5755,7 +5755,7 @@
   "size": 39,
   "gisize": -2,
   "asm": "fmov x10, d2\nmov x8, v2.d[1]\nmov x9, v0.d[1]\nucvtf s2, x10\nfmov x10, d0\nucvtf s0, x8\nucvtf s5, x9\nfmov x9, d3\nmov x8, v3.d[1]\nucvtf s4, x10\nfmov x10, d1\nucvtf s3, x9\nmov x9, v1.d[1]\nmov v2.s[1], v0.s[0]\nucvtf s0, x10\nucvtf s1, x8\nmov v4.s[1], v5.s[0]\nmov v2.s[2], v3.s[0]\nucvtf s3, x9\nmov v4.s[2], v0.s[0]\nmovi v0.4s, #1\nmov v2.s[3], v1.s[0]\nmovi v1.4s, #127, msl #8\nmov v4.s[3], v3.s[0]\nushr v3.4s, v2.4s, #16\nadd v6.4s, v2.4s, v1.4s\nushr v5.4s, v4.4s, #16\nadd v1.4s, v4.4s, v1.4s\nand v3.16b, v3.16b, v0.16b\nand v0.16b, v5.16b, v0.16b\nfcmeq v5.4s, v2.4s, v2.4s\norr v2.4s, #64, lsl #16\nadd v3.4s, v3.4s, v6.4s\nfcmeq v6.4s, v4.4s, v4.4s\norr v4.4s, #64, lsl #16\nadd v0.4s, v0.4s, v1.4s\nmov v1.16b, v5.16b\nbif v0.16b, v4.16b, v6.16b\nbsl v1.16b, v3.16b, v2.16b\nuzp2 v0.8h, v0.8h, v1.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %19:_(bf16) = G_FPTRUNC %15:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x i64> %a) {\n  %r = uitofp <8 x i64> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = uitofp <8 x i64> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -5770,7 +5770,7 @@
   "size": 28,
   "gisize": -2,
   "asm": "ushll2 v2.8h, v0.16b, #0\nushll v0.8h, v0.8b, #0\nmovi v1.4s, #1\nmovi v7.4s, #127, msl #8\nushll v3.4s, v2.4h, #0\nushll v4.4s, v0.4h, #0\nushll2 v2.4s, v2.8h, #0\nushll2 v0.4s, v0.8h, #0\nucvtf v3.4s, v3.4s\nucvtf v4.4s, v4.4s\nucvtf v2.4s, v2.4s\nucvtf v6.4s, v0.4s\nushr v5.4s, v3.4s, #16\nushr v0.4s, v4.4s, #16\nushr v16.4s, v2.4s, #16\nushr v17.4s, v6.4s, #16\nand v5.16b, v5.16b, v1.16b\nand v0.16b, v0.16b, v1.16b\nand v16.16b, v16.16b, v1.16b\nand v17.16b, v17.16b, v1.16b\nadd v5.4s, v5.4s, v7.4s\nadd v0.4s, v0.4s, v7.4s\naddhn v1.4h, v3.4s, v5.4s\naddhn v0.4h, v4.4s, v0.4s\nadd v3.4s, v16.4s, v7.4s\nadd v4.4s, v17.4s, v7.4s\naddhn2 v1.8h, v2.4s, v3.4s\naddhn2 v0.8h, v6.4s, v4.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %29:_(bf16) = G_FPTRUNC %25:_(f32) (in function: test)",
   "ll": "define <16 x bfloat> @test(<16 x i8> %a) {\n  %r = uitofp <16 x i8> %a to <16 x bfloat>\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = uitofp <16 x i8> %a to <16 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
  },
@@ -5785,7 +5785,7 @@
   "size": 26,
   "gisize": -2,
   "asm": "ushll v3.4s, v0.4h, #0\nushll v4.4s, v1.4h, #0\nushll2 v0.4s, v0.8h, #0\nushll2 v1.4s, v1.8h, #0\nmovi v2.4s, #1\nmovi v7.4s, #127, msl #8\nucvtf v3.4s, v3.4s\nucvtf v4.4s, v4.4s\nucvtf v5.4s, v0.4s\nucvtf v6.4s, v1.4s\nushr v0.4s, v3.4s, #16\nushr v1.4s, v4.4s, #16\nushr v16.4s, v5.4s, #16\nushr v17.4s, v6.4s, #16\nand v0.16b, v0.16b, v2.16b\nand v1.16b, v1.16b, v2.16b\nand v16.16b, v16.16b, v2.16b\nand v2.16b, v17.16b, v2.16b\nadd v0.4s, v0.4s, v7.4s\nadd v1.4s, v1.4s, v7.4s\nadd v2.4s, v2.4s, v7.4s\naddhn v0.4h, v3.4s, v0.4s\naddhn v1.4h, v4.4s, v1.4s\nadd v3.4s, v16.4s, v7.4s\naddhn2 v0.8h, v5.4s, v3.4s\naddhn2 v1.8h, v6.4s, v2.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %31:_(bf16) = G_FPTRUNC %27:_(f32) (in function: test)",
   "ll": "define <16 x bfloat> @test(<16 x i16> %a) {\n  %r = uitofp <16 x i16> %a to <16 x bfloat>\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = uitofp <16 x i16> %a to <16 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
  },
@@ -5800,7 +5800,7 @@
   "size": 22,
   "gisize": -2,
   "asm": "ucvtf v2.4s, v2.4s\nucvtf v0.4s, v0.4s\nucvtf v4.4s, v1.4s\nmovi v1.4s, #1\nucvtf v3.4s, v3.4s\nmovi v17.4s, #127, msl #8\nushr v5.4s, v0.4s, #16\nushr v6.4s, v2.4s, #16\nushr v7.4s, v4.4s, #16\nushr v16.4s, v3.4s, #16\nand v5.16b, v5.16b, v1.16b\nand v6.16b, v6.16b, v1.16b\nadd v0.4s, v5.4s, v0.4s\nadd v2.4s, v6.4s, v2.4s\nand v5.16b, v7.16b, v1.16b\nand v6.16b, v16.16b, v1.16b\naddhn v0.4h, v0.4s, v17.4s\naddhn v1.4h, v2.4s, v17.4s\nadd v2.4s, v5.4s, v4.4s\nadd v3.4s, v6.4s, v3.4s\naddhn2 v0.8h, v2.4s, v17.4s\naddhn2 v1.8h, v3.4s, v17.4s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %32:_(bf16) = G_FPTRUNC %28:_(f32) (in function: test)",
   "ll": "define <16 x bfloat> @test(<16 x i32> %a) {\n  %r = uitofp <16 x i32> %a to <16 x bfloat>\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = uitofp <16 x i32> %a to <16 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
  },
@@ -5815,7 +5815,7 @@
   "size": 76,
   "gisize": -2,
   "asm": "mov x8, v2.d[1]\nfmov x11, d0\nmov x9, v0.d[1]\nfmov x10, d2\nmov x12, v6.d[1]\nucvtf s2, x11\nfmov x11, d3\nucvtf s16, x8\nfmov x8, d6\nucvtf s0, x10\nmov x10, v4.d[1]\nucvtf s17, x9\nmov x9, v3.d[1]\nucvtf s6, x12\nfmov x12, d4\nucvtf s4, x11\nucvtf s3, x8\nfmov x11, d7\nmov x8, v1.d[1]\nmov v0.s[1], v16.s[0]\nucvtf s18, x10\nucvtf s19, x12\nfmov x10, d1\nmov v2.s[1], v17.s[0]\nmov x12, v5.d[1]\nmov v3.s[1], v6.s[0]\nucvtf s6, x11\nfmov x11, d5\nucvtf s1, x10\nmov x10, v7.d[1]\nucvtf s7, x9\nmov v19.s[1], v18.s[0]\nucvtf s16, x8\nmov v0.s[2], v4.s[0]\nucvtf s5, x11\nmov v3.s[2], v6.s[0]\nucvtf s4, x10\nmov v2.s[2], v1.s[0]\nucvtf s1, x12\nmov v0.s[3], v7.s[0]\nmov v19.s[2], v5.s[0]\nmov v2.s[3], v16.s[0]\nmov v3.s[3], v4.s[0]\nmovi v4.4s, #127, msl #8\nushr v5.4s, v0.4s, #16\nmov v19.s[3], v1.s[0]\nmovi v1.4s, #1\nushr v6.4s, v2.4s, #16\nushr v7.4s, v3.4s, #16\nadd v17.4s, v0.4s, v4.4s\nadd v18.4s, v2.4s, v4.4s\nadd v20.4s, v3.4s, v4.4s\nushr v16.4s, v19.4s, #16\nand v5.16b, v5.16b, v1.16b\nadd v4.4s, v19.4s, v4.4s\nand v6.16b, v6.16b, v1.16b\nand v7.16b, v7.16b, v1.16b\nand v1.16b, v16.16b, v1.16b\nadd v5.4s, v5.4s, v17.4s\nfcmeq v16.4s, v0.4s, v0.4s\nadd v6.4s, v6.4s, v18.4s\nfcmeq v17.4s, v2.4s, v2.4s\nfcmeq v18.4s, v3.4s, v3.4s\norr v0.4s, #64, lsl #16\nadd v7.4s, v7.4s, v20.4s\norr v2.4s, #64, lsl #16\nadd v1.4s, v1.4s, v4.4s\nfcmeq v4.4s, v19.4s, v19.4s\norr v3.4s, #64, lsl #16\norr v19.4s, #64, lsl #16\nbit v0.16b, v5.16b, v16.16b\nbit v2.16b, v6.16b, v17.16b\nbit v3.16b, v7.16b, v18.16b\nbif v1.16b, v19.16b, v4.16b\nuzp2 v0.8h, v2.8h, v0.8h\nuzp2 v1.8h, v1.8h, v3.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: uitofp (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %29:_(bf16) = G_FPTRUNC %25:_(f32) (in function: test)",
   "ll": "define <16 x bfloat> @test(<16 x i64> %a) {\n  %r = uitofp <16 x i64> %a to <16 x bfloat>\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 14 for:   %r = uitofp <16 x i64> %a to <16 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
  },
@@ -6160,7 +6160,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fpext (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(f32) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define float @test(bfloat %a) {\n  %r = fpext bfloat %a to float\n  ret float %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fpext bfloat %a to float\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret float %r"
  },
@@ -6175,7 +6175,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvt d0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fpext (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(f64) = G_FPEXT %0:_(bf16) (in function: test)",
   "ll": "define double @test(bfloat %a) {\n  %r = fpext bfloat %a to double\n  ret double %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = fpext bfloat %a to double\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret double %r"
  },
@@ -6280,7 +6280,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fpext (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %20:_(f32) = G_FPEXT %16:_(bf16) (in function: test)",
   "ll": "define <2 x float> @test(<2 x bfloat> %a) {\n  %r = fpext <2 x bfloat> %a to <2 x float>\n  ret <2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fpext <2 x bfloat> %a to <2 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x float> %r"
  },
@@ -6295,7 +6295,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtl v0.2d, v0.2s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fpext (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(f32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <2 x double> @test(<2 x bfloat> %a) {\n  %r = fpext <2 x bfloat> %a to <2 x double>\n  ret <2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = fpext <2 x bfloat> %a to <2 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x double> %r"
  },
@@ -6310,7 +6310,7 @@
   "size": 1,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fpext (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %9:_(f32) = G_FPEXT %5:_(bf16) (in function: test)",
   "ll": "define <4 x float> @test(<4 x bfloat> %a) {\n  %r = fpext <4 x bfloat> %a to <4 x float>\n  ret <4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fpext <4 x bfloat> %a to <4 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x float> %r"
  },
@@ -6325,7 +6325,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtl2 v1.2d, v0.4s\nfcvtl v0.2d, v0.2s\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fpext (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %16:_(f32) = G_FPEXT %12:_(bf16) (in function: test)",
   "ll": "define <4 x double> @test(<4 x bfloat> %a) {\n  %r = fpext <4 x bfloat> %a to <4 x double>\n  ret <4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = fpext <4 x bfloat> %a to <4 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x double> %r"
  },
@@ -6340,7 +6340,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fpext (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %15:_(f32) = G_FPEXT %11:_(bf16) (in function: test)",
   "ll": "define <8 x float> @test(<8 x bfloat> %a) {\n  %r = fpext <8 x bfloat> %a to <8 x float>\n  ret <8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = fpext <8 x bfloat> %a to <8 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x float> %r"
  },
@@ -6400,7 +6400,7 @@
   "size": 10,
   "gisize": -2,
   "asm": "fmov w9, s0\nmov w8, #32767                      // =0x7fff\nfcmp s0, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\norr w9, w9, #0x400000\nadd w8, w10, w8\ncsel w8, w9, w8, vs\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptrunc (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(bf16) = G_FPTRUNC %0:_(f32) (in function: test)",
   "ll": "define bfloat @test(float %a) {\n  %r = fptrunc float %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fptrunc float %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -6430,7 +6430,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "fcvtxn s0, d0\nmov w8, #32767                      // =0x7fff\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptrunc (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(bf16) = G_FPTRUNC %0:_(f64) (in function: test)",
   "ll": "define bfloat @test(double %a) {\n  %r = fptrunc double %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 9 for:   %r = fptrunc double %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -6475,7 +6475,7 @@
   "size": 10,
   "gisize": -2,
   "asm": "movi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nand v1.16b, v3.16b, v1.16b\nadd v2.4s, v0.4s, v2.4s\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptrunc (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %24:_(bf16) = G_FPTRUNC %20:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x float> %a) {\n  %r = fptrunc <2 x float> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fptrunc <2 x float> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -6505,7 +6505,7 @@
   "size": 10,
   "gisize": -2,
   "asm": "movi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nand v1.16b, v3.16b, v1.16b\nadd v2.4s, v0.4s, v2.4s\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptrunc (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %10:_(bf16) = G_FPTRUNC %6:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x float> %a) {\n  %r = fptrunc <4 x float> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fptrunc <4 x float> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -6535,7 +6535,7 @@
   "size": 17,
   "gisize": -2,
   "asm": "movi v2.4s, #1\nmovi v3.4s, #127, msl #8\nushr v4.4s, v1.4s, #16\nushr v5.4s, v0.4s, #16\nand v4.16b, v4.16b, v2.16b\nadd v6.4s, v1.4s, v3.4s\nand v2.16b, v5.16b, v2.16b\nadd v3.4s, v0.4s, v3.4s\nfcmeq v5.4s, v1.4s, v1.4s\norr v1.4s, #64, lsl #16\nadd v4.4s, v4.4s, v6.4s\nfcmeq v6.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v2.4s, v2.4s, v3.4s\nbit v1.16b, v4.16b, v5.16b\nbit v0.16b, v2.16b, v6.16b\nuzp2 v0.8h, v0.8h, v1.8h\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptrunc (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %17:_(bf16) = G_FPTRUNC %13:_(f32) (in function: test)",
   "ll": "define <8 x bfloat> @test(<8 x float> %a) {\n  %r = fptrunc <8 x float> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 15 for:   %r = fptrunc <8 x float> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -6565,7 +6565,7 @@
   "size": 11,
   "gisize": -2,
   "asm": "fcvtxn v0.2s, v0.2d\nmovi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nadd v2.4s, v0.4s, v2.4s\nand v1.16b, v3.16b, v1.16b\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptrunc (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %26:_(bf16) = G_FPTRUNC %22:_(f32) (in function: test)",
   "ll": "define <2 x bfloat> @test(<2 x double> %a) {\n  %r = fptrunc <2 x double> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 9 for:   %r = fptrunc <2 x double> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -6610,7 +6610,7 @@
   "size": 12,
   "gisize": -2,
   "asm": "fcvtxn v0.2s, v0.2d\nmovi v2.4s, #127, msl #8\nfcvtxn2 v0.4s, v1.2d\nmovi v1.4s, #1\nushr v3.4s, v0.4s, #16\nadd v2.4s, v0.4s, v2.4s\nand v1.16b, v3.16b, v1.16b\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: fptrunc (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %19:_(bf16) = G_FPTRUNC %15:_(f32) (in function: test)",
   "ll": "define <4 x bfloat> @test(<4 x double> %a) {\n  %r = fptrunc <4 x double> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %r = fptrunc <4 x double> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -6670,7 +6670,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfrintx s0, s0\nfcvtzs x0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.i64.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i64) = G_INTRINSIC_LRINT %0:fpr(bf16) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = call i64 @llvm.lrint(bfloat %a)\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i64 @llvm.lrint.i64.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -6685,7 +6685,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfrintx s0, s0\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.i32.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i32) = G_INTRINSIC_LRINT %0:fpr(bf16) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = call i32 @llvm.lrint(bfloat %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lrint.i32.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -6880,7 +6880,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfrintx s0, s0\nfrintx s1, s1\nfcvtzs x8, s0\nfcvtzs x9, s1\nfmov d0, x8\nmov v0.d[1], x9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.v2i64.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %23:_(f32) = G_FPEXT %19:_(bf16) (in function: test)",
   "ll": "define <2 x i64> @test(<2 x bfloat> %a) {\n  %r = call <2 x i64> @llvm.lrint(<2 x bfloat> %a)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:5 Lat:8 SizeLat:8 for:   %r = call <2 x i64> @llvm.lrint.v2i64.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
  },
@@ -6895,7 +6895,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfrintx s0, s0\nfrintx s1, s1\nfcvtzs s0, s0\nfcvtzs w8, s1\nmov v0.s[1], w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.v2i32.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(s32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <2 x i32> @test(<2 x bfloat> %a) {\n  %r = call <2 x i32> @llvm.lrint(<2 x bfloat> %a)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:5 Lat:8 SizeLat:8 for:   %r = call <2 x i32> @llvm.lrint.v2i32.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
  },
@@ -6910,7 +6910,7 @@
   "size": 19,
   "gisize": -2,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nshll v2.4s, v2.4h, #16\nshll v3.4s, v3.4h, #16\nfrintx s0, s0\nfrintx s1, s1\nfrintx s2, s2\nfrintx s3, s3\nfcvtzs x8, s0\nfcvtzs x9, s1\nfcvtzs x10, s2\nfcvtzs x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.v4i64.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(f32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x bfloat> %a) {\n  %r = call <4 x i64> @llvm.lrint(<4 x bfloat> %a)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i64> @llvm.lrint.v4i64.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -6925,7 +6925,7 @@
   "size": 18,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v2.4s, v0.4h, #16\nmov h3, v0.h[2]\nmov h4, v0.h[3]\nfrintx s2, s2\nshll v1.4s, v1.4h, #16\nshll v3.4s, v3.4h, #16\nfrintx s1, s1\nfcvtzs s0, s2\nshll v2.4s, v4.4h, #16\nfcvtzs w8, s1\nfrintx s1, s3\nmov v0.s[1], w8\nfcvtzs w8, s1\nfrintx s1, s2\nmov v0.s[2], w8\nfcvtzs w8, s1\nmov v0.s[3], w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.v4i32.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %11:_(s32) = G_FPEXT %7:_(bf16) (in function: test)",
   "ll": "define <4 x i32> @test(<4 x bfloat> %a) {\n  %r = call <4 x i32> @llvm.lrint(<4 x bfloat> %a)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i32> @llvm.lrint.v4i32.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
  },
@@ -6940,7 +6940,7 @@
   "size": 39,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nshll v0.4s, v0.4h, #16\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nshll v1.4s, v1.4h, #16\nshll v4.4s, v4.4h, #16\nshll v3.4s, v3.4h, #16\nshll v7.4s, v7.4h, #16\nfrintx s0, s0\nshll v2.4s, v2.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfrintx s1, s1\nfrintx s4, s4\nfrintx s3, s3\nfrintx s7, s7\nfcvtzs x9, s0\nfrintx s2, s2\nfrintx s5, s5\nfrintx s6, s6\nfcvtzs x8, s1\nfcvtzs x12, s4\nfcvtzs x11, s3\nfcvtzs x15, s7\nfmov d0, x9\nfcvtzs x10, s2\nfcvtzs x13, s5\nfcvtzs x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.v8i64.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %36:_(f32) = G_FPEXT %32:_(bf16) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x bfloat> %a) {\n  %r = call <8 x i64> @llvm.lrint(<8 x bfloat> %a)\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i64> @llvm.lrint.v8i64.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -6955,7 +6955,7 @@
   "size": 37,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h3, v0.h[1]\nshll v4.4s, v0.4h, #16\nmov h5, v0.h[2]\nmov h16, v0.h[3]\nfrintx s4, s4\nmov h2, v1.h[1]\nshll v6.4s, v1.4h, #16\nmov h7, v1.h[2]\nshll v3.4s, v3.4h, #16\nshll v5.4s, v5.4h, #16\nmov h17, v1.h[3]\nfrintx s6, s6\nfcvtzs s0, s4\nshll v2.4s, v2.4h, #16\nfrintx s3, s3\nshll v7.4s, v7.4h, #16\nshll v4.4s, v17.4h, #16\nfrintx s2, s2\nfcvtzs s1, s6\nfcvtzs w9, s3\nshll v3.4s, v16.4h, #16\nfcvtzs w8, s2\nfrintx s2, s5\nfrintx s5, s7\nmov v0.s[1], w9\nfcvtzs w10, s2\nfcvtzs w11, s5\nmov v1.s[1], w8\nfrintx s2, s3\nfrintx s3, s4\nmov v1.s[2], w11\nmov v0.s[2], w10\nfcvtzs w8, s3\nfcvtzs w9, s2\nmov v1.s[3], w8\nmov v0.s[3], w9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.v8i32.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(s32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <8 x i32> @test(<8 x bfloat> %a) {\n  %r = call <8 x i32> @llvm.lrint(<8 x bfloat> %a)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i32> @llvm.lrint.v8i32.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
@@ -6970,7 +6970,7 @@
   "size": 78,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\next v3.16b, v1.16b, v1.16b, #8\nshll v4.4s, v0.4h, #16\nmov h18, v0.h[1]\nfrintx s4, s4\nmov h5, v2.h[1]\nmov h6, v2.h[2]\nshll v16.4s, v3.4h, #16\nmov h17, v3.h[2]\nshll v7.4s, v2.4h, #16\nshll v18.4s, v18.4h, #16\nmov h2, v2.h[3]\nfrintx s16, s16\nfcvtzs x8, s4\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfrintx s7, s7\nshll v17.4s, v17.4h, #16\nshll v2.4s, v2.4h, #16\nfrintx s4, s5\nfrintx s5, s6\nfcvtzs x10, s16\nfrintx s16, s17\nmov h6, v0.h[2]\nmov h17, v1.h[2]\nmov h0, v0.h[3]\nfcvtzs x9, s7\nmov h7, v1.h[1]\nfcvtzs x11, s4\nmov h4, v3.h[1]\nfcvtzs x12, s5\nmov h5, v1.h[3]\nmov h3, v3.h[3]\nfcvtzs x13, s16\nfrintx s16, s18\nshll v6.4s, v6.4h, #16\nshll v1.4s, v1.4h, #16\nshll v17.4s, v17.4h, #16\nshll v0.4s, v0.4h, #16\nshll v7.4s, v7.4h, #16\nshll v4.4s, v4.4h, #16\nfrintx s6, s6\nshll v3.4s, v3.4h, #16\nfrintx s1, s1\nshll v5.4s, v5.4h, #16\nfcvtzs x14, s16\nfrintx s16, s17\nfrintx s0, s0\nfrintx s17, s2\nfrintx s4, s4\nfrintx s18, s7\nfrintx s19, s3\nfmov d2, x9\nfrintx s5, s5\nfcvtzs x15, s6\nfcvtzs x9, s1\nfmov d6, x10\nfcvtzs x10, s16\nfmov d3, x12\nfcvtzs x12, s0\nfmov d7, x13\nfcvtzs x13, s17\nfcvtzs x16, s18\nfcvtzs x17, s4\nfcvtzs x18, s19\nfcvtzs x0, s5\nfmov d0, x8\nfmov d1, x15\nfmov d4, x9\nfmov d5, x10\nmov v2.d[1], x11\nmov v3.d[1], x13\nmov v0.d[1], x14\nmov v1.d[1], x12\nmov v6.d[1], x17\nmov v4.d[1], x16\nmov v7.d[1], x18\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.v16i64.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %62:_(f32) = G_FPEXT %58:_(bf16) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x bfloat> %a) {\n  %r = call <16 x i64> @llvm.lrint(<16 x bfloat> %a)\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i64> @llvm.lrint.v16i64.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -6985,7 +6985,7 @@
   "size": 74,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\next v3.16b, v1.16b, v1.16b, #8\nmov h4, v0.h[1]\nmov h17, v1.h[1]\nshll v16.4s, v0.4h, #16\nmov h19, v0.h[2]\nmov h20, v0.h[3]\nmov h0, v1.h[2]\nmov h21, v1.h[3]\nmov h5, v2.h[1]\nmov h6, v2.h[2]\nmov h7, v3.h[1]\nshll v4.4s, v4.4h, #16\nmov h18, v3.h[2]\nfrintx s16, s16\nshll v0.4s, v0.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nshll v7.4s, v7.4h, #16\nfrintx s4, s4\nfrintx s22, s0\nfcvtzs s0, s16\nfrintx s5, s5\nfrintx s6, s6\nfrintx s7, s7\nfcvtzs w8, s4\nshll v4.4s, v2.4h, #16\nmov h2, v2.h[3]\nfcvtzs w15, s22\nfcvtzs w9, s5\nfcvtzs w10, s6\nshll v5.4s, v3.4h, #16\nfcvtzs w11, s7\nshll v6.4s, v1.4h, #16\nshll v7.4s, v17.4h, #16\nfrintx s4, s4\nshll v17.4s, v18.4h, #16\nshll v18.4s, v19.4h, #16\nfrintx s5, s5\nmov h19, v3.h[3]\nmov v0.s[1], w8\nfrintx s6, s6\nfrintx s7, s7\nfrintx s17, s17\nfrintx s18, s18\nfcvtzs s1, s4\nshll v4.4s, v2.4h, #16\nfcvtzs s3, s5\nshll v5.4s, v20.4h, #16\nfcvtzs w13, s7\nfcvtzs s2, s6\nshll v6.4s, v19.4h, #16\nshll v7.4s, v21.4h, #16\nfcvtzs w12, s17\nfcvtzs w14, s18\nfrintx s4, s4\nfrintx s5, s5\nmov v1.s[1], w9\nmov v3.s[1], w11\nfrintx s6, s6\nmov v2.s[1], w13\nfrintx s7, s7\nmov v0.s[2], w14\nfcvtzs w8, s4\nfcvtzs w9, s5\nmov v1.s[2], w10\nmov v3.s[2], w12\nfcvtzs w10, s6\nmov v2.s[2], w15\nfcvtzs w11, s7\nmov v0.s[3], w9\nmov v1.s[3], w8\nmov v3.s[3], w10\nmov v2.s[3], w11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lrint.v16i32.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %33:_(s32) = G_FPEXT %29:_(bf16) (in function: test)",
   "ll": "define <16 x i32> @test(<16 x bfloat> %a) {\n  %r = call <16 x i32> @llvm.lrint(<16 x bfloat> %a)\n  ret <16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i32> @llvm.lrint.v16i32.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i32> %r"
  },
@@ -7165,7 +7165,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfrintx s0, s0\nfcvtzs x0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llrint.i64.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i64) = G_INTRINSIC_LLRINT %0:fpr(bf16) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = call i64 @llvm.llrint(bfloat %a)\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i64 @llvm.llrint.i64.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -7270,7 +7270,7 @@
   "size": 9,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfrintx s0, s0\nfrintx s1, s1\nfcvtzs x8, s0\nfcvtzs x9, s1\nfmov d0, x8\nmov v0.d[1], x9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llrint.v2i64.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %23:_(f32) = G_FPEXT %19:_(bf16) (in function: test)",
   "ll": "define <2 x i64> @test(<2 x bfloat> %a) {\n  %r = call <2 x i64> @llvm.llrint(<2 x bfloat> %a)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:5 Lat:8 SizeLat:8 for:   %r = call <2 x i64> @llvm.llrint.v2i64.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
  },
@@ -7285,7 +7285,7 @@
   "size": 19,
   "gisize": -2,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nshll v2.4s, v2.4h, #16\nshll v3.4s, v3.4h, #16\nfrintx s0, s0\nfrintx s1, s1\nfrintx s2, s2\nfrintx s3, s3\nfcvtzs x8, s0\nfcvtzs x9, s1\nfcvtzs x10, s2\nfcvtzs x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llrint.v4i64.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(f32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x bfloat> %a) {\n  %r = call <4 x i64> @llvm.llrint(<4 x bfloat> %a)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i64> @llvm.llrint.v4i64.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -7300,7 +7300,7 @@
   "size": 39,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nshll v0.4s, v0.4h, #16\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nshll v1.4s, v1.4h, #16\nshll v4.4s, v4.4h, #16\nshll v3.4s, v3.4h, #16\nshll v7.4s, v7.4h, #16\nfrintx s0, s0\nshll v2.4s, v2.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfrintx s1, s1\nfrintx s4, s4\nfrintx s3, s3\nfrintx s7, s7\nfcvtzs x9, s0\nfrintx s2, s2\nfrintx s5, s5\nfrintx s6, s6\nfcvtzs x8, s1\nfcvtzs x12, s4\nfcvtzs x11, s3\nfcvtzs x15, s7\nfmov d0, x9\nfcvtzs x10, s2\nfcvtzs x13, s5\nfcvtzs x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llrint.v8i64.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %36:_(f32) = G_FPEXT %32:_(bf16) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x bfloat> %a) {\n  %r = call <8 x i64> @llvm.llrint(<8 x bfloat> %a)\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i64> @llvm.llrint.v8i64.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -7315,7 +7315,7 @@
   "size": 78,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\next v3.16b, v1.16b, v1.16b, #8\nshll v4.4s, v0.4h, #16\nmov h18, v0.h[1]\nfrintx s4, s4\nmov h5, v2.h[1]\nmov h6, v2.h[2]\nshll v16.4s, v3.4h, #16\nmov h17, v3.h[2]\nshll v7.4s, v2.4h, #16\nshll v18.4s, v18.4h, #16\nmov h2, v2.h[3]\nfrintx s16, s16\nfcvtzs x8, s4\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfrintx s7, s7\nshll v17.4s, v17.4h, #16\nshll v2.4s, v2.4h, #16\nfrintx s4, s5\nfrintx s5, s6\nfcvtzs x10, s16\nfrintx s16, s17\nmov h6, v0.h[2]\nmov h17, v1.h[2]\nmov h0, v0.h[3]\nfcvtzs x9, s7\nmov h7, v1.h[1]\nfcvtzs x11, s4\nmov h4, v3.h[1]\nfcvtzs x12, s5\nmov h5, v1.h[3]\nmov h3, v3.h[3]\nfcvtzs x13, s16\nfrintx s16, s18\nshll v6.4s, v6.4h, #16\nshll v1.4s, v1.4h, #16\nshll v17.4s, v17.4h, #16\nshll v0.4s, v0.4h, #16\nshll v7.4s, v7.4h, #16\nshll v4.4s, v4.4h, #16\nfrintx s6, s6\nshll v3.4s, v3.4h, #16\nfrintx s1, s1\nshll v5.4s, v5.4h, #16\nfcvtzs x14, s16\nfrintx s16, s17\nfrintx s0, s0\nfrintx s17, s2\nfrintx s4, s4\nfrintx s18, s7\nfrintx s19, s3\nfmov d2, x9\nfrintx s5, s5\nfcvtzs x15, s6\nfcvtzs x9, s1\nfmov d6, x10\nfcvtzs x10, s16\nfmov d3, x12\nfcvtzs x12, s0\nfmov d7, x13\nfcvtzs x13, s17\nfcvtzs x16, s18\nfcvtzs x17, s4\nfcvtzs x18, s19\nfcvtzs x0, s5\nfmov d0, x8\nfmov d1, x15\nfmov d4, x9\nfmov d5, x10\nmov v2.d[1], x11\nmov v3.d[1], x13\nmov v0.d[1], x14\nmov v1.d[1], x12\nmov v6.d[1], x17\nmov v4.d[1], x16\nmov v7.d[1], x18\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llrint.v16i64.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %62:_(f32) = G_FPEXT %58:_(bf16) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x bfloat> %a) {\n  %r = call <16 x i64> @llvm.llrint(<16 x bfloat> %a)\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i64> @llvm.llrint.v16i64.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -7435,7 +7435,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtas x0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.i64.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i64) = G_LROUND %0:fpr(bf16) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = call i64 @llvm.lround(bfloat %a)\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i64 @llvm.lround.i64.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -7450,7 +7450,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtas w0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.i32.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i32) = G_LROUND %0:fpr(bf16) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = call i32 @llvm.lround(bfloat %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lround.i32.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -7645,7 +7645,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfcvtas x8, s0\nfcvtas x9, s1\nfmov d0, x8\nmov v0.d[1], x9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.v2i64.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %23:_(f32) = G_FPEXT %19:_(bf16) (in function: test)",
   "ll": "define <2 x i64> @test(<2 x bfloat> %a) {\n  %r = call <2 x i64> @llvm.lround(<2 x bfloat> %a)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:5 Lat:8 SizeLat:8 for:   %r = call <2 x i64> @llvm.lround.v2i64.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
  },
@@ -7660,7 +7660,7 @@
   "size": 6,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfcvtas s0, s0\nfcvtas w8, s1\nmov v0.s[1], w8\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.v2i32.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(s32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <2 x i32> @test(<2 x bfloat> %a) {\n  %r = call <2 x i32> @llvm.lround(<2 x bfloat> %a)\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:5 Lat:8 SizeLat:8 for:   %r = call <2 x i32> @llvm.lround.v2i32.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
  },
@@ -7675,7 +7675,7 @@
   "size": 15,
   "gisize": -2,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nshll v2.4s, v2.4h, #16\nshll v3.4s, v3.4h, #16\nfcvtas x8, s0\nfcvtas x9, s1\nfcvtas x10, s2\nfcvtas x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.v4i64.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(f32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x bfloat> %a) {\n  %r = call <4 x i64> @llvm.lround(<4 x bfloat> %a)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i64> @llvm.lround.v4i64.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -7690,7 +7690,7 @@
   "size": 14,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v2.4s, v0.4h, #16\nmov h3, v0.h[2]\nmov h0, v0.h[3]\nshll v1.4s, v1.4h, #16\nshll v0.4s, v0.4h, #16\nfcvtas w8, s1\nfcvtas s1, s2\nshll v2.4s, v3.4h, #16\nmov v1.s[1], w8\nfcvtas w8, s2\nmov v1.s[2], w8\nfcvtas w8, s0\nmov v1.s[3], w8\nmov v0.16b, v1.16b\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.v4i32.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %11:_(s32) = G_FPEXT %7:_(bf16) (in function: test)",
   "ll": "define <4 x i32> @test(<4 x bfloat> %a) {\n  %r = call <4 x i32> @llvm.lround(<4 x bfloat> %a)\n  ret <4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i32> @llvm.lround.v4i32.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
  },
@@ -7705,7 +7705,7 @@
   "size": 31,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nshll v0.4s, v0.4h, #16\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nshll v1.4s, v1.4h, #16\nshll v4.4s, v4.4h, #16\nshll v3.4s, v3.4h, #16\nshll v7.4s, v7.4h, #16\nfcvtas x9, s0\nshll v2.4s, v2.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfcvtas x8, s1\nfcvtas x12, s4\nfcvtas x11, s3\nfcvtas x15, s7\nfmov d0, x9\nfcvtas x10, s2\nfcvtas x13, s5\nfcvtas x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.v8i64.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %36:_(f32) = G_FPEXT %32:_(bf16) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x bfloat> %a) {\n  %r = call <8 x i64> @llvm.lround(<8 x bfloat> %a)\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i64> @llvm.lround.v8i64.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -7720,7 +7720,7 @@
   "size": 29,
   "gisize": -2,
   "asm": "ext v3.16b, v0.16b, v0.16b, #8\nmov h2, v0.h[1]\nshll v6.4s, v0.4h, #16\nmov h7, v0.h[2]\nmov h0, v0.h[3]\nmov h1, v3.h[1]\nshll v4.4s, v3.4h, #16\nmov h5, v3.h[2]\nshll v2.4s, v2.4h, #16\nmov h3, v3.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfcvtas w9, s2\nfcvtas s2, s6\nshll v3.4s, v3.4h, #16\nfcvtas w8, s1\nfcvtas s1, s4\nshll v4.4s, v5.4h, #16\nshll v5.4s, v7.4h, #16\nmov v2.s[1], w9\nfcvtas w9, s3\nfcvtas w10, s4\nmov v1.s[1], w8\nfcvtas w8, s5\nmov v2.s[2], w8\nfcvtas w8, s0\nmov v1.s[2], w10\nmov v2.s[3], w8\nmov v1.s[3], w9\nmov v0.16b, v2.16b\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.v8i32.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %21:_(s32) = G_FPEXT %17:_(bf16) (in function: test)",
   "ll": "define <8 x i32> @test(<8 x bfloat> %a) {\n  %r = call <8 x i32> @llvm.lround(<8 x bfloat> %a)\n  ret <8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i32> @llvm.lround.v8i32.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
@@ -7735,7 +7735,7 @@
   "size": 62,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[1]\next v3.16b, v1.16b, v1.16b, #8\nshll v6.4s, v0.4h, #16\nmov h18, v0.h[2]\nmov h0, v0.h[3]\nmov h5, v2.h[1]\nmov h16, v2.h[2]\nshll v4.4s, v4.4h, #16\nmov h19, v3.h[2]\nshll v7.4s, v2.4h, #16\nshll v17.4s, v3.4h, #16\nfcvtas x8, s6\nshll v0.4s, v0.4h, #16\nfcvtas x11, s4\nmov h4, v1.h[2]\nshll v5.4s, v5.4h, #16\nshll v6.4s, v16.4h, #16\nfcvtas x9, s7\nfcvtas x10, s17\nshll v7.4s, v1.4h, #16\nshll v16.4s, v18.4h, #16\nshll v17.4s, v19.4h, #16\nmov h18, v2.h[3]\nmov h19, v3.h[3]\nfcvtas x12, s5\nmov h5, v1.h[1]\nfcvtas x13, s6\nmov h6, v3.h[1]\nmov h1, v1.h[3]\nshll v4.4s, v4.4h, #16\nfcvtas x14, s17\nfcvtas x15, s16\nfmov d2, x9\nfcvtas x9, s7\nshll v16.4s, v18.4h, #16\nshll v18.4s, v19.4h, #16\nshll v5.4s, v5.4h, #16\nfmov d3, x13\nfcvtas x13, s0\nshll v17.4s, v6.4h, #16\nshll v1.4s, v1.4h, #16\nfmov d6, x10\nfcvtas x10, s4\nfmov d7, x14\nfcvtas x14, s16\nfcvtas x16, s5\nfcvtas x18, s18\nfmov d0, x8\nfcvtas x17, s17\nfcvtas x0, s1\nfmov d1, x15\nfmov d4, x9\nmov v2.d[1], x12\nfmov d5, x10\nmov v0.d[1], x11\nmov v3.d[1], x14\nmov v1.d[1], x13\nmov v7.d[1], x18\nmov v4.d[1], x16\nmov v6.d[1], x17\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.v16i64.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %62:_(f32) = G_FPEXT %58:_(bf16) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x bfloat> %a) {\n  %r = call <16 x i64> @llvm.lround(<16 x bfloat> %a)\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i64> @llvm.lround.v16i64.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
@@ -7750,7 +7750,7 @@
   "size": 58,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\next v6.16b, v1.16b, v1.16b, #8\nmov h3, v0.h[1]\nmov h16, v1.h[1]\nshll v18.4s, v0.4h, #16\nmov h19, v0.h[2]\nshll v20.4s, v1.4h, #16\nmov h0, v0.h[3]\nmov h4, v2.h[1]\nmov h5, v2.h[2]\nmov h7, v6.h[1]\nshll v3.4s, v3.4h, #16\nmov h17, v6.h[2]\nshll v21.4s, v6.4h, #16\nshll v16.4s, v16.4h, #16\nmov h22, v2.h[3]\nmov h6, v6.h[3]\nshll v0.4s, v0.4h, #16\nshll v4.4s, v4.4h, #16\nshll v5.4s, v5.4h, #16\nshll v7.4s, v7.4h, #16\nfcvtas w8, s3\nshll v3.4s, v2.4h, #16\nfcvtas w13, s16\nfcvtas s2, s20\nshll v17.4s, v17.4h, #16\nshll v16.4s, v22.4h, #16\nfcvtas w9, s4\nfcvtas w10, s5\nfcvtas w11, s7\nmov h7, v1.h[2]\nfcvtas s5, s3\nfcvtas s4, s18\nshll v18.4s, v19.4h, #16\nfcvtas s3, s21\nmov h1, v1.h[3]\nfcvtas w12, s17\nmov v2.s[1], w13\nshll v6.4s, v6.4h, #16\nshll v7.4s, v7.4h, #16\nfcvtas w14, s18\nmov v5.s[1], w9\nmov v4.s[1], w8\nmov v3.s[1], w11\nshll v1.4s, v1.4h, #16\nfcvtas w9, s16\nfcvtas w11, s0\nfcvtas w8, s7\nmov v5.s[2], w10\nfcvtas w10, s6\nmov v4.s[2], w14\nmov v3.s[2], w12\nmov v2.s[2], w8\nfcvtas w8, s1\nmov v5.s[3], w9\nmov v4.s[3], w11\nmov v3.s[3], w10\nmov v2.s[3], w8\nmov v1.16b, v5.16b\nmov v0.16b, v4.16b\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.lround.v16i32.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %33:_(s32) = G_FPEXT %29:_(bf16) (in function: test)",
   "ll": "define <16 x i32> @test(<16 x bfloat> %a) {\n  %r = call <16 x i32> @llvm.lround(<16 x bfloat> %a)\n  ret <16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i32> @llvm.lround.v16i32.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i32> %r"
  },
@@ -7930,7 +7930,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtas x0, s0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llround.i64.bf16 (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i64) = G_LLROUND %0:fpr(bf16) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = call i64 @llvm.llround(bfloat %a)\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i64 @llvm.llround.i64.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -8035,7 +8035,7 @@
   "size": 7,
   "gisize": -2,
   "asm": "mov h1, v0.h[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nfcvtas x8, s0\nfcvtas x9, s1\nfmov d0, x8\nmov v0.d[1], x9\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llround.v2i64.v2bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %23:_(f32) = G_FPEXT %19:_(bf16) (in function: test)",
   "ll": "define <2 x i64> @test(<2 x bfloat> %a) {\n  %r = call <2 x i64> @llvm.llround(<2 x bfloat> %a)\n  ret <2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:5 Lat:8 SizeLat:8 for:   %r = call <2 x i64> @llvm.llround.v2i64.v2bf16(<2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i64> %r"
  },
@@ -8050,7 +8050,7 @@
   "size": 15,
   "gisize": -2,
   "asm": "mov h1, v0.h[2]\nmov h2, v0.h[1]\nmov h3, v0.h[3]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nshll v2.4s, v2.4h, #16\nshll v3.4s, v3.4h, #16\nfcvtas x8, s0\nfcvtas x9, s1\nfcvtas x10, s2\nfcvtas x11, s3\nfmov d0, x8\nfmov d1, x9\nmov v0.d[1], x10\nmov v1.d[1], x11\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llround.v4i64.v4bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %22:_(f32) = G_FPEXT %18:_(bf16) (in function: test)",
   "ll": "define <4 x i64> @test(<4 x bfloat> %a) {\n  %r = call <4 x i64> @llvm.llround(<4 x bfloat> %a)\n  ret <4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:11 Lat:18 SizeLat:18 for:   %r = call <4 x i64> @llvm.llround.v4i64.v4bf16(<4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
@@ -8065,7 +8065,7 @@
   "size": 31,
   "gisize": -2,
   "asm": "ext v1.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[2]\nmov h3, v0.h[1]\nmov h7, v0.h[3]\nshll v0.4s, v0.4h, #16\nmov h2, v1.h[2]\nmov h5, v1.h[1]\nmov h6, v1.h[3]\nshll v1.4s, v1.4h, #16\nshll v4.4s, v4.4h, #16\nshll v3.4s, v3.4h, #16\nshll v7.4s, v7.4h, #16\nfcvtas x9, s0\nshll v2.4s, v2.4h, #16\nshll v5.4s, v5.4h, #16\nshll v6.4s, v6.4h, #16\nfcvtas x8, s1\nfcvtas x12, s4\nfcvtas x11, s3\nfcvtas x15, s7\nfmov d0, x9\nfcvtas x10, s2\nfcvtas x13, s5\nfcvtas x14, s6\nfmov d2, x8\nfmov d1, x12\nmov v0.d[1], x11\nfmov d3, x10\nmov v2.d[1], x13\nmov v1.d[1], x15\nmov v3.d[1], x14\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llround.v8i64.v8bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %36:_(f32) = G_FPEXT %32:_(bf16) (in function: test)",
   "ll": "define <8 x i64> @test(<8 x bfloat> %a) {\n  %r = call <8 x i64> @llvm.llround(<8 x bfloat> %a)\n  ret <8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:38 CodeSize:23 Lat:38 SizeLat:38 for:   %r = call <8 x i64> @llvm.llround.v8i64.v8bf16(<8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i64> %r"
  },
@@ -8080,7 +8080,7 @@
   "size": 62,
   "gisize": -2,
   "asm": "ext v2.16b, v0.16b, v0.16b, #8\nmov h4, v0.h[1]\next v3.16b, v1.16b, v1.16b, #8\nshll v6.4s, v0.4h, #16\nmov h18, v0.h[2]\nmov h0, v0.h[3]\nmov h5, v2.h[1]\nmov h16, v2.h[2]\nshll v4.4s, v4.4h, #16\nmov h19, v3.h[2]\nshll v7.4s, v2.4h, #16\nshll v17.4s, v3.4h, #16\nfcvtas x8, s6\nshll v0.4s, v0.4h, #16\nfcvtas x11, s4\nmov h4, v1.h[2]\nshll v5.4s, v5.4h, #16\nshll v6.4s, v16.4h, #16\nfcvtas x9, s7\nfcvtas x10, s17\nshll v7.4s, v1.4h, #16\nshll v16.4s, v18.4h, #16\nshll v17.4s, v19.4h, #16\nmov h18, v2.h[3]\nmov h19, v3.h[3]\nfcvtas x12, s5\nmov h5, v1.h[1]\nfcvtas x13, s6\nmov h6, v3.h[1]\nmov h1, v1.h[3]\nshll v4.4s, v4.4h, #16\nfcvtas x14, s17\nfcvtas x15, s16\nfmov d2, x9\nfcvtas x9, s7\nshll v16.4s, v18.4h, #16\nshll v18.4s, v19.4h, #16\nshll v5.4s, v5.4h, #16\nfmov d3, x13\nfcvtas x13, s0\nshll v17.4s, v6.4h, #16\nshll v1.4s, v1.4h, #16\nfmov d6, x10\nfcvtas x10, s4\nfmov d7, x14\nfcvtas x14, s16\nfcvtas x16, s5\nfcvtas x18, s18\nfmov d0, x8\nfcvtas x17, s17\nfcvtas x0, s1\nfmov d1, x15\nfmov d4, x9\nmov v2.d[1], x12\nfmov d5, x10\nmov v0.d[1], x11\nmov v3.d[1], x14\nmov v1.d[1], x13\nmov v7.d[1], x18\nmov v4.d[1], x16\nmov v6.d[1], x17\nmov v5.d[1], x0\nret",
-  "giasm": "LLVM ERROR: unable to translate instruction: call llvm.llround.v16i64.v16bf16 (in function: test)",
+  "giasm": "LLVM ERROR: unable to legalize instruction: %62:_(f32) = G_FPEXT %58:_(bf16) (in function: test)",
   "ll": "define <16 x i64> @test(<16 x bfloat> %a) {\n  %r = call <16 x i64> @llvm.llround(<16 x bfloat> %a)\n  ret <16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:76 CodeSize:46 Lat:76 SizeLat:76 for:   %r = call <16 x i64> @llvm.llround.v16i64.v16bf16(<16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i64> %r"
  },
