@@ -18,6 +18,7 @@ PATH=$PWD/llvm-project/build/bin:$PATH python generate.py
 PATH=$PWD/llvm-project/build/bin:$PATH python generate.py -mattr=fullfp16
 PATH=$PWD/llvm-project/build/bin:$PATH python generate.py -mattr=sve2
 PATH=$PWD/llvm-project/build/bin:$PATH python generate.py -mattr=sve2 -vscale=2
+PATH=$PWD/llvm-project/build/bin:$PATH python generate.py -mattr=all
 
 git --no-pager diff
 if ! git diff-index --quiet HEAD --; then
