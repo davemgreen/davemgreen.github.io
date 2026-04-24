@@ -11018,9 +11018,9 @@
   "lat": 2,
   "sizelat": 2,
   "size": 2,
-  "gisize": 3,
+  "gisize": 2,
   "asm": "shll2 v1.4s, v0.8h, #16\nshll v0.4s, v0.4h, #16\nret",
-  "giasm": "mov d1, v0.d[1]\nshll v0.4s, v0.4h, #16\nshll v1.4s, v1.4h, #16\nret",
+  "giasm": "shll v2.4s, v0.4h, #16\nshll2 v1.4s, v0.8h, #16\nmov v0.16b, v2.16b\nret",
   "ll": "define <8 x float> @test(<8 x bfloat> %a) {\n  %r = fpext <8 x bfloat> %a to <8 x float>\n  ret <8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = fpext <8 x bfloat> %a to <8 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x float> %r"
  },
