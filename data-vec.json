@@ -85,7 +85,7 @@
   "size": 0,
   "gisize": 2,
   "asm": "ret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -100,7 +100,7 @@
   "size": 1,
   "gisize": 1,
   "asm": "zip1 v0.8b, v0.8b, v0.8b\nret",
-  "giasm": "ushll v0.8h, v0.8b, #0\nret",
+  "giasm": "zip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -235,7 +235,7 @@
   "size": 0,
   "gisize": 2,
   "asm": "ret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 0, i32 1>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 0, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -250,7 +250,7 @@
   "size": 1,
   "gisize": 1,
   "asm": "zip1 v0.4h, v0.4h, v0.4h\nret",
-  "giasm": "ushll v0.4s, v0.4h, #0\nret",
+  "giasm": "zip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 1>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -1885,7 +1885,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "dup v0.4h, v0.h[0]\nret",
-  "giasm": "mov w8, v0.s[1]\nmov v0.b[1], w8\ndup v0.8b, v0.b[0]\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "mov w8, v0.s[1]\nmov v0.b[1], w8\ndup v0.8b, v0.b[0]\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<2 x i8> %a) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i8> %a, <2 x i8> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -1900,7 +1900,7 @@
   "size": 1,
   "gisize": 3,
   "asm": "dup v0.4h, v0.h[0]\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\ndup v0.8b, v0.b[0]\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\ndup v0.8b, v0.b[0]\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -1915,7 +1915,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "umov w8, v0.b[0]\ndup v0.4h, w8\nret",
-  "giasm": "dup v0.8b, v0.b[0]\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "dup v0.8b, v0.b[0]\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 0, i32 0, i32 0>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -2185,7 +2185,7 @@
   "size": 1,
   "gisize": 3,
   "asm": "dup v0.2s, v0.s[0]\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\ndup v0.4h, v0.h[0]\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\ndup v0.4h, v0.h[0]\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -2200,7 +2200,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "umov w8, v0.h[0]\ndup v0.2s, w8\nret",
-  "giasm": "dup v0.4h, v0.h[0]\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "dup v0.4h, v0.h[0]\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 0>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -4885,7 +4885,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "dup v0.4h, v0.h[2]\nret",
-  "giasm": "mov w8, v0.s[1]\nmov v0.b[1], w8\ndup v0.8b, v0.b[1]\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "mov w8, v0.s[1]\nmov v0.b[1], w8\ndup v0.8b, v0.b[1]\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<2 x i8> %a) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> poison, <4 x i32> <i32 1, i32 1, i32 1, i32 1>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i8> %a, <2 x i8> poison, <4 x i32> <i32 1, i32 1, i32 1, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -4900,7 +4900,7 @@
   "size": 1,
   "gisize": 3,
   "asm": "dup v0.4h, v0.h[3]\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\ndup v0.8b, v0.b[3]\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\ndup v0.8b, v0.b[3]\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -4915,7 +4915,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "umov w8, v0.b[3]\ndup v0.4h, w8\nret",
-  "giasm": "dup v0.8b, v0.b[3]\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "dup v0.8b, v0.b[3]\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 3, i32 3, i32 3, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -5185,7 +5185,7 @@
   "size": 1,
   "gisize": 3,
   "asm": "dup v0.2s, v0.s[1]\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\ndup v0.4h, v0.h[1]\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\ndup v0.4h, v0.h[1]\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 1, i32 1>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 1, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -5200,7 +5200,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "umov w8, v0.h[3]\ndup v0.2s, w8\nret",
-  "giasm": "dup v0.4h, v0.h[3]\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "dup v0.4h, v0.h[3]\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 3, i32 3>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 3, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -7870,7 +7870,7 @@
   "size": 4,
   "gisize": 5,
   "asm": "mov b1, v0.b[0]\nmov v1.b[2], v0.b[4]\nmov v1.b[4], v0.b[1]\nmov v1.b[6], v0.b[5]\nfmov d0, d1\nret",
-  "giasm": "adrp x8, .LCPI0_0\nmov v0.d[1], v0.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "adrp x8, .LCPI0_0\nmov v0.d[1], v0.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 4, i32 1, i32 5>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 4, i32 1, i32 5>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -7960,7 +7960,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[0]\nmov v1.h[2], v0.h[2]\nfmov d0, d1\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 2>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 2>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -9070,7 +9070,7 @@
   "size": 4,
   "gisize": 5,
   "asm": "mov b1, v0.b[2]\nmov v1.b[2], v0.b[6]\nmov v1.b[4], v0.b[3]\nmov v1.b[6], v0.b[7]\nfmov d0, d1\nret",
-  "giasm": "adrp x8, .LCPI0_0\nmov v0.d[1], v0.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "adrp x8, .LCPI0_0\nmov v0.d[1], v0.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 2, i32 6, i32 3, i32 7>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 2, i32 6, i32 3, i32 7>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -9160,7 +9160,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[1]\nmov v1.h[2], v0.h[3]\nfmov d0, d1\nret",
-  "giasm": "uzp2 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp2 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 1, i32 3>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 1, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -10270,7 +10270,7 @@
   "size": 0,
   "gisize": 2,
   "asm": "ret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 2, i32 4, i32 6>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 2, i32 4, i32 6>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -10360,7 +10360,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[0]\nmov v1.h[2], v0.h[2]\nfmov d0, d1\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 2>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 2>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -11470,7 +11470,7 @@
   "size": 1,
   "gisize": 2,
   "asm": "rev16 v0.8b, v0.8b\nret",
-  "giasm": "uzp2 v0.8b, v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp2 v0.8b, v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 1, i32 3, i32 5, i32 7>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 1, i32 3, i32 5, i32 7>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -11560,7 +11560,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[1]\nmov v1.h[2], v0.h[3]\nfmov d0, d1\nret",
-  "giasm": "uzp2 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp2 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 1, i32 3>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 1, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -12670,7 +12670,7 @@
   "size": 4,
   "gisize": 5,
   "asm": "mov b1, v0.b[0]\nmov v1.b[2], v0.b[4]\nmov v1.b[4], v0.b[2]\nmov v1.b[6], v0.b[6]\nfmov d0, d1\nret",
-  "giasm": "adrp x8, .LCPI0_0\nmov v0.d[1], v0.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "adrp x8, .LCPI0_0\nmov v0.d[1], v0.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 4, i32 2, i32 6>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 0, i32 4, i32 2, i32 6>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -12760,7 +12760,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[0]\nmov v1.h[2], v0.h[2]\nfmov d0, d1\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 2>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 0, i32 2>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -13870,7 +13870,7 @@
   "size": 4,
   "gisize": 5,
   "asm": "mov b1, v0.b[1]\nmov v1.b[2], v0.b[5]\nmov v1.b[4], v0.b[3]\nmov v1.b[6], v0.b[7]\nfmov d0, d1\nret",
-  "giasm": "adrp x8, .LCPI0_0\nmov v0.d[1], v0.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "adrp x8, .LCPI0_0\nmov v0.d[1], v0.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 1, i32 5, i32 3, i32 7>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 1, i32 5, i32 3, i32 7>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -13960,7 +13960,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[1]\nmov v1.h[2], v0.h[3]\nfmov d0, d1\nret",
-  "giasm": "uzp2 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp2 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 1, i32 3>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 1, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -15085,7 +15085,7 @@
   "size": 1,
   "gisize": 3,
   "asm": "rev64 v0.4h, v0.4h\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nrev32 v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nrev32 v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -15100,7 +15100,7 @@
   "size": 4,
   "gisize": 2,
   "asm": "mov b1, v0.b[3]\nmov v1.b[2], v0.b[2]\nmov v1.b[4], v0.b[1]\nmov v1.b[6], v0.b[0]\nfmov d0, d1\nret",
-  "giasm": "rev32 v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "rev32 v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> poison, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -15235,7 +15235,7 @@
   "size": 1,
   "gisize": 3,
   "asm": "rev64 v0.2s, v0.2s\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nrev32 v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nrev32 v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 1, i32 0>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -15250,7 +15250,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[1]\nmov v1.h[2], v0.h[0]\nfmov d0, d1\nret",
-  "giasm": "rev32 v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "rev32 v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 1, i32 0>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> poison, <2 x i32> <i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -16825,7 +16825,7 @@
   "size": 1,
   "gisize": 6,
   "asm": "ext v0.8b, v0.8b, v0.8b, #4\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nmov v0.d[1], v0.d[0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nmov v0.d[1], v0.d[0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 2, i32 3, i32 0, i32 1>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = shufflevector <4 x i8> %a, <4 x i8> poison, <4 x i32> <i32 2, i32 3, i32 0, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -16885,7 +16885,7 @@
   "size": 0,
   "gisize": 2,
   "asm": "ret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 0, i32 1>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <2 x i16> %a, <2 x i16> poison, <2 x i32> <i32 0, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -17500,7 +17500,7 @@
   "size": 0,
   "gisize": 2,
   "asm": "ret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -17515,7 +17515,7 @@
   "size": 1,
   "gisize": 1,
   "asm": "zip1 v0.8b, v0.8b, v0.8b\nret",
-  "giasm": "ushll v0.8h, v0.8b, #0\nret",
+  "giasm": "zip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a, <8 x i8> %b) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 0, i32 1, i32 2, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -17695,7 +17695,7 @@
   "size": 0,
   "gisize": 2,
   "asm": "ret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 1>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -17710,7 +17710,7 @@
   "size": 1,
   "gisize": 1,
   "asm": "zip1 v0.4h, v0.4h, v0.4h\nret",
-  "giasm": "ushll v0.4s, v0.4h, #0\nret",
+  "giasm": "zip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a, <4 x i16> %b) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 0, i32 1>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 0, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -19765,7 +19765,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "zip1 v0.4h, v0.4h, v1.4h\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nuzp1 v1.8b, v1.8b, v0.8b\nzip1 v0.8b, v0.8b, v1.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nuzp1 v1.8b, v1.8b, v0.8b\nzip1 v0.8b, v0.8b, v1.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 0, i32 4, i32 1, i32 5>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 0, i32 4, i32 1, i32 5>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -19780,7 +19780,7 @@
   "size": 4,
   "gisize": 2,
   "asm": "mov b2, v0.b[0]\nmov v2.b[2], v1.b[0]\nmov v2.b[4], v0.b[1]\nmov v2.b[6], v1.b[1]\nfmov d0, d2\nret",
-  "giasm": "zip1 v0.8b, v0.8b, v1.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "zip1 v0.8b, v0.8b, v1.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a, <8 x i8> %b) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 0, i32 8, i32 1, i32 9>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 0, i32 8, i32 1, i32 9>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -19915,7 +19915,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "zip1 v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\nzip1 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\nzip1 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 2>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 2>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -19930,7 +19930,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h0, v0.h[0]\nmov v0.h[2], v1.h[0]\nret",
-  "giasm": "zip1 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "zip1 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a, <4 x i16> %b) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 0, i32 4>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 0, i32 4>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -21565,7 +21565,7 @@
   "size": 1,
   "gisize": 7,
   "asm": "zip2 v0.4h, v0.4h, v1.4h\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nuzp1 v1.8b, v1.8b, v0.8b\nmov v0.d[1], v1.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nuzp1 v1.8b, v1.8b, v0.8b\nmov v0.d[1], v1.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 2, i32 6, i32 3, i32 7>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 2, i32 6, i32 3, i32 7>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -21580,7 +21580,7 @@
   "size": 4,
   "gisize": 2,
   "asm": "mov b2, v0.b[4]\nmov v2.b[2], v1.b[4]\nmov v2.b[4], v0.b[5]\nmov v2.b[6], v1.b[5]\nfmov d0, d2\nret",
-  "giasm": "zip2 v0.8b, v0.8b, v1.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "zip2 v0.8b, v0.8b, v1.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a, <8 x i8> %b) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 4, i32 12, i32 5, i32 13>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 4, i32 12, i32 5, i32 13>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -21715,7 +21715,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "zip2 v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\ntrn2 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\ntrn2 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 1, i32 3>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 1, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -21730,7 +21730,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h0, v0.h[2]\nmov v0.h[2], v1.h[2]\nret",
-  "giasm": "zip2 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "zip2 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a, <4 x i16> %b) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 2, i32 6>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 2, i32 6>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -23365,7 +23365,7 @@
   "size": 1,
   "gisize": 7,
   "asm": "uzp1 v0.4h, v0.4h, v1.4h\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nuzp1 v1.8b, v1.8b, v0.8b\nmov v0.d[1], v1.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nuzp1 v1.8b, v1.8b, v0.8b\nmov v0.d[1], v1.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 0, i32 2, i32 4, i32 6>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 0, i32 2, i32 4, i32 6>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -23380,7 +23380,7 @@
   "size": 0,
   "gisize": 2,
   "asm": "ret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a, <8 x i8> %b) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 0, i32 2, i32 4, i32 6>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 0, i32 2, i32 4, i32 6>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -23515,7 +23515,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "zip1 v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\nzip1 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\nzip1 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 2>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 2>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -23530,7 +23530,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[0]\nmov v1.h[2], v0.h[2]\nfmov d0, d1\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a, <4 x i16> %b) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 0, i32 2>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 0, i32 2>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -25165,7 +25165,7 @@
   "size": 1,
   "gisize": 7,
   "asm": "uzp2 v0.4h, v0.4h, v1.4h\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nuzp1 v1.8b, v1.8b, v0.8b\nmov v0.d[1], v1.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nuzp1 v1.8b, v1.8b, v0.8b\nmov v0.d[1], v1.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 1, i32 3, i32 5, i32 7>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 1, i32 3, i32 5, i32 7>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -25180,7 +25180,7 @@
   "size": 1,
   "gisize": 2,
   "asm": "rev16 v0.8b, v0.8b\nret",
-  "giasm": "uzp2 v0.8b, v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp2 v0.8b, v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a, <8 x i8> %b) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 1, i32 3, i32 5, i32 7>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 1, i32 3, i32 5, i32 7>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -25315,7 +25315,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "zip2 v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\ntrn2 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\ntrn2 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 1, i32 3>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 1, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -25330,7 +25330,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[1]\nmov v1.h[2], v0.h[3]\nfmov d0, d1\nret",
-  "giasm": "uzp2 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp2 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a, <4 x i16> %b) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 1, i32 3>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 1, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -26965,7 +26965,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "trn1 v0.4h, v0.4h, v1.4h\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nuzp1 v1.8b, v1.8b, v0.8b\ntrn1 v0.8b, v0.8b, v1.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nuzp1 v1.8b, v1.8b, v0.8b\ntrn1 v0.8b, v0.8b, v1.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 0, i32 4, i32 2, i32 6>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 0, i32 4, i32 2, i32 6>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -26980,7 +26980,7 @@
   "size": 4,
   "gisize": 2,
   "asm": "mov b2, v0.b[0]\nmov v2.b[2], v1.b[0]\nmov v2.b[4], v0.b[2]\nmov v2.b[6], v1.b[2]\nfmov d0, d2\nret",
-  "giasm": "trn1 v0.8b, v0.8b, v1.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "trn1 v0.8b, v0.8b, v1.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a, <8 x i8> %b) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 0, i32 8, i32 2, i32 10>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 0, i32 8, i32 2, i32 10>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -27115,7 +27115,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "zip1 v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\nzip1 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\nzip1 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 2>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 2>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -27130,7 +27130,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h0, v0.h[0]\nmov v0.h[2], v1.h[0]\nret",
-  "giasm": "zip1 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "zip1 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a, <4 x i16> %b) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 0, i32 4>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 0, i32 4>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -28765,7 +28765,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "trn2 v0.4h, v0.4h, v1.4h\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nuzp1 v1.8b, v1.8b, v0.8b\ntrn2 v0.8b, v0.8b, v1.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nuzp1 v1.8b, v1.8b, v0.8b\ntrn2 v0.8b, v0.8b, v1.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 1, i32 5, i32 3, i32 7>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 1, i32 5, i32 3, i32 7>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -28780,7 +28780,7 @@
   "size": 4,
   "gisize": 2,
   "asm": "mov b2, v0.b[1]\nmov v2.b[2], v1.b[1]\nmov v2.b[4], v0.b[3]\nmov v2.b[6], v1.b[3]\nfmov d0, d2\nret",
-  "giasm": "trn2 v0.8b, v0.8b, v1.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "trn2 v0.8b, v0.8b, v1.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a, <8 x i8> %b) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 1, i32 9, i32 3, i32 11>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 1, i32 9, i32 3, i32 11>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -28915,7 +28915,7 @@
   "size": 1,
   "gisize": 4,
   "asm": "zip2 v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\ntrn2 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nuzp1 v1.4h, v1.4h, v0.4h\ntrn2 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 1, i32 3>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 1, i32 3>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -28930,7 +28930,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h0, v0.h[1]\nmov v0.h[2], v1.h[1]\nret",
-  "giasm": "trn2 v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "trn2 v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a, <4 x i16> %b) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 1, i32 5>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 1, i32 5>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -30565,7 +30565,7 @@
   "size": 6,
   "gisize": 9,
   "asm": "mov w8, v1.s[1]\nfmov d2, d0\nfmov s0, w8\nmov w8, v2.s[1]\nmov v0.h[1], v1.h[0]\nmov v0.h[2], w8\nmov v0.h[3], v2.h[0]\nret",
-  "giasm": "mov w8, v0.s[1]\nmov w9, v1.s[1]\nmov v0.b[1], w8\nmov v1.b[1], w9\nadrp x8, .LCPI0_0\nmov v0.d[1], v1.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "mov w8, v0.s[1]\nmov w9, v1.s[1]\nmov v0.b[1], w8\nmov v1.b[1], w9\nadrp x8, .LCPI0_0\nmov v0.d[1], v1.d[0]\nldr d1, [x8, :lo12:.LCPI0_0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<2 x i8> %a, <2 x i8> %b) {\n  %r = shufflevector <2 x i8> %a, <2 x i8> %b, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:16 CodeSize:8 Lat:16 SizeLat:16 for:   %r = shufflevector <2 x i8> %a, <2 x i8> %b, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -30580,7 +30580,7 @@
   "size": 1,
   "gisize": 3,
   "asm": "rev64 v0.4h, v0.4h\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nrev32 v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nrev32 v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -30595,7 +30595,7 @@
   "size": 4,
   "gisize": 2,
   "asm": "mov b1, v0.b[3]\nmov v1.b[2], v0.b[2]\nmov v1.b[4], v0.b[1]\nmov v1.b[6], v0.b[0]\nfmov d0, d1\nret",
-  "giasm": "rev32 v0.8b, v0.8b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "rev32 v0.8b, v0.8b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<8 x i8> %a, <8 x i8> %b) {\n  %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <8 x i8> %a, <8 x i8> %b, <4 x i32> <i32 3, i32 2, i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -30775,7 +30775,7 @@
   "size": 1,
   "gisize": 3,
   "asm": "rev64 v0.2s, v0.2s\nret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nrev32 v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nrev32 v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 1, i32 0>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -30790,7 +30790,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "mov h1, v0.h[1]\nmov v1.h[2], v0.h[0]\nfmov d0, d1\nret",
-  "giasm": "rev32 v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "rev32 v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<4 x i16> %a, <4 x i16> %b) {\n  %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 1, i32 0>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = shufflevector <4 x i16> %a, <4 x i16> %b, <2 x i32> <i32 1, i32 0>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -32785,7 +32785,7 @@
   "size": 1,
   "gisize": 6,
   "asm": "ext v0.8b, v0.8b, v0.8b, #4\nret",
-  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nmov v0.d[1], v0.d[0]\ntbl v0.16b, { v0.16b }, v1.16b\nushll v0.8h, v0.8b, #0\nret",
+  "giasm": "uzp1 v0.8b, v0.8b, v0.8b\nadrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nmov v0.d[1], v0.d[0]\ntbl v0.16b, { v0.16b }, v1.16b\nzip1 v0.8b, v0.8b, v0.8b\nret",
   "ll": "define <4 x i8> @test(<4 x i8> %a, <4 x i8> %b) {\n  %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 2, i32 3, i32 0, i32 1>\n  ret <4 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = shufflevector <4 x i8> %a, <4 x i8> %b, <4 x i32> <i32 2, i32 3, i32 0, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i8> %r"
  },
@@ -32845,7 +32845,7 @@
   "size": 0,
   "gisize": 2,
   "asm": "ret",
-  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "uzp1 v0.4h, v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x i16> %a, <2 x i16> %b) {\n  %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 1>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 0 for:   %r = shufflevector <2 x i16> %a, <2 x i16> %b, <2 x i32> <i32 0, i32 1>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },

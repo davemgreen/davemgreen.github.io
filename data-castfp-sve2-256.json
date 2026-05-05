@@ -250,7 +250,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "fcvtl v0.4s, v0.4h\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "fcvtzs v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "fcvtzs v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i8> @test(<2 x half> %a) vscale_range(2, 2){\n  %r = fptosi <2 x half> %a to <2 x i8>\n  ret <2 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi <2 x half> %a to <2 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i8> %r"
  },
@@ -265,7 +265,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "fcvtl v0.4s, v0.4h\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "fcvtzs v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "fcvtzs v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x half> %a) vscale_range(2, 2){\n  %r = fptosi <2 x half> %a to <2 x i16>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi <2 x half> %a to <2 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -2050,7 +2050,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "fcvtl v0.4s, v0.4h\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "fcvtzu v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "fcvtzu v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i8> @test(<2 x half> %a) vscale_range(2, 2){\n  %r = fptoui <2 x half> %a to <2 x i8>\n  ret <2 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui <2 x half> %a to <2 x i8>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i8> %r"
  },
@@ -2065,7 +2065,7 @@
   "size": 2,
   "gisize": 2,
   "asm": "fcvtl v0.4s, v0.4h\nfcvtzs v0.4s, v0.4s\nret",
-  "giasm": "fcvtzu v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "fcvtzu v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x half> %a) vscale_range(2, 2){\n  %r = fptoui <2 x half> %a to <2 x i16>\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui <2 x half> %a to <2 x i16>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -3848,9 +3848,9 @@
   "lat": 3,
   "sizelat": 3,
   "size": 6,
-  "gisize": 10,
+  "gisize": 6,
   "asm": "fcvtl v0.4s, v0.4h\nmovi v1.2s, #127\nfcvtzs v0.4s, v0.4s\nsmin v0.2s, v0.2s, v1.2s\nmvni v1.2s, #127\nsmax v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "mov w8, #127                        // =0x7f\nfcvtzs v0.4h, v0.4h\nfmov s1, w8\nmov v1.h[1], w8\nmov w8, #65408                      // =0xff80\nfmov s2, w8\nmov v2.h[1], w8\nsmin v0.4h, v0.4h, v1.4h\nsmax v0.4h, v0.4h, v2.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "movi v1.4h, #127\nfcvtzs v0.4h, v0.4h\nsmin v0.4h, v0.4h, v1.4h\nmvni v1.4h, #127\nsmax v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i8> @test(<2 x half> %a) vscale_range(2, 2){\n  %r = call <2 x i8> @llvm.fptosi.sat(<2 x half> %a)\n  ret <2 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call <2 x i8> @llvm.fptosi.sat.v2i8.v2f16(<2 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i8> %r"
  },
@@ -3865,7 +3865,7 @@
   "size": 6,
   "gisize": 2,
   "asm": "fcvtl v0.4s, v0.4h\nmovi v1.2s, #127, msl #8\nfcvtzs v0.4s, v0.4s\nsmin v0.2s, v0.2s, v1.2s\nmvni v1.2s, #127, msl #8\nsmax v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "fcvtzs v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "fcvtzs v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x half> %a) vscale_range(2, 2){\n  %r = call <2 x i16> @llvm.fptosi.sat(<2 x half> %a)\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call <2 x i16> @llvm.fptosi.sat.v2i16.v2f16(<2 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
@@ -5648,9 +5648,9 @@
   "lat": 3,
   "sizelat": 3,
   "size": 4,
-  "gisize": 6,
+  "gisize": 4,
   "asm": "fcvtl v0.4s, v0.4h\nmovi d1, #0x0000ff000000ff\nfcvtzu v0.4s, v0.4s\numin v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "mov w8, #255                        // =0xff\nfcvtzu v0.4h, v0.4h\nfmov s1, w8\nmov v1.h[1], w8\numin v0.4h, v0.4h, v1.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "movi d1, #0xff00ff00ff00ff\nfcvtzu v0.4h, v0.4h\numin v0.4h, v0.4h, v1.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i8> @test(<2 x half> %a) vscale_range(2, 2){\n  %r = call <2 x i8> @llvm.fptoui.sat(<2 x half> %a)\n  ret <2 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call <2 x i8> @llvm.fptoui.sat.v2i8.v2f16(<2 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i8> %r"
  },
@@ -5665,7 +5665,7 @@
   "size": 4,
   "gisize": 2,
   "asm": "fcvtl v0.4s, v0.4h\nmovi d1, #0x00ffff0000ffff\nfcvtzu v0.4s, v0.4s\numin v0.2s, v0.2s, v1.2s\nret",
-  "giasm": "fcvtzu v0.4h, v0.4h\nushll v0.4s, v0.4h, #0\nret",
+  "giasm": "fcvtzu v0.4h, v0.4h\nzip1 v0.4h, v0.4h, v0.4h\nret",
   "ll": "define <2 x i16> @test(<2 x half> %a) vscale_range(2, 2){\n  %r = call <2 x i16> @llvm.fptoui.sat(<2 x half> %a)\n  ret <2 x i16> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call <2 x i16> @llvm.fptoui.sat.v2i16.v2f16(<2 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i16> %r"
  },
