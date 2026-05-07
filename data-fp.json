@@ -6102,7 +6102,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, eq\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, eq\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp oeq half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oeq half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oeq half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpoeq",
@@ -6132,7 +6132,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, eq\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, eq\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp oeq half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oeq half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oeq half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpoeq",
@@ -6162,7 +6162,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, eq\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp oeq bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oeq bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oeq bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpoeq",
@@ -6192,7 +6192,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, eq\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp oeq bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oeq bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oeq bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpoeq",
@@ -7002,7 +7002,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, gt\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, gt\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp ogt half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ogt half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ogt half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpogt",
@@ -7032,7 +7032,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, gt\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, gt\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp ogt half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ogt half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ogt half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpogt",
@@ -7062,7 +7062,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, gt\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp ogt bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ogt bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ogt bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpogt",
@@ -7092,7 +7092,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, gt\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp ogt bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ogt bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ogt bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpogt",
@@ -7902,7 +7902,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, ge\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, ge\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp oge half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oge half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oge half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpoge",
@@ -7932,7 +7932,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, ge\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, ge\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp oge half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oge half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oge half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpoge",
@@ -7962,7 +7962,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, ge\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp oge bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oge bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oge bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpoge",
@@ -7992,7 +7992,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, ge\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp oge bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oge bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oge bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpoge",
@@ -8802,7 +8802,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, mi\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, mi\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp olt half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp olt half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp olt half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpolt",
@@ -8832,7 +8832,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, mi\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, mi\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp olt half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp olt half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp olt half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpolt",
@@ -8862,7 +8862,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, mi\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp olt bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp olt bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp olt bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpolt",
@@ -8892,7 +8892,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, mi\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp olt bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp olt bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp olt bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpolt",
@@ -9702,7 +9702,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, ls\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, ls\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp ole half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ole half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ole half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpole",
@@ -9732,7 +9732,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, ls\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, ls\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp ole half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ole half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ole half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpole",
@@ -9762,7 +9762,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, ls\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp ole bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ole bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ole bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpole",
@@ -9792,7 +9792,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, ls\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp ole bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ole bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ole bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpole",
@@ -10602,7 +10602,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w8, mi\ncsinc w0, w8, wzr, le\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w8, mi\ncset w9, gt\norr w0, w8, w9\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp one half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %r = fcmp one half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %r = fcmp one half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpone",
@@ -10632,7 +10632,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, mi\nfcsel s0, s1, s0, gt\nret",
   "giasm": "fcvt s0, h0\nfmov w10, s2\nfcmp s0, #0.0\ncset w8, mi\ncset w9, gt\norr w8, w8, w9\nfmov w9, s1\ntst w8, #0x1\ncsel w8, w9, w10, ne\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp one half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %c = fcmp one half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %c = fcmp one half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpone",
@@ -10662,7 +10662,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w8, mi\ncsinc w0, w8, wzr, le\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp one bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %r = fcmp one bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %r = fcmp one bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpone",
@@ -10692,7 +10692,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, mi\nfcsel s0, s1, s0, gt\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp one bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %c = fcmp one bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %c = fcmp one bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpone",
@@ -11502,7 +11502,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, s0\ncset w0, vc\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, vc\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp ord half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ord half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ord half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpord",
@@ -11532,7 +11532,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, s0\nfcsel s0, s1, s2, vc\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, vc\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp ord half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ord half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ord half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpord",
@@ -11562,7 +11562,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, s0\ncset w0, vc\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp ord bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ord bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ord bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpord",
@@ -11592,7 +11592,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, s0\nfcsel s0, s1, s2, vc\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp ord bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ord bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ord bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpord",
@@ -12402,7 +12402,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w8, eq\ncsinc w0, w8, wzr, vc\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w8, eq\ncset w9, vs\norr w0, w8, w9\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp ueq half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %r = fcmp ueq half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %r = fcmp ueq half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpueq",
@@ -12432,7 +12432,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, eq\nfcsel s0, s1, s0, vs\nret",
   "giasm": "fcvt s0, h0\nfmov w10, s2\nfcmp s0, #0.0\ncset w8, eq\ncset w9, vs\norr w8, w8, w9\nfmov w9, s1\ntst w8, #0x1\ncsel w8, w9, w10, ne\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp ueq half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %c = fcmp ueq half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %c = fcmp ueq half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpueq",
@@ -12462,7 +12462,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w8, eq\ncsinc w0, w8, wzr, vc\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp ueq bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %r = fcmp ueq bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %r = fcmp ueq bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpueq",
@@ -12492,7 +12492,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, eq\nfcsel s0, s1, s0, vs\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp ueq bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %c = fcmp ueq bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:5 SizeLat:3 for:   %c = fcmp ueq bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpueq",
@@ -13302,7 +13302,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, hi\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, hi\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp ugt half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ugt half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ugt half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpugt",
@@ -13332,7 +13332,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, hi\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, hi\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp ugt half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ugt half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ugt half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpugt",
@@ -13362,7 +13362,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, hi\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp ugt bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ugt bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ugt bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpugt",
@@ -13392,7 +13392,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, hi\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp ugt bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ugt bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ugt bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpugt",
@@ -14202,7 +14202,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, pl\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, pl\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp uge half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uge half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uge half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpuge",
@@ -14232,7 +14232,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, pl\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, pl\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp uge half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uge half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uge half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpuge",
@@ -14262,7 +14262,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, pl\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp uge bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uge bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uge bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpuge",
@@ -14292,7 +14292,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, pl\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp uge bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uge bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uge bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpuge",
@@ -15102,7 +15102,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, lt\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, lt\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp ult half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ult half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ult half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpult",
@@ -15132,7 +15132,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, lt\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, lt\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp ult half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ult half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ult half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpult",
@@ -15162,7 +15162,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, lt\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp ult bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ult bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ult bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpult",
@@ -15192,7 +15192,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, lt\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp ult bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ult bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ult bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpult",
@@ -16002,7 +16002,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, le\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, le\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp ule half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ule half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ule half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpule",
@@ -16032,7 +16032,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, le\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, le\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp ule half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ule half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ule half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpule",
@@ -16062,7 +16062,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, le\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp ule bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ule bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ule bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpule",
@@ -16092,7 +16092,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, le\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp ule bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ule bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ule bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpule",
@@ -16902,7 +16902,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, ne\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, ne\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp une half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp une half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp une half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpune",
@@ -16932,7 +16932,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, #0.0\nfcsel s0, s1, s2, ne\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, ne\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp une half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp une half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp une half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpune",
@@ -16962,7 +16962,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\ncset w0, ne\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp une bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp une bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp une bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpune",
@@ -16992,7 +16992,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, #0.0\nfcsel s0, s1, s2, ne\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp une bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp une bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp une bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpune",
@@ -17802,7 +17802,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, s0\ncset w0, vs\nret",
   "giasm": "fcvt s0, h0\nfcmp s0, #0.0\ncset w0, vs\nret",
   "ll": "define i1 @test(half %a) {\n  %r = fcmp uno half %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uno half %a, 0xH0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uno half %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpuno",
@@ -17832,7 +17832,7 @@
   "asm": "fcvt s0, h0\nfcmp s0, s0\nfcsel s0, s1, s2, vs\nret",
   "giasm": "fcvt s0, h0\nfmov w8, s1\nfmov w9, s2\nfcmp s0, #0.0\ncsel w8, w8, w9, vs\nfmov s0, w8\nret",
   "ll": "define half @test(half %a, half %d, half %e) {\n  %c = fcmp uno half %a, 0.0\n  %r = select i1 %c, half %d, half %e\n  ret half %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uno half %a, 0xH0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uno half %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, half %d, half %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret half %r"
  },
  {
   "instr": "fcmpuno",
@@ -17862,7 +17862,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, s0\ncset w0, vs\nret",
   "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define i1 @test(bfloat %a) {\n  %r = fcmp uno bfloat %a, 0.0\n  ret i1 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uno bfloat %a, 0xR0000\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uno bfloat %a, 0.000000e+00\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i1 %r"
  },
  {
   "instr": "selectfcmpuno",
@@ -17892,7 +17892,7 @@
   "asm": "shll v0.4s, v0.4h, #16\nfcmp s0, s0\nfcsel s0, s1, s2, vs\nret",
   "giasm": "LLVM ERROR: cannot select: %11:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
   "ll": "define bfloat @test(bfloat %a, bfloat %d, bfloat %e) {\n  %c = fcmp uno bfloat %a, 0.0\n  %r = select i1 %c, bfloat %d, bfloat %e\n  ret bfloat %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uno bfloat %a, 0xR0000\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uno bfloat %a, 0.000000e+00\nCost Model: Found costs of 1 for:   %r = select i1 %c, bfloat %d, bfloat %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
  {
   "instr": "fcmpuno",
