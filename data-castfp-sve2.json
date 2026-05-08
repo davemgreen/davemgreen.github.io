@@ -11288,9 +11288,9 @@
   "lat": 9,
   "sizelat": 9,
   "size": 8,
-  "gisize": -2,
+  "gisize": 11,
   "asm": "fcvtxn s0, d0\nmov w8, #32767                      // =0x7fff\nfmov w9, s0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\nadd w8, w10, w8\nlsr w8, w8, #16\nfmov s0, w8\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(bf16) = G_FPTRUNC %0:_(f64) (in function: test)",
+  "giasm": "fcvtxn s0, d0\nmov w8, #32767                      // =0x7fff\nfmov w9, s0\nfcmp s0, #0.0\nubfx w10, w9, #16, #1\nadd w8, w9, w8\norr w9, w9, #0x400000\nadd w8, w8, w10\ncsel w8, w9, w8, vs\nlsr w8, w8, #16\nfmov s0, w8\nret",
   "ll": "define bfloat @test(double %a) {\n  %r = fptrunc double %a to bfloat\n  ret bfloat %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 9 for:   %r = fptrunc double %a to bfloat\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret bfloat %r"
  },
@@ -11423,9 +11423,9 @@
   "lat": 9,
   "sizelat": 9,
   "size": 10,
-  "gisize": -2,
+  "gisize": 13,
   "asm": "fcvtxn v0.2s, v0.2d\nmovi v1.4s, #127, msl #8\nushr v2.4s, v0.4s, #16\nadd v1.4s, v0.4s, v1.4s\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nand z2.s, z2.s, #0x1\nadd v1.4s, v2.4s, v1.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %11:_(bf16) = G_FPTRUNC %9:_(f64) (in function: test)",
+  "giasm": "fcvtxn v0.2s, v0.2d\nmovi v1.4s, #1\nmovi v2.4s, #127, msl #8\nmovi v5.4s, #64, lsl #16\nushr v3.4s, v0.4s, #16\nfcmeq v4.4s, v0.4s, v0.4s\nadd v2.4s, v0.4s, v2.4s\norr v0.16b, v0.16b, v5.16b\nand v1.16b, v3.16b, v1.16b\nmvn v3.16b, v4.16b\nadd v1.4s, v2.4s, v1.4s\nbif v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
   "ll": "define <2 x bfloat> @test(<2 x double> %a) {\n  %r = fptrunc <2 x double> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 9 for:   %r = fptrunc <2 x double> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -11468,9 +11468,9 @@
   "lat": 10,
   "sizelat": 10,
   "size": 11,
-  "gisize": -2,
+  "gisize": 14,
   "asm": "fcvtxn v0.2s, v0.2d\nmovi v2.4s, #127, msl #8\nfcvtxn2 v0.4s, v1.2d\nushr v1.4s, v0.4s, #16\nadd v2.4s, v0.4s, v2.4s\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nand z1.s, z1.s, #0x1\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "LLVM ERROR: unable to legalize instruction: %13:_(bf16) = G_FPTRUNC %11:_(f64) (in function: test)",
+  "giasm": "fcvtxn v0.2s, v0.2d\nmovi v2.4s, #127, msl #8\nmovi v5.4s, #64, lsl #16\nfcvtxn2 v0.4s, v1.2d\nmovi v1.4s, #1\nushr v3.4s, v0.4s, #16\nfcmeq v4.4s, v0.4s, v0.4s\nadd v2.4s, v0.4s, v2.4s\norr v0.16b, v0.16b, v5.16b\nand v1.16b, v3.16b, v1.16b\nmvn v3.16b, v4.16b\nadd v1.4s, v2.4s, v1.4s\nbif v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
   "ll": "define <4 x bfloat> @test(<4 x double> %a) {\n  %r = fptrunc <4 x double> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %r = fptrunc <4 x double> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -11590,7 +11590,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nfcvt z0.h, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
+  "giasm": "llc: llvm/lib/Target/AArch64/GISel/AArch64LegalizerInfo.cpp:2675: bool llvm::AArch64LegalizerInfo::legalizeFptrunc(llvm::MachineInstr&, llvm::MachineIRBuilder&, llvm::MachineRegisterInfo&) const: Assertion `SrcTy.isFixedVector() && isPowerOf2_32(SrcTy.getNumElements()) && \"Expected a power of 2 elements\"' failed.",
   "ll": "define <vscale x 2 x half> @test(<vscale x 2 x double> %a) {\n  %r = fptrunc <vscale x 2 x double> %a to <vscale x 2 x half>\n  ret <vscale x 2 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptrunc <vscale x 2 x double> %a to <vscale x 2 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x half> %r"
  },
@@ -11605,7 +11605,7 @@
   "size": 10,
   "gisize": -1,
   "asm": "ptrue p0.d\nmov z1.s, #32767                    // =0x7fff\nfcvtx z0.s, p0/m, z0.d\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
+  "giasm": "llc: llvm/lib/Target/AArch64/GISel/AArch64LegalizerInfo.cpp:2675: bool llvm::AArch64LegalizerInfo::legalizeFptrunc(llvm::MachineInstr&, llvm::MachineIRBuilder&, llvm::MachineRegisterInfo&) const: Assertion `SrcTy.isFixedVector() && isPowerOf2_32(SrcTy.getNumElements()) && \"Expected a power of 2 elements\"' failed.",
   "ll": "define <vscale x 2 x bfloat> @test(<vscale x 2 x double> %a) {\n  %r = fptrunc <vscale x 2 x double> %a to <vscale x 2 x bfloat>\n  ret <vscale x 2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 9 for:   %r = fptrunc <vscale x 2 x double> %a to <vscale x 2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x bfloat> %r"
  },
@@ -11635,7 +11635,7 @@
   "size": 3,
   "gisize": -1,
   "asm": "ptrue p0.d\nfcvt z1.h, p0/m, z1.d\nfcvt z0.h, p0/m, z0.d\nuzp1 z0.s, z0.s, z1.s\nret",
-  "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
+  "giasm": "llc: llvm/lib/Target/AArch64/GISel/AArch64LegalizerInfo.cpp:2675: bool llvm::AArch64LegalizerInfo::legalizeFptrunc(llvm::MachineInstr&, llvm::MachineIRBuilder&, llvm::MachineRegisterInfo&) const: Assertion `SrcTy.isFixedVector() && isPowerOf2_32(SrcTy.getNumElements()) && \"Expected a power of 2 elements\"' failed.",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x double> %a) {\n  %r = fptrunc <vscale x 4 x double> %a to <vscale x 4 x half>\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = fptrunc <vscale x 4 x double> %a to <vscale x 4 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
  },
@@ -11650,7 +11650,7 @@
   "size": 20,
   "gisize": -1,
   "asm": "ptrue p0.d\nmov z2.s, #32767                    // =0x7fff\nfcvtx z1.s, p0/m, z1.d\nfcvtx z0.s, p0/m, z0.d\nlsr z3.s, z1.s, #16\nlsr z5.s, z0.s, #16\nadd z4.s, z1.s, z2.s\nadd z2.s, z0.s, z2.s\nfcmuo p1.s, p0/z, z1.s, z1.s\norr z1.s, z1.s, #0x400000\nand z3.s, z3.s, #0x1\nand z5.s, z5.s, #0x1\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nadd z3.s, z3.s, z4.s\nadd z2.s, z5.s, z2.s\nsel z1.s, p1, z1.s, z3.s\nsel z0.s, p0, z0.s, z2.s\nlsr z1.s, z1.s, #16\nlsr z0.s, z0.s, #16\nuzp1 z0.s, z0.s, z1.s\nret",
-  "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
+  "giasm": "llc: llvm/lib/Target/AArch64/GISel/AArch64LegalizerInfo.cpp:2675: bool llvm::AArch64LegalizerInfo::legalizeFptrunc(llvm::MachineInstr&, llvm::MachineIRBuilder&, llvm::MachineRegisterInfo&) const: Assertion `SrcTy.isFixedVector() && isPowerOf2_32(SrcTy.getNumElements()) && \"Expected a power of 2 elements\"' failed.",
   "ll": "define <vscale x 4 x bfloat> @test(<vscale x 4 x double> %a) {\n  %r = fptrunc <vscale x 4 x double> %a to <vscale x 4 x bfloat>\n  ret <vscale x 4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 19 for:   %r = fptrunc <vscale x 4 x double> %a to <vscale x 4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x bfloat> %r"
  },
