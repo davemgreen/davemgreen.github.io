@@ -157,7 +157,21 @@
             border: 1px solid #ddd;
             text-align: left;
         }
-        th {
+        thead th {
+            background-color: #4c79aa;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+        tbody th:first-child {
+            background-color: #4c79aa;
+            color: white;
+            position: sticky;
+            left: 0;
+            z-index: 1;
+        }
+        tbody th {
             background-color: #4c79aa;
             color: white;
         }
