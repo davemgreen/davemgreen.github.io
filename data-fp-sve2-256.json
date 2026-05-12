@@ -11019,7 +11019,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmeq v2.4s, v2.4s, v3.4s\nfcmeq v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp oeq <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp oeq <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -11034,7 +11034,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmeq v2.4s, v2.4s, v1.4s\nfcmeq v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp oeq <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oeq <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -11049,7 +11049,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmeq v4.4s, v4.4s, v5.4s\nfcmeq v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp oeq <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp oeq <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -11064,7 +11064,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmeq v4.4s, v4.4s, v3.4s\nfcmeq v0.4s, v0.4s, v3.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp oeq <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oeq <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -11079,7 +11079,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 15,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmeq v4.4s, v4.4s, v6.4s\nfcmeq v0.4s, v0.4s, v2.4s\nfcmeq v2.4s, v5.4s, v7.4s\nfcmeq v1.4s, v1.4s, v3.4s\nuzp1 v0.8h, v4.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp oeq <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp oeq <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -11094,7 +11094,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 13,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmeq v3.4s, v3.4s, v2.4s\nfcmeq v0.4s, v0.4s, v2.4s\nfcmeq v4.4s, v4.4s, v2.4s\nfcmeq v1.4s, v1.4s, v2.4s\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v4.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp oeq <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp oeq <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -11109,7 +11109,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 20,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmeq v16.4s, v16.4s, v18.4s\nfcmeq v0.4s, v0.4s, v2.4s\nfcmeq v2.4s, v17.4s, v19.4s\nfcmeq v1.4s, v1.4s, v3.4s\nuzp1 v0.8h, v16.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp oeq <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp oeq <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -11124,7 +11124,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 18,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmeq v7.4s, v7.4s, v6.4s\nfcmeq v0.4s, v0.4s, v6.4s\nfcmeq v16.4s, v16.4s, v6.4s\nfcmeq v1.4s, v1.4s, v6.4s\nuzp1 v0.8h, v7.8h, v0.8h\nuzp1 v1.8h, v16.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp oeq <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp oeq <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -12579,7 +12579,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v2.4s, v2.4s, v3.4s\nfcmgt v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ogt <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp ogt <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -12594,7 +12594,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmgt v2.4s, v2.4s, v1.4s\nfcmgt v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ogt <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ogt <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -12609,7 +12609,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v4.4s, v4.4s, v5.4s\nfcmgt v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ogt <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp ogt <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -12624,7 +12624,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmgt v4.4s, v4.4s, v3.4s\nfcmgt v0.4s, v0.4s, v3.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ogt <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ogt <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -12639,7 +12639,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 15,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v4.4s, v4.4s, v6.4s\nfcmgt v0.4s, v0.4s, v2.4s\nfcmgt v2.4s, v5.4s, v7.4s\nfcmgt v1.4s, v1.4s, v3.4s\nuzp1 v0.8h, v4.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ogt <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp ogt <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -12654,7 +12654,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 13,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmgt v3.4s, v3.4s, v2.4s\nfcmgt v0.4s, v0.4s, v2.4s\nfcmgt v4.4s, v4.4s, v2.4s\nfcmgt v1.4s, v1.4s, v2.4s\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v4.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ogt <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp ogt <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -12669,7 +12669,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 20,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v16.4s, v16.4s, v18.4s\nfcmgt v0.4s, v0.4s, v2.4s\nfcmgt v2.4s, v17.4s, v19.4s\nfcmgt v1.4s, v1.4s, v3.4s\nuzp1 v0.8h, v16.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ogt <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp ogt <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -12684,7 +12684,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 18,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmgt v7.4s, v7.4s, v6.4s\nfcmgt v0.4s, v0.4s, v6.4s\nfcmgt v16.4s, v16.4s, v6.4s\nfcmgt v1.4s, v1.4s, v6.4s\nuzp1 v0.8h, v7.8h, v0.8h\nuzp1 v1.8h, v16.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ogt <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp ogt <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -14139,7 +14139,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v2.4s, v2.4s, v3.4s\nfcmge v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp oge <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp oge <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -14154,7 +14154,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmge v2.4s, v2.4s, v1.4s\nfcmge v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp oge <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp oge <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -14169,7 +14169,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v4.4s, v4.4s, v5.4s\nfcmge v0.4s, v0.4s, v1.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp oge <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp oge <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -14184,7 +14184,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmge v4.4s, v4.4s, v3.4s\nfcmge v0.4s, v0.4s, v3.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp oge <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp oge <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -14199,7 +14199,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 15,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v4.4s, v4.4s, v6.4s\nfcmge v0.4s, v0.4s, v2.4s\nfcmge v2.4s, v5.4s, v7.4s\nfcmge v1.4s, v1.4s, v3.4s\nuzp1 v0.8h, v4.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp oge <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp oge <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -14214,7 +14214,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 13,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmge v3.4s, v3.4s, v2.4s\nfcmge v0.4s, v0.4s, v2.4s\nfcmge v4.4s, v4.4s, v2.4s\nfcmge v1.4s, v1.4s, v2.4s\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v4.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp oge <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp oge <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -14229,7 +14229,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 20,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v16.4s, v16.4s, v18.4s\nfcmge v0.4s, v0.4s, v2.4s\nfcmge v2.4s, v17.4s, v19.4s\nfcmge v1.4s, v1.4s, v3.4s\nuzp1 v0.8h, v16.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp oge <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp oge <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -14244,7 +14244,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 18,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmge v7.4s, v7.4s, v6.4s\nfcmge v0.4s, v0.4s, v6.4s\nfcmge v16.4s, v16.4s, v6.4s\nfcmge v1.4s, v1.4s, v6.4s\nuzp1 v0.8h, v7.8h, v0.8h\nuzp1 v1.8h, v16.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp oge <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp oge <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -15699,7 +15699,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v2.4s, v3.4s, v2.4s\nfcmgt v0.4s, v1.4s, v0.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp olt <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp olt <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -15714,7 +15714,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmgt v2.4s, v1.4s, v2.4s\nfcmgt v0.4s, v1.4s, v0.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp olt <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp olt <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -15729,7 +15729,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v4.4s, v5.4s, v4.4s\nfcmgt v0.4s, v1.4s, v0.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp olt <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp olt <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -15744,7 +15744,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmgt v4.4s, v3.4s, v4.4s\nfcmgt v0.4s, v3.4s, v0.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp olt <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp olt <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -15759,7 +15759,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 15,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v4.4s, v6.4s, v4.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v2.4s, v7.4s, v5.4s\nfcmgt v1.4s, v3.4s, v1.4s\nuzp1 v0.8h, v4.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp olt <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp olt <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -15774,7 +15774,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 13,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmgt v3.4s, v2.4s, v3.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v4.4s, v2.4s, v4.4s\nfcmgt v1.4s, v2.4s, v1.4s\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v4.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp olt <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp olt <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -15789,7 +15789,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 20,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v16.4s, v18.4s, v16.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v2.4s, v19.4s, v17.4s\nfcmgt v1.4s, v3.4s, v1.4s\nuzp1 v0.8h, v16.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp olt <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp olt <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -15804,7 +15804,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 18,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmgt v7.4s, v6.4s, v7.4s\nfcmgt v0.4s, v6.4s, v0.4s\nfcmgt v16.4s, v6.4s, v16.4s\nfcmgt v1.4s, v6.4s, v1.4s\nuzp1 v0.8h, v7.8h, v0.8h\nuzp1 v1.8h, v16.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp olt <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp olt <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -17259,7 +17259,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v2.4s, v3.4s, v2.4s\nfcmge v0.4s, v1.4s, v0.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ole <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp ole <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -17274,7 +17274,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmge v2.4s, v1.4s, v2.4s\nfcmge v0.4s, v1.4s, v0.4s\nuzp1 v0.8h, v2.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ole <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ole <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -17289,7 +17289,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v4.4s, v5.4s, v4.4s\nfcmge v0.4s, v1.4s, v0.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ole <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp ole <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -17304,7 +17304,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 8,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmge v4.4s, v3.4s, v4.4s\nfcmge v0.4s, v3.4s, v0.4s\nuzp1 v0.8h, v4.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ole <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ole <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -17319,7 +17319,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 15,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v4.4s, v6.4s, v4.4s\nfcmge v0.4s, v2.4s, v0.4s\nfcmge v2.4s, v7.4s, v5.4s\nfcmge v1.4s, v3.4s, v1.4s\nuzp1 v0.8h, v4.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ole <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp ole <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -17334,7 +17334,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 13,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmge v3.4s, v2.4s, v3.4s\nfcmge v0.4s, v2.4s, v0.4s\nfcmge v4.4s, v2.4s, v4.4s\nfcmge v1.4s, v2.4s, v1.4s\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v4.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ole <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp ole <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -17349,7 +17349,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 20,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v16.4s, v18.4s, v16.4s\nfcmge v0.4s, v2.4s, v0.4s\nfcmge v2.4s, v19.4s, v17.4s\nfcmge v1.4s, v3.4s, v1.4s\nuzp1 v0.8h, v16.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ole <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp ole <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -17364,7 +17364,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 18,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmge v7.4s, v6.4s, v7.4s\nfcmge v0.4s, v6.4s, v0.4s\nfcmge v16.4s, v6.4s, v16.4s\nfcmge v1.4s, v6.4s, v1.4s\nuzp1 v0.8h, v7.8h, v0.8h\nuzp1 v1.8h, v16.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ole <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp ole <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -18819,7 +18819,7 @@
   "sizelat": 5,
   "size": -1,
   "gisize": 12,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll v3.4s, v1.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v4.4s, v2.4s, v3.4s\nfcmgt v2.4s, v3.4s, v2.4s\nfcmgt v3.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v2.16b, v4.16b\norr v0.16b, v0.16b, v3.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp one <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:5 Lat:8 SizeLat:5 for:   %r = fcmp one <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -18834,7 +18834,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 12,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmgt v3.4s, v2.4s, v1.4s\nfcmgt v2.4s, v1.4s, v2.4s\nfcmgt v4.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v2.16b, v3.16b\norr v0.16b, v0.16b, v4.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp one <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:4 Lat:7 SizeLat:4 for:   %r = fcmp one <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -18849,7 +18849,7 @@
   "sizelat": 27,
   "size": -1,
   "gisize": 12,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll v5.4s, v1.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v6.4s, v4.4s, v5.4s\nfcmgt v4.4s, v5.4s, v4.4s\nfcmgt v5.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v4.16b, v6.16b\norr v0.16b, v0.16b, v5.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp one <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:5 Lat:8 SizeLat:5 for:   %c = fcmp one <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -18864,7 +18864,7 @@
   "sizelat": 26,
   "size": -1,
   "gisize": 12,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmgt v5.4s, v4.4s, v3.4s\nfcmgt v4.4s, v3.4s, v4.4s\nfcmgt v6.4s, v0.4s, v3.4s\nfcmgt v0.4s, v3.4s, v0.4s\norr v3.16b, v4.16b, v5.16b\norr v0.16b, v0.16b, v6.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp one <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:4 Lat:7 SizeLat:4 for:   %c = fcmp one <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -18879,7 +18879,7 @@
   "sizelat": 10,
   "size": -1,
   "gisize": 23,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v2.4h, #16\nshll v6.4s, v1.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v16.4s, v4.4s, v5.4s\nfcmgt v4.4s, v5.4s, v4.4s\nfcmgt v5.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v2.4s, v6.4s, v7.4s\nfcmgt v6.4s, v7.4s, v6.4s\nfcmgt v7.4s, v1.4s, v3.4s\nfcmgt v1.4s, v3.4s, v1.4s\norr v3.16b, v4.16b, v16.16b\norr v0.16b, v0.16b, v5.16b\norr v2.16b, v6.16b, v2.16b\norr v1.16b, v1.16b, v7.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp one <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %r = fcmp one <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -18894,7 +18894,7 @@
   "sizelat": 8,
   "size": -1,
   "gisize": 21,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmgt v5.4s, v3.4s, v2.4s\nfcmgt v3.4s, v2.4s, v3.4s\nfcmgt v6.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v7.4s, v4.4s, v2.4s\nfcmgt v4.4s, v2.4s, v4.4s\nfcmgt v16.4s, v1.4s, v2.4s\nfcmgt v1.4s, v2.4s, v1.4s\norr v2.16b, v3.16b, v5.16b\norr v0.16b, v0.16b, v6.16b\norr v3.16b, v4.16b, v7.16b\norr v1.16b, v1.16b, v16.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp one <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fcmp one <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -18909,7 +18909,7 @@
   "sizelat": 54,
   "size": -1,
   "gisize": 28,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v2.4h, #16\nshll v18.4s, v1.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v20.4s, v16.4s, v17.4s\nfcmgt v16.4s, v17.4s, v16.4s\nfcmgt v17.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v2.4s, v18.4s, v19.4s\nfcmgt v18.4s, v19.4s, v18.4s\nfcmgt v19.4s, v1.4s, v3.4s\nfcmgt v1.4s, v3.4s, v1.4s\norr v3.16b, v16.16b, v20.16b\norr v0.16b, v0.16b, v17.16b\norr v2.16b, v18.16b, v2.16b\norr v1.16b, v1.16b, v19.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp one <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %c = fcmp one <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -18924,7 +18924,7 @@
   "sizelat": 52,
   "size": -1,
   "gisize": 26,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmgt v17.4s, v7.4s, v6.4s\nfcmgt v7.4s, v6.4s, v7.4s\nfcmgt v18.4s, v0.4s, v6.4s\nfcmgt v0.4s, v6.4s, v0.4s\nfcmgt v19.4s, v16.4s, v6.4s\nfcmgt v16.4s, v6.4s, v16.4s\nfcmgt v20.4s, v1.4s, v6.4s\nfcmgt v1.4s, v6.4s, v1.4s\norr v6.16b, v7.16b, v17.16b\norr v0.16b, v0.16b, v18.16b\norr v7.16b, v16.16b, v19.16b\norr v1.16b, v1.16b, v20.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp one <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %c = fcmp one <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -20379,7 +20379,7 @@
   "sizelat": 5,
   "size": -1,
   "gisize": 12,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll v3.4s, v1.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v4.4s, v2.4s, v3.4s\nfcmgt v2.4s, v3.4s, v2.4s\nfcmge v3.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v2.16b, v4.16b\norr v0.16b, v0.16b, v3.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ord <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:5 Lat:8 SizeLat:5 for:   %r = fcmp ord <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -20394,7 +20394,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 12,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmge v3.4s, v2.4s, v1.4s\nfcmgt v2.4s, v1.4s, v2.4s\nfcmge v4.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v2.16b, v3.16b\norr v0.16b, v0.16b, v4.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ord <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:4 Lat:7 SizeLat:4 for:   %r = fcmp ord <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -20409,7 +20409,7 @@
   "sizelat": 27,
   "size": -1,
   "gisize": 12,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll v5.4s, v1.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v6.4s, v4.4s, v5.4s\nfcmgt v4.4s, v5.4s, v4.4s\nfcmge v5.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v4.16b, v6.16b\norr v0.16b, v0.16b, v5.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ord <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:5 Lat:8 SizeLat:5 for:   %c = fcmp ord <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -20424,7 +20424,7 @@
   "sizelat": 26,
   "size": -1,
   "gisize": 12,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmge v5.4s, v4.4s, v3.4s\nfcmgt v4.4s, v3.4s, v4.4s\nfcmge v6.4s, v0.4s, v3.4s\nfcmgt v0.4s, v3.4s, v0.4s\norr v3.16b, v4.16b, v5.16b\norr v0.16b, v0.16b, v6.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ord <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:4 Lat:7 SizeLat:4 for:   %c = fcmp ord <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -20439,7 +20439,7 @@
   "sizelat": 10,
   "size": -1,
   "gisize": 23,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v2.4h, #16\nshll v6.4s, v1.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v16.4s, v4.4s, v5.4s\nfcmgt v4.4s, v5.4s, v4.4s\nfcmge v5.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmge v2.4s, v6.4s, v7.4s\nfcmgt v6.4s, v7.4s, v6.4s\nfcmge v7.4s, v1.4s, v3.4s\nfcmgt v1.4s, v3.4s, v1.4s\norr v3.16b, v4.16b, v16.16b\norr v0.16b, v0.16b, v5.16b\norr v2.16b, v6.16b, v2.16b\norr v1.16b, v1.16b, v7.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ord <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %r = fcmp ord <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -20454,7 +20454,7 @@
   "sizelat": 8,
   "size": -1,
   "gisize": 21,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmge v5.4s, v3.4s, v2.4s\nfcmgt v3.4s, v2.4s, v3.4s\nfcmge v6.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmge v7.4s, v4.4s, v2.4s\nfcmgt v4.4s, v2.4s, v4.4s\nfcmge v16.4s, v1.4s, v2.4s\nfcmgt v1.4s, v2.4s, v1.4s\norr v2.16b, v3.16b, v5.16b\norr v0.16b, v0.16b, v6.16b\norr v3.16b, v4.16b, v7.16b\norr v1.16b, v1.16b, v16.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ord <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fcmp ord <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -20469,7 +20469,7 @@
   "sizelat": 54,
   "size": -1,
   "gisize": 28,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v2.4h, #16\nshll v18.4s, v1.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v20.4s, v16.4s, v17.4s\nfcmgt v16.4s, v17.4s, v16.4s\nfcmge v17.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmge v2.4s, v18.4s, v19.4s\nfcmgt v18.4s, v19.4s, v18.4s\nfcmge v19.4s, v1.4s, v3.4s\nfcmgt v1.4s, v3.4s, v1.4s\norr v3.16b, v16.16b, v20.16b\norr v0.16b, v0.16b, v17.16b\norr v2.16b, v18.16b, v2.16b\norr v1.16b, v1.16b, v19.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ord <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %c = fcmp ord <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -20484,7 +20484,7 @@
   "sizelat": 52,
   "size": -1,
   "gisize": 26,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmge v17.4s, v7.4s, v6.4s\nfcmgt v7.4s, v6.4s, v7.4s\nfcmge v18.4s, v0.4s, v6.4s\nfcmgt v0.4s, v6.4s, v0.4s\nfcmge v19.4s, v16.4s, v6.4s\nfcmgt v16.4s, v6.4s, v16.4s\nfcmge v20.4s, v1.4s, v6.4s\nfcmgt v1.4s, v6.4s, v1.4s\norr v6.16b, v7.16b, v17.16b\norr v0.16b, v0.16b, v18.16b\norr v7.16b, v16.16b, v19.16b\norr v1.16b, v1.16b, v20.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ord <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %c = fcmp ord <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -21939,7 +21939,7 @@
   "sizelat": 5,
   "size": -1,
   "gisize": 14,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll v3.4s, v1.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v4.4s, v2.4s, v3.4s\nfcmgt v2.4s, v3.4s, v2.4s\nfcmgt v3.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v2.16b, v4.16b\norr v0.16b, v0.16b, v3.16b\nmvn v1.16b, v1.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ueq <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:5 Lat:8 SizeLat:5 for:   %r = fcmp ueq <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -21954,7 +21954,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 14,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmgt v3.4s, v2.4s, v1.4s\nfcmgt v2.4s, v1.4s, v2.4s\nfcmgt v4.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v2.16b, v3.16b\norr v0.16b, v0.16b, v4.16b\nmvn v1.16b, v1.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ueq <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:4 Lat:7 SizeLat:4 for:   %r = fcmp ueq <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -21969,7 +21969,7 @@
   "sizelat": 27,
   "size": -1,
   "gisize": 14,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll v5.4s, v1.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v6.4s, v4.4s, v5.4s\nfcmgt v4.4s, v5.4s, v4.4s\nfcmgt v5.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v4.16b, v6.16b\norr v0.16b, v0.16b, v5.16b\nmvn v1.16b, v1.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ueq <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:5 Lat:8 SizeLat:5 for:   %c = fcmp ueq <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -21984,7 +21984,7 @@
   "sizelat": 26,
   "size": -1,
   "gisize": 14,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmgt v5.4s, v4.4s, v3.4s\nfcmgt v4.4s, v3.4s, v4.4s\nfcmgt v6.4s, v0.4s, v3.4s\nfcmgt v0.4s, v3.4s, v0.4s\norr v3.16b, v4.16b, v5.16b\norr v0.16b, v0.16b, v6.16b\nmvn v3.16b, v3.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ueq <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:4 Lat:7 SizeLat:4 for:   %c = fcmp ueq <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -21999,7 +21999,7 @@
   "sizelat": 10,
   "size": -1,
   "gisize": 27,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v2.4h, #16\nshll v6.4s, v1.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v16.4s, v4.4s, v5.4s\nfcmgt v4.4s, v5.4s, v4.4s\nfcmgt v5.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v2.4s, v6.4s, v7.4s\nfcmgt v6.4s, v7.4s, v6.4s\nfcmgt v7.4s, v1.4s, v3.4s\nfcmgt v1.4s, v3.4s, v1.4s\norr v3.16b, v4.16b, v16.16b\norr v0.16b, v0.16b, v5.16b\norr v2.16b, v6.16b, v2.16b\norr v1.16b, v1.16b, v7.16b\nmvn v3.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ueq <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %r = fcmp ueq <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -22014,7 +22014,7 @@
   "sizelat": 8,
   "size": -1,
   "gisize": 25,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmgt v5.4s, v3.4s, v2.4s\nfcmgt v3.4s, v2.4s, v3.4s\nfcmgt v6.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v7.4s, v4.4s, v2.4s\nfcmgt v4.4s, v2.4s, v4.4s\nfcmgt v16.4s, v1.4s, v2.4s\nfcmgt v1.4s, v2.4s, v1.4s\norr v2.16b, v3.16b, v5.16b\norr v0.16b, v0.16b, v6.16b\norr v3.16b, v4.16b, v7.16b\norr v1.16b, v1.16b, v16.16b\nmvn v2.16b, v2.16b\nmvn v0.16b, v0.16b\nmvn v3.16b, v3.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ueq <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fcmp ueq <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -22029,7 +22029,7 @@
   "sizelat": 54,
   "size": -1,
   "gisize": 32,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v2.4h, #16\nshll v18.4s, v1.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v20.4s, v16.4s, v17.4s\nfcmgt v16.4s, v17.4s, v16.4s\nfcmgt v17.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v2.4s, v18.4s, v19.4s\nfcmgt v18.4s, v19.4s, v18.4s\nfcmgt v19.4s, v1.4s, v3.4s\nfcmgt v1.4s, v3.4s, v1.4s\norr v3.16b, v16.16b, v20.16b\norr v0.16b, v0.16b, v17.16b\norr v2.16b, v18.16b, v2.16b\norr v1.16b, v1.16b, v19.16b\nmvn v3.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ueq <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %c = fcmp ueq <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -22044,7 +22044,7 @@
   "sizelat": 52,
   "size": -1,
   "gisize": 30,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmgt v17.4s, v7.4s, v6.4s\nfcmgt v7.4s, v6.4s, v7.4s\nfcmgt v18.4s, v0.4s, v6.4s\nfcmgt v0.4s, v6.4s, v0.4s\nfcmgt v19.4s, v16.4s, v6.4s\nfcmgt v16.4s, v6.4s, v16.4s\nfcmgt v20.4s, v1.4s, v6.4s\nfcmgt v1.4s, v6.4s, v1.4s\norr v6.16b, v7.16b, v17.16b\norr v0.16b, v0.16b, v18.16b\norr v7.16b, v16.16b, v19.16b\norr v1.16b, v1.16b, v20.16b\nmvn v6.16b, v6.16b\nmvn v0.16b, v0.16b\nmvn v7.16b, v7.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ueq <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %c = fcmp ueq <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -23499,7 +23499,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v2.4s, v3.4s, v2.4s\nfcmge v0.4s, v1.4s, v0.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ugt <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp ugt <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -23514,7 +23514,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmge v2.4s, v1.4s, v2.4s\nfcmge v0.4s, v1.4s, v0.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ugt <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ugt <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -23529,7 +23529,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v4.4s, v5.4s, v4.4s\nfcmge v0.4s, v1.4s, v0.4s\nmvn v1.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ugt <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp ugt <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -23544,7 +23544,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmge v4.4s, v3.4s, v4.4s\nfcmge v0.4s, v3.4s, v0.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ugt <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ugt <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -23559,7 +23559,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 19,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v4.4s, v6.4s, v4.4s\nfcmge v0.4s, v2.4s, v0.4s\nfcmge v2.4s, v7.4s, v5.4s\nfcmge v1.4s, v3.4s, v1.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ugt <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp ugt <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -23574,7 +23574,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 17,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmge v3.4s, v2.4s, v3.4s\nfcmge v0.4s, v2.4s, v0.4s\nfcmge v4.4s, v2.4s, v4.4s\nfcmge v1.4s, v2.4s, v1.4s\nmvn v2.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v3.16b, v4.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ugt <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp ugt <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -23589,7 +23589,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 24,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v16.4s, v18.4s, v16.4s\nfcmge v0.4s, v2.4s, v0.4s\nfcmge v2.4s, v19.4s, v17.4s\nfcmge v1.4s, v3.4s, v1.4s\nmvn v3.16b, v16.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ugt <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp ugt <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -23604,7 +23604,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 22,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmge v7.4s, v6.4s, v7.4s\nfcmge v0.4s, v6.4s, v0.4s\nfcmge v16.4s, v6.4s, v16.4s\nfcmge v1.4s, v6.4s, v1.4s\nmvn v6.16b, v7.16b\nmvn v0.16b, v0.16b\nmvn v7.16b, v16.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ugt <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp ugt <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -25059,7 +25059,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v2.4s, v3.4s, v2.4s\nfcmgt v0.4s, v1.4s, v0.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp uge <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp uge <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -25074,7 +25074,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmgt v2.4s, v1.4s, v2.4s\nfcmgt v0.4s, v1.4s, v0.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp uge <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp uge <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -25089,7 +25089,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v4.4s, v5.4s, v4.4s\nfcmgt v0.4s, v1.4s, v0.4s\nmvn v1.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp uge <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp uge <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -25104,7 +25104,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmgt v4.4s, v3.4s, v4.4s\nfcmgt v0.4s, v3.4s, v0.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp uge <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp uge <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -25119,7 +25119,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 19,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v4.4s, v6.4s, v4.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v2.4s, v7.4s, v5.4s\nfcmgt v1.4s, v3.4s, v1.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp uge <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp uge <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -25134,7 +25134,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 17,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmgt v3.4s, v2.4s, v3.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v4.4s, v2.4s, v4.4s\nfcmgt v1.4s, v2.4s, v1.4s\nmvn v2.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v3.16b, v4.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp uge <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp uge <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -25149,7 +25149,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 24,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v16.4s, v18.4s, v16.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmgt v2.4s, v19.4s, v17.4s\nfcmgt v1.4s, v3.4s, v1.4s\nmvn v3.16b, v16.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp uge <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp uge <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -25164,7 +25164,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 22,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmgt v7.4s, v6.4s, v7.4s\nfcmgt v0.4s, v6.4s, v0.4s\nfcmgt v16.4s, v6.4s, v16.4s\nfcmgt v1.4s, v6.4s, v1.4s\nmvn v6.16b, v7.16b\nmvn v0.16b, v0.16b\nmvn v7.16b, v16.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp uge <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp uge <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -26619,7 +26619,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v2.4s, v2.4s, v3.4s\nfcmge v0.4s, v0.4s, v1.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ult <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp ult <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -26634,7 +26634,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmge v2.4s, v2.4s, v1.4s\nfcmge v0.4s, v0.4s, v1.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ult <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ult <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -26649,7 +26649,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v4.4s, v4.4s, v5.4s\nfcmge v0.4s, v0.4s, v1.4s\nmvn v1.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ult <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp ult <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -26664,7 +26664,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmge v4.4s, v4.4s, v3.4s\nfcmge v0.4s, v0.4s, v3.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ult <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ult <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -26679,7 +26679,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 19,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v4.4s, v4.4s, v6.4s\nfcmge v0.4s, v0.4s, v2.4s\nfcmge v2.4s, v5.4s, v7.4s\nfcmge v1.4s, v1.4s, v3.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ult <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp ult <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -26694,7 +26694,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 17,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmge v3.4s, v3.4s, v2.4s\nfcmge v0.4s, v0.4s, v2.4s\nfcmge v4.4s, v4.4s, v2.4s\nfcmge v1.4s, v1.4s, v2.4s\nmvn v2.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v3.16b, v4.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ult <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp ult <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -26709,7 +26709,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 24,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v16.4s, v16.4s, v18.4s\nfcmge v0.4s, v0.4s, v2.4s\nfcmge v2.4s, v17.4s, v19.4s\nfcmge v1.4s, v1.4s, v3.4s\nmvn v3.16b, v16.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ult <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp ult <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -26724,7 +26724,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 22,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmge v7.4s, v7.4s, v6.4s\nfcmge v0.4s, v0.4s, v6.4s\nfcmge v16.4s, v16.4s, v6.4s\nfcmge v1.4s, v1.4s, v6.4s\nmvn v6.16b, v7.16b\nmvn v0.16b, v0.16b\nmvn v7.16b, v16.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ult <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp ult <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -28179,7 +28179,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v2.4s, v2.4s, v3.4s\nfcmgt v0.4s, v0.4s, v1.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ule <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp ule <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -28194,7 +28194,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmgt v2.4s, v2.4s, v1.4s\nfcmgt v0.4s, v0.4s, v1.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ule <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp ule <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -28209,7 +28209,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmgt v4.4s, v4.4s, v5.4s\nfcmgt v0.4s, v0.4s, v1.4s\nmvn v1.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ule <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp ule <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -28224,7 +28224,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmgt v4.4s, v4.4s, v3.4s\nfcmgt v0.4s, v0.4s, v3.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ule <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp ule <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -28239,7 +28239,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 19,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v4.4s, v4.4s, v6.4s\nfcmgt v0.4s, v0.4s, v2.4s\nfcmgt v2.4s, v5.4s, v7.4s\nfcmgt v1.4s, v1.4s, v3.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp ule <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp ule <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -28254,7 +28254,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 17,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmgt v3.4s, v3.4s, v2.4s\nfcmgt v0.4s, v0.4s, v2.4s\nfcmgt v4.4s, v4.4s, v2.4s\nfcmgt v1.4s, v1.4s, v2.4s\nmvn v2.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v3.16b, v4.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp ule <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp ule <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -28269,7 +28269,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 24,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmgt v16.4s, v16.4s, v18.4s\nfcmgt v0.4s, v0.4s, v2.4s\nfcmgt v2.4s, v17.4s, v19.4s\nfcmgt v1.4s, v1.4s, v3.4s\nmvn v3.16b, v16.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ule <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp ule <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -28284,7 +28284,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 22,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmgt v7.4s, v7.4s, v6.4s\nfcmgt v0.4s, v0.4s, v6.4s\nfcmgt v16.4s, v16.4s, v6.4s\nfcmgt v1.4s, v1.4s, v6.4s\nmvn v6.16b, v7.16b\nmvn v0.16b, v0.16b\nmvn v7.16b, v16.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp ule <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp ule <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -29739,7 +29739,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmeq v2.4s, v2.4s, v3.4s\nfcmeq v0.4s, v0.4s, v1.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp une <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %r = fcmp une <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -29754,7 +29754,7 @@
   "sizelat": 2,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmeq v2.4s, v2.4s, v1.4s\nfcmeq v0.4s, v0.4s, v1.4s\nmvn v1.16b, v2.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp une <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %r = fcmp une <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -29769,7 +29769,7 @@
   "sizelat": 25,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nfcmeq v4.4s, v4.4s, v5.4s\nfcmeq v0.4s, v0.4s, v1.4s\nmvn v1.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp une <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:3 CodeSize:3 Lat:4 SizeLat:3 for:   %c = fcmp une <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -29784,7 +29784,7 @@
   "sizelat": 24,
   "size": -1,
   "gisize": 10,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmeq v4.4s, v4.4s, v3.4s\nfcmeq v0.4s, v0.4s, v3.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp une <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:2 Lat:3 SizeLat:2 for:   %c = fcmp une <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -29799,7 +29799,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": 19,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmeq v4.4s, v4.4s, v6.4s\nfcmeq v0.4s, v0.4s, v2.4s\nfcmeq v2.4s, v5.4s, v7.4s\nfcmeq v1.4s, v1.4s, v3.4s\nmvn v3.16b, v4.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp une <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = fcmp une <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -29814,7 +29814,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 17,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmeq v3.4s, v3.4s, v2.4s\nfcmeq v0.4s, v0.4s, v2.4s\nfcmeq v4.4s, v4.4s, v2.4s\nfcmeq v1.4s, v1.4s, v2.4s\nmvn v2.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v3.16b, v4.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp une <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = fcmp une <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -29829,7 +29829,7 @@
   "sizelat": 50,
   "size": -1,
   "gisize": 24,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v1.4h, #16\nshll v18.4s, v2.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll2 v1.4s, v1.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v3.4s, v3.8h, #16\nfcmeq v16.4s, v16.4s, v18.4s\nfcmeq v0.4s, v0.4s, v2.4s\nfcmeq v2.4s, v17.4s, v19.4s\nfcmeq v1.4s, v1.4s, v3.4s\nmvn v3.16b, v16.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp une <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %c = fcmp une <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -29844,7 +29844,7 @@
   "sizelat": 48,
   "size": -1,
   "gisize": 22,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmeq v7.4s, v7.4s, v6.4s\nfcmeq v0.4s, v0.4s, v6.4s\nfcmeq v16.4s, v16.4s, v6.4s\nfcmeq v1.4s, v1.4s, v6.4s\nmvn v6.16b, v7.16b\nmvn v0.16b, v0.16b\nmvn v7.16b, v16.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp une <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %c = fcmp une <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -31299,7 +31299,7 @@
   "sizelat": 5,
   "size": -1,
   "gisize": 14,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v2.4s, v0.4h, #16\nshll v3.4s, v1.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v4.4s, v2.4s, v3.4s\nfcmgt v2.4s, v3.4s, v2.4s\nfcmge v3.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v2.16b, v4.16b\norr v0.16b, v0.16b, v3.16b\nmvn v1.16b, v1.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a, <8 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp uno <8 x bfloat> %a, %b\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:5 Lat:8 SizeLat:5 for:   %r = fcmp uno <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -31314,7 +31314,7 @@
   "sizelat": 4,
   "size": -1,
   "gisize": 14,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v1.2d, #0000000000000000\nshll v2.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v1.4s, v1.4h, #16\nfcmge v3.4s, v2.4s, v1.4s\nfcmgt v2.4s, v1.4s, v2.4s\nfcmge v4.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v2.16b, v3.16b\norr v0.16b, v0.16b, v4.16b\nmvn v1.16b, v1.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nxtn v0.8b, v0.8h\nret",
   "ll": "define <8 x i1> @test(<8 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp uno <8 x bfloat> %a, zeroinitializer\n  ret <8 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:4 Lat:7 SizeLat:4 for:   %r = fcmp uno <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i1> %r"
@@ -31329,7 +31329,7 @@
   "sizelat": 27,
   "size": -1,
   "gisize": 14,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll v5.4s, v1.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll2 v1.4s, v1.8h, #16\nfcmge v6.4s, v4.4s, v5.4s\nfcmgt v4.4s, v5.4s, v4.4s\nfcmge v5.4s, v0.4s, v1.4s\nfcmgt v0.4s, v1.4s, v0.4s\norr v1.16b, v4.16b, v6.16b\norr v0.16b, v0.16b, v5.16b\nmvn v1.16b, v1.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v1.8h, v0.8h\nbsl v0.16b, v2.16b, v3.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %b, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp uno <8 x bfloat> %a, %b\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:5 Lat:8 SizeLat:5 for:   %c = fcmp uno <8 x bfloat> %a, %b\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -31344,7 +31344,7 @@
   "sizelat": 26,
   "size": -1,
   "gisize": 14,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v3.2d, #0000000000000000\nshll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v3.4s, v3.4h, #16\nfcmge v5.4s, v4.4s, v3.4s\nfcmgt v4.4s, v3.4s, v4.4s\nfcmge v6.4s, v0.4s, v3.4s\nfcmgt v0.4s, v3.4s, v0.4s\norr v3.16b, v4.16b, v5.16b\norr v0.16b, v0.16b, v6.16b\nmvn v3.16b, v3.16b\nmvn v0.16b, v0.16b\nuzp1 v0.8h, v3.8h, v0.8h\nbsl v0.16b, v1.16b, v2.16b\nret",
   "ll": "define <8 x bfloat> @test(<8 x bfloat> %a, <8 x bfloat> %d, <8 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp uno <8 x bfloat> %a, zeroinitializer\n  %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:4 CodeSize:4 Lat:7 SizeLat:4 for:   %c = fcmp uno <8 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:22 CodeSize:15 Lat:22 SizeLat:22 for:   %r = select <8 x i1> %c, <8 x bfloat> %d, <8 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
@@ -31359,7 +31359,7 @@
   "sizelat": 10,
   "size": -1,
   "gisize": 27,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v4.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v5.4s, v2.4h, #16\nshll v6.4s, v1.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v7.4s, v3.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v16.4s, v4.4s, v5.4s\nfcmgt v4.4s, v5.4s, v4.4s\nfcmge v5.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmge v2.4s, v6.4s, v7.4s\nfcmgt v6.4s, v7.4s, v6.4s\nfcmge v7.4s, v1.4s, v3.4s\nfcmgt v1.4s, v3.4s, v1.4s\norr v3.16b, v4.16b, v16.16b\norr v0.16b, v0.16b, v5.16b\norr v2.16b, v6.16b, v2.16b\norr v1.16b, v1.16b, v7.16b\nmvn v3.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a, <16 x bfloat> %b) vscale_range(2, 2){\n  %r = fcmp uno <16 x bfloat> %a, %b\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %r = fcmp uno <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -31374,7 +31374,7 @@
   "sizelat": 8,
   "size": -1,
   "gisize": 25,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v2.2d, #0000000000000000\nshll v3.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v4.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v2.4s, v2.4h, #16\nfcmge v5.4s, v3.4s, v2.4s\nfcmgt v3.4s, v2.4s, v3.4s\nfcmge v6.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmge v7.4s, v4.4s, v2.4s\nfcmgt v4.4s, v2.4s, v4.4s\nfcmge v16.4s, v1.4s, v2.4s\nfcmgt v1.4s, v2.4s, v1.4s\norr v2.16b, v3.16b, v5.16b\norr v0.16b, v0.16b, v6.16b\norr v3.16b, v4.16b, v7.16b\norr v1.16b, v1.16b, v16.16b\nmvn v2.16b, v2.16b\nmvn v0.16b, v0.16b\nmvn v3.16b, v3.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v2.8h, v0.8h\nuzp1 v1.8h, v3.8h, v1.8h\nuzp1 v0.16b, v0.16b, v1.16b\nret",
   "ll": "define <16 x i1> @test(<16 x bfloat> %a) vscale_range(2, 2){\n  %r = fcmp uno <16 x bfloat> %a, zeroinitializer\n  ret <16 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fcmp uno <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i1> %r"
@@ -31389,7 +31389,7 @@
   "sizelat": 54,
   "size": -1,
   "gisize": 32,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "shll v16.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v17.4s, v2.4h, #16\nshll v18.4s, v1.4h, #16\nshll2 v2.4s, v2.8h, #16\nshll v19.4s, v3.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll2 v3.4s, v3.8h, #16\nfcmge v20.4s, v16.4s, v17.4s\nfcmgt v16.4s, v17.4s, v16.4s\nfcmge v17.4s, v0.4s, v2.4s\nfcmgt v0.4s, v2.4s, v0.4s\nfcmge v2.4s, v18.4s, v19.4s\nfcmgt v18.4s, v19.4s, v18.4s\nfcmge v19.4s, v1.4s, v3.4s\nfcmgt v1.4s, v3.4s, v1.4s\norr v3.16b, v16.16b, v20.16b\norr v0.16b, v0.16b, v17.16b\norr v2.16b, v18.16b, v2.16b\norr v1.16b, v1.16b, v19.16b\nmvn v3.16b, v3.16b\nmvn v0.16b, v0.16b\nmvn v2.16b, v2.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v3.8h, v0.8h\nuzp1 v1.8h, v2.8h, v1.8h\nand v2.16b, v4.16b, v0.16b\nbic v0.16b, v6.16b, v0.16b\nand v3.16b, v5.16b, v1.16b\nbic v1.16b, v7.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %b, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp uno <16 x bfloat> %a, %b\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %c = fcmp uno <16 x bfloat> %a, %b\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
@@ -31404,7 +31404,7 @@
   "sizelat": 52,
   "size": -1,
   "gisize": 30,
-  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32365: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
+  "asm": "llc: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp:32402: llvm::SDValue llvm::AArch64TargetLowering::LowerFixedLengthVectorSetccToSVE(llvm::SDValue, llvm::SelectionDAG&) const: Assertion `Op.getValueType() == InVT.changeTypeToInteger() && \"Expected integer result of the same bit length as the inputs!\"' failed.",
   "giasm": "movi v6.2d, #0000000000000000\nshll v7.4s, v0.4h, #16\nshll2 v0.4s, v0.8h, #16\nshll v16.4s, v1.4h, #16\nshll2 v1.4s, v1.8h, #16\nshll v6.4s, v6.4h, #16\nfcmge v17.4s, v7.4s, v6.4s\nfcmgt v7.4s, v6.4s, v7.4s\nfcmge v18.4s, v0.4s, v6.4s\nfcmgt v0.4s, v6.4s, v0.4s\nfcmge v19.4s, v16.4s, v6.4s\nfcmgt v16.4s, v6.4s, v16.4s\nfcmge v20.4s, v1.4s, v6.4s\nfcmgt v1.4s, v6.4s, v1.4s\norr v6.16b, v7.16b, v17.16b\norr v0.16b, v0.16b, v18.16b\norr v7.16b, v16.16b, v19.16b\norr v1.16b, v1.16b, v20.16b\nmvn v6.16b, v6.16b\nmvn v0.16b, v0.16b\nmvn v7.16b, v7.16b\nmvn v1.16b, v1.16b\nuzp1 v0.8h, v6.8h, v0.8h\nuzp1 v1.8h, v7.8h, v1.8h\nand v2.16b, v2.16b, v0.16b\nbic v0.16b, v4.16b, v0.16b\nand v3.16b, v3.16b, v1.16b\nbic v1.16b, v5.16b, v1.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x bfloat> @test(<16 x bfloat> %a, <16 x bfloat> %d, <16 x bfloat> %e) vscale_range(2, 2){\n  %c = fcmp uno <16 x bfloat> %a, zeroinitializer\n  %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\n  ret <16 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %c = fcmp uno <16 x bfloat> %a, zeroinitializer\nCost Model: Found costs of RThru:44 CodeSize:30 Lat:44 SizeLat:44 for:   %r = select <16 x i1> %c, <16 x bfloat> %d, <16 x bfloat> %e\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x bfloat> %r"
