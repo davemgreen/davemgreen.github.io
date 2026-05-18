@@ -70,7 +70,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %4:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %3:gpr(i32) = G_FPTOSI %4:fpr(s32) (in function: test)",
   "ll": "define i8 @test(bfloat %a) {\n  %r = fptosi bfloat %a to i8\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi bfloat %a to i8\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -85,7 +85,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %4:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %3:gpr(i32) = G_FPTOSI %4:fpr(s32) (in function: test)",
   "ll": "define i16 @test(bfloat %a) {\n  %r = fptosi bfloat %a to i16\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi bfloat %a to i16\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -100,7 +100,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %2:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i32) = G_FPTOSI %2:fpr(s32) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = fptosi bfloat %a to i32\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptosi bfloat %a to i32\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -1870,7 +1870,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %4:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %3:gpr(i32) = G_FPTOUI %4:fpr(s32) (in function: test)",
   "ll": "define i8 @test(bfloat %a) {\n  %r = fptoui bfloat %a to i8\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui bfloat %a to i8\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -1885,7 +1885,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %4:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %3:gpr(i32) = G_FPTOUI %4:fpr(s32) (in function: test)",
   "ll": "define i16 @test(bfloat %a) {\n  %r = fptoui bfloat %a to i16\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui bfloat %a to i16\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -1900,7 +1900,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %2:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i32) = G_FPTOUI %2:fpr(s32) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = fptoui bfloat %a to i32\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = fptoui bfloat %a to i32\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -3670,7 +3670,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "mov w8, #127                        // =0x7f\nshll v0.4s, v0.4h, #16\nfcvtzs w9, s0\ncmp w9, #127\ncsel w8, w9, w8, lt\nmov w9, #-128                       // =0xffffff80\ncmn w8, #128\ncsel w0, w8, w9, gt\nret",
-  "giasm": "LLVM ERROR: cannot select: %8:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %3:gpr32common(i32) = G_FPTOSI_SAT %8:fpr(s32) (in function: test)",
   "ll": "define i8 @test(bfloat %a) {\n  %r = call i8 @llvm.fptosi.sat(bfloat %a)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:7 Lat:8 SizeLat:7 for:   %r = call i8 @llvm.fptosi.sat.i8.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -3685,7 +3685,7 @@
   "size": 8,
   "gisize": -2,
   "asm": "mov w9, #32767                      // =0x7fff\nshll v0.4s, v0.4h, #16\nfcvtzs w8, s0\ncmp w8, w9\ncsel w8, w8, w9, lt\nmov w9, #-32768                     // =0xffff8000\ncmn w8, #8, lsl #12                 // =32768\ncsel w0, w8, w9, gt\nret",
-  "giasm": "LLVM ERROR: cannot select: %8:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %3:gpr32(i32) = G_FPTOSI_SAT %8:fpr(s32) (in function: test)",
   "ll": "define i16 @test(bfloat %a) {\n  %r = call i16 @llvm.fptosi.sat(bfloat %a)\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:7 Lat:8 SizeLat:7 for:   %r = call i16 @llvm.fptosi.sat.i16.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -3700,7 +3700,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %2:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i32) = G_FPTOSI_SAT %2:fpr(s32) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = call i32 @llvm.fptosi.sat(bfloat %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:7 Lat:8 SizeLat:7 for:   %r = call i32 @llvm.fptosi.sat.i32.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -5470,7 +5470,7 @@
   "size": 5,
   "gisize": -2,
   "asm": "mov w8, #255                        // =0xff\nshll v0.4s, v0.4h, #16\nfcvtzu w9, s0\ncmp w9, #255\ncsel w0, w9, w8, lo\nret",
-  "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %3:gpr32common(i32) = G_FPTOUI_SAT %6:fpr(s32) (in function: test)",
   "ll": "define i8 @test(bfloat %a) {\n  %r = call i8 @llvm.fptoui.sat(bfloat %a)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call i8 @llvm.fptoui.sat.i8.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -5485,7 +5485,7 @@
   "size": 5,
   "gisize": -2,
   "asm": "mov w9, #65535                      // =0xffff\nshll v0.4s, v0.4h, #16\nfcvtzu w8, s0\ncmp w8, w9\ncsel w0, w8, w9, lo\nret",
-  "giasm": "LLVM ERROR: cannot select: %6:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %3:gpr32(i32) = G_FPTOUI_SAT %6:fpr(s32) (in function: test)",
   "ll": "define i16 @test(bfloat %a) {\n  %r = call i16 @llvm.fptoui.sat(bfloat %a)\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call i16 @llvm.fptoui.sat.i16.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -5500,7 +5500,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtzu w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %2:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i32) = G_FPTOUI_SAT %2:fpr(s32) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = call i32 @llvm.fptoui.sat(bfloat %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call i32 @llvm.fptoui.sat.i32.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -11710,7 +11710,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfrintx s0, s0\nfcvtzs x0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %2:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i64) = G_INTRINSIC_LRINT %2:fpr(s32) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = call i64 @llvm.lrint(bfloat %a)\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i64 @llvm.lrint.i64.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -11725,7 +11725,7 @@
   "size": 3,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfrintx s0, s0\nfcvtzs w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %2:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i32) = G_INTRINSIC_LRINT %2:fpr(s32) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = call i32 @llvm.lrint(bfloat %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lrint.i32.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
@@ -13060,7 +13060,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtas x0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %2:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i64) = G_LROUND %2:fpr(s32) (in function: test)",
   "ll": "define i64 @test(bfloat %a) {\n  %r = call i64 @llvm.lround(bfloat %a)\n  ret i64 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i64 @llvm.lround.i64.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i64 %r"
  },
@@ -13075,7 +13075,7 @@
   "size": 2,
   "gisize": -2,
   "asm": "shll v0.4s, v0.4h, #16\nfcvtas w0, s0\nret",
-  "giasm": "LLVM ERROR: cannot select: %2:fpr32(s32) = G_FPEXT %0:fpr(bf16) (in function: test)",
+  "giasm": "LLVM ERROR: cannot select: %1:gpr(i32) = G_LROUND %2:fpr(s32) (in function: test)",
   "ll": "define i32 @test(bfloat %a) {\n  %r = call i32 @llvm.lround(bfloat %a)\n  ret i32 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i32 @llvm.lround.i32.bf16(bfloat %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i32 %r"
  },
