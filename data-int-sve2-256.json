@@ -484,7 +484,7 @@
   "ty": "<32 x i8>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 1,
   "lat": 1,
   "sizelat": 1,
   "size": 2,
@@ -492,7 +492,7 @@
   "asm": "sub v1.16b, v1.16b, v3.16b\nsub v0.16b, v0.16b, v2.16b\nret",
   "giasm": "sub v0.16b, v0.16b, v2.16b\nsub v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) vscale_range(2, 2){\n  %r = sub <32 x i8> %a, %b\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:1 SizeLat:1 for:   %r = sub <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sub <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "sub",
@@ -529,7 +529,7 @@
   "ty": "<16 x i16>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 1,
   "lat": 1,
   "sizelat": 1,
   "size": 2,
@@ -537,7 +537,7 @@
   "asm": "sub v1.8h, v1.8h, v3.8h\nsub v0.8h, v0.8h, v2.8h\nret",
   "giasm": "sub v0.8h, v0.8h, v2.8h\nsub v1.8h, v1.8h, v3.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b) vscale_range(2, 2){\n  %r = sub <16 x i16> %a, %b\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:1 SizeLat:1 for:   %r = sub <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sub <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "sub",
@@ -574,7 +574,7 @@
   "ty": "<8 x i32>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 1,
   "lat": 1,
   "sizelat": 1,
   "size": 2,
@@ -582,7 +582,7 @@
   "asm": "sub v1.4s, v1.4s, v3.4s\nsub v0.4s, v0.4s, v2.4s\nret",
   "giasm": "sub v0.4s, v0.4s, v2.4s\nsub v1.4s, v1.4s, v3.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b) vscale_range(2, 2){\n  %r = sub <8 x i32> %a, %b\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:1 SizeLat:1 for:   %r = sub <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sub <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "sub",
@@ -604,7 +604,7 @@
   "ty": "<4 x i64>",
   "variant": "binop",
   "codesize": 1,
-  "thru": 2,
+  "thru": 1,
   "lat": 1,
   "sizelat": 1,
   "size": 2,
@@ -612,7 +612,7 @@
   "asm": "sub v1.2d, v1.2d, v3.2d\nsub v0.2d, v0.2d, v2.2d\nret",
   "giasm": "sub v0.2d, v0.2d, v2.2d\nsub v1.2d, v1.2d, v3.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b) vscale_range(2, 2){\n  %r = sub <4 x i64> %a, %b\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:1 SizeLat:1 for:   %r = sub <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sub <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "sub",
@@ -7684,7 +7684,7 @@
   "ty": "<32 x i8>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 19,
+  "thru": 18,
   "lat": 4,
   "sizelat": 4,
   "size": 34,
@@ -7692,7 +7692,7 @@
   "asm": "ptrue p0.s\nsunpklo z4.h, z3.b\nsunpklo z5.h, z1.b\nsunpklo z6.s, z4.h\nsunpklo z7.s, z5.h\next z4.b, z4.b, z4.b, #16\next z5.b, z5.b, z5.b, #16\nsunpklo z4.s, z4.h\nsunpklo z5.s, z5.h\nsdivr z6.s, p0/m, z6.s, z7.s\nsunpklo z7.h, z0.b\nsunpklo z17.s, z7.h\next z7.b, z7.b, z7.b, #16\nsunpklo z7.s, z7.h\nsdivr z4.s, p0/m, z4.s, z5.s\nsunpklo z5.h, z2.b\nsunpklo z16.s, z5.h\next z5.b, z5.b, z5.b, #16\nsunpklo z5.s, z5.h\nsdivr z16.s, p0/m, z16.s, z17.s\nsdivr z5.s, p0/m, z5.s, z7.s\nuzp1 z6.h, z6.h, z6.h\nptrue p0.h, vl8\nuzp1 z7.h, z4.h, z4.h\nuzp1 z16.h, z16.h, z16.h\nsplice z4.h, p0, { z6.h, z7.h }\nuzp1 z7.b, z4.b, z4.b\nuzp1 z17.h, z5.h, z5.h\nsplice z5.h, p0, { z16.h, z17.h }\nptrue p0.b, vl16\nsplice z2.b, p0, { z2.b, z3.b }\nsplice z0.b, p0, { z0.b, z1.b }\nuzp1 z6.b, z5.b, z5.b\nsplice z1.b, p0, { z6.b, z7.b }\nptrue p0.b\nmls z0.b, p0/m, z1.b, z2.b\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "sub sp, sp, #112\nstp x29, x30, [sp, #16]             // 16-byte Folded Spill\nstp x28, x27, [sp, #32]             // 16-byte Folded Spill\nstp x26, x25, [sp, #48]             // 16-byte Folded Spill\nstp x24, x23, [sp, #64]             // 16-byte Folded Spill\nstp x22, x21, [sp, #80]             // 16-byte Folded Spill\nstp x20, x19, [sp, #96]             // 16-byte Folded Spill\nsshll v4.8h, v0.8b, #0\nsshll v5.8h, v2.8b, #0\nsshll v16.8h, v1.8b, #0\nsshll v17.8h, v3.8b, #0\nsshll v6.4s, v4.4h, #0\nsshll v7.4s, v5.4h, #0\nsshll2 v4.4s, v4.8h, #0\nsshll2 v5.4s, v5.8h, #0\nsshll v18.4s, v16.4h, #0\nsshll v19.4s, v17.4h, #0\nsshll2 v16.4s, v16.8h, #0\nsshll2 v17.4s, v17.8h, #0\nfmov w8, s6\nfmov w9, s7\nmov w12, v7.s[3]\nfmov w13, s5\nmov w14, v5.s[1]\nmov w16, v5.s[3]\nfmov w6, s19\nmov w7, v19.s[3]\nfmov w21, s17\nsdiv w10, w8, w9\nmov w8, v6.s[1]\nmov w9, v7.s[1]\nmov w22, v17.s[3]\nsdiv w11, w8, w9\nmov w8, v6.s[2]\nmov w9, v7.s[2]\nfmov s20, w10\nsdiv w9, w8, w9\nmov w8, v6.s[3]\nsshll2 v6.8h, v0.16b, #0\nmov v20.s[1], w11\nsshll v0.8h, v0.8b, #0\nsshll v28.4s, v0.4h, #0\nsshll2 v0.4s, v0.8h, #0\nsdiv w8, w8, w12\nfmov w12, s4\nmov v20.s[2], w9\nsdiv w13, w12, w13\nmov w12, v4.s[1]\nstr w8, [sp, #12]                   // 4-byte Spill\nldr w11, [sp, #12]                  // 4-byte Reload\nmov v20.s[3], w11\nsdiv w15, w12, w14\nmov w12, v4.s[2]\nmov w14, v5.s[2]\nsshll v5.4s, v6.4h, #0\nfmov s21, w13\nsdiv w14, w12, w14\nmov w12, v4.s[3]\nsshll2 v4.8h, v2.16b, #0\nmov v21.s[1], w15\nsshll v2.8h, v2.8b, #0\nsshll v7.4s, v4.4h, #0\nsshll v30.4s, v2.4h, #0\nsshll2 v2.4s, v2.8h, #0\nfmov w17, s7\nmls v28.4s, v20.4s, v30.4s\nsdiv w12, w12, w16\nfmov w16, s5\nmov v21.s[2], w14\nsdiv w18, w16, w17\nmov w16, v5.s[1]\nmov w17, v7.s[1]\nmov v21.s[3], w12\nmls v0.4s, v21.4s, v2.4s\nsdiv w1, w16, w17\nmov w16, v5.s[2]\nmov w17, v7.s[2]\nfmov s22, w18\nuzp1 v0.8h, v28.8h, v0.8h\nsdiv w0, w16, w17\nmov w16, v5.s[3]\nmov w17, v7.s[3]\nsshll2 v5.4s, v6.8h, #0\nsshll2 v7.4s, v4.8h, #0\nmov v22.s[1], w1\nsshll v6.4s, v6.4h, #0\nsshll v4.4s, v4.4h, #0\nfmov w2, s7\nmov w3, v7.s[3]\nsdiv w16, w16, w17\nfmov w17, s5\nmov v22.s[2], w0\nsdiv w5, w17, w2\nmov w17, v5.s[1]\nmov w2, v7.s[1]\nmov v22.s[3], w16\nmls v6.4s, v22.4s, v4.4s\nsdiv w4, w17, w2\nmov w17, v5.s[2]\nmov w2, v7.s[2]\nfmov s23, w5\nsdiv w2, w17, w2\nmov w17, v5.s[3]\nmov v23.s[1], w4\nsdiv w17, w17, w3\nfmov w3, s18\nmov v23.s[2], w2\nsdiv w20, w3, w6\nmov w3, v18.s[1]\nmov w6, v19.s[1]\nmov v23.s[3], w17\nmls v5.4s, v23.4s, v7.4s\nsdiv w19, w3, w6\nmov w3, v18.s[2]\nmov w6, v19.s[2]\nfmov s24, w20\nuzp1 v2.8h, v6.8h, v5.8h\nuzp1 v0.16b, v0.16b, v2.16b\nsdiv w6, w3, w6\nmov w3, v18.s[3]\nmov v24.s[1], w19\nldp x20, x19, [sp, #96]             // 16-byte Folded Reload\nsdiv w3, w3, w7\nfmov w7, s16\nmov v24.s[2], w6\nsdiv w23, w7, w21\nmov w7, v16.s[1]\nmov w21, v17.s[1]\nmov v24.s[3], w3\nsdiv w24, w7, w21\nmov w7, v16.s[2]\nmov w21, v17.s[2]\nsshll2 v17.8h, v1.16b, #0\nfmov s25, w23\nsshll v1.8h, v1.8b, #0\nsshll v18.4s, v17.4h, #0\nsshll v29.4s, v1.4h, #0\nsshll2 v1.4s, v1.8h, #0\nsdiv w21, w7, w21\nmov w7, v16.s[3]\nsshll2 v16.8h, v3.16b, #0\nmov v25.s[1], w24\nsshll v3.8h, v3.8b, #0\nldp x24, x23, [sp, #64]             // 16-byte Folded Reload\nsshll v19.4s, v16.4h, #0\nsshll v31.4s, v3.4h, #0\nsshll2 v3.4s, v3.8h, #0\nfmov w25, s19\nmov w26, v19.s[1]\nmov w27, v19.s[2]\nmov w28, v19.s[3]\nsshll2 v19.4s, v16.8h, #0\nsshll v16.4s, v16.4h, #0\nsdiv w7, w7, w22\nfmov w22, s18\nmov v25.s[2], w21\nmls v29.4s, v24.4s, v31.4s\nfmov w29, s19\nmov w30, v19.s[1]\nmov w8, v19.s[2]\nmov w10, v19.s[3]\nsdiv w25, w22, w25\nmov w22, v18.s[1]\nmov v25.s[3], w7\nmls v1.4s, v25.4s, v3.4s\nsdiv w26, w22, w26\nmov w22, v18.s[2]\nfmov s26, w25\nuzp1 v1.8h, v29.8h, v1.8h\nsdiv w27, w22, w27\nmov w22, v18.s[3]\nsshll2 v18.4s, v17.8h, #0\nmov v26.s[1], w26\nsshll v17.4s, v17.4h, #0\nldp x26, x25, [sp, #48]             // 16-byte Folded Reload\nmov w9, v18.s[3]\nsdiv w22, w22, w28\nfmov w28, s18\nmov v26.s[2], w27\nsdiv w28, w28, w29\nmov w29, v18.s[1]\nmov v26.s[3], w22\nldp x22, x21, [sp, #80]             // 16-byte Folded Reload\nmls v17.4s, v26.4s, v16.4s\nsdiv w29, w29, w30\nmov w30, v18.s[2]\nfmov s27, w28\nldp x28, x27, [sp, #32]             // 16-byte Folded Reload\nsdiv w8, w30, w8\nmov v27.s[1], w29\nldp x29, x30, [sp, #16]             // 16-byte Folded Reload\nsdiv w9, w9, w10\nmov v27.s[2], w8\nmov v27.s[3], w9\nmls v18.4s, v27.4s, v19.4s\nuzp1 v3.8h, v17.8h, v18.8h\nuzp1 v1.16b, v1.16b, v3.16b\nadd sp, sp, #112\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) vscale_range(2, 2){\n  %r = srem <32 x i8> %a, %b\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:19 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "srem",
@@ -7714,7 +7714,7 @@
   "ty": "<32 x i8>",
   "variant": "binopsplat",
   "codesize": 38,
-  "thru": 87,
+  "thru": 86,
   "lat": 72,
   "sizelat": 72,
   "size": 36,
@@ -7722,7 +7722,7 @@
   "asm": "mov z2.b, w0\nptrue p0.s\nsunpklo z3.h, z0.b\nsunpklo z4.h, z2.b\nsunpklo z5.s, z3.h\next z3.b, z3.b, z3.b, #16\nsunpklo z6.s, z4.h\next z4.b, z4.b, z4.b, #16\nsunpklo z3.s, z3.h\nsunpklo z4.s, z4.h\nsdiv z5.s, p0/m, z5.s, z6.s\nsunpklo z6.h, z1.b\nsunpklo z7.s, z6.h\next z6.b, z6.b, z6.b, #16\nsunpklo z6.s, z6.h\nsdiv z3.s, p0/m, z3.s, z4.s\nmovprfx z4, z2\next z4.b, z4.b, z2.b, #16\nsunpklo z4.h, z4.b\nsunpklo z16.s, z4.h\next z4.b, z4.b, z4.b, #16\nsunpklo z4.s, z4.h\nsdiv z7.s, p0/m, z7.s, z16.s\nsdivr z4.s, p0/m, z4.s, z6.s\nuzp1 z5.h, z5.h, z5.h\nptrue p0.h, vl8\nuzp1 z6.h, z3.h, z3.h\nuzp1 z16.h, z7.h, z7.h\nsplice z3.h, p0, { z5.h, z6.h }\nuzp1 z5.b, z3.b, z3.b\nuzp1 z17.h, z4.h, z4.h\nsplice z4.h, p0, { z16.h, z17.h }\nptrue p0.b, vl16\nsplice z0.b, p0, { z0.b, z1.b }\nuzp1 z6.b, z4.b, z4.b\nsplice z1.b, p0, { z5.b, z6.b }\nptrue p0.b\nmls z0.b, p0/m, z1.b, z2.b\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "sub sp, sp, #112\nstp x29, x30, [sp, #16]             // 16-byte Folded Spill\nstp x28, x27, [sp, #32]             // 16-byte Folded Spill\nstp x26, x25, [sp, #48]             // 16-byte Folded Spill\nstp x24, x23, [sp, #64]             // 16-byte Folded Spill\nstp x22, x21, [sp, #80]             // 16-byte Folded Spill\nstp x20, x19, [sp, #96]             // 16-byte Folded Spill\ndup v2.16b, w0\nsshll v3.8h, v0.8b, #0\nsshll v7.8h, v1.8b, #0\nsshll v4.8h, v2.8b, #0\nsshll v16.8h, v2.8b, #0\nsshll v5.4s, v3.4h, #0\nsshll v17.4s, v7.4h, #0\nsshll2 v3.4s, v3.8h, #0\nsshll2 v7.4s, v7.8h, #0\nsshll v26.8h, v2.8b, #0\nsshll v6.4s, v4.4h, #0\nsshll v18.4s, v16.4h, #0\nfmov w8, s5\nfmov w2, s17\nsshll2 v4.4s, v4.8h, #0\nsshll2 v16.4s, v16.8h, #0\nsshll v28.4s, v26.4h, #0\nsshll2 v26.4s, v26.8h, #0\nfmov w9, s6\nfmov w5, s18\nmov w20, v18.s[3]\nfmov w13, s4\nfmov w23, s16\nmov w24, v16.s[3]\nsdiv w11, w8, w9\nmov w8, v5.s[1]\nmov w9, v6.s[1]\nsdiv w21, w2, w5\nmov w2, v17.s[1]\nmov w5, v18.s[1]\nsdiv w12, w8, w9\nmov w8, v5.s[2]\nmov w9, v6.s[2]\nfmov s21, w21\nsdiv w22, w2, w5\nmov w2, v17.s[2]\nmov w5, v18.s[2]\nsdiv w10, w8, w9\nmov w8, v5.s[3]\nmov w9, v6.s[3]\nsshll2 v6.8h, v0.16b, #0\nmov v21.s[1], w22\nsshll v0.8h, v0.8b, #0\nldp x22, x21, [sp, #80]             // 16-byte Folded Reload\nsshll v25.4s, v0.4h, #0\nsshll2 v0.4s, v0.8h, #0\nsdiv w5, w2, w5\nmov w2, v17.s[3]\nsdiv w8, w8, w9\nfmov w9, s3\nmov v21.s[2], w5\nsdiv w2, w2, w20\nfmov w20, s7\nstr w8, [sp, #12]                   // 4-byte Spill\nsdiv w15, w9, w13\nmov w9, v3.s[1]\nmov w13, v4.s[1]\nmov v21.s[3], w2\nsdiv w25, w20, w23\nmov w20, v7.s[1]\nmov w23, v16.s[1]\nfmov s18, w15\nsdiv w16, w9, w13\nmov w9, v3.s[2]\nmov w13, v4.s[2]\nfmov s22, w25\nsdiv w26, w20, w23\nmov w20, v7.s[2]\nmov w23, v16.s[2]\nmov v18.s[1], w16\nsdiv w14, w9, w13\nmov w9, v3.s[3]\nsshll2 v3.8h, v2.16b, #0\nmov w13, v4.s[3]\nsshll v4.4s, v6.4h, #0\nmov v22.s[1], w26\nsshll v2.8h, v2.8b, #0\nldp x26, x25, [sp, #48]             // 16-byte Folded Reload\nsshll v5.4s, v3.4h, #0\nsshll v17.4s, v3.4h, #0\nsshll v29.4s, v3.4h, #0\nsshll v30.4s, v2.4h, #0\nsshll2 v2.4s, v2.8h, #0\nfmov w17, s5\nfmov w27, s17\nmov w28, v17.s[1]\nmov w29, v17.s[2]\nmov w1, v5.s[3]\nmov w30, v17.s[3]\nsdiv w23, w20, w23\nmov w20, v7.s[3]\nsshll2 v7.8h, v1.16b, #0\nfmov s17, w11\nmov v18.s[2], w14\nsshll v1.8h, v1.8b, #0\nsshll v16.4s, v7.4h, #0\nmov v17.s[1], w12\nsshll v27.4s, v1.4h, #0\nsshll2 v1.4s, v1.8h, #0\nmls v27.4s, v21.4s, v30.4s\nsdiv w9, w9, w13\nfmov w13, s4\nmov v17.s[2], w10\nmov v22.s[2], w23\nldr w10, [sp, #12]                  // 4-byte Reload\nmov v17.s[3], w10\nsdiv w20, w20, w24\nfmov w24, s16\nmov v18.s[3], w9\nmls v25.4s, v17.4s, v28.4s\nmls v0.4s, v18.4s, v26.4s\nsdiv w18, w13, w17\nmov w13, v4.s[1]\nmov w17, v5.s[1]\nmov v22.s[3], w20\nuzp1 v0.8h, v25.8h, v0.8h\nmls v1.4s, v22.4s, v2.4s\nsdiv w27, w24, w27\nmov w24, v16.s[1]\nfmov s19, w18\nuzp1 v1.8h, v27.8h, v1.8h\nsdiv w0, w13, w17\nmov w13, v4.s[2]\nmov w17, v5.s[2]\nsshll2 v5.4s, v3.8h, #0\nfmov s23, w27\nsshll v3.4s, v3.4h, #0\nfmov w6, s5\nmov w7, v5.s[1]\nmov w19, v5.s[2]\nmov w8, v5.s[3]\nsdiv w28, w24, w28\nmov w24, v16.s[2]\nmov v19.s[1], w0\nsdiv w17, w13, w17\nmov w13, v4.s[3]\nsshll2 v4.4s, v6.8h, #0\nmov v23.s[1], w28\nsshll v6.4s, v6.4h, #0\nldp x28, x27, [sp, #32]             // 16-byte Folded Reload\nsdiv w29, w24, w29\nmov w24, v16.s[3]\nsshll2 v16.4s, v7.8h, #0\nmov v19.s[2], w17\nsshll v7.4s, v7.4h, #0\nmov w12, v16.s[3]\nsdiv w13, w13, w1\nfmov w1, s4\nmov v23.s[2], w29\nsdiv w24, w24, w30\nfmov w30, s16\nmov v19.s[3], w13\nmls v6.4s, v19.4s, v29.4s\nsdiv w3, w1, w6\nmov w1, v4.s[1]\nmov v23.s[3], w24\nldp x24, x23, [sp, #64]             // 16-byte Folded Reload\nmls v7.4s, v23.4s, v3.4s\nsdiv w6, w30, w6\nmov w30, v16.s[1]\nfmov s20, w3\nsdiv w4, w1, w7\nmov w1, v4.s[2]\nfmov s24, w6\nsdiv w7, w30, w7\nmov w30, v16.s[2]\nmov v20.s[1], w4\nsdiv w1, w1, w19\nmov v24.s[1], w7\nsdiv w19, w30, w19\nmov w30, v4.s[3]\nmov v20.s[2], w1\nsdiv w11, w30, w8\nmov v24.s[2], w19\nldp x20, x19, [sp, #96]             // 16-byte Folded Reload\nldp x29, x30, [sp, #16]             // 16-byte Folded Reload\nsdiv w8, w12, w8\nmov v20.s[3], w11\nmls v4.4s, v20.4s, v5.4s\nmov v24.s[3], w8\nuzp1 v2.8h, v6.8h, v4.8h\nmls v16.4s, v24.4s, v5.4s\nuzp1 v0.16b, v0.16b, v2.16b\nuzp1 v3.8h, v7.8h, v16.8h\nuzp1 v1.16b, v1.16b, v3.16b\nadd sp, sp, #112\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, i8 %bs) vscale_range(2, 2){\n  %i = insertelement <32 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\n  %r = srem <32 x i8> %a, %b\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of RThru:66 CodeSize:33 Lat:66 SizeLat:66 for:   %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of RThru:19 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of RThru:66 CodeSize:33 Lat:66 SizeLat:66 for:   %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of RThru:18 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "srem",
@@ -7864,7 +7864,7 @@
   "ty": "<16 x i16>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 11,
+  "thru": 10,
   "lat": 4,
   "sizelat": 4,
   "size": 14,
@@ -7872,7 +7872,7 @@
   "asm": "ptrue p0.s\nsunpklo z4.s, z3.h\nsunpklo z5.s, z1.h\nsunpklo z6.s, z0.h\nsdivr z4.s, p0/m, z4.s, z5.s\nsunpklo z5.s, z2.h\nsdivr z5.s, p0/m, z5.s, z6.s\nptrue p0.h, vl8\nsplice z2.h, p0, { z2.h, z3.h }\nsplice z0.h, p0, { z0.h, z1.h }\nuzp1 z7.h, z4.h, z4.h\nuzp1 z6.h, z5.h, z5.h\nsplice z1.h, p0, { z6.h, z7.h }\nptrue p0.h\nmls z0.h, p0/m, z1.h, z2.h\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "sshll v4.4s, v0.4h, #0\nsshll v5.4s, v2.4h, #0\nsshll v6.4s, v1.4h, #0\nsshll v7.4s, v3.4h, #0\nfmov w8, s4\nfmov w9, s5\nmov w12, v5.s[3]\nfmov w17, s7\nmov w18, v7.s[1]\nmov w0, v7.s[2]\nmov w1, v7.s[3]\nsshll2 v7.4s, v3.8h, #0\nsshll v3.4s, v3.4h, #0\nsdiv w10, w8, w9\nmov w8, v4.s[1]\nmov w9, v5.s[1]\nfmov w2, s7\nmov w3, v7.s[1]\nmov w4, v7.s[2]\nmov w5, v7.s[3]\nsdiv w11, w8, w9\nmov w8, v4.s[2]\nmov w9, v5.s[2]\nsshll2 v5.4s, v2.8h, #0\nfmov s16, w10\nsshll v2.4s, v2.4h, #0\nfmov w13, s5\nmov w14, v5.s[1]\nmov w15, v5.s[2]\nmov w16, v5.s[3]\nsdiv w9, w8, w9\nmov w8, v4.s[3]\nsshll2 v4.4s, v0.8h, #0\nmov v16.s[1], w11\nsshll v0.4s, v0.4h, #0\nsdiv w8, w8, w12\nfmov w12, s4\nmov v16.s[2], w9\nsdiv w13, w12, w13\nmov w12, v4.s[1]\nmov v16.s[3], w8\nmls v0.4s, v16.4s, v2.4s\nsdiv w14, w12, w14\nmov w12, v4.s[2]\nfmov s17, w13\nsdiv w15, w12, w15\nmov w12, v4.s[3]\nmov v17.s[1], w14\nsdiv w12, w12, w16\nfmov w16, s6\nmov v17.s[2], w15\nsdiv w16, w16, w17\nmov w17, v6.s[1]\nmov v17.s[3], w12\nmls v4.4s, v17.4s, v5.4s\nsdiv w17, w17, w18\nmov w18, v6.s[2]\nfmov s18, w16\nuzp1 v0.8h, v0.8h, v4.8h\nsdiv w18, w18, w0\nmov w0, v6.s[3]\nsshll2 v6.4s, v1.8h, #0\nmov v18.s[1], w17\nsshll v1.4s, v1.4h, #0\nsdiv w0, w0, w1\nfmov w1, s6\nmov v18.s[2], w18\nsdiv w1, w1, w2\nmov w2, v6.s[1]\nmov v18.s[3], w0\nmls v1.4s, v18.4s, v3.4s\nsdiv w2, w2, w3\nmov w3, v6.s[2]\nfmov s19, w1\nsdiv w3, w3, w4\nmov w4, v6.s[3]\nmov v19.s[1], w2\nsdiv w10, w4, w5\nmov v19.s[2], w3\nmov v19.s[3], w10\nmls v6.4s, v19.4s, v7.4s\nuzp1 v1.8h, v1.8h, v6.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b) vscale_range(2, 2){\n  %r = srem <16 x i16> %a, %b\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:11 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "srem",
@@ -7894,7 +7894,7 @@
   "ty": "<16 x i16>",
   "variant": "binopsplat",
   "codesize": 22,
-  "thru": 47,
+  "thru": 46,
   "lat": 40,
   "sizelat": 40,
   "size": 16,
@@ -7902,7 +7902,7 @@
   "asm": "mov z2.h, w0\nptrue p0.s\nsunpklo z3.s, z0.h\nsunpklo z5.s, z1.h\nsunpklo z4.s, z2.h\nsdiv z3.s, p0/m, z3.s, z4.s\nmovprfx z4, z2\next z4.b, z4.b, z2.b, #16\nsunpklo z4.s, z4.h\nsdivr z4.s, p0/m, z4.s, z5.s\nptrue p0.h, vl8\nsplice z0.h, p0, { z0.h, z1.h }\nuzp1 z5.h, z3.h, z3.h\nuzp1 z6.h, z4.h, z4.h\nsplice z1.h, p0, { z5.h, z6.h }\nptrue p0.h\nmls z0.h, p0/m, z1.h, z2.h\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.8h, w0\nsshll v3.4s, v0.4h, #0\nsshll v5.4s, v1.4h, #0\nsshll v4.4s, v2.4h, #0\nsshll v6.4s, v2.4h, #0\nfmov w8, s3\nfmov w1, s5\nsshll v18.4s, v2.4h, #0\nfmov w9, s4\nfmov w2, s6\nmov w3, v6.s[1]\nmov w4, v6.s[2]\nmov w12, v4.s[3]\nmov w5, v6.s[3]\nsdiv w10, w8, w9\nmov w8, v3.s[1]\nmov w9, v4.s[1]\nsdiv w1, w1, w2\nmov w2, v5.s[1]\nfmov s6, w10\nsdiv w11, w8, w9\nmov w8, v3.s[2]\nmov w9, v4.s[2]\nsshll2 v4.4s, v2.8h, #0\nfmov s16, w1\nsshll v2.4s, v2.4h, #0\nfmov w13, s4\nmov w15, v4.s[1]\nmov w17, v4.s[2]\nmov w0, v4.s[3]\nsdiv w2, w2, w3\nmov w3, v5.s[2]\nmov v6.s[1], w11\nsdiv w9, w8, w9\nmov w8, v3.s[3]\nsshll2 v3.4s, v0.8h, #0\nmov v16.s[1], w2\nsshll v0.4s, v0.4h, #0\nmov w14, v3.s[1]\nmov w16, v3.s[2]\nmov w18, v3.s[3]\nsdiv w3, w3, w4\nmov w4, v5.s[3]\nsshll2 v5.4s, v1.8h, #0\nmov v6.s[2], w9\nsshll v1.4s, v1.4h, #0\nsdiv w8, w8, w12\nfmov w12, s3\nmov v16.s[2], w3\nsdiv w4, w4, w5\nfmov w5, s5\nmov v6.s[3], w8\nmls v0.4s, v6.4s, v18.4s\nsdiv w12, w12, w13\nmov v16.s[3], w4\nmls v1.4s, v16.4s, v2.4s\nsdiv w13, w5, w13\nmov w5, v5.s[1]\nfmov s7, w12\nsdiv w14, w14, w15\nfmov s17, w13\nsdiv w15, w5, w15\nmov w5, v5.s[2]\nmov v7.s[1], w14\nsdiv w16, w16, w17\nmov v17.s[1], w15\nsdiv w17, w5, w17\nmov w5, v5.s[3]\nmov v7.s[2], w16\nsdiv w18, w18, w0\nmov v17.s[2], w17\nsdiv w10, w5, w0\nmov v7.s[3], w18\nmls v3.4s, v7.4s, v4.4s\nmov v17.s[3], w10\nuzp1 v0.8h, v0.8h, v3.8h\nmls v5.4s, v17.4s, v4.4s\nuzp1 v1.8h, v1.8h, v5.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, i16 %bs) vscale_range(2, 2){\n  %i = insertelement <16 x i16> poison, i16 %bs, i64 0\n  %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\n  %r = srem <16 x i16> %a, %b\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of RThru:34 CodeSize:17 Lat:34 SizeLat:34 for:   %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of RThru:11 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of RThru:34 CodeSize:17 Lat:34 SizeLat:34 for:   %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of RThru:10 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "srem",
@@ -8044,7 +8044,7 @@
   "ty": "<8 x i32>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 5,
+  "thru": 4,
   "lat": 4,
   "sizelat": 4,
   "size": 7,
@@ -8052,7 +8052,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z2.s, p0, { z2.s, z3.s }\nsplice z0.s, p0, { z0.s, z1.s }\nptrue p0.s\nmovprfx z1, z0\nsdiv z1.s, p0/m, z1.s, z2.s\nmls z0.s, p0/m, z1.s, z2.s\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "fmov w8, s0\nfmov w9, s2\nmov w10, v2.s[1]\nmov w11, v2.s[2]\nmov w12, v2.s[3]\nfmov w13, s3\nmov w14, v3.s[1]\nmov w15, v3.s[2]\nmov w16, v3.s[3]\nsdiv w8, w8, w9\nmov w9, v0.s[1]\nsdiv w9, w9, w10\nmov w10, v0.s[2]\nfmov s4, w8\nsdiv w10, w10, w11\nmov w11, v0.s[3]\nmov v4.s[1], w9\nsdiv w11, w11, w12\nfmov w12, s1\nmov v4.s[2], w10\nsdiv w12, w12, w13\nmov w13, v1.s[1]\nmov v4.s[3], w11\nmls v0.4s, v4.4s, v2.4s\nsdiv w13, w13, w14\nmov w14, v1.s[2]\nfmov s5, w12\nsdiv w14, w14, w15\nmov w15, v1.s[3]\nmov v5.s[1], w13\nsdiv w8, w15, w16\nmov v5.s[2], w14\nmov v5.s[3], w8\nmls v1.4s, v5.4s, v3.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b) vscale_range(2, 2){\n  %r = srem <8 x i32> %a, %b\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = srem <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "srem",
@@ -8074,7 +8074,7 @@
   "ty": "<8 x i32>",
   "variant": "binopsplat",
   "codesize": 14,
-  "thru": 25,
+  "thru": 24,
   "lat": 24,
   "sizelat": 24,
   "size": 7,
@@ -8082,7 +8082,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z0.s, p0, { z0.s, z1.s }\nmov z1.s, w0\nptrue p0.s\nmovprfx z2, z0\nsdiv z2.s, p0/m, z2.s, z1.s\nmls z0.s, p0/m, z2.s, z1.s\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.4s, w0\nfmov w8, s0\nfmov w16, s1\nmov w10, v0.s[1]\nmov w12, v0.s[2]\nmov w14, v0.s[3]\nfmov w9, s2\nmov w11, v2.s[1]\nmov w13, v2.s[2]\nmov w15, v2.s[3]\nsdiv w8, w8, w9\nsdiv w9, w16, w9\nmov w16, v1.s[1]\nfmov s3, w8\nsdiv w10, w10, w11\nfmov s4, w9\nsdiv w11, w16, w11\nmov w16, v1.s[2]\nmov v3.s[1], w10\nsdiv w12, w12, w13\nmov v4.s[1], w11\nsdiv w13, w16, w13\nmov w16, v1.s[3]\nmov v3.s[2], w12\nsdiv w14, w14, w15\nmov v4.s[2], w13\nsdiv w8, w16, w15\nmov v3.s[3], w14\nmls v0.4s, v3.4s, v2.4s\nmov v4.s[3], w8\nmls v1.4s, v4.4s, v2.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, i32 %bs) vscale_range(2, 2){\n  %i = insertelement <8 x i32> poison, i32 %bs, i64 0\n  %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\n  %r = srem <8 x i32> %a, %b\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <8 x i32> poison, i32 %bs, i64 0\nCost Model: Found costs of RThru:18 CodeSize:9 Lat:18 SizeLat:18 for:   %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <8 x i32> poison, i32 %bs, i64 0\nCost Model: Found costs of RThru:18 CodeSize:9 Lat:18 SizeLat:18 for:   %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of 4 for:   %r = srem <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "srem",
@@ -8164,7 +8164,7 @@
   "ty": "<4 x i64>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 5,
+  "thru": 4,
   "lat": 4,
   "sizelat": 4,
   "size": 7,
@@ -8172,7 +8172,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nptrue p0.d\nmovprfx z1, z0\nsdiv z1.d, p0/m, z1.d, z2.d\nmls z0.d, p0/m, z1.d, z2.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "fmov x8, d0\nfmov x9, d2\nmov x10, v2.d[1]\nmov x11, v0.d[1]\nfmov x12, d1\nfmov x13, d3\nmov x14, v3.d[1]\nmov x15, v1.d[1]\nsdiv x8, x8, x9\nsdiv x11, x11, x10\nfmov d2, x8\nsdiv x12, x12, x13\nmov v2.d[1], x11\nfmov x11, d2\nmov x8, v2.d[1]\nmul x9, x11, x9\nmul x8, x8, x10\nfmov d2, x9\nmov v2.d[1], x8\nsdiv x15, x15, x14\nfmov d3, x12\nsub v0.2d, v0.2d, v2.2d\nmov v3.d[1], x15\nfmov x11, d3\nmov x10, v3.d[1]\nmul x11, x11, x13\nmul x10, x10, x14\nfmov d3, x11\nmov v3.d[1], x10\nsub v1.2d, v1.2d, v3.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b) vscale_range(2, 2){\n  %r = srem <4 x i64> %a, %b\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = srem <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "srem",
@@ -8194,7 +8194,7 @@
   "ty": "<4 x i64>",
   "variant": "binopsplat",
   "codesize": 10,
-  "thru": 17,
+  "thru": 16,
   "lat": 16,
   "sizelat": 16,
   "size": 7,
@@ -8202,7 +8202,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z0.d, p0, { z0.d, z1.d }\nmov z1.d, x0\nptrue p0.d\nmovprfx z2, z0\nsdiv z2.d, p0/m, z2.d, z1.d\nmls z0.d, p0/m, z2.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.2d, x0\nfmov x8, d0\nfmov x12, d1\nmov x11, v0.d[1]\nmov x13, v1.d[1]\nfmov x9, d2\nmov x10, v2.d[1]\nsdiv x8, x8, x9\nsdiv x12, x12, x9\nfmov d2, x8\nsdiv x11, x11, x10\nfmov d3, x12\nsdiv x13, x13, x10\nmov v2.d[1], x11\nfmov x8, d2\nmov x11, v2.d[1]\nmul x8, x8, x9\nmul x11, x11, x10\nfmov d2, x8\nmov v2.d[1], x11\nmov v3.d[1], x13\nsub v0.2d, v0.2d, v2.2d\nfmov x12, d3\nmov x13, v3.d[1]\nmul x9, x12, x9\nmul x10, x13, x10\nfmov d3, x9\nmov v3.d[1], x10\nsub v1.2d, v1.2d, v3.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, i64 %bs) vscale_range(2, 2){\n  %i = insertelement <4 x i64> poison, i64 %bs, i64 0\n  %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\n  %r = srem <4 x i64> %a, %b\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <4 x i64> poison, i64 %bs, i64 0\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:10 SizeLat:10 for:   %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = srem <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <4 x i64> poison, i64 %bs, i64 0\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:10 SizeLat:10 for:   %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of 4 for:   %r = srem <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "srem",
@@ -10234,7 +10234,7 @@
   "ty": "<32 x i8>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 19,
+  "thru": 18,
   "lat": 4,
   "sizelat": 4,
   "size": 34,
@@ -10242,7 +10242,7 @@
   "asm": "ptrue p0.s\nuunpklo z4.h, z3.b\nuunpklo z5.h, z1.b\nuunpklo z6.s, z4.h\nuunpklo z7.s, z5.h\next z4.b, z4.b, z4.b, #16\next z5.b, z5.b, z5.b, #16\nuunpklo z4.s, z4.h\nuunpklo z5.s, z5.h\nudivr z6.s, p0/m, z6.s, z7.s\nuunpklo z7.h, z0.b\nuunpklo z17.s, z7.h\next z7.b, z7.b, z7.b, #16\nuunpklo z7.s, z7.h\nudivr z4.s, p0/m, z4.s, z5.s\nuunpklo z5.h, z2.b\nuunpklo z16.s, z5.h\next z5.b, z5.b, z5.b, #16\nuunpklo z5.s, z5.h\nudivr z16.s, p0/m, z16.s, z17.s\nudivr z5.s, p0/m, z5.s, z7.s\nuzp1 z6.h, z6.h, z6.h\nptrue p0.h, vl8\nuzp1 z7.h, z4.h, z4.h\nuzp1 z16.h, z16.h, z16.h\nsplice z4.h, p0, { z6.h, z7.h }\nuzp1 z7.b, z4.b, z4.b\nuzp1 z17.h, z5.h, z5.h\nsplice z5.h, p0, { z16.h, z17.h }\nptrue p0.b, vl16\nsplice z2.b, p0, { z2.b, z3.b }\nsplice z0.b, p0, { z0.b, z1.b }\nuzp1 z6.b, z5.b, z5.b\nsplice z1.b, p0, { z6.b, z7.b }\nptrue p0.b\nmls z0.b, p0/m, z1.b, z2.b\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "stp x29, x30, [sp, #-96]!           // 16-byte Folded Spill\nstp x28, x27, [sp, #16]             // 16-byte Folded Spill\nstp x26, x25, [sp, #32]             // 16-byte Folded Spill\nstp x24, x23, [sp, #48]             // 16-byte Folded Spill\nstp x22, x21, [sp, #64]             // 16-byte Folded Spill\nstp x20, x19, [sp, #80]             // 16-byte Folded Spill\nushll v4.8h, v0.8b, #0\nushll v5.8h, v2.8b, #0\nushll v16.8h, v3.8b, #0\nushll v6.4s, v4.4h, #0\nushll v7.4s, v5.4h, #0\nushll2 v4.4s, v4.8h, #0\nushll2 v5.4s, v5.8h, #0\nushll v18.4s, v16.4h, #0\nushll2 v16.4s, v16.8h, #0\nfmov w8, s6\nfmov w9, s7\nmov w10, v7.s[1]\nmov w12, v7.s[3]\nfmov w13, s5\nmov w16, v5.s[3]\nfmov w6, s18\nmov w7, v18.s[3]\nfmov w21, s16\nudiv w9, w8, w9\nmov w8, v6.s[1]\nmov w24, v16.s[3]\nudiv w11, w8, w10\nmov w8, v6.s[2]\nmov w10, v7.s[2]\nfmov s19, w9\nudiv w10, w8, w10\nmov w8, v6.s[3]\nmov v19.h[1], w11\nudiv w8, w8, w12\nfmov w12, s4\nmov v19.h[2], w10\nudiv w14, w12, w13\nmov w12, v4.s[1]\nmov w13, v5.s[1]\nmov v19.h[3], w8\nudiv w15, w12, w13\nmov w12, v4.s[2]\nmov w13, v5.s[2]\nushll2 v5.8h, v0.16b, #0\nfmov s20, w14\nushll v0.8h, v0.8b, #0\nushll v6.4s, v5.4h, #0\nushll v26.4s, v0.4h, #0\nushll2 v0.4s, v0.8h, #0\nudiv w13, w12, w13\nmov w12, v4.s[3]\nushll2 v4.8h, v2.16b, #0\nmov v20.h[1], w15\nushll v2.8h, v2.8b, #0\nushll v7.4s, v4.4h, #0\nmov d29, v4.d[1]\nmov d28, v2.d[1]\numlsl v26.4s, v19.4h, v2.4h\nfmov w17, s7\nudiv w12, w12, w16\nfmov w16, s6\nmov v20.h[2], w13\nudiv w0, w16, w17\nmov w16, v6.s[1]\nmov w17, v7.s[1]\nmov v20.h[3], w12\numlsl v0.4s, v20.4h, v28.4h\nudiv w1, w16, w17\nmov w16, v6.s[2]\nmov w17, v7.s[2]\nfmov s21, w0\nuzp1 v0.8h, v26.8h, v0.8h\nudiv w18, w16, w17\nmov w16, v6.s[3]\nmov w17, v7.s[3]\nushll2 v6.4s, v5.8h, #0\nushll2 v7.4s, v4.8h, #0\nmov v21.h[1], w1\nushll v5.4s, v5.4h, #0\nfmov w2, s7\nmov w5, v6.s[3]\nudiv w16, w16, w17\nfmov w17, s6\nmov v21.h[2], w18\nudiv w3, w17, w2\nmov w17, v7.s[1]\nmov w2, v6.s[1]\nmov v21.h[3], w16\numlsl v5.4s, v21.4h, v4.4h\nudiv w4, w2, w17\nmov w17, v7.s[2]\nmov w2, v6.s[2]\nudiv w2, w2, w17\nmov w17, v7.s[3]\nushll v7.8h, v1.8b, #0\nushll v17.4s, v7.4h, #0\nushll2 v7.4s, v7.8h, #0\nudiv w17, w5, w17\nfmov w5, s17\nudiv w19, w5, w6\nmov w5, v17.s[1]\nmov w6, v18.s[1]\nudiv w20, w5, w6\nmov w5, v17.s[2]\nmov w6, v18.s[2]\nfmov s22, w19\nudiv w6, w5, w6\nmov w5, v17.s[3]\nmov v22.h[1], w20\nldp x20, x19, [sp, #80]             // 16-byte Folded Reload\nudiv w5, w5, w7\nfmov w7, s7\nmov v22.h[2], w6\nudiv w22, w7, w21\nmov w7, v7.s[1]\nmov w21, v16.s[1]\nmov v22.h[3], w5\nudiv w23, w7, w21\nmov w7, v7.s[2]\nmov w21, v16.s[2]\nushll2 v16.8h, v1.16b, #0\nfmov s23, w22\nushll v1.8h, v1.8b, #0\nushll v17.4s, v16.4h, #0\nushll v27.4s, v1.4h, #0\nushll2 v1.4s, v1.8h, #0\nudiv w21, w7, w21\nmov w7, v7.s[3]\nushll2 v7.8h, v3.16b, #0\nmov v23.h[1], w23\nushll v3.8h, v3.8b, #0\nushll v18.4s, v7.4h, #0\nmov d31, v7.d[1]\nmov d30, v3.d[1]\numlsl v27.4s, v22.4h, v3.4h\nfmov w25, s18\nmov w28, v18.s[3]\nudiv w7, w7, w24\nfmov w24, s17\nmov v23.h[2], w21\nldp x22, x21, [sp, #64]             // 16-byte Folded Reload\nudiv w26, w24, w25\nmov w24, v17.s[1]\nmov w25, v18.s[1]\nmov v23.h[3], w7\numlsl v1.4s, v23.4h, v30.4h\nudiv w27, w24, w25\nmov w24, v17.s[2]\nmov w25, v18.s[2]\nushll2 v18.4s, v7.8h, #0\nfmov s24, w26\nuzp1 v1.8h, v27.8h, v1.8h\nfmov w29, s18\nmov w9, v18.s[2]\nmov w10, v18.s[3]\nudiv w25, w24, w25\nmov w24, v17.s[3]\nushll2 v17.4s, v16.8h, #0\nmov v24.h[1], w27\nushll v16.4s, v16.4h, #0\nmov w30, v17.s[1]\nmov w11, v17.s[2]\nmov w8, v17.s[3]\nudiv w24, w24, w28\nfmov w28, s17\nmov v24.h[2], w25\nldp x26, x25, [sp, #32]             // 16-byte Folded Reload\nudiv w28, w28, w29\nmov w29, v18.s[1]\nfmov s18, w3\nmov v24.h[3], w24\nldp x24, x23, [sp, #48]             // 16-byte Folded Reload\nmov v18.h[1], w4\numlsl v16.4s, v24.4h, v7.4h\nmov v18.h[2], w2\nudiv w29, w30, w29\nfmov s25, w28\nldp x28, x27, [sp, #16]             // 16-byte Folded Reload\nmov v18.h[3], w17\numlsl v6.4s, v18.4h, v29.4h\nudiv w9, w11, w9\nmov v25.h[1], w29\nuzp1 v2.8h, v5.8h, v6.8h\nuzp1 v0.16b, v0.16b, v2.16b\nudiv w8, w8, w10\nmov v25.h[2], w9\nmov v25.h[3], w8\numlsl v17.4s, v25.4h, v31.4h\nuzp1 v3.8h, v16.8h, v17.8h\nuzp1 v1.16b, v1.16b, v3.16b\nldp x29, x30, [sp], #96             // 16-byte Folded Reload\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) vscale_range(2, 2){\n  %r = urem <32 x i8> %a, %b\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:19 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:18 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "urem",
@@ -10264,7 +10264,7 @@
   "ty": "<32 x i8>",
   "variant": "binopsplat",
   "codesize": 38,
-  "thru": 87,
+  "thru": 86,
   "lat": 72,
   "sizelat": 72,
   "size": 36,
@@ -10272,7 +10272,7 @@
   "asm": "mov z2.b, w0\nptrue p0.s\nuunpklo z3.h, z0.b\nuunpklo z4.h, z2.b\nuunpklo z5.s, z3.h\next z3.b, z3.b, z3.b, #16\nuunpklo z6.s, z4.h\next z4.b, z4.b, z4.b, #16\nuunpklo z3.s, z3.h\nuunpklo z4.s, z4.h\nudiv z5.s, p0/m, z5.s, z6.s\nuunpklo z6.h, z1.b\nuunpklo z7.s, z6.h\next z6.b, z6.b, z6.b, #16\nuunpklo z6.s, z6.h\nudiv z3.s, p0/m, z3.s, z4.s\nmovprfx z4, z2\next z4.b, z4.b, z2.b, #16\nuunpklo z4.h, z4.b\nuunpklo z16.s, z4.h\next z4.b, z4.b, z4.b, #16\nuunpklo z4.s, z4.h\nudiv z7.s, p0/m, z7.s, z16.s\nudivr z4.s, p0/m, z4.s, z6.s\nuzp1 z5.h, z5.h, z5.h\nptrue p0.h, vl8\nuzp1 z6.h, z3.h, z3.h\nuzp1 z16.h, z7.h, z7.h\nsplice z3.h, p0, { z5.h, z6.h }\nuzp1 z5.b, z3.b, z3.b\nuzp1 z17.h, z4.h, z4.h\nsplice z4.h, p0, { z16.h, z17.h }\nptrue p0.b, vl16\nsplice z0.b, p0, { z0.b, z1.b }\nuzp1 z6.b, z4.b, z4.b\nsplice z1.b, p0, { z5.b, z6.b }\nptrue p0.b\nmls z0.b, p0/m, z1.b, z2.b\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "sub sp, sp, #112\nstp x29, x30, [sp, #16]             // 16-byte Folded Spill\nstp x28, x27, [sp, #32]             // 16-byte Folded Spill\nstp x26, x25, [sp, #48]             // 16-byte Folded Spill\nstp x24, x23, [sp, #64]             // 16-byte Folded Spill\nstp x22, x21, [sp, #80]             // 16-byte Folded Spill\nstp x20, x19, [sp, #96]             // 16-byte Folded Spill\ndup v2.16b, w0\nushll v3.8h, v0.8b, #0\nushll v7.8h, v1.8b, #0\nushll v4.8h, v2.8b, #0\nushll v16.8h, v2.8b, #0\nushll v5.4s, v3.4h, #0\nushll v17.4s, v7.4h, #0\nushll2 v3.4s, v3.8h, #0\nushll2 v7.4s, v7.8h, #0\nushll v24.8h, v2.8b, #0\nushll v6.4s, v4.4h, #0\nushll v18.4s, v16.4h, #0\nfmov w8, s5\nfmov w2, s17\nushll2 v4.4s, v4.8h, #0\nushll2 v16.4s, v16.8h, #0\nmov d27, v24.d[1]\nfmov w9, s6\nfmov w19, s18\nmov w20, v18.s[3]\nfmov w13, s4\nfmov w23, s16\nmov w14, v4.s[3]\nmov w24, v16.s[3]\nudiv w11, w8, w9\nmov w8, v5.s[1]\nmov w9, v6.s[1]\nudiv w21, w2, w19\nmov w2, v17.s[1]\nmov w19, v18.s[1]\nudiv w12, w8, w9\nmov w8, v5.s[2]\nmov w9, v6.s[2]\nfmov s20, w21\nudiv w22, w2, w19\nmov w2, v17.s[2]\nmov w19, v18.s[2]\nudiv w10, w8, w9\nmov w8, v5.s[3]\nmov w9, v6.s[3]\nushll2 v5.8h, v0.16b, #0\nmov v20.h[1], w22\nushll v0.8h, v0.8b, #0\nldp x22, x21, [sp, #80]             // 16-byte Folded Reload\nushll v25.4s, v0.4h, #0\nushll2 v0.4s, v0.8h, #0\nudiv w19, w2, w19\nmov w2, v17.s[3]\nudiv w8, w8, w9\nfmov w9, s3\nmov v20.h[2], w19\nudiv w2, w2, w20\nfmov w20, s7\nstr w8, [sp, #12]                   // 4-byte Spill\nudiv w15, w9, w13\nmov w9, v3.s[1]\nmov w13, v4.s[1]\nmov v20.h[3], w2\nudiv w25, w20, w23\nmov w20, v7.s[1]\nmov w23, v16.s[1]\nudiv w16, w9, w13\nmov w9, v3.s[2]\nmov w13, v4.s[2]\nushll v4.4s, v5.4h, #0\nfmov s21, w25\nudiv w26, w20, w23\nmov w20, v7.s[2]\nmov w23, v16.s[2]\nudiv w13, w9, w13\nmov w9, v3.s[3]\nushll2 v3.8h, v2.16b, #0\nmov v21.h[1], w26\nushll v2.8h, v2.8b, #0\nldp x26, x25, [sp, #48]             // 16-byte Folded Reload\nushll v6.4s, v3.4h, #0\nushll v17.4s, v3.4h, #0\nmov d28, v3.d[1]\nmov d29, v2.d[1]\nfmov w17, s6\nfmov w27, s17\nmov w28, v17.s[1]\nmov w29, v17.s[2]\nmov w1, v6.s[3]\nmov w30, v17.s[3]\nudiv w23, w20, w23\nmov w20, v7.s[3]\nushll2 v7.8h, v1.16b, #0\nfmov s17, w15\nushll v1.8h, v1.8b, #0\nushll v16.4s, v7.4h, #0\nmov v17.h[1], w16\nushll v26.4s, v1.4h, #0\nushll2 v1.4s, v1.8h, #0\numlsl v26.4s, v20.4h, v2.4h\nudiv w9, w9, w14\nfmov w14, s4\nmov v17.h[2], w13\nmov v21.h[2], w23\nudiv w20, w20, w24\nfmov w24, s16\nmov v17.h[3], w9\numlsl v0.4s, v17.4h, v27.4h\nudiv w18, w14, w17\nmov w14, v4.s[1]\nmov w17, v6.s[1]\nmov v21.h[3], w20\nldp x20, x19, [sp, #96]             // 16-byte Folded Reload\numlsl v1.4s, v21.4h, v29.4h\nudiv w27, w24, w27\nmov w24, v16.s[1]\nfmov s18, w18\nuzp1 v1.8h, v26.8h, v1.8h\nudiv w0, w14, w17\nmov w14, v4.s[2]\nmov w17, v6.s[2]\nushll2 v6.4s, v3.8h, #0\nfmov s22, w27\nfmov w5, s6\nmov w6, v6.s[1]\nmov w7, v6.s[2]\nudiv w28, w24, w28\nmov w24, v16.s[2]\nmov v18.h[1], w0\nudiv w17, w14, w17\nmov w14, v4.s[3]\nushll2 v4.4s, v5.8h, #0\nmov v22.h[1], w28\nushll v5.4s, v5.4h, #0\nldp x28, x27, [sp, #32]             // 16-byte Folded Reload\nmov w8, v4.s[3]\nudiv w29, w24, w29\nmov w24, v16.s[3]\nushll2 v16.4s, v7.8h, #0\nmov v18.h[2], w17\nushll v7.4s, v7.4h, #0\nudiv w14, w14, w1\nfmov w1, s4\nmov v22.h[2], w29\nudiv w24, w24, w30\nfmov w30, s16\nmov v18.h[3], w14\numlsl v5.4s, v18.4h, v3.4h\nudiv w3, w1, w5\nmov w1, v4.s[1]\nmov v22.h[3], w24\nldp x24, x23, [sp, #64]             // 16-byte Folded Reload\numlsl v7.4s, v22.4h, v3.4h\nudiv w5, w30, w5\nmov w30, v16.s[1]\nfmov s19, w3\nudiv w4, w1, w6\nmov w1, v4.s[2]\nfmov s23, w5\nudiv w6, w30, w6\nmov w30, v16.s[2]\nmov v19.h[1], w4\nudiv w1, w1, w7\nmov v23.h[1], w6\nudiv w7, w30, w7\nmov w30, v6.s[3]\nfmov s6, w11\nmov w11, v16.s[3]\nmov v19.h[2], w1\nmov v6.h[1], w12\nmov v6.h[2], w10\nudiv w8, w8, w30\nmov v23.h[2], w7\nudiv w10, w11, w30\nldr w11, [sp, #12]                  // 4-byte Reload\nmov v19.h[3], w8\nldp x29, x30, [sp, #16]             // 16-byte Folded Reload\nmov v6.h[3], w11\numlsl v4.4s, v19.4h, v28.4h\numlsl v25.4s, v6.4h, v24.4h\nmov v23.h[3], w10\nuzp1 v2.8h, v5.8h, v4.8h\nuzp1 v0.8h, v25.8h, v0.8h\numlsl v16.4s, v23.4h, v28.4h\nuzp1 v0.16b, v0.16b, v2.16b\nuzp1 v3.8h, v7.8h, v16.8h\nuzp1 v1.16b, v1.16b, v3.16b\nadd sp, sp, #112\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, i8 %bs) vscale_range(2, 2){\n  %i = insertelement <32 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\n  %r = urem <32 x i8> %a, %b\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of RThru:66 CodeSize:33 Lat:66 SizeLat:66 for:   %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of RThru:19 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of RThru:66 CodeSize:33 Lat:66 SizeLat:66 for:   %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of RThru:18 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "urem",
@@ -10414,7 +10414,7 @@
   "ty": "<16 x i16>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 11,
+  "thru": 10,
   "lat": 4,
   "sizelat": 4,
   "size": 14,
@@ -10422,7 +10422,7 @@
   "asm": "ptrue p0.s\nuunpklo z4.s, z3.h\nuunpklo z5.s, z1.h\nuunpklo z6.s, z0.h\nudivr z4.s, p0/m, z4.s, z5.s\nuunpklo z5.s, z2.h\nudivr z5.s, p0/m, z5.s, z6.s\nptrue p0.h, vl8\nsplice z2.h, p0, { z2.h, z3.h }\nsplice z0.h, p0, { z0.h, z1.h }\nuzp1 z7.h, z4.h, z4.h\nuzp1 z6.h, z5.h, z5.h\nsplice z1.h, p0, { z6.h, z7.h }\nptrue p0.h\nmls z0.h, p0/m, z1.h, z2.h\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "ushll v4.4s, v0.4h, #0\nushll v5.4s, v2.4h, #0\nushll v6.4s, v3.4h, #0\nmov d18, v2.d[1]\nmov d19, v3.d[1]\nfmov w8, s4\nfmov w9, s5\nmov w12, v5.s[3]\nfmov w17, s6\nmov w18, v6.s[1]\nmov w0, v6.s[2]\nmov w1, v6.s[3]\nushll2 v6.4s, v3.8h, #0\nudiv w10, w8, w9\nmov w8, v4.s[1]\nmov w9, v5.s[1]\nfmov w2, s6\nudiv w11, w8, w9\nmov w8, v4.s[2]\nmov w9, v5.s[2]\nushll2 v5.4s, v2.8h, #0\nfmov w13, s5\nudiv w9, w8, w9\nmov w8, v4.s[3]\nushll2 v4.4s, v0.8h, #0\nushll v0.4s, v0.4h, #0\nmov w16, v4.s[3]\nudiv w8, w8, w12\nfmov w12, s4\nudiv w14, w12, w13\nmov w12, v5.s[1]\nmov w13, v4.s[1]\nudiv w15, w13, w12\nmov w12, v5.s[2]\nmov w13, v4.s[2]\nfmov s7, w14\nudiv w13, w13, w12\nmov w12, v5.s[3]\nushll v5.4s, v1.4h, #0\nmov v7.h[1], w15\nudiv w12, w16, w12\nfmov w16, s5\nmov v7.h[2], w13\nudiv w16, w16, w17\nmov w17, v5.s[1]\nmov v7.h[3], w12\numlsl v4.4s, v7.4h, v18.4h\nudiv w17, w17, w18\nmov w18, v5.s[2]\nfmov s16, w16\nudiv w18, w18, w0\nmov w0, v5.s[3]\nushll2 v5.4s, v1.8h, #0\nmov v16.h[1], w17\nushll v1.4s, v1.4h, #0\nmov w3, v5.s[1]\nmov w4, v5.s[2]\nmov w5, v5.s[3]\nudiv w0, w0, w1\nfmov w1, s5\nmov v16.h[2], w18\nudiv w1, w1, w2\nmov w2, v6.s[1]\nmov v16.h[3], w0\numlsl v1.4s, v16.4h, v3.4h\nudiv w2, w3, w2\nmov w3, v6.s[2]\nfmov s17, w1\nudiv w3, w4, w3\nmov w4, v6.s[3]\nfmov s6, w10\nmov v17.h[1], w2\nmov v6.h[1], w11\nmov v6.h[2], w9\nudiv w10, w5, w4\nmov v17.h[2], w3\nmov v6.h[3], w8\numlsl v0.4s, v6.4h, v2.4h\nmov v17.h[3], w10\nuzp1 v0.8h, v0.8h, v4.8h\numlsl v5.4s, v17.4h, v19.4h\nuzp1 v1.8h, v1.8h, v5.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b) vscale_range(2, 2){\n  %r = urem <16 x i16> %a, %b\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:11 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:10 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "urem",
@@ -10444,7 +10444,7 @@
   "ty": "<16 x i16>",
   "variant": "binopsplat",
   "codesize": 22,
-  "thru": 47,
+  "thru": 46,
   "lat": 40,
   "sizelat": 40,
   "size": 16,
@@ -10452,7 +10452,7 @@
   "asm": "mov z2.h, w0\nptrue p0.s\nuunpklo z3.s, z0.h\nuunpklo z5.s, z1.h\nuunpklo z4.s, z2.h\nudiv z3.s, p0/m, z3.s, z4.s\nmovprfx z4, z2\next z4.b, z4.b, z2.b, #16\nuunpklo z4.s, z4.h\nudivr z4.s, p0/m, z4.s, z5.s\nptrue p0.h, vl8\nsplice z0.h, p0, { z0.h, z1.h }\nuzp1 z5.h, z3.h, z3.h\nuzp1 z6.h, z4.h, z4.h\nsplice z1.h, p0, { z5.h, z6.h }\nptrue p0.h\nmls z0.h, p0/m, z1.h, z2.h\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.8h, w0\nushll v3.4s, v0.4h, #0\nushll v4.4s, v2.4h, #0\nfmov w8, s3\nushll v5.4s, v2.4h, #0\nmov d17, v2.d[1]\nfmov w9, s4\nmov w12, v4.s[3]\nfmov w2, s5\nmov w3, v5.s[1]\nmov w4, v5.s[2]\nmov w5, v5.s[3]\nudiv w10, w8, w9\nmov w8, v3.s[1]\nmov w9, v4.s[1]\nudiv w11, w8, w9\nmov w9, v4.s[2]\nushll2 v4.4s, v2.8h, #0\nmov w8, v3.s[2]\nfmov s5, w10\nfmov w16, s4\nmov w17, v4.s[1]\nmov w0, v4.s[2]\nmov w15, v4.s[3]\nushll v4.4s, v1.4h, #0\nfmov w1, s4\nudiv w9, w8, w9\nmov w8, v3.s[3]\nushll2 v3.4s, v0.8h, #0\nmov v5.h[1], w11\nushll v0.4s, v0.4h, #0\nudiv w1, w1, w2\nmov w2, v4.s[1]\nmov v5.h[2], w9\nudiv w2, w2, w3\nmov w3, v4.s[2]\nfmov s7, w1\nudiv w3, w3, w4\nmov w4, v4.s[3]\nushll2 v4.4s, v1.8h, #0\nmov v7.h[1], w2\nushll v1.4s, v1.4h, #0\nudiv w8, w8, w12\nfmov w12, s3\nmov v7.h[2], w3\nudiv w4, w4, w5\nfmov w5, s4\nmov v5.h[3], w8\numlsl v0.4s, v5.4h, v2.4h\nudiv w14, w12, w16\nmov w12, v3.s[1]\nmov v7.h[3], w4\numlsl v1.4s, v7.4h, v2.4h\nudiv w16, w5, w16\nmov w5, v4.s[1]\nfmov s6, w14\nudiv w18, w12, w17\nmov w12, v3.s[2]\nfmov s16, w16\nudiv w17, w5, w17\nmov w5, v4.s[2]\nmov v6.h[1], w18\nudiv w13, w12, w0\nmov w12, v3.s[3]\nmov v16.h[1], w17\nudiv w0, w5, w0\nmov w5, v4.s[3]\nmov v6.h[2], w13\nudiv w12, w12, w15\nmov v16.h[2], w0\nudiv w10, w5, w15\nmov v6.h[3], w12\numlsl v3.4s, v6.4h, v17.4h\nmov v16.h[3], w10\nuzp1 v0.8h, v0.8h, v3.8h\numlsl v4.4s, v16.4h, v17.4h\nuzp1 v1.8h, v1.8h, v4.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, i16 %bs) vscale_range(2, 2){\n  %i = insertelement <16 x i16> poison, i16 %bs, i64 0\n  %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\n  %r = urem <16 x i16> %a, %b\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of RThru:34 CodeSize:17 Lat:34 SizeLat:34 for:   %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of RThru:11 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of RThru:34 CodeSize:17 Lat:34 SizeLat:34 for:   %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of RThru:10 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <16 x i16> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "urem",
@@ -10594,7 +10594,7 @@
   "ty": "<8 x i32>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 5,
+  "thru": 4,
   "lat": 4,
   "sizelat": 4,
   "size": 7,
@@ -10602,7 +10602,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z2.s, p0, { z2.s, z3.s }\nsplice z0.s, p0, { z0.s, z1.s }\nptrue p0.s\nmovprfx z1, z0\nudiv z1.s, p0/m, z1.s, z2.s\nmls z0.s, p0/m, z1.s, z2.s\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "fmov w8, s0\nfmov w9, s2\nmov w10, v2.s[1]\nmov w11, v2.s[2]\nmov w12, v2.s[3]\nfmov w13, s3\nmov w14, v3.s[1]\nmov w15, v3.s[2]\nmov w16, v3.s[3]\nudiv w8, w8, w9\nmov w9, v0.s[1]\nudiv w9, w9, w10\nmov w10, v0.s[2]\nfmov s4, w8\nudiv w10, w10, w11\nmov w11, v0.s[3]\nmov v4.s[1], w9\nudiv w11, w11, w12\nfmov w12, s1\nmov v4.s[2], w10\nudiv w12, w12, w13\nmov w13, v1.s[1]\nmov v4.s[3], w11\nmls v0.4s, v4.4s, v2.4s\nudiv w13, w13, w14\nmov w14, v1.s[2]\nfmov s5, w12\nudiv w14, w14, w15\nmov w15, v1.s[3]\nmov v5.s[1], w13\nudiv w8, w15, w16\nmov v5.s[2], w14\nmov v5.s[3], w8\nmls v1.4s, v5.4s, v3.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b) vscale_range(2, 2){\n  %r = urem <8 x i32> %a, %b\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = urem <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "urem",
@@ -10624,7 +10624,7 @@
   "ty": "<8 x i32>",
   "variant": "binopsplat",
   "codesize": 14,
-  "thru": 25,
+  "thru": 24,
   "lat": 24,
   "sizelat": 24,
   "size": 7,
@@ -10632,7 +10632,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z0.s, p0, { z0.s, z1.s }\nmov z1.s, w0\nptrue p0.s\nmovprfx z2, z0\nudiv z2.s, p0/m, z2.s, z1.s\nmls z0.s, p0/m, z2.s, z1.s\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.4s, w0\nfmov w8, s0\nfmov w16, s1\nmov w10, v0.s[1]\nmov w12, v0.s[2]\nmov w14, v0.s[3]\nfmov w9, s2\nmov w11, v2.s[1]\nmov w13, v2.s[2]\nmov w15, v2.s[3]\nudiv w8, w8, w9\nudiv w9, w16, w9\nmov w16, v1.s[1]\nfmov s3, w8\nudiv w10, w10, w11\nfmov s4, w9\nudiv w11, w16, w11\nmov w16, v1.s[2]\nmov v3.s[1], w10\nudiv w12, w12, w13\nmov v4.s[1], w11\nudiv w13, w16, w13\nmov w16, v1.s[3]\nmov v3.s[2], w12\nudiv w14, w14, w15\nmov v4.s[2], w13\nudiv w8, w16, w15\nmov v3.s[3], w14\nmls v0.4s, v3.4s, v2.4s\nmov v4.s[3], w8\nmls v1.4s, v4.4s, v2.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, i32 %bs) vscale_range(2, 2){\n  %i = insertelement <8 x i32> poison, i32 %bs, i64 0\n  %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\n  %r = urem <8 x i32> %a, %b\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <8 x i32> poison, i32 %bs, i64 0\nCost Model: Found costs of RThru:18 CodeSize:9 Lat:18 SizeLat:18 for:   %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <8 x i32> poison, i32 %bs, i64 0\nCost Model: Found costs of RThru:18 CodeSize:9 Lat:18 SizeLat:18 for:   %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of 4 for:   %r = urem <8 x i32> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "urem",
@@ -10714,7 +10714,7 @@
   "ty": "<4 x i64>",
   "variant": "binop",
   "codesize": 4,
-  "thru": 5,
+  "thru": 4,
   "lat": 4,
   "sizelat": 4,
   "size": 7,
@@ -10722,7 +10722,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nptrue p0.d\nmovprfx z1, z0\nudiv z1.d, p0/m, z1.d, z2.d\nmls z0.d, p0/m, z1.d, z2.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "fmov x8, d0\nfmov x9, d2\nmov x10, v2.d[1]\nmov x11, v0.d[1]\nfmov x12, d1\nfmov x13, d3\nmov x14, v3.d[1]\nmov x15, v1.d[1]\nudiv x8, x8, x9\nudiv x11, x11, x10\nfmov d2, x8\nudiv x12, x12, x13\nmov v2.d[1], x11\nfmov x11, d2\nmov x8, v2.d[1]\nmul x9, x11, x9\nmul x8, x8, x10\nfmov d2, x9\nmov v2.d[1], x8\nudiv x15, x15, x14\nfmov d3, x12\nsub v0.2d, v0.2d, v2.2d\nmov v3.d[1], x15\nfmov x11, d3\nmov x10, v3.d[1]\nmul x11, x11, x13\nmul x10, x10, x14\nfmov d3, x11\nmov v3.d[1], x10\nsub v1.2d, v1.2d, v3.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b) vscale_range(2, 2){\n  %r = urem <4 x i64> %a, %b\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = urem <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "urem",
@@ -10744,7 +10744,7 @@
   "ty": "<4 x i64>",
   "variant": "binopsplat",
   "codesize": 10,
-  "thru": 17,
+  "thru": 16,
   "lat": 16,
   "sizelat": 16,
   "size": 7,
@@ -10752,7 +10752,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z0.d, p0, { z0.d, z1.d }\nmov z1.d, x0\nptrue p0.d\nmovprfx z2, z0\nudiv z2.d, p0/m, z2.d, z1.d\nmls z0.d, p0/m, z2.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.2d, x0\nfmov x8, d0\nfmov x12, d1\nmov x11, v0.d[1]\nmov x13, v1.d[1]\nfmov x9, d2\nmov x10, v2.d[1]\nudiv x8, x8, x9\nudiv x12, x12, x9\nfmov d2, x8\nudiv x11, x11, x10\nfmov d3, x12\nudiv x13, x13, x10\nmov v2.d[1], x11\nfmov x8, d2\nmov x11, v2.d[1]\nmul x8, x8, x9\nmul x11, x11, x10\nfmov d2, x8\nmov v2.d[1], x11\nmov v3.d[1], x13\nsub v0.2d, v0.2d, v2.2d\nfmov x12, d3\nmov x13, v3.d[1]\nmul x9, x12, x9\nmul x10, x13, x10\nfmov d3, x9\nmov v3.d[1], x10\nsub v1.2d, v1.2d, v3.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, i64 %bs) vscale_range(2, 2){\n  %i = insertelement <4 x i64> poison, i64 %bs, i64 0\n  %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\n  %r = urem <4 x i64> %a, %b\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <4 x i64> poison, i64 %bs, i64 0\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:10 SizeLat:10 for:   %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of RThru:5 CodeSize:4 Lat:4 SizeLat:4 for:   %r = urem <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <4 x i64> poison, i64 %bs, i64 0\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:10 SizeLat:10 for:   %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of 4 for:   %r = urem <4 x i64> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "urem",
@@ -14629,7 +14629,7 @@
   "ty": "<32 x i8>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 11,
@@ -14637,7 +14637,7 @@
   "asm": "ptrue p0.b, vl16\nsplice z2.b, p0, { z2.b, z3.b }\nsplice z0.b, p0, { z0.b, z1.b }\nptrue p0.b\nmovprfx z3, z2\nsubr z3.b, z3.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z3.b, z3.b, #0x7\nlsrr z2.b, p0/m, z2.b, z0.b\nlsl z0.b, p0/m, z0.b, z3.b\norr z0.d, z2.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v4.16b, #7\nneg v6.16b, v3.16b\nand v5.16b, v2.16b, v4.16b\nneg v2.16b, v2.16b\nand v3.16b, v3.16b, v4.16b\nneg v5.16b, v5.16b\nand v2.16b, v2.16b, v4.16b\nand v4.16b, v6.16b, v4.16b\nneg v3.16b, v3.16b\nushl v5.16b, v0.16b, v5.16b\nushl v0.16b, v0.16b, v2.16b\nushl v3.16b, v1.16b, v3.16b\nushl v1.16b, v1.16b, v4.16b\norr v0.16b, v5.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) vscale_range(2, 2){\n  %r = call <32 x i8> @llvm.fshr(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <32 x i8> @llvm.fshr.v32i8(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <32 x i8> @llvm.fshr.v32i8(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "rotr",
@@ -14659,7 +14659,7 @@
   "ty": "<32 x i8>",
   "variant": "binopsplat",
   "codesize": 39,
-  "thru": 74,
+  "thru": 73,
   "lat": 73,
   "sizelat": 73,
   "size": 11,
@@ -14667,7 +14667,7 @@
   "asm": "mov z2.b, w0\nptrue p0.b, vl16\nsplice z0.b, p0, { z0.b, z1.b }\nptrue p0.b\nmovprfx z1, z2\nsubr z1.b, z1.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z1.b, z1.b, #0x7\nlslr z1.b, p0/m, z1.b, z0.b\nlsr z0.b, p0/m, z0.b, z2.b\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v2.16b, #7\ndup v3.16b, w0\nand v4.16b, v3.16b, v2.16b\nneg v3.16b, v3.16b\nneg v4.16b, v4.16b\nand v2.16b, v3.16b, v2.16b\nushl v3.16b, v0.16b, v4.16b\nushl v4.16b, v1.16b, v4.16b\nushl v0.16b, v0.16b, v2.16b\nushl v1.16b, v1.16b, v2.16b\norr v0.16b, v3.16b, v0.16b\norr v1.16b, v4.16b, v1.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, i8 %bs) vscale_range(2, 2){\n  %i = insertelement <32 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\n  %r = call <32 x i8> @llvm.fshr(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of RThru:66 CodeSize:33 Lat:66 SizeLat:66 for:   %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <32 x i8> @llvm.fshr.v32i8(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of RThru:66 CodeSize:33 Lat:66 SizeLat:66 for:   %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <32 x i8> @llvm.fshr.v32i8(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "rotr",
@@ -14809,7 +14809,7 @@
   "ty": "<16 x i16>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 11,
@@ -14817,7 +14817,7 @@
   "asm": "ptrue p0.h, vl8\nsplice z2.h, p0, { z2.h, z3.h }\nsplice z0.h, p0, { z0.h, z1.h }\nptrue p0.h\nmovprfx z3, z2\nsubr z3.h, z3.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z3.h, z3.h, #0xf\nlsrr z2.h, p0/m, z2.h, z0.h\nlsl z0.h, p0/m, z0.h, z3.h\norr z0.d, z2.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v4.8h, #15\nneg v6.8h, v3.8h\nand v5.16b, v2.16b, v4.16b\nneg v2.8h, v2.8h\nand v3.16b, v3.16b, v4.16b\nneg v5.8h, v5.8h\nand v2.16b, v2.16b, v4.16b\nand v4.16b, v6.16b, v4.16b\nneg v3.8h, v3.8h\nushl v5.8h, v0.8h, v5.8h\nushl v0.8h, v0.8h, v2.8h\nushl v3.8h, v1.8h, v3.8h\nushl v1.8h, v1.8h, v4.8h\norr v0.16b, v5.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b) vscale_range(2, 2){\n  %r = call <16 x i16> @llvm.fshr(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <16 x i16> @llvm.fshr.v16i16(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <16 x i16> @llvm.fshr.v16i16(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "rotr",
@@ -14839,7 +14839,7 @@
   "ty": "<16 x i16>",
   "variant": "binopsplat",
   "codesize": 23,
-  "thru": 42,
+  "thru": 41,
   "lat": 41,
   "sizelat": 41,
   "size": 11,
@@ -14847,7 +14847,7 @@
   "asm": "mov z2.h, w0\nptrue p0.h, vl8\nsplice z0.h, p0, { z0.h, z1.h }\nptrue p0.h\nmovprfx z1, z2\nsubr z1.h, z1.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z1.h, z1.h, #0xf\nlslr z1.h, p0/m, z1.h, z0.h\nlsr z0.h, p0/m, z0.h, z2.h\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v2.8h, #15\ndup v3.8h, w0\nand v4.16b, v3.16b, v2.16b\nneg v3.8h, v3.8h\nneg v4.8h, v4.8h\nand v2.16b, v3.16b, v2.16b\nushl v3.8h, v0.8h, v4.8h\nushl v4.8h, v1.8h, v4.8h\nushl v0.8h, v0.8h, v2.8h\nushl v1.8h, v1.8h, v2.8h\norr v0.16b, v3.16b, v0.16b\norr v1.16b, v4.16b, v1.16b\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, i16 %bs) vscale_range(2, 2){\n  %i = insertelement <16 x i16> poison, i16 %bs, i64 0\n  %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\n  %r = call <16 x i16> @llvm.fshr(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of RThru:34 CodeSize:17 Lat:34 SizeLat:34 for:   %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <16 x i16> @llvm.fshr.v16i16(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of RThru:34 CodeSize:17 Lat:34 SizeLat:34 for:   %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <16 x i16> @llvm.fshr.v16i16(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "rotr",
@@ -14989,7 +14989,7 @@
   "ty": "<8 x i32>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 11,
@@ -14997,7 +14997,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z2.s, p0, { z2.s, z3.s }\nsplice z0.s, p0, { z0.s, z1.s }\nptrue p0.s\nmovprfx z3, z2\nsubr z3.s, z3.s, #0                  // =0x0\nand z2.s, z2.s, #0x1f\nand z3.s, z3.s, #0x1f\nlsrr z2.s, p0/m, z2.s, z0.s\nlsl z0.s, p0/m, z0.s, z3.s\norr z0.d, z2.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v4.4s, #31\nneg v6.4s, v3.4s\nand v5.16b, v2.16b, v4.16b\nneg v2.4s, v2.4s\nand v3.16b, v3.16b, v4.16b\nneg v5.4s, v5.4s\nand v2.16b, v2.16b, v4.16b\nand v4.16b, v6.16b, v4.16b\nneg v3.4s, v3.4s\nushl v5.4s, v0.4s, v5.4s\nushl v0.4s, v0.4s, v2.4s\nushl v3.4s, v1.4s, v3.4s\nushl v1.4s, v1.4s, v4.4s\norr v0.16b, v5.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b) vscale_range(2, 2){\n  %r = call <8 x i32> @llvm.fshr(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <8 x i32> @llvm.fshr.v8i32(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <8 x i32> @llvm.fshr.v8i32(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "rotr",
@@ -15019,7 +15019,7 @@
   "ty": "<8 x i32>",
   "variant": "binopsplat",
   "codesize": 15,
-  "thru": 26,
+  "thru": 25,
   "lat": 25,
   "sizelat": 25,
   "size": 11,
@@ -15027,7 +15027,7 @@
   "asm": "ptrue p0.s, vl4\nneg w8, w0\nand w9, w0, #0x1f\nand w8, w8, #0x1f\nmov z2.s, w9\nsplice z0.s, p0, { z0.s, z1.s }\nmov z1.s, w8\nptrue p0.s\nlslr z1.s, p0/m, z1.s, z0.s\nlsr z0.s, p0/m, z0.s, z2.s\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v2.4s, #31\ndup v3.4s, w0\nand v4.16b, v3.16b, v2.16b\nneg v3.4s, v3.4s\nneg v4.4s, v4.4s\nand v2.16b, v3.16b, v2.16b\nushl v3.4s, v0.4s, v4.4s\nushl v4.4s, v1.4s, v4.4s\nushl v0.4s, v0.4s, v2.4s\nushl v1.4s, v1.4s, v2.4s\norr v0.16b, v3.16b, v0.16b\norr v1.16b, v4.16b, v1.16b\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, i32 %bs) vscale_range(2, 2){\n  %i = insertelement <8 x i32> poison, i32 %bs, i64 0\n  %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\n  %r = call <8 x i32> @llvm.fshr(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <8 x i32> poison, i32 %bs, i64 0\nCost Model: Found costs of RThru:18 CodeSize:9 Lat:18 SizeLat:18 for:   %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <8 x i32> @llvm.fshr.v8i32(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <8 x i32> poison, i32 %bs, i64 0\nCost Model: Found costs of RThru:18 CodeSize:9 Lat:18 SizeLat:18 for:   %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <8 x i32> @llvm.fshr.v8i32(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "rotr",
@@ -15109,7 +15109,7 @@
   "ty": "<4 x i64>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 11,
@@ -15117,7 +15117,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nptrue p0.d\nmovprfx z3, z2\nsubr z3.d, z3.d, #0                  // =0x0\nand z2.d, z2.d, #0x3f\nand z3.d, z3.d, #0x3f\nlsrr z2.d, p0/m, z2.d, z0.d\nlsl z0.d, p0/m, z0.d, z3.d\norr z0.d, z2.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "adrp x8, .LCPI0_0\nneg v6.2d, v3.2d\nldr q4, [x8, :lo12:.LCPI0_0]\nand v5.16b, v2.16b, v4.16b\nneg v2.2d, v2.2d\nand v3.16b, v3.16b, v4.16b\nneg v5.2d, v5.2d\nand v2.16b, v2.16b, v4.16b\nand v4.16b, v6.16b, v4.16b\nneg v3.2d, v3.2d\nushl v5.2d, v0.2d, v5.2d\nushl v0.2d, v0.2d, v2.2d\nushl v3.2d, v1.2d, v3.2d\nushl v1.2d, v1.2d, v4.2d\norr v0.16b, v5.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b) vscale_range(2, 2){\n  %r = call <4 x i64> @llvm.fshr(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <4 x i64> @llvm.fshr.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <4 x i64> @llvm.fshr.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "rotr",
@@ -15139,7 +15139,7 @@
   "ty": "<4 x i64>",
   "variant": "binopsplat",
   "codesize": 11,
-  "thru": 18,
+  "thru": 17,
   "lat": 17,
   "sizelat": 17,
   "size": 11,
@@ -15147,7 +15147,7 @@
   "asm": "ptrue p0.d, vl2\nneg w8, w0\nand x9, x0, #0x3f\nand x8, x8, #0x3f\nsplice z0.d, p0, { z0.d, z1.d }\nmov z1.d, x9\nmov z2.d, x8\nptrue p0.d\nlsrr z1.d, p0/m, z1.d, z0.d\nlsl z0.d, p0/m, z0.d, z2.d\norr z0.d, z1.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.2d, x0\nadrp x8, .LCPI0_0\nldr q3, [x8, :lo12:.LCPI0_0]\nand v4.16b, v2.16b, v3.16b\nneg v2.2d, v2.2d\nneg v4.2d, v4.2d\nand v2.16b, v2.16b, v3.16b\nushl v3.2d, v0.2d, v4.2d\nushl v4.2d, v1.2d, v4.2d\nushl v0.2d, v0.2d, v2.2d\nushl v1.2d, v1.2d, v2.2d\norr v0.16b, v3.16b, v0.16b\norr v1.16b, v4.16b, v1.16b\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, i64 %bs) vscale_range(2, 2){\n  %i = insertelement <4 x i64> poison, i64 %bs, i64 0\n  %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\n  %r = call <4 x i64> @llvm.fshr(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <4 x i64> poison, i64 %bs, i64 0\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:10 SizeLat:10 for:   %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <4 x i64> @llvm.fshr.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <4 x i64> poison, i64 %bs, i64 0\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:10 SizeLat:10 for:   %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <4 x i64> @llvm.fshr.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "rotr",
@@ -15904,7 +15904,7 @@
   "ty": "<32 x i8>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 11,
@@ -15912,7 +15912,7 @@
   "asm": "ptrue p0.b, vl16\nsplice z2.b, p0, { z2.b, z3.b }\nsplice z0.b, p0, { z0.b, z1.b }\nptrue p0.b\nmovprfx z3, z2\nsubr z3.b, z3.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z3.b, z3.b, #0x7\nlslr z2.b, p0/m, z2.b, z0.b\nlsr z0.b, p0/m, z0.b, z3.b\norr z0.d, z2.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v4.16b, #7\nneg v5.16b, v2.16b\nneg v6.16b, v3.16b\nand v5.16b, v5.16b, v4.16b\nand v6.16b, v6.16b, v4.16b\nand v2.16b, v2.16b, v4.16b\nand v3.16b, v3.16b, v4.16b\nneg v4.16b, v5.16b\nneg v5.16b, v6.16b\nushl v2.16b, v0.16b, v2.16b\nushl v3.16b, v1.16b, v3.16b\nushl v0.16b, v0.16b, v4.16b\nushl v1.16b, v1.16b, v5.16b\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) vscale_range(2, 2){\n  %r = call <32 x i8> @llvm.fshl(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <32 x i8> @llvm.fshl.v32i8(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <32 x i8> @llvm.fshl.v32i8(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "rotl",
@@ -15934,7 +15934,7 @@
   "ty": "<32 x i8>",
   "variant": "binopsplat",
   "codesize": 39,
-  "thru": 74,
+  "thru": 73,
   "lat": 73,
   "sizelat": 73,
   "size": 11,
@@ -15942,7 +15942,7 @@
   "asm": "mov z2.b, w0\nptrue p0.b, vl16\nsplice z0.b, p0, { z0.b, z1.b }\nptrue p0.b\nmovprfx z1, z2\nsubr z1.b, z1.b, #0                  // =0x0\nand z2.b, z2.b, #0x7\nand z1.b, z1.b, #0x7\nlsrr z1.b, p0/m, z1.b, z0.b\nlsl z0.b, p0/m, z0.b, z2.b\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.16b, w0\nmovi v3.16b, #7\nneg v4.16b, v2.16b\nand v2.16b, v2.16b, v3.16b\nand v4.16b, v4.16b, v3.16b\nneg v3.16b, v4.16b\nushl v4.16b, v0.16b, v2.16b\nushl v2.16b, v1.16b, v2.16b\nushl v0.16b, v0.16b, v3.16b\nushl v1.16b, v1.16b, v3.16b\norr v0.16b, v4.16b, v0.16b\norr v1.16b, v2.16b, v1.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, i8 %bs) vscale_range(2, 2){\n  %i = insertelement <32 x i8> poison, i8 %bs, i64 0\n  %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\n  %r = call <32 x i8> @llvm.fshl(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of RThru:66 CodeSize:33 Lat:66 SizeLat:66 for:   %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <32 x i8> @llvm.fshl.v32i8(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <32 x i8> poison, i8 %bs, i64 0\nCost Model: Found costs of RThru:66 CodeSize:33 Lat:66 SizeLat:66 for:   %b = shufflevector <32 x i8> %i, <32 x i8> poison, <32 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <32 x i8> @llvm.fshl.v32i8(<32 x i8> %a, <32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "rotl",
@@ -16084,7 +16084,7 @@
   "ty": "<16 x i16>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 11,
@@ -16092,7 +16092,7 @@
   "asm": "ptrue p0.h, vl8\nsplice z2.h, p0, { z2.h, z3.h }\nsplice z0.h, p0, { z0.h, z1.h }\nptrue p0.h\nmovprfx z3, z2\nsubr z3.h, z3.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z3.h, z3.h, #0xf\nlslr z2.h, p0/m, z2.h, z0.h\nlsr z0.h, p0/m, z0.h, z3.h\norr z0.d, z2.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v4.8h, #15\nneg v5.8h, v2.8h\nneg v6.8h, v3.8h\nand v5.16b, v5.16b, v4.16b\nand v6.16b, v6.16b, v4.16b\nand v2.16b, v2.16b, v4.16b\nand v3.16b, v3.16b, v4.16b\nneg v4.8h, v5.8h\nneg v5.8h, v6.8h\nushl v2.8h, v0.8h, v2.8h\nushl v3.8h, v1.8h, v3.8h\nushl v0.8h, v0.8h, v4.8h\nushl v1.8h, v1.8h, v5.8h\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b) vscale_range(2, 2){\n  %r = call <16 x i16> @llvm.fshl(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <16 x i16> @llvm.fshl.v16i16(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <16 x i16> @llvm.fshl.v16i16(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "rotl",
@@ -16114,7 +16114,7 @@
   "ty": "<16 x i16>",
   "variant": "binopsplat",
   "codesize": 23,
-  "thru": 42,
+  "thru": 41,
   "lat": 41,
   "sizelat": 41,
   "size": 11,
@@ -16122,7 +16122,7 @@
   "asm": "mov z2.h, w0\nptrue p0.h, vl8\nsplice z0.h, p0, { z0.h, z1.h }\nptrue p0.h\nmovprfx z1, z2\nsubr z1.h, z1.h, #0                  // =0x0\nand z2.h, z2.h, #0xf\nand z1.h, z1.h, #0xf\nlsrr z1.h, p0/m, z1.h, z0.h\nlsl z0.h, p0/m, z0.h, z2.h\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.8h, w0\nmovi v3.8h, #15\nneg v4.8h, v2.8h\nand v2.16b, v2.16b, v3.16b\nand v4.16b, v4.16b, v3.16b\nneg v3.8h, v4.8h\nushl v4.8h, v0.8h, v2.8h\nushl v2.8h, v1.8h, v2.8h\nushl v0.8h, v0.8h, v3.8h\nushl v1.8h, v1.8h, v3.8h\norr v0.16b, v4.16b, v0.16b\norr v1.16b, v2.16b, v1.16b\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, i16 %bs) vscale_range(2, 2){\n  %i = insertelement <16 x i16> poison, i16 %bs, i64 0\n  %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\n  %r = call <16 x i16> @llvm.fshl(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of RThru:34 CodeSize:17 Lat:34 SizeLat:34 for:   %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <16 x i16> @llvm.fshl.v16i16(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <16 x i16> poison, i16 %bs, i64 0\nCost Model: Found costs of RThru:34 CodeSize:17 Lat:34 SizeLat:34 for:   %b = shufflevector <16 x i16> %i, <16 x i16> poison, <16 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <16 x i16> @llvm.fshl.v16i16(<16 x i16> %a, <16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "rotl",
@@ -16264,7 +16264,7 @@
   "ty": "<8 x i32>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 11,
@@ -16272,7 +16272,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z2.s, p0, { z2.s, z3.s }\nsplice z0.s, p0, { z0.s, z1.s }\nptrue p0.s\nmovprfx z3, z2\nsubr z3.s, z3.s, #0                  // =0x0\nand z2.s, z2.s, #0x1f\nand z3.s, z3.s, #0x1f\nlslr z2.s, p0/m, z2.s, z0.s\nlsr z0.s, p0/m, z0.s, z3.s\norr z0.d, z2.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v4.4s, #31\nneg v5.4s, v2.4s\nneg v6.4s, v3.4s\nand v5.16b, v5.16b, v4.16b\nand v6.16b, v6.16b, v4.16b\nand v2.16b, v2.16b, v4.16b\nand v3.16b, v3.16b, v4.16b\nneg v4.4s, v5.4s\nneg v5.4s, v6.4s\nushl v2.4s, v0.4s, v2.4s\nushl v3.4s, v1.4s, v3.4s\nushl v0.4s, v0.4s, v4.4s\nushl v1.4s, v1.4s, v5.4s\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b) vscale_range(2, 2){\n  %r = call <8 x i32> @llvm.fshl(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <8 x i32> @llvm.fshl.v8i32(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <8 x i32> @llvm.fshl.v8i32(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "rotl",
@@ -16294,7 +16294,7 @@
   "ty": "<8 x i32>",
   "variant": "binopsplat",
   "codesize": 15,
-  "thru": 26,
+  "thru": 25,
   "lat": 25,
   "sizelat": 25,
   "size": 11,
@@ -16302,7 +16302,7 @@
   "asm": "ptrue p0.s, vl4\nneg w8, w0\nand w9, w0, #0x1f\nand w8, w8, #0x1f\nmov z2.s, w9\nsplice z0.s, p0, { z0.s, z1.s }\nmov z1.s, w8\nptrue p0.s\nlsrr z1.s, p0/m, z1.s, z0.s\nlsl z0.s, p0/m, z0.s, z2.s\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.4s, w0\nmovi v3.4s, #31\nneg v4.4s, v2.4s\nand v2.16b, v2.16b, v3.16b\nand v4.16b, v4.16b, v3.16b\nneg v3.4s, v4.4s\nushl v4.4s, v0.4s, v2.4s\nushl v2.4s, v1.4s, v2.4s\nushl v0.4s, v0.4s, v3.4s\nushl v1.4s, v1.4s, v3.4s\norr v0.16b, v4.16b, v0.16b\norr v1.16b, v2.16b, v1.16b\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, i32 %bs) vscale_range(2, 2){\n  %i = insertelement <8 x i32> poison, i32 %bs, i64 0\n  %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\n  %r = call <8 x i32> @llvm.fshl(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <8 x i32> poison, i32 %bs, i64 0\nCost Model: Found costs of RThru:18 CodeSize:9 Lat:18 SizeLat:18 for:   %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <8 x i32> @llvm.fshl.v8i32(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <8 x i32> poison, i32 %bs, i64 0\nCost Model: Found costs of RThru:18 CodeSize:9 Lat:18 SizeLat:18 for:   %b = shufflevector <8 x i32> %i, <8 x i32> poison, <8 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <8 x i32> @llvm.fshl.v8i32(<8 x i32> %a, <8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "rotl",
@@ -16384,7 +16384,7 @@
   "ty": "<4 x i64>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 11,
@@ -16392,7 +16392,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nptrue p0.d\nmovprfx z3, z2\nsubr z3.d, z3.d, #0                  // =0x0\nand z2.d, z2.d, #0x3f\nand z3.d, z3.d, #0x3f\nlslr z2.d, p0/m, z2.d, z0.d\nlsr z0.d, p0/m, z0.d, z3.d\norr z0.d, z2.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "adrp x8, .LCPI0_0\nneg v4.2d, v2.2d\nneg v5.2d, v3.2d\nldr q6, [x8, :lo12:.LCPI0_0]\nand v4.16b, v4.16b, v6.16b\nand v5.16b, v5.16b, v6.16b\nand v2.16b, v2.16b, v6.16b\nand v3.16b, v3.16b, v6.16b\nneg v4.2d, v4.2d\nneg v5.2d, v5.2d\nushl v2.2d, v0.2d, v2.2d\nushl v3.2d, v1.2d, v3.2d\nushl v0.2d, v0.2d, v4.2d\nushl v1.2d, v1.2d, v5.2d\norr v0.16b, v2.16b, v0.16b\norr v1.16b, v3.16b, v1.16b\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b) vscale_range(2, 2){\n  %r = call <4 x i64> @llvm.fshl(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <4 x i64> @llvm.fshl.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <4 x i64> @llvm.fshl.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "rotl",
@@ -16414,7 +16414,7 @@
   "ty": "<4 x i64>",
   "variant": "binopsplat",
   "codesize": 11,
-  "thru": 18,
+  "thru": 17,
   "lat": 17,
   "sizelat": 17,
   "size": 11,
@@ -16422,7 +16422,7 @@
   "asm": "ptrue p0.d, vl2\nneg w8, w0\nand x9, x0, #0x3f\nand x8, x8, #0x3f\nsplice z0.d, p0, { z0.d, z1.d }\nmov z1.d, x9\nmov z2.d, x8\nptrue p0.d\nlslr z1.d, p0/m, z1.d, z0.d\nlsr z0.d, p0/m, z0.d, z2.d\norr z0.d, z1.d, z0.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "dup v2.2d, x0\nadrp x8, .LCPI0_0\nldr q4, [x8, :lo12:.LCPI0_0]\nneg v3.2d, v2.2d\nand v2.16b, v2.16b, v4.16b\nand v3.16b, v3.16b, v4.16b\nushl v4.2d, v0.2d, v2.2d\nushl v2.2d, v1.2d, v2.2d\nneg v3.2d, v3.2d\nushl v0.2d, v0.2d, v3.2d\nushl v1.2d, v1.2d, v3.2d\norr v0.16b, v4.16b, v0.16b\norr v1.16b, v2.16b, v1.16b\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, i64 %bs) vscale_range(2, 2){\n  %i = insertelement <4 x i64> poison, i64 %bs, i64 0\n  %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\n  %r = call <4 x i64> @llvm.fshl(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <4 x i64> poison, i64 %bs, i64 0\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:10 SizeLat:10 for:   %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <4 x i64> @llvm.fshl.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:2 CodeSize:1 Lat:2 SizeLat:2 for:   %i = insertelement <4 x i64> poison, i64 %bs, i64 0\nCost Model: Found costs of RThru:10 CodeSize:5 Lat:10 SizeLat:10 for:   %b = shufflevector <4 x i64> %i, <4 x i64> poison, <4 x i32> zeroinitializer\nCost Model: Found costs of 5 for:   %r = call <4 x i64> @llvm.fshl.v4i64(<4 x i64> %a, <4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "rotl",
@@ -17419,7 +17419,7 @@
   "ty": "<32 x i8>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 9,
@@ -17427,7 +17427,7 @@
   "asm": "ptrue p0.b, vl16\nsplice z2.b, p0, { z2.b, z3.b }\nsplice z0.b, p0, { z0.b, z1.b }\nptrue p0.b\nmov z1.b, #-1                       // =0xffffffffffffffff\ncmpgt p1.b, p0/z, z2.b, z0.b\ncmpgt p2.b, p0/z, z0.b, z2.b\nmov z0.b, p1/z, #-1                 // =0xffffffffffffffff\nsub z0.b, p2/m, z0.b, z1.b\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "cmgt v4.16b, v0.16b, v2.16b\ncmgt v5.16b, v1.16b, v3.16b\ncmgt v0.16b, v2.16b, v0.16b\ncmgt v1.16b, v3.16b, v1.16b\nsub v0.16b, v0.16b, v4.16b\nsub v1.16b, v1.16b, v5.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) vscale_range(2, 2){\n  %r = call <32 x i8> @llvm.scmp(<32 x i8> %a, <32 x i8> %b)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <32 x i8> @llvm.scmp.v32i8.v32i8(<32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <32 x i8> @llvm.scmp.v32i8.v32i8(<32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "scmp",
@@ -17464,7 +17464,7 @@
   "ty": "<16 x i16>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 9,
@@ -17472,7 +17472,7 @@
   "asm": "ptrue p0.h, vl8\nsplice z2.h, p0, { z2.h, z3.h }\nsplice z0.h, p0, { z0.h, z1.h }\nptrue p0.h\nmov z1.h, #-1                       // =0xffffffffffffffff\ncmpgt p1.h, p0/z, z2.h, z0.h\ncmpgt p2.h, p0/z, z0.h, z2.h\nmov z0.h, p1/z, #-1                 // =0xffffffffffffffff\nsub z0.h, p2/m, z0.h, z1.h\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "cmgt v4.8h, v0.8h, v2.8h\ncmgt v5.8h, v1.8h, v3.8h\ncmgt v0.8h, v2.8h, v0.8h\ncmgt v1.8h, v3.8h, v1.8h\nsub v0.8h, v0.8h, v4.8h\nsub v1.8h, v1.8h, v5.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b) vscale_range(2, 2){\n  %r = call <16 x i16> @llvm.scmp(<16 x i16> %a, <16 x i16> %b)\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <16 x i16> @llvm.scmp.v16i16.v16i16(<16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <16 x i16> @llvm.scmp.v16i16.v16i16(<16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "scmp",
@@ -17509,7 +17509,7 @@
   "ty": "<8 x i32>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 9,
@@ -17517,7 +17517,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z2.s, p0, { z2.s, z3.s }\nsplice z0.s, p0, { z0.s, z1.s }\nptrue p0.s\nmov z1.s, #-1                       // =0xffffffffffffffff\ncmpgt p1.s, p0/z, z2.s, z0.s\ncmpgt p2.s, p0/z, z0.s, z2.s\nmov z0.s, p1/z, #-1                 // =0xffffffffffffffff\nsub z0.s, p2/m, z0.s, z1.s\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "cmgt v4.4s, v0.4s, v2.4s\ncmgt v5.4s, v1.4s, v3.4s\ncmgt v0.4s, v2.4s, v0.4s\ncmgt v1.4s, v3.4s, v1.4s\nsub v0.4s, v0.4s, v4.4s\nsub v1.4s, v1.4s, v5.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b) vscale_range(2, 2){\n  %r = call <8 x i32> @llvm.scmp(<8 x i32> %a, <8 x i32> %b)\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <8 x i32> @llvm.scmp.v8i32.v8i32(<8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <8 x i32> @llvm.scmp.v8i32.v8i32(<8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "scmp",
@@ -17539,7 +17539,7 @@
   "ty": "<4 x i64>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 9,
@@ -17547,7 +17547,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nptrue p0.d\nmov z1.d, #-1                       // =0xffffffffffffffff\ncmpgt p1.d, p0/z, z2.d, z0.d\ncmpgt p2.d, p0/z, z0.d, z2.d\nmov z0.d, p1/z, #-1                 // =0xffffffffffffffff\nsub z0.d, p2/m, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "cmgt v4.2d, v0.2d, v2.2d\ncmgt v5.2d, v1.2d, v3.2d\ncmgt v0.2d, v2.2d, v0.2d\ncmgt v1.2d, v3.2d, v1.2d\nsub v0.2d, v0.2d, v4.2d\nsub v1.2d, v1.2d, v5.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b) vscale_range(2, 2){\n  %r = call <4 x i64> @llvm.scmp(<4 x i64> %a, <4 x i64> %b)\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <4 x i64> @llvm.scmp.v4i64.v4i64(<4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <4 x i64> @llvm.scmp.v4i64.v4i64(<4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "scmp",
@@ -17809,7 +17809,7 @@
   "ty": "<32 x i8>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 9,
@@ -17817,7 +17817,7 @@
   "asm": "ptrue p0.b, vl16\nsplice z2.b, p0, { z2.b, z3.b }\nsplice z0.b, p0, { z0.b, z1.b }\nptrue p0.b\nmov z1.b, #-1                       // =0xffffffffffffffff\ncmphi p1.b, p0/z, z2.b, z0.b\ncmphi p2.b, p0/z, z0.b, z2.b\nmov z0.b, p1/z, #-1                 // =0xffffffffffffffff\nsub z0.b, p2/m, z0.b, z1.b\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "cmhi v4.16b, v0.16b, v2.16b\ncmhi v5.16b, v1.16b, v3.16b\ncmhi v0.16b, v2.16b, v0.16b\ncmhi v1.16b, v3.16b, v1.16b\nsub v0.16b, v0.16b, v4.16b\nsub v1.16b, v1.16b, v5.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) vscale_range(2, 2){\n  %r = call <32 x i8> @llvm.ucmp(<32 x i8> %a, <32 x i8> %b)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <32 x i8> @llvm.ucmp.v32i8.v32i8(<32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <32 x i8> @llvm.ucmp.v32i8.v32i8(<32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "ucmp",
@@ -17854,7 +17854,7 @@
   "ty": "<16 x i16>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 9,
@@ -17862,7 +17862,7 @@
   "asm": "ptrue p0.h, vl8\nsplice z2.h, p0, { z2.h, z3.h }\nsplice z0.h, p0, { z0.h, z1.h }\nptrue p0.h\nmov z1.h, #-1                       // =0xffffffffffffffff\ncmphi p1.h, p0/z, z2.h, z0.h\ncmphi p2.h, p0/z, z0.h, z2.h\nmov z0.h, p1/z, #-1                 // =0xffffffffffffffff\nsub z0.h, p2/m, z0.h, z1.h\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "cmhi v4.8h, v0.8h, v2.8h\ncmhi v5.8h, v1.8h, v3.8h\ncmhi v0.8h, v2.8h, v0.8h\ncmhi v1.8h, v3.8h, v1.8h\nsub v0.8h, v0.8h, v4.8h\nsub v1.8h, v1.8h, v5.8h\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b) vscale_range(2, 2){\n  %r = call <16 x i16> @llvm.ucmp(<16 x i16> %a, <16 x i16> %b)\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <16 x i16> @llvm.ucmp.v16i16.v16i16(<16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <16 x i16> @llvm.ucmp.v16i16.v16i16(<16 x i16> %a, <16 x i16> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "ucmp",
@@ -17899,7 +17899,7 @@
   "ty": "<8 x i32>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 9,
@@ -17907,7 +17907,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z2.s, p0, { z2.s, z3.s }\nsplice z0.s, p0, { z0.s, z1.s }\nptrue p0.s\nmov z1.s, #-1                       // =0xffffffffffffffff\ncmphi p1.s, p0/z, z2.s, z0.s\ncmphi p2.s, p0/z, z0.s, z2.s\nmov z0.s, p1/z, #-1                 // =0xffffffffffffffff\nsub z0.s, p2/m, z0.s, z1.s\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "cmhi v4.4s, v0.4s, v2.4s\ncmhi v5.4s, v1.4s, v3.4s\ncmhi v0.4s, v2.4s, v0.4s\ncmhi v1.4s, v3.4s, v1.4s\nsub v0.4s, v0.4s, v4.4s\nsub v1.4s, v1.4s, v5.4s\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b) vscale_range(2, 2){\n  %r = call <8 x i32> @llvm.ucmp(<8 x i32> %a, <8 x i32> %b)\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <8 x i32> @llvm.ucmp.v8i32.v8i32(<8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <8 x i32> @llvm.ucmp.v8i32.v8i32(<8 x i32> %a, <8 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "ucmp",
@@ -17929,7 +17929,7 @@
   "ty": "<4 x i64>",
   "variant": "binop",
   "codesize": 5,
-  "thru": 6,
+  "thru": 5,
   "lat": 5,
   "sizelat": 5,
   "size": 9,
@@ -17937,7 +17937,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nptrue p0.d\nmov z1.d, #-1                       // =0xffffffffffffffff\ncmphi p1.d, p0/z, z2.d, z0.d\ncmphi p2.d, p0/z, z0.d, z2.d\nmov z0.d, p1/z, #-1                 // =0xffffffffffffffff\nsub z0.d, p2/m, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "cmhi v4.2d, v0.2d, v2.2d\ncmhi v5.2d, v1.2d, v3.2d\ncmhi v0.2d, v2.2d, v0.2d\ncmhi v1.2d, v3.2d, v1.2d\nsub v0.2d, v0.2d, v4.2d\nsub v1.2d, v1.2d, v5.2d\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b) vscale_range(2, 2){\n  %r = call <4 x i64> @llvm.ucmp(<4 x i64> %a, <4 x i64> %b)\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:6 CodeSize:5 Lat:5 SizeLat:5 for:   %r = call <4 x i64> @llvm.ucmp.v4i64.v4i64(<4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call <4 x i64> @llvm.ucmp.v4i64.v4i64(<4 x i64> %a, <4 x i64> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "ucmp",
@@ -20914,7 +20914,7 @@
   "ty": "<32 x i8>",
   "variant": "triop",
   "codesize": 7,
-  "thru": 8,
+  "thru": 7,
   "lat": 7,
   "sizelat": 7,
   "size": 13,
@@ -20922,7 +20922,7 @@
   "asm": "ptrue p0.b, vl16\nsplice z4.b, p0, { z4.b, z5.b }\nsplice z2.b, p0, { z2.b, z3.b }\nsplice z0.b, p0, { z0.b, z1.b }\nptrue p0.b\nmovprfx z3, z4\nsubr z3.b, z3.b, #255                // =0xff\nand z4.b, z4.b, #0x7\nlsr z1.b, z2.b, #1\nand z3.b, z3.b, #0x7\nlsl z0.b, p0/m, z0.b, z4.b\nlsr z1.b, p0/m, z1.b, z3.b\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v6.16b, #7\nushr v2.16b, v2.16b, #1\nushr v3.16b, v3.16b, #1\nbic v7.16b, v6.16b, v4.16b\nbic v16.16b, v6.16b, v5.16b\nand v4.16b, v4.16b, v6.16b\nand v5.16b, v5.16b, v6.16b\nneg v6.16b, v7.16b\nneg v7.16b, v16.16b\nushl v0.16b, v0.16b, v4.16b\nushl v1.16b, v1.16b, v5.16b\nushl v2.16b, v2.16b, v6.16b\nushl v3.16b, v3.16b, v7.16b\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b, <32 x i8> %c) vscale_range(2, 2){\n  %r = call <32 x i8> @llvm.fshl(<32 x i8> %a, <32 x i8> %b, <32 x i8> %c)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:7 Lat:7 SizeLat:7 for:   %r = call <32 x i8> @llvm.fshl.v32i8(<32 x i8> %a, <32 x i8> %b, <32 x i8> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = call <32 x i8> @llvm.fshl.v32i8(<32 x i8> %a, <32 x i8> %b, <32 x i8> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "fshl",
@@ -21004,7 +21004,7 @@
   "ty": "<16 x i16>",
   "variant": "triop",
   "codesize": 22,
-  "thru": 23,
+  "thru": 22,
   "lat": 22,
   "sizelat": 22,
   "size": 13,
@@ -21012,7 +21012,7 @@
   "asm": "ptrue p0.h, vl8\nsplice z4.h, p0, { z4.h, z5.h }\nsplice z2.h, p0, { z2.h, z3.h }\nsplice z0.h, p0, { z0.h, z1.h }\nptrue p0.h\nmovprfx z3, z4\nsubr z3.b, z3.b, #255                // =0xff\nand z4.h, z4.h, #0xf\nlsr z1.h, z2.h, #1\nand z3.h, z3.h, #0xf\nlsl z0.h, p0/m, z0.h, z4.h\nlsr z1.h, p0/m, z1.h, z3.h\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v6.8h, #15\nushr v2.8h, v2.8h, #1\nushr v3.8h, v3.8h, #1\nbic v7.16b, v6.16b, v4.16b\nbic v16.16b, v6.16b, v5.16b\nand v4.16b, v4.16b, v6.16b\nand v5.16b, v5.16b, v6.16b\nneg v6.8h, v7.8h\nneg v7.8h, v16.8h\nushl v0.8h, v0.8h, v4.8h\nushl v1.8h, v1.8h, v5.8h\nushl v2.8h, v2.8h, v6.8h\nushl v3.8h, v3.8h, v7.8h\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b, <16 x i16> %c) vscale_range(2, 2){\n  %r = call <16 x i16> @llvm.fshl(<16 x i16> %a, <16 x i16> %b, <16 x i16> %c)\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:23 CodeSize:22 Lat:22 SizeLat:22 for:   %r = call <16 x i16> @llvm.fshl.v16i16(<16 x i16> %a, <16 x i16> %b, <16 x i16> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 22 for:   %r = call <16 x i16> @llvm.fshl.v16i16(<16 x i16> %a, <16 x i16> %b, <16 x i16> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "fshl",
@@ -21094,7 +21094,7 @@
   "ty": "<8 x i32>",
   "variant": "triop",
   "codesize": 14,
-  "thru": 15,
+  "thru": 14,
   "lat": 14,
   "sizelat": 14,
   "size": 12,
@@ -21102,7 +21102,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z2.s, p0, { z2.s, z3.s }\nsplice z3.s, p0, { z4.s, z5.s }\nmov z4.s, #31                       // =0x1f\nsplice z0.s, p0, { z0.s, z1.s }\nptrue p0.s\nbic z1.d, z4.d, z3.d\nlsr z2.s, z2.s, #1\nand z3.s, z3.s, #0x1f\nlsrr z1.s, p0/m, z1.s, z2.s\nlsl z0.s, p0/m, z0.s, z3.s\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v6.4s, #31\nushr v2.4s, v2.4s, #1\nushr v3.4s, v3.4s, #1\nbic v7.16b, v6.16b, v4.16b\nbic v16.16b, v6.16b, v5.16b\nand v4.16b, v4.16b, v6.16b\nand v5.16b, v5.16b, v6.16b\nneg v6.4s, v7.4s\nneg v7.4s, v16.4s\nushl v0.4s, v0.4s, v4.4s\nushl v1.4s, v1.4s, v5.4s\nushl v2.4s, v2.4s, v6.4s\nushl v3.4s, v3.4s, v7.4s\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b, <8 x i32> %c) vscale_range(2, 2){\n  %r = call <8 x i32> @llvm.fshl(<8 x i32> %a, <8 x i32> %b, <8 x i32> %c)\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:15 CodeSize:14 Lat:14 SizeLat:14 for:   %r = call <8 x i32> @llvm.fshl.v8i32(<8 x i32> %a, <8 x i32> %b, <8 x i32> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 14 for:   %r = call <8 x i32> @llvm.fshl.v8i32(<8 x i32> %a, <8 x i32> %b, <8 x i32> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "fshl",
@@ -21154,7 +21154,7 @@
   "ty": "<4 x i64>",
   "variant": "triop",
   "codesize": 86,
-  "thru": 87,
+  "thru": 86,
   "lat": 86,
   "sizelat": 86,
   "size": 12,
@@ -21162,7 +21162,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z3.d, p0, { z4.d, z5.d }\nmov z4.d, #63                       // =0x3f\nsplice z0.d, p0, { z0.d, z1.d }\nptrue p0.d\nbic z1.d, z4.d, z3.d\nlsr z2.d, z2.d, #1\nand z3.d, z3.d, #0x3f\nlsrr z1.d, p0/m, z1.d, z2.d\nlsl z0.d, p0/m, z0.d, z3.d\norr z0.d, z0.d, z1.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "adrp x8, .LCPI0_0\nushr v2.2d, v2.2d, #1\nushr v3.2d, v3.2d, #1\nldr q6, [x8, :lo12:.LCPI0_0]\nbic v7.16b, v6.16b, v4.16b\nbic v16.16b, v6.16b, v5.16b\nand v4.16b, v4.16b, v6.16b\nand v5.16b, v5.16b, v6.16b\nneg v6.2d, v7.2d\nneg v7.2d, v16.2d\nushl v0.2d, v0.2d, v4.2d\nushl v1.2d, v1.2d, v5.2d\nushl v2.2d, v2.2d, v6.2d\nushl v3.2d, v3.2d, v7.2d\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b, <4 x i64> %c) vscale_range(2, 2){\n  %r = call <4 x i64> @llvm.fshl(<4 x i64> %a, <4 x i64> %b, <4 x i64> %c)\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:87 CodeSize:86 Lat:86 SizeLat:86 for:   %r = call <4 x i64> @llvm.fshl.v4i64(<4 x i64> %a, <4 x i64> %b, <4 x i64> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 86 for:   %r = call <4 x i64> @llvm.fshl.v4i64(<4 x i64> %a, <4 x i64> %b, <4 x i64> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "fshl",
@@ -21694,7 +21694,7 @@
   "ty": "<32 x i8>",
   "variant": "triop",
   "codesize": 7,
-  "thru": 8,
+  "thru": 7,
   "lat": 7,
   "sizelat": 7,
   "size": 13,
@@ -21702,7 +21702,7 @@
   "asm": "ptrue p0.b, vl16\nsplice z4.b, p0, { z4.b, z5.b }\nsplice z0.b, p0, { z0.b, z1.b }\nsplice z2.b, p0, { z2.b, z3.b }\nptrue p0.b\nmovprfx z1, z4\nsubr z1.b, z1.b, #255                // =0xff\nand z4.b, z4.b, #0x7\nlsl z0.b, z0.b, #1\nand z1.b, z1.b, #0x7\nlsr z2.b, p0/m, z2.b, z4.b\nlsl z0.b, p0/m, z0.b, z1.b\norr z0.d, z0.d, z2.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v6.16b, #7\nshl v0.16b, v0.16b, #1\nshl v1.16b, v1.16b, #1\nand v7.16b, v4.16b, v6.16b\nand v16.16b, v5.16b, v6.16b\nbic v4.16b, v6.16b, v4.16b\nbic v5.16b, v6.16b, v5.16b\nneg v6.16b, v7.16b\nneg v7.16b, v16.16b\nushl v0.16b, v0.16b, v4.16b\nushl v1.16b, v1.16b, v5.16b\nushl v2.16b, v2.16b, v6.16b\nushl v3.16b, v3.16b, v7.16b\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b, <32 x i8> %c) vscale_range(2, 2){\n  %r = call <32 x i8> @llvm.fshr(<32 x i8> %a, <32 x i8> %b, <32 x i8> %c)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:8 CodeSize:7 Lat:7 SizeLat:7 for:   %r = call <32 x i8> @llvm.fshr.v32i8(<32 x i8> %a, <32 x i8> %b, <32 x i8> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = call <32 x i8> @llvm.fshr.v32i8(<32 x i8> %a, <32 x i8> %b, <32 x i8> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "fshr",
@@ -21784,7 +21784,7 @@
   "ty": "<16 x i16>",
   "variant": "triop",
   "codesize": 22,
-  "thru": 23,
+  "thru": 22,
   "lat": 22,
   "sizelat": 22,
   "size": 13,
@@ -21792,7 +21792,7 @@
   "asm": "ptrue p0.h, vl8\nsplice z4.h, p0, { z4.h, z5.h }\nsplice z0.h, p0, { z0.h, z1.h }\nsplice z2.h, p0, { z2.h, z3.h }\nptrue p0.h\nmovprfx z1, z4\nsubr z1.b, z1.b, #255                // =0xff\nand z4.h, z4.h, #0xf\nlsl z0.h, z0.h, #1\nand z1.h, z1.h, #0xf\nlsr z2.h, p0/m, z2.h, z4.h\nlsl z0.h, p0/m, z0.h, z1.h\norr z0.d, z0.d, z2.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v6.8h, #15\nshl v0.8h, v0.8h, #1\nshl v1.8h, v1.8h, #1\nand v7.16b, v4.16b, v6.16b\nand v16.16b, v5.16b, v6.16b\nbic v4.16b, v6.16b, v4.16b\nbic v5.16b, v6.16b, v5.16b\nneg v6.8h, v7.8h\nneg v7.8h, v16.8h\nushl v0.8h, v0.8h, v4.8h\nushl v1.8h, v1.8h, v5.8h\nushl v2.8h, v2.8h, v6.8h\nushl v3.8h, v3.8h, v7.8h\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <16 x i16> @test(<16 x i16> %a, <16 x i16> %b, <16 x i16> %c) vscale_range(2, 2){\n  %r = call <16 x i16> @llvm.fshr(<16 x i16> %a, <16 x i16> %b, <16 x i16> %c)\n  ret <16 x i16> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:23 CodeSize:22 Lat:22 SizeLat:22 for:   %r = call <16 x i16> @llvm.fshr.v16i16(<16 x i16> %a, <16 x i16> %b, <16 x i16> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 22 for:   %r = call <16 x i16> @llvm.fshr.v16i16(<16 x i16> %a, <16 x i16> %b, <16 x i16> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x i16> %r"
  },
  {
   "instr": "fshr",
@@ -21874,7 +21874,7 @@
   "ty": "<8 x i32>",
   "variant": "triop",
   "codesize": 14,
-  "thru": 15,
+  "thru": 14,
   "lat": 14,
   "sizelat": 14,
   "size": 13,
@@ -21882,7 +21882,7 @@
   "asm": "ptrue p0.s, vl4\nsplice z0.s, p0, { z0.s, z1.s }\nsplice z1.s, p0, { z4.s, z5.s }\nmov z4.s, #31                       // =0x1f\nsplice z2.s, p0, { z2.s, z3.s }\nptrue p0.s\nmovprfx z3, z1\nand z3.s, z3.s, #0x1f\nbic z1.d, z4.d, z1.d\nlsl z0.s, z0.s, #1\nlsr z2.s, p0/m, z2.s, z3.s\nlsl z0.s, p0/m, z0.s, z1.s\norr z0.d, z0.d, z2.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "movi v6.4s, #31\nshl v0.4s, v0.4s, #1\nshl v1.4s, v1.4s, #1\nand v7.16b, v4.16b, v6.16b\nand v16.16b, v5.16b, v6.16b\nbic v4.16b, v6.16b, v4.16b\nbic v5.16b, v6.16b, v5.16b\nneg v6.4s, v7.4s\nneg v7.4s, v16.4s\nushl v0.4s, v0.4s, v4.4s\nushl v1.4s, v1.4s, v5.4s\nushl v2.4s, v2.4s, v6.4s\nushl v3.4s, v3.4s, v7.4s\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <8 x i32> @test(<8 x i32> %a, <8 x i32> %b, <8 x i32> %c) vscale_range(2, 2){\n  %r = call <8 x i32> @llvm.fshr(<8 x i32> %a, <8 x i32> %b, <8 x i32> %c)\n  ret <8 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:15 CodeSize:14 Lat:14 SizeLat:14 for:   %r = call <8 x i32> @llvm.fshr.v8i32(<8 x i32> %a, <8 x i32> %b, <8 x i32> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 14 for:   %r = call <8 x i32> @llvm.fshr.v8i32(<8 x i32> %a, <8 x i32> %b, <8 x i32> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x i32> %r"
  },
  {
   "instr": "fshr",
@@ -21934,7 +21934,7 @@
   "ty": "<4 x i64>",
   "variant": "triop",
   "codesize": 86,
-  "thru": 87,
+  "thru": 86,
   "lat": 86,
   "sizelat": 86,
   "size": 13,
@@ -21942,7 +21942,7 @@
   "asm": "ptrue p0.d, vl2\nsplice z0.d, p0, { z0.d, z1.d }\nsplice z1.d, p0, { z4.d, z5.d }\nmov z4.d, #63                       // =0x3f\nsplice z2.d, p0, { z2.d, z3.d }\nptrue p0.d\nmovprfx z3, z1\nand z3.d, z3.d, #0x3f\nbic z1.d, z4.d, z1.d\nlsl z0.d, z0.d, #1\nlsr z2.d, p0/m, z2.d, z3.d\nlsl z0.d, p0/m, z0.d, z1.d\norr z0.d, z0.d, z2.d\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
   "giasm": "adrp x8, .LCPI0_0\nshl v0.2d, v0.2d, #1\nshl v1.2d, v1.2d, #1\nldr q6, [x8, :lo12:.LCPI0_0]\nand v7.16b, v4.16b, v6.16b\nand v16.16b, v5.16b, v6.16b\nbic v4.16b, v6.16b, v4.16b\nbic v5.16b, v6.16b, v5.16b\nneg v6.2d, v7.2d\nneg v7.2d, v16.2d\nushl v0.2d, v0.2d, v4.2d\nushl v1.2d, v1.2d, v5.2d\nushl v2.2d, v2.2d, v6.2d\nushl v3.2d, v3.2d, v7.2d\norr v0.16b, v0.16b, v2.16b\norr v1.16b, v1.16b, v3.16b\nret",
   "ll": "define <4 x i64> @test(<4 x i64> %a, <4 x i64> %b, <4 x i64> %c) vscale_range(2, 2){\n  %r = call <4 x i64> @llvm.fshr(<4 x i64> %a, <4 x i64> %b, <4 x i64> %c)\n  ret <4 x i64> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:87 CodeSize:86 Lat:86 SizeLat:86 for:   %r = call <4 x i64> @llvm.fshr.v4i64(<4 x i64> %a, <4 x i64> %b, <4 x i64> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 86 for:   %r = call <4 x i64> @llvm.fshr.v4i64(<4 x i64> %a, <4 x i64> %b, <4 x i64> %c)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i64> %r"
  },
  {
   "instr": "fshr",

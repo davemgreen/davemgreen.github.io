@@ -7672,9 +7672,9 @@
   "thru": 4,
   "lat": 4,
   "sizelat": 4,
-  "size": 21,
+  "size": 18,
   "gisize": 20,
-  "asm": "ptrue p0.d, vl2\nptrue p1.d\nsplice z6.d, p0, { z6.d, z7.d }\nsplice z4.d, p0, { z4.d, z5.d }\nsplice z0.d, p0, { z0.d, z1.d }\nsplice z1.d, p0, { z2.d, z3.d }\nptrue p0.h, vl8\nscvtf z6.h, p1/m, z6.d\nscvtf z4.h, p1/m, z4.d\nscvtf z0.h, p1/m, z0.d\nscvtf z1.h, p1/m, z1.d\nuzp1 z2.s, z6.s, z6.s\nuzp1 z3.s, z4.s, z4.s\nuzp1 z0.s, z0.s, z0.s\nuzp1 z1.s, z1.s, z1.s\nuzp1 z2.h, z2.h, z2.h\nuzp1 z4.h, z3.h, z3.h\nuzp1 z1.h, z1.h, z1.h\nmov v4.d[1], v2.d[0]\nuzp1 z3.h, z0.h, z0.h\nmov v3.d[1], v1.d[0]\nsplice z0.h, p0, { z3.h, z4.h }\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
+  "asm": "ptrue p0.d, vl2\nsplice z4.d, p0, { z4.d, z5.d }\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nsplice z1.d, p0, { z6.d, z7.d }\nptrue p0.d\nscvtf z4.h, p0/m, z4.d\nscvtf z0.h, p0/m, z0.d\nscvtf z2.h, p0/m, z2.d\nscvtf z1.h, p0/m, z1.d\nuzp1 z3.s, z4.s, z4.s\nuzp1 z0.s, z0.s, z0.s\nuzp1 z2.s, z2.s, z2.s\nuzp1 z4.s, z1.s, z1.s\nuzp1 z1.h, z3.h, z3.h\nuzp1 z0.h, z0.h, z0.h\nuzp1 z2.h, z2.h, z2.h\nuzp1 z3.h, z4.h, z4.h\nmov v0.d[1], v2.d[0]\nmov v1.d[1], v3.d[0]\nret",
   "giasm": "scvtf v0.2d, v0.2d\nscvtf v4.2d, v4.2d\nscvtf v1.2d, v1.2d\nscvtf v2.2d, v2.2d\nscvtf v5.2d, v5.2d\nscvtf v6.2d, v6.2d\nscvtf v3.2d, v3.2d\nscvtf v7.2d, v7.2d\nfcvtn v0.2s, v0.2d\nfcvtn v4.2s, v4.2d\nfcvtn v2.2s, v2.2d\nfcvtn v6.2s, v6.2d\nfcvtn2 v0.4s, v1.2d\nfcvtn2 v4.4s, v5.2d\nfcvtn2 v2.4s, v3.2d\nfcvtn2 v6.4s, v7.2d\nfcvtn v0.4h, v0.4s\nfcvtn v1.4h, v4.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v6.4s\nret",
   "ll": "define <16 x half> @test(<16 x i64> %a) vscale_range(2, 2){\n  %r = sitofp <16 x i64> %a to <16 x half>\n  ret <16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = sitofp <16 x i64> %a to <16 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
@@ -9472,9 +9472,9 @@
   "thru": 4,
   "lat": 4,
   "sizelat": 4,
-  "size": 21,
+  "size": 18,
   "gisize": 20,
-  "asm": "ptrue p0.d, vl2\nptrue p1.d\nsplice z6.d, p0, { z6.d, z7.d }\nsplice z4.d, p0, { z4.d, z5.d }\nsplice z0.d, p0, { z0.d, z1.d }\nsplice z1.d, p0, { z2.d, z3.d }\nptrue p0.h, vl8\nucvtf z6.h, p1/m, z6.d\nucvtf z4.h, p1/m, z4.d\nucvtf z0.h, p1/m, z0.d\nucvtf z1.h, p1/m, z1.d\nuzp1 z2.s, z6.s, z6.s\nuzp1 z3.s, z4.s, z4.s\nuzp1 z0.s, z0.s, z0.s\nuzp1 z1.s, z1.s, z1.s\nuzp1 z2.h, z2.h, z2.h\nuzp1 z4.h, z3.h, z3.h\nuzp1 z1.h, z1.h, z1.h\nmov v4.d[1], v2.d[0]\nuzp1 z3.h, z0.h, z0.h\nmov v3.d[1], v1.d[0]\nsplice z0.h, p0, { z3.h, z4.h }\nmovprfx z1, z0\next z1.b, z1.b, z0.b, #16\nret",
+  "asm": "ptrue p0.d, vl2\nsplice z4.d, p0, { z4.d, z5.d }\nsplice z2.d, p0, { z2.d, z3.d }\nsplice z0.d, p0, { z0.d, z1.d }\nsplice z1.d, p0, { z6.d, z7.d }\nptrue p0.d\nucvtf z4.h, p0/m, z4.d\nucvtf z0.h, p0/m, z0.d\nucvtf z2.h, p0/m, z2.d\nucvtf z1.h, p0/m, z1.d\nuzp1 z3.s, z4.s, z4.s\nuzp1 z0.s, z0.s, z0.s\nuzp1 z2.s, z2.s, z2.s\nuzp1 z4.s, z1.s, z1.s\nuzp1 z1.h, z3.h, z3.h\nuzp1 z0.h, z0.h, z0.h\nuzp1 z2.h, z2.h, z2.h\nuzp1 z3.h, z4.h, z4.h\nmov v0.d[1], v2.d[0]\nmov v1.d[1], v3.d[0]\nret",
   "giasm": "ucvtf v0.2d, v0.2d\nucvtf v4.2d, v4.2d\nucvtf v1.2d, v1.2d\nucvtf v2.2d, v2.2d\nucvtf v5.2d, v5.2d\nucvtf v6.2d, v6.2d\nucvtf v3.2d, v3.2d\nucvtf v7.2d, v7.2d\nfcvtn v0.2s, v0.2d\nfcvtn v4.2s, v4.2d\nfcvtn v2.2s, v2.2d\nfcvtn v6.2s, v6.2d\nfcvtn2 v0.4s, v1.2d\nfcvtn2 v4.4s, v5.2d\nfcvtn2 v2.4s, v3.2d\nfcvtn2 v6.4s, v7.2d\nfcvtn v0.4h, v0.4s\nfcvtn v1.4h, v4.4s\nfcvtn2 v0.8h, v2.4s\nfcvtn2 v1.8h, v6.4s\nret",
   "ll": "define <16 x half> @test(<16 x i64> %a) vscale_range(2, 2){\n  %r = uitofp <16 x i64> %a to <16 x half>\n  ret <16 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = uitofp <16 x i64> %a to <16 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <16 x half> %r"
