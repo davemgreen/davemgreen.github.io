@@ -10173,16 +10173,16 @@
   "instr": "clmul",
   "ty": "i8",
   "variant": "binop",
-  "codesize": 24,
-  "thru": 24,
-  "lat": 24,
-  "sizelat": 24,
+  "codesize": 4,
+  "thru": 7,
+  "lat": 7,
+  "sizelat": 7,
   "size": 4,
   "gisize": -2,
   "asm": "fmov s0, w1\nfmov s1, w0\npmul v0.8b, v1.8b, v0.8b\nfmov w0, s0\nret",
   "giasm": "LLVM ERROR: cannot select: %4:gpr(i8) = G_INTRINSIC intrinsic(@llvm.clmul), %0:gpr(i8), %1:gpr(i8) (in function: test)",
   "ll": "define i8 @test(i8 %a, i8 %b) {\n  %r = call i8 @llvm.clmul(i8 %a, i8 %b)\n  ret i8 %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 24 for:   %r = call i8 @llvm.clmul.i8(i8 %a, i8 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:7 CodeSize:4 Lat:7 SizeLat:7 for:   %r = call i8 @llvm.clmul.i8(i8 %a, i8 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
  {
   "instr": "clmul",
@@ -10263,16 +10263,16 @@
   "instr": "clmul",
   "ty": "<32 x i8>",
   "variant": "binop",
-  "codesize": 4,
-  "thru": 4,
-  "lat": 4,
-  "sizelat": 4,
+  "codesize": 2,
+  "thru": 2,
+  "lat": 2,
+  "sizelat": 2,
   "size": 2,
   "gisize": -2,
   "asm": "pmul v1.16b, v1.16b, v3.16b\npmul v0.16b, v0.16b, v2.16b\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: %0:_(<32 x i8>) = G_CONCAT_VECTORS %2:_(<16 x i8>), %3:_(<16 x i8>) (in function: test)",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = call <32 x i8> @llvm.clmul(<32 x i8> %a, <32 x i8> %b)\n  ret <32 x i8> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call <32 x i8> @llvm.clmul.v32i8(<32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = call <32 x i8> @llvm.clmul.v32i8(<32 x i8> %a, <32 x i8> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
  },
  {
   "instr": "clmul",
