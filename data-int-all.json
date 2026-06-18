@@ -17103,16 +17103,16 @@
   "instr": "clmul",
   "ty": "<4 x i32>",
   "variant": "binop",
-  "codesize": 96,
-  "thru": 96,
-  "lat": 96,
-  "sizelat": 96,
+  "codesize": 43,
+  "thru": 43,
+  "lat": 43,
+  "sizelat": 43,
   "size": 70,
   "gisize": -2,
   "asm": "xtn v2.4h, v1.4s\nxtn v3.4h, v0.4s\nptrue p0.h, vl4\nshrn v6.4h, v0.4s, #16\nshrn v17.4h, v1.4s, #16\nrbit z4.h, p0/z, z2.h\nrbit z5.h, p0/z, z3.h\nxtn v18.8b, v6.8h\nxtn v7.8b, v4.8h\nxtn v16.8b, v5.8h\nxtn v0.8b, v2.8h\nxtn v21.8b, v17.8h\nxtn v1.8b, v3.8h\nshrn v5.8b, v5.8h, #8\nshrn v4.8b, v4.8h, #8\nshrn v6.8b, v6.8h, #8\nshrn v2.8b, v2.8h, #8\nrbit v22.8b, v18.8b\nshrn v17.8b, v17.8h, #8\nshrn v3.8b, v3.8h, #8\nrbit v19.8b, v7.8b\nrbit v20.8b, v16.8b\nrbit v23.8b, v0.8b\nrbit v24.8b, v1.8b\npmul v5.8b, v5.8b, v7.8b\npmul v4.8b, v16.8b, v4.8b\npmul v17.8b, v1.8b, v17.8b\npmul v7.8b, v16.8b, v7.8b\npmul v19.8b, v20.8b, v19.8b\nrbit v20.8b, v21.8b\npmul v22.8b, v22.8b, v23.8b\npmul v23.8b, v24.8b, v23.8b\nushll v7.8h, v7.8b, #0\nrbit v19.8b, v19.8b\npmul v20.8b, v24.8b, v20.8b\nrbit v22.8b, v22.8b\nushr v19.8b, v19.8b, #1\nrbit v20.8b, v20.8b\nushr v22.8b, v22.8b, #1\neor3 z19.d, z19.d, z4.d, z5.d\npmul v4.8b, v18.8b, v2.8b\npmul v5.8b, v6.8b, v0.8b\npmul v6.8b, v3.8b, v21.8b\nushr v16.8b, v20.8b, #1\nrbit v20.8b, v23.8b\npmul v3.8b, v3.8b, v0.8b\npmul v2.8b, v1.8b, v2.8b\neor3 z22.d, z22.d, z4.d, z5.d\npmul v4.8b, v18.8b, v0.8b\npmul v5.8b, v1.8b, v21.8b\neor3 z16.d, z16.d, z17.d, z6.d\nshll v6.8h, v19.8b, #8\nushr v17.8b, v20.8b, #1\npmul v0.8b, v1.8b, v0.8b\norr v6.16b, v7.16b, v6.16b\nshll v18.8h, v22.8b, #8\nushll v4.8h, v4.8b, #0\nshll v16.8h, v16.8b, #8\nushll v5.8h, v5.8b, #0\neor3 z17.d, z17.d, z2.d, z3.d\nushll v0.8h, v0.8b, #0\nrbit z1.h, p0/z, z6.h\norr v2.16b, v4.16b, v18.16b\norr v3.16b, v5.16b, v16.16b\nushr v1.4h, v1.4h, #1\nshll v4.8h, v17.8b, #8\neor3 z1.d, z1.d, z3.d, z2.d\norr v0.16b, v0.16b, v4.16b\nshll v1.4s, v1.4h, #16\nushll v0.4s, v0.4h, #0\norr v0.16b, v0.16b, v1.16b\nret",
   "giasm": "LLVM ERROR: cannot select: %2:fpr(<4 x i32>) = G_INTRINSIC intrinsic(@llvm.clmul), %0:fpr(<4 x i32>), %1:fpr(<4 x i32>) (in function: test)",
   "ll": "define <4 x i32> @test(<4 x i32> %a, <4 x i32> %b) {\n  %r = call <4 x i32> @llvm.clmul(<4 x i32> %a, <4 x i32> %b)\n  ret <4 x i32> %r\n}",
-  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 96 for:   %r = call <4 x i32> @llvm.clmul.v4i32(<4 x i32> %a, <4 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
+  "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 43 for:   %r = call <4 x i32> @llvm.clmul.v4i32(<4 x i32> %a, <4 x i32> %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x i32> %r"
  },
  {
   "instr": "clmul",
