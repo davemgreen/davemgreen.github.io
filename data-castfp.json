@@ -6475,7 +6475,7 @@
   "size": 10,
   "gisize": 12,
   "asm": "movi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nand v1.16b, v3.16b, v1.16b\nadd v2.4s, v0.4s, v2.4s\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "movi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nfcmeq v4.4s, v0.4s, v0.4s\nmovi v5.4s, #64, lsl #16\nand v1.16b, v3.16b, v1.16b\nadd v2.4s, v0.4s, v2.4s\nmvn v3.16b, v4.16b\norr v0.16b, v0.16b, v5.16b\nadd v1.4s, v2.4s, v1.4s\nbif v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
+  "giasm": "movi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nmovi v4.4s, #64, lsl #16\nfcmeq v5.4s, v0.4s, v0.4s\nand v1.16b, v3.16b, v1.16b\nadd v2.4s, v0.4s, v2.4s\norr v0.16b, v0.16b, v4.16b\nadd v1.4s, v2.4s, v1.4s\nmvn v2.16b, v5.16b\nbif v0.16b, v1.16b, v2.16b\nshrn v0.4h, v0.4s, #16\nret",
   "ll": "define <2 x bfloat> @test(<2 x float> %a) {\n  %r = fptrunc <2 x float> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fptrunc <2 x float> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -6505,7 +6505,7 @@
   "size": 10,
   "gisize": 12,
   "asm": "movi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nand v1.16b, v3.16b, v1.16b\nadd v2.4s, v0.4s, v2.4s\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "movi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nfcmeq v4.4s, v0.4s, v0.4s\nmovi v5.4s, #64, lsl #16\nand v1.16b, v3.16b, v1.16b\nadd v2.4s, v0.4s, v2.4s\nmvn v3.16b, v4.16b\norr v0.16b, v0.16b, v5.16b\nadd v1.4s, v2.4s, v1.4s\nbif v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
+  "giasm": "movi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nmovi v4.4s, #64, lsl #16\nfcmeq v5.4s, v0.4s, v0.4s\nand v1.16b, v3.16b, v1.16b\nadd v2.4s, v0.4s, v2.4s\norr v0.16b, v0.16b, v4.16b\nadd v1.4s, v2.4s, v1.4s\nmvn v2.16b, v5.16b\nbif v0.16b, v1.16b, v2.16b\nshrn v0.4h, v0.4s, #16\nret",
   "ll": "define <4 x bfloat> @test(<4 x float> %a) {\n  %r = fptrunc <4 x float> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = fptrunc <4 x float> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
@@ -6535,7 +6535,7 @@
   "size": 17,
   "gisize": 22,
   "asm": "movi v2.4s, #1\nmovi v3.4s, #127, msl #8\nushr v4.4s, v1.4s, #16\nushr v5.4s, v0.4s, #16\nand v4.16b, v4.16b, v2.16b\nadd v6.4s, v1.4s, v3.4s\nand v2.16b, v5.16b, v2.16b\nadd v3.4s, v0.4s, v3.4s\nfcmeq v5.4s, v1.4s, v1.4s\norr v1.4s, #64, lsl #16\nadd v4.4s, v4.4s, v6.4s\nfcmeq v6.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v2.4s, v2.4s, v3.4s\nbit v1.16b, v4.16b, v5.16b\nbit v0.16b, v2.16b, v6.16b\nuzp2 v0.8h, v0.8h, v1.8h\nret",
-  "giasm": "movi v2.4s, #1\nmovi v3.4s, #127, msl #8\nushr v4.4s, v0.4s, #16\nushr v5.4s, v1.4s, #16\nmovi v6.4s, #64, lsl #16\nfcmeq v7.4s, v0.4s, v0.4s\nfcmeq v16.4s, v1.4s, v1.4s\nand v4.16b, v4.16b, v2.16b\nadd v17.4s, v0.4s, v3.4s\nand v2.16b, v5.16b, v2.16b\nadd v3.4s, v1.4s, v3.4s\norr v0.16b, v0.16b, v6.16b\nmvn v5.16b, v7.16b\nmvn v7.16b, v16.16b\norr v1.16b, v1.16b, v6.16b\nadd v4.4s, v17.4s, v4.4s\nadd v2.4s, v3.4s, v2.4s\nbif v0.16b, v4.16b, v5.16b\nbif v1.16b, v2.16b, v7.16b\nshrn v0.4h, v0.4s, #16\nshrn v1.4h, v1.4s, #16\nmov v0.d[1], v1.d[0]\nret",
+  "giasm": "movi v2.4s, #1\nmovi v3.4s, #127, msl #8\nushr v4.4s, v0.4s, #16\nushr v5.4s, v1.4s, #16\nmovi v6.4s, #64, lsl #16\nfcmeq v7.4s, v0.4s, v0.4s\nfcmeq v16.4s, v1.4s, v1.4s\nand v4.16b, v4.16b, v2.16b\nadd v17.4s, v0.4s, v3.4s\nand v2.16b, v5.16b, v2.16b\nadd v3.4s, v1.4s, v3.4s\norr v0.16b, v0.16b, v6.16b\nmvn v5.16b, v7.16b\norr v1.16b, v1.16b, v6.16b\nadd v4.4s, v17.4s, v4.4s\nadd v2.4s, v3.4s, v2.4s\nmvn v3.16b, v16.16b\nbif v0.16b, v4.16b, v5.16b\nbif v1.16b, v2.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nshrn v1.4h, v1.4s, #16\nmov v0.d[1], v1.d[0]\nret",
   "ll": "define <8 x bfloat> @test(<8 x float> %a) {\n  %r = fptrunc <8 x float> %a to <8 x bfloat>\n  ret <8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 15 for:   %r = fptrunc <8 x float> %a to <8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <8 x bfloat> %r"
  },
@@ -6565,7 +6565,7 @@
   "size": 11,
   "gisize": 13,
   "asm": "fcvtxn v0.2s, v0.2d\nmovi v1.4s, #1\nmovi v2.4s, #127, msl #8\nushr v3.4s, v0.4s, #16\nadd v2.4s, v0.4s, v2.4s\nand v1.16b, v3.16b, v1.16b\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "fcvtxn v0.2s, v0.2d\nmovi v1.4s, #1\nmovi v2.4s, #127, msl #8\nmovi v5.4s, #64, lsl #16\nushr v3.4s, v0.4s, #16\nfcmeq v4.4s, v0.4s, v0.4s\nadd v2.4s, v0.4s, v2.4s\norr v0.16b, v0.16b, v5.16b\nand v1.16b, v3.16b, v1.16b\nmvn v3.16b, v4.16b\nadd v1.4s, v2.4s, v1.4s\nbif v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
+  "giasm": "fcvtxn v0.2s, v0.2d\nmovi v1.4s, #1\nmovi v2.4s, #127, msl #8\nmovi v4.4s, #64, lsl #16\nushr v3.4s, v0.4s, #16\nfcmeq v5.4s, v0.4s, v0.4s\nadd v2.4s, v0.4s, v2.4s\norr v0.16b, v0.16b, v4.16b\nand v1.16b, v3.16b, v1.16b\nadd v1.4s, v2.4s, v1.4s\nmvn v2.16b, v5.16b\nbif v0.16b, v1.16b, v2.16b\nshrn v0.4h, v0.4s, #16\nret",
   "ll": "define <2 x bfloat> @test(<2 x double> %a) {\n  %r = fptrunc <2 x double> %a to <2 x bfloat>\n  ret <2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 9 for:   %r = fptrunc <2 x double> %a to <2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x bfloat> %r"
  },
@@ -6610,7 +6610,7 @@
   "size": 12,
   "gisize": 14,
   "asm": "fcvtxn v0.2s, v0.2d\nmovi v2.4s, #127, msl #8\nfcvtxn2 v0.4s, v1.2d\nmovi v1.4s, #1\nushr v3.4s, v0.4s, #16\nadd v2.4s, v0.4s, v2.4s\nand v1.16b, v3.16b, v1.16b\nfcmeq v3.4s, v0.4s, v0.4s\norr v0.4s, #64, lsl #16\nadd v1.4s, v1.4s, v2.4s\nbit v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
-  "giasm": "fcvtxn v0.2s, v0.2d\nmovi v2.4s, #127, msl #8\nmovi v5.4s, #64, lsl #16\nfcvtxn2 v0.4s, v1.2d\nmovi v1.4s, #1\nushr v3.4s, v0.4s, #16\nfcmeq v4.4s, v0.4s, v0.4s\nadd v2.4s, v0.4s, v2.4s\norr v0.16b, v0.16b, v5.16b\nand v1.16b, v3.16b, v1.16b\nmvn v3.16b, v4.16b\nadd v1.4s, v2.4s, v1.4s\nbif v0.16b, v1.16b, v3.16b\nshrn v0.4h, v0.4s, #16\nret",
+  "giasm": "fcvtxn v0.2s, v0.2d\nmovi v2.4s, #127, msl #8\nmovi v4.4s, #64, lsl #16\nfcvtxn2 v0.4s, v1.2d\nmovi v1.4s, #1\nushr v3.4s, v0.4s, #16\nfcmeq v5.4s, v0.4s, v0.4s\nadd v2.4s, v0.4s, v2.4s\norr v0.16b, v0.16b, v4.16b\nand v1.16b, v3.16b, v1.16b\nadd v1.4s, v2.4s, v1.4s\nmvn v2.16b, v5.16b\nbif v0.16b, v1.16b, v2.16b\nshrn v0.4h, v0.4s, #16\nret",
   "ll": "define <4 x bfloat> @test(<4 x double> %a) {\n  %r = fptrunc <4 x double> %a to <4 x bfloat>\n  ret <4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 10 for:   %r = fptrunc <4 x double> %a to <4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <4 x bfloat> %r"
  },
