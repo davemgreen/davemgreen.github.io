@@ -9397,9 +9397,9 @@
   "thru": 5,
   "lat": 5,
   "sizelat": 5,
-  "size": 7,
+  "size": 4,
   "gisize": 9,
-  "asm": "neg w8, w1\nand w9, w0, #0xff\nand w10, w1, #0x7\nand w8, w8, #0x7\nlsl w10, w0, w10\nlsr w8, w9, w8\norr w0, w10, w8\nret",
+  "asm": "bfi w0, w0, #8, #24\nand w8, w1, #0x7\nlsl w8, w0, w8\nlsr w0, w8, #8\nret",
   "giasm": "mov x8, xzr\nneg w9, w1\nand w10, w0, #0xff\nsub x8, x8, w9, uxtb\nand x9, x9, #0x7\nlsr w9, w10, w9\nand x8, x8, #0x7\nlsl w8, w0, w8\norr w0, w9, w8\nret",
   "ll": "define i8 @test(i8 %a, i8 %b) {\n  %r = call i8 @llvm.fshl(i8 %a, i8 %a, i8 %b)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call i8 @llvm.fshl.i8(i8 %a, i8 %a, i8 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
@@ -9427,9 +9427,9 @@
   "thru": 5,
   "lat": 5,
   "sizelat": 5,
-  "size": 7,
+  "size": 4,
   "gisize": 9,
-  "asm": "neg w8, w1\nand w9, w0, #0xffff\nand w10, w1, #0xf\nand w8, w8, #0xf\nlsl w10, w0, w10\nlsr w8, w9, w8\norr w0, w10, w8\nret",
+  "asm": "bfi w0, w0, #16, #16\nand w8, w1, #0xf\nlsl w8, w0, w8\nlsr w0, w8, #16\nret",
   "giasm": "mov x8, xzr\nneg w9, w1\nand w10, w0, #0xffff\nsub x8, x8, w9, uxth\nand x9, x9, #0xf\nlsr w9, w10, w9\nand x8, x8, #0xf\nlsl w8, w0, w8\norr w0, w9, w8\nret",
   "ll": "define i16 @test(i16 %a, i16 %b) {\n  %r = call i16 @llvm.fshl(i16 %a, i16 %a, i16 %b)\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call i16 @llvm.fshl.i16(i16 %a, i16 %a, i16 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
