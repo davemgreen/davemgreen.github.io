@@ -33,6 +33,7 @@ def parseCostLine(line):
     return [parseint(costs[1]), parseint(costs[3]), parseint(costs[5]), parseint(costs[7])]
   cost = parseint(line)
   return [cost, cost, cost, cost]
+
 def getcost(path):
   try:
     text = run(f"opt {'-mtriple='+args.mtriple if args.mtriple else ''} {'-mattr='+args.attr if args.mattr else ''} {os.path.join(path, 'costtest.ll')} -passes=print<cost-model> -cost-kind=all -disable-output")
@@ -70,7 +71,6 @@ def getasm(path, extraflags):
   logging.debug(filteredlines)
   size = len(filteredlines)
   logging.debug(f"size = {size}")
-
   return (lines, size)
 
 def checkcosts(llasm):
@@ -238,6 +238,8 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"  %r = shufflevector {tystr} %a, {tystr} poison, {generateShuffleMask(ty2.elts, ty.elts, variant)}\n"
   elif instr == "shuffleb":
     instrstr += f"  %r = shufflevector {tystr} %a, {tystr} %b, {generateShuffleMask(ty2.elts, ty.elts*2, variant)}\n"
+  elif "mul.fix" in instr:
+    instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b}, i32 {ty2.scalarsize() - 1})\n"
   else:
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
 
@@ -329,7 +331,7 @@ def do(instr, variant, ty, ty2, tyoverride):
 if args.type == 'all' or args.type == 'int':
   def enumint():
     # Int Binops
-    for instr in ['add', 'sub', 'mul', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'sdiv', 'srem', 'udiv', 'urem', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl', 'clmul', 'scmp', 'ucmp', 'pdep', 'pext']:
+    for instr in ['add', 'sub', 'mul', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'sdiv', 'srem', 'udiv', 'urem', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl', 'clmul', 'scmp', 'ucmp', 'pdep', 'pext', 'smul.fix', 'umul.fix', 'smul.fix.sat', 'umul.fix.sat']:
       for ty in inttypes():
         yield (instr, 'binop', ty, ty, None)
         if instr in ['sdiv', 'srem', 'udiv', 'urem', 'shl', 'ashr', 'lshr', 'rotr', 'rotl']:
@@ -369,8 +371,6 @@ if args.type == 'all' or args.type == 'int':
     # TODO: umulo, smulo?
     # TODO: umulh, smulh
     # TODO: ushlsat, sshlsat
-    # TODO: smulfix, umulfix
-    # TODO: smulfixsat, umulfixsat
     # TODO: sdivfix, udivfix
     # TODO: sdivfixsat, udivfixsat
 
