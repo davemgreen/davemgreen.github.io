@@ -240,6 +240,12 @@ def generate(variant, instr, ty, ty2):
     instrstr += f"  %r = shufflevector {tystr} %a, {tystr} %b, {generateShuffleMask(ty2.elts, ty.elts*2, variant)}\n"
   elif "mul.fix" in instr:
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b}, i32 {ty2.scalarsize() - 1})\n"
+  elif "with.overflow" in instr:
+    i1ty = Ty('i1', ty.elts, ty.scalable)
+    instrstr += f"  %o = call {{{tystr}, {i1ty}}} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
+    instrstr += f"  %e0 = extractvalue {{{tystr}, {i1ty}}} %o, 0\n"
+    instrstr += f"  %e1 = extractvalue {{{tystr}, {i1ty}}} %o, 1\n"
+    instrstr += f"  %r = select {i1ty} %e1, {tystr} %e0, {tystr} %a\n"
   else:
     instrstr += f"  %r = call {tystr} @llvm.{instr}({tystr} %a, {tystr} {b})\n"
 
@@ -331,7 +337,7 @@ def do(instr, variant, ty, ty2, tyoverride):
 if args.type == 'all' or args.type == 'int':
   def enumint():
     # Int Binops
-    for instr in ['add', 'sub', 'mul', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'sdiv', 'srem', 'udiv', 'urem', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl', 'clmul', 'scmp', 'ucmp', 'pdep', 'pext', 'smul.fix', 'umul.fix', 'smul.fix.sat', 'umul.fix.sat']:
+    for instr in ['add', 'sub', 'mul', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'sdiv', 'srem', 'udiv', 'urem', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl', 'clmul', 'scmp', 'ucmp', 'pdep', 'pext', 'smul.fix', 'umul.fix', 'smul.fix.sat', 'umul.fix.sat', 'sadd.with.overflow', 'uadd.with.overflow', 'ssub.with.overflow', 'usub.with.overflow', 'smul.with.overflow', 'umul.with.overflow']:
       for ty in inttypes():
         yield (instr, 'binop', ty, ty, None)
         if instr in ['sdiv', 'srem', 'udiv', 'urem', 'shl', 'ashr', 'lshr', 'rotr', 'rotl']:
