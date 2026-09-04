@@ -4989,7 +4989,7 @@
   "sizelat": 15,
   "size": -1,
   "gisize": -1,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i8> @test(<vscale x 8 x bfloat> %a) {\n  %r = call <vscale x 8 x i8> @llvm.fptosi.sat(<vscale x 8 x bfloat> %a)\n  ret <vscale x 8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:17 CodeSize:15 Lat:15 SizeLat:15 for:   %r = call <vscale x 8 x i8> @llvm.fptosi.sat.nxv8i8.nxv8bf16(<vscale x 8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i8> %r"
@@ -5049,7 +5049,7 @@
   "sizelat": 30,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %5:_(<vscale x 16 x i32>) = G_FPTOSI_SAT %4:_(<vscale x 16 x f32>) (in function: test)",
   "ll": "define <vscale x 16 x i8> @test(<vscale x 16 x bfloat> %a) {\n  %r = call <vscale x 16 x i8> @llvm.fptosi.sat(<vscale x 16 x bfloat> %a)\n  ret <vscale x 16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:34 CodeSize:30 Lat:30 SizeLat:30 for:   %r = call <vscale x 16 x i8> @llvm.fptosi.sat.nxv16i8.nxv16bf16(<vscale x 16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i8> %r"
@@ -6789,7 +6789,7 @@
   "sizelat": 3,
   "size": -1,
   "gisize": -1,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 8 x i8> @test(<vscale x 8 x bfloat> %a) {\n  %r = call <vscale x 8 x i8> @llvm.fptoui.sat(<vscale x 8 x bfloat> %a)\n  ret <vscale x 8 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 3 for:   %r = call <vscale x 8 x i8> @llvm.fptoui.sat.nxv8i8.nxv8bf16(<vscale x 8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i8> %r"
@@ -6849,7 +6849,7 @@
   "sizelat": 6,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %5:_(<vscale x 16 x i32>) = G_FPTOUI_SAT %4:_(<vscale x 16 x f32>) (in function: test)",
   "ll": "define <vscale x 16 x i8> @test(<vscale x 16 x bfloat> %a) {\n  %r = call <vscale x 16 x i8> @llvm.fptoui.sat(<vscale x 16 x bfloat> %a)\n  ret <vscale x 16 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = call <vscale x 16 x i8> @llvm.fptoui.sat.nxv16i8.nxv16bf16(<vscale x 16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i8> %r"
@@ -12309,7 +12309,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %4:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x bfloat> %a) {\n  %r = call <vscale x 2 x i64> @llvm.lrint(<vscale x 2 x bfloat> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.lrint.nxv2i64.nxv2bf16(<vscale x 2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -12324,7 +12324,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -1,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: Possible incorrect use of LLT::getNumElements() for scalable vector. Scalable flag may be dropped, use LLT::getElementCount() instead",
   "ll": "define <vscale x 2 x i32> @test(<vscale x 2 x bfloat> %a) {\n  %r = call <vscale x 2 x i32> @llvm.lrint(<vscale x 2 x bfloat> %a)\n  ret <vscale x 2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i32> @llvm.lrint.nxv2i32.nxv2bf16(<vscale x 2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i32> %r"
@@ -12339,7 +12339,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i64>) = G_FPTOSI %6:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x bfloat> %a) {\n  %r = call <vscale x 4 x i64> @llvm.lrint(<vscale x 4 x bfloat> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.lrint.nxv4i64.nxv4bf16(<vscale x 4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -12354,7 +12354,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i32>) = G_FPTOSI %3:_(<vscale x 4 x f32>) (in function: test)",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x bfloat> %a) {\n  %r = call <vscale x 4 x i32> @llvm.lrint(<vscale x 4 x bfloat> %a)\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i32> @llvm.lrint.nxv4i32.nxv4bf16(<vscale x 4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
@@ -12369,7 +12369,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i64>) = G_FPTOSI %8:_(<vscale x 8 x f64>) (in function: test)",
   "ll": "define <vscale x 8 x i64> @test(<vscale x 8 x bfloat> %a) {\n  %r = call <vscale x 8 x i64> @llvm.lrint(<vscale x 8 x bfloat> %a)\n  ret <vscale x 8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i64> @llvm.lrint.nxv8i64.nxv8bf16(<vscale x 8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i64> %r"
@@ -12384,7 +12384,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i32>) = G_FPTOSI %5:_(<vscale x 8 x f32>) (in function: test)",
   "ll": "define <vscale x 8 x i32> @test(<vscale x 8 x bfloat> %a) {\n  %r = call <vscale x 8 x i32> @llvm.lrint(<vscale x 8 x bfloat> %a)\n  ret <vscale x 8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i32> @llvm.lrint.nxv8i32.nxv8bf16(<vscale x 8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i32> %r"
@@ -12399,7 +12399,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i64>) = G_FPTOSI %14:_(<vscale x 16 x f64>) (in function: test)",
   "ll": "define <vscale x 16 x i64> @test(<vscale x 16 x bfloat> %a) {\n  %r = call <vscale x 16 x i64> @llvm.lrint(<vscale x 16 x bfloat> %a)\n  ret <vscale x 16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i64> @llvm.lrint.nxv16i64.nxv16bf16(<vscale x 16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i64> %r"
@@ -12414,7 +12414,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i32>) = G_FPTOSI %9:_(<vscale x 16 x f32>) (in function: test)",
   "ll": "define <vscale x 16 x i32> @test(<vscale x 16 x bfloat> %a) {\n  %r = call <vscale x 16 x i32> @llvm.lrint(<vscale x 16 x bfloat> %a)\n  ret <vscale x 16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i32> @llvm.lrint.nxv16i32.nxv16bf16(<vscale x 16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i32> %r"
@@ -12894,7 +12894,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %4:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x bfloat> %a) {\n  %r = call <vscale x 2 x i64> @llvm.llrint(<vscale x 2 x bfloat> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.llrint.nxv2i64.nxv2bf16(<vscale x 2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -12909,7 +12909,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i64>) = G_FPTOSI %6:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x bfloat> %a) {\n  %r = call <vscale x 4 x i64> @llvm.llrint(<vscale x 4 x bfloat> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.llrint.nxv4i64.nxv4bf16(<vscale x 4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -12924,7 +12924,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i64>) = G_FPTOSI %8:_(<vscale x 8 x f64>) (in function: test)",
   "ll": "define <vscale x 8 x i64> @test(<vscale x 8 x bfloat> %a) {\n  %r = call <vscale x 8 x i64> @llvm.llrint(<vscale x 8 x bfloat> %a)\n  ret <vscale x 8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i64> @llvm.llrint.nxv8i64.nxv8bf16(<vscale x 8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i64> %r"
@@ -12939,7 +12939,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i64>) = G_FPTOSI %14:_(<vscale x 16 x f64>) (in function: test)",
   "ll": "define <vscale x 16 x i64> @test(<vscale x 16 x bfloat> %a) {\n  %r = call <vscale x 16 x i64> @llvm.llrint(<vscale x 16 x bfloat> %a)\n  ret <vscale x 16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i64> @llvm.llrint.nxv16i64.nxv16bf16(<vscale x 16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i64> %r"
@@ -13539,7 +13539,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %3:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x half> %a) {\n  %r = call <vscale x 2 x i64> @llvm.lround(<vscale x 2 x half> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.lround.nxv2i64.nxv2f16(<vscale x 2 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -13569,7 +13569,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i64>) = G_FPTOSI %5:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x half> %a) {\n  %r = call <vscale x 4 x i64> @llvm.lround(<vscale x 4 x half> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.lround.nxv4i64.nxv4f16(<vscale x 4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -13584,7 +13584,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i32>) = G_FPTOSI %3:_(<vscale x 4 x f32>) (in function: test)",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x half> %a) {\n  %r = call <vscale x 4 x i32> @llvm.lround(<vscale x 4 x half> %a)\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i32> @llvm.lround.nxv4i32.nxv4f16(<vscale x 4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
@@ -13599,7 +13599,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i64>) = G_FPTOSI %7:_(<vscale x 8 x f64>) (in function: test)",
   "ll": "define <vscale x 8 x i64> @test(<vscale x 8 x half> %a) {\n  %r = call <vscale x 8 x i64> @llvm.lround(<vscale x 8 x half> %a)\n  ret <vscale x 8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i64> @llvm.lround.nxv8i64.nxv8f16(<vscale x 8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i64> %r"
@@ -13614,7 +13614,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i32>) = G_FPTOSI %5:_(<vscale x 8 x f32>) (in function: test)",
   "ll": "define <vscale x 8 x i32> @test(<vscale x 8 x half> %a) {\n  %r = call <vscale x 8 x i32> @llvm.lround(<vscale x 8 x half> %a)\n  ret <vscale x 8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i32> @llvm.lround.nxv8i32.nxv8f16(<vscale x 8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i32> %r"
@@ -13629,7 +13629,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i64>) = G_FPTOSI %13:_(<vscale x 16 x f64>) (in function: test)",
   "ll": "define <vscale x 16 x i64> @test(<vscale x 16 x half> %a) {\n  %r = call <vscale x 16 x i64> @llvm.lround(<vscale x 16 x half> %a)\n  ret <vscale x 16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i64> @llvm.lround.nxv16i64.nxv16f16(<vscale x 16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i64> %r"
@@ -13644,7 +13644,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i32>) = G_FPTOSI %9:_(<vscale x 16 x f32>) (in function: test)",
   "ll": "define <vscale x 16 x i32> @test(<vscale x 16 x half> %a) {\n  %r = call <vscale x 16 x i32> @llvm.lround(<vscale x 16 x half> %a)\n  ret <vscale x 16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i32> @llvm.lround.nxv16i32.nxv16f16(<vscale x 16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i32> %r"
@@ -13659,7 +13659,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %4:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x bfloat> %a) {\n  %r = call <vscale x 2 x i64> @llvm.lround(<vscale x 2 x bfloat> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.lround.nxv2i64.nxv2bf16(<vscale x 2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -13689,7 +13689,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i64>) = G_FPTOSI %6:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x bfloat> %a) {\n  %r = call <vscale x 4 x i64> @llvm.lround(<vscale x 4 x bfloat> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.lround.nxv4i64.nxv4bf16(<vscale x 4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -13704,7 +13704,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i32>) = G_FPTOSI %3:_(<vscale x 4 x f32>) (in function: test)",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x bfloat> %a) {\n  %r = call <vscale x 4 x i32> @llvm.lround(<vscale x 4 x bfloat> %a)\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i32> @llvm.lround.nxv4i32.nxv4bf16(<vscale x 4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
@@ -13719,7 +13719,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i64>) = G_FPTOSI %8:_(<vscale x 8 x f64>) (in function: test)",
   "ll": "define <vscale x 8 x i64> @test(<vscale x 8 x bfloat> %a) {\n  %r = call <vscale x 8 x i64> @llvm.lround(<vscale x 8 x bfloat> %a)\n  ret <vscale x 8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i64> @llvm.lround.nxv8i64.nxv8bf16(<vscale x 8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i64> %r"
@@ -13734,7 +13734,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i32>) = G_FPTOSI %5:_(<vscale x 8 x f32>) (in function: test)",
   "ll": "define <vscale x 8 x i32> @test(<vscale x 8 x bfloat> %a) {\n  %r = call <vscale x 8 x i32> @llvm.lround(<vscale x 8 x bfloat> %a)\n  ret <vscale x 8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i32> @llvm.lround.nxv8i32.nxv8bf16(<vscale x 8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i32> %r"
@@ -13749,7 +13749,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i64>) = G_FPTOSI %14:_(<vscale x 16 x f64>) (in function: test)",
   "ll": "define <vscale x 16 x i64> @test(<vscale x 16 x bfloat> %a) {\n  %r = call <vscale x 16 x i64> @llvm.lround(<vscale x 16 x bfloat> %a)\n  ret <vscale x 16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i64> @llvm.lround.nxv16i64.nxv16bf16(<vscale x 16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i64> %r"
@@ -13764,7 +13764,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i32>) = G_FPTOSI %9:_(<vscale x 16 x f32>) (in function: test)",
   "ll": "define <vscale x 16 x i32> @test(<vscale x 16 x bfloat> %a) {\n  %r = call <vscale x 16 x i32> @llvm.lround(<vscale x 16 x bfloat> %a)\n  ret <vscale x 16 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i32> @llvm.lround.nxv16i32.nxv16bf16(<vscale x 16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i32> %r"
@@ -13779,7 +13779,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %3:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x float> %a) {\n  %r = call <vscale x 2 x i64> @llvm.lround(<vscale x 2 x float> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.lround.nxv2i64.nxv2f32(<vscale x 2 x float> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -13809,7 +13809,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i64>) = G_FPTOSI %5:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x float> %a) {\n  %r = call <vscale x 4 x i64> @llvm.lround(<vscale x 4 x float> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.lround.nxv4i64.nxv4f32(<vscale x 4 x float> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -13824,7 +13824,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i32>) = G_FPTOSI %2:_(<vscale x 4 x f32>) (in function: test)",
   "ll": "define <vscale x 4 x i32> @test(<vscale x 4 x float> %a) {\n  %r = call <vscale x 4 x i32> @llvm.lround(<vscale x 4 x float> %a)\n  ret <vscale x 4 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i32> @llvm.lround.nxv4i32.nxv4f32(<vscale x 4 x float> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i32> %r"
@@ -13839,7 +13839,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 8 x i64>) = G_FPTOSI %9:_(<vscale x 8 x f64>) (in function: test)",
   "ll": "define <vscale x 8 x i64> @test(<vscale x 8 x float> %a) {\n  %r = call <vscale x 8 x i64> @llvm.lround(<vscale x 8 x float> %a)\n  ret <vscale x 8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i64> @llvm.lround.nxv8i64.nxv8f32(<vscale x 8 x float> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i64> %r"
@@ -13854,7 +13854,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 8 x i32>) = G_FPTOSI %6:_(<vscale x 8 x f32>) (in function: test)",
   "ll": "define <vscale x 8 x i32> @test(<vscale x 8 x float> %a) {\n  %r = call <vscale x 8 x i32> @llvm.lround(<vscale x 8 x float> %a)\n  ret <vscale x 8 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i32> @llvm.lround.nxv8i32.nxv8f32(<vscale x 8 x float> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i32> %r"
@@ -13869,7 +13869,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %2:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x double> %a) {\n  %r = call <vscale x 2 x i64> @llvm.lround(<vscale x 2 x double> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.lround.nxv2i64.nxv2f64(<vscale x 2 x double> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -13899,7 +13899,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 4 x i64>) = G_FPTOSI %6:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x double> %a) {\n  %r = call <vscale x 4 x i64> @llvm.lround(<vscale x 4 x double> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.lround.nxv4i64.nxv4f64(<vscale x 4 x double> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -14184,7 +14184,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %3:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x half> %a) {\n  %r = call <vscale x 2 x i64> @llvm.llround(<vscale x 2 x half> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.llround.nxv2i64.nxv2f16(<vscale x 2 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -14199,7 +14199,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i64>) = G_FPTOSI %5:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x half> %a) {\n  %r = call <vscale x 4 x i64> @llvm.llround(<vscale x 4 x half> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.llround.nxv4i64.nxv4f16(<vscale x 4 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -14214,7 +14214,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i64>) = G_FPTOSI %7:_(<vscale x 8 x f64>) (in function: test)",
   "ll": "define <vscale x 8 x i64> @test(<vscale x 8 x half> %a) {\n  %r = call <vscale x 8 x i64> @llvm.llround(<vscale x 8 x half> %a)\n  ret <vscale x 8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i64> @llvm.llround.nxv8i64.nxv8f16(<vscale x 8 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i64> %r"
@@ -14229,7 +14229,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i64>) = G_FPTOSI %13:_(<vscale x 16 x f64>) (in function: test)",
   "ll": "define <vscale x 16 x i64> @test(<vscale x 16 x half> %a) {\n  %r = call <vscale x 16 x i64> @llvm.llround(<vscale x 16 x half> %a)\n  ret <vscale x 16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i64> @llvm.llround.nxv16i64.nxv16f16(<vscale x 16 x half> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i64> %r"
@@ -14244,7 +14244,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %4:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x bfloat> %a) {\n  %r = call <vscale x 2 x i64> @llvm.llround(<vscale x 2 x bfloat> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.llround.nxv2i64.nxv2bf16(<vscale x 2 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -14259,7 +14259,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i64>) = G_FPTOSI %6:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x bfloat> %a) {\n  %r = call <vscale x 4 x i64> @llvm.llround(<vscale x 4 x bfloat> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.llround.nxv4i64.nxv4bf16(<vscale x 4 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -14274,7 +14274,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 8 x i64>) = G_FPTOSI %8:_(<vscale x 8 x f64>) (in function: test)",
   "ll": "define <vscale x 8 x i64> @test(<vscale x 8 x bfloat> %a) {\n  %r = call <vscale x 8 x i64> @llvm.llround(<vscale x 8 x bfloat> %a)\n  ret <vscale x 8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i64> @llvm.llround.nxv8i64.nxv8bf16(<vscale x 8 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i64> %r"
@@ -14289,7 +14289,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 16 x i64>) = G_FPTOSI %14:_(<vscale x 16 x f64>) (in function: test)",
   "ll": "define <vscale x 16 x i64> @test(<vscale x 16 x bfloat> %a) {\n  %r = call <vscale x 16 x i64> @llvm.llround(<vscale x 16 x bfloat> %a)\n  ret <vscale x 16 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 16 x i64> @llvm.llround.nxv16i64.nxv16bf16(<vscale x 16 x bfloat> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 16 x i64> %r"
@@ -14304,7 +14304,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %3:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x float> %a) {\n  %r = call <vscale x 2 x i64> @llvm.llround(<vscale x 2 x float> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.llround.nxv2i64.nxv2f32(<vscale x 2 x float> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -14319,7 +14319,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 4 x i64>) = G_FPTOSI %5:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x float> %a) {\n  %r = call <vscale x 4 x i64> @llvm.llround(<vscale x 4 x float> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.llround.nxv4i64.nxv4f32(<vscale x 4 x float> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
@@ -14334,7 +14334,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 8 x i64>) = G_FPTOSI %9:_(<vscale x 8 x f64>) (in function: test)",
   "ll": "define <vscale x 8 x i64> @test(<vscale x 8 x float> %a) {\n  %r = call <vscale x 8 x i64> @llvm.llround(<vscale x 8 x float> %a)\n  ret <vscale x 8 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 8 x i64> @llvm.llround.nxv8i64.nxv8f32(<vscale x 8 x float> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x i64> %r"
@@ -14349,7 +14349,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %1:_(<vscale x 2 x i64>) = G_FPTOSI %2:_(<vscale x 2 x f64>) (in function: test)",
   "ll": "define <vscale x 2 x i64> @test(<vscale x 2 x double> %a) {\n  %r = call <vscale x 2 x i64> @llvm.llround(<vscale x 2 x double> %a)\n  ret <vscale x 2 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 2 x i64> @llvm.llround.nxv2i64.nxv2f64(<vscale x 2 x double> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x i64> %r"
@@ -14364,7 +14364,7 @@
   "sizelat": -1,
   "size": -1,
   "gisize": -2,
-  "asm": "LLVM ERROR: Possible incorrect use of EVT::getVectorNumElements() for scalable vector. Scalable flag may be dropped, use EVT::getVectorElementCount() instead",
+  "asm": "LLVM ERROR: Cannot unroll scalable vector!",
   "giasm": "LLVM ERROR: unable to legalize instruction: %3:_(<vscale x 4 x i64>) = G_FPTOSI %6:_(<vscale x 4 x f64>) (in function: test)",
   "ll": "define <vscale x 4 x i64> @test(<vscale x 4 x double> %a) {\n  %r = call <vscale x 4 x i64> @llvm.llround(<vscale x 4 x double> %a)\n  ret <vscale x 4 x i64> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of Invalid for:   %r = call <vscale x 4 x i64> @llvm.llround.nxv4i64.nxv4f64(<vscale x 4 x double> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x i64> %r"
