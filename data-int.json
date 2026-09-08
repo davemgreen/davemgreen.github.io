@@ -10852,9 +10852,9 @@
   "thru": 1,
   "lat": 1,
   "sizelat": 1,
-  "size": 34,
+  "size": 33,
   "gisize": -2,
-  "asm": "mvn w9, w1\nmov w8, #-1                         // =0xffffffff\nlsl w9, w9, #1\nfmov s0, w8\nfmov s1, w9\npmul v1.8b, v1.8b, v0.8b\nfmov w8, s1\nbic w9, w9, w8\nand w8, w8, w1\nfmov s1, w9\neor w11, w1, w8\nand w12, w8, #0xfe\norr w11, w11, w12, lsr #1\npmul v1.8b, v1.8b, v0.8b\nfmov w10, s1\nbic w9, w9, w10\nfmov s1, w9\nand w9, w10, w11\neor w10, w11, w9\nand w11, w9, #0xfc\norr w10, w10, w11, lsr #2\npmul v0.8b, v1.8b, v0.8b\nfmov w11, s0\nand w10, w11, w10\nand w11, w10, w0, lsl #4\nbic w10, w0, w10\norr w10, w10, w11\nand w11, w9, w10, lsl #2\nbic w9, w10, w9\norr w9, w9, w11\nand w10, w8, w9, lsl #1\nbic w8, w9, w8\norr w8, w8, w10\nand w0, w8, w1\nret",
+  "asm": "mvn w8, w1\nmovi v0.2d, #0xffffffffffffffff\nlsl w8, w8, #1\nfmov s1, w8\npmul v1.8b, v1.8b, v0.8b\nfmov w9, s1\nbic w8, w8, w9\nand w9, w9, w1\nfmov s1, w8\neor w11, w1, w9\nand w12, w9, #0xfe\norr w11, w11, w12, lsr #1\npmul v1.8b, v1.8b, v0.8b\nfmov w10, s1\nbic w8, w8, w10\nfmov s1, w8\nand w8, w10, w11\neor w10, w11, w8\nand w11, w8, #0xfc\norr w10, w10, w11, lsr #2\npmul v0.8b, v1.8b, v0.8b\nfmov w11, s0\nand w10, w11, w10\nand w11, w10, w0, lsl #4\nbic w10, w0, w10\norr w10, w10, w11\nand w11, w8, w10, lsl #2\nbic w8, w10, w8\norr w8, w8, w11\nand w10, w9, w8, lsl #1\nbic w8, w8, w9\norr w8, w8, w10\nand w0, w8, w1\nret",
   "giasm": "LLVM ERROR: cannot select: %4:gpr(i8) = G_INTRINSIC intrinsic(@llvm.pdep), %0:gpr(i8), %1:gpr(i8) (in function: test)",
   "ll": "define i8 @test(i8 %a, i8 %b) {\n  %r = call i8 @llvm.pdep(i8 %a, i8 %b)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i8 @llvm.pdep.i8(i8 %a, i8 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
@@ -11077,9 +11077,9 @@
   "thru": 1,
   "lat": 1,
   "sizelat": 1,
-  "size": 37,
+  "size": 36,
   "gisize": -2,
-  "asm": "mvn w9, w1\nmov w8, #-1                         // =0xffffffff\nand w10, w0, w1\nlsl w9, w9, #1\nfmov s0, w8\nfmov s1, w9\npmul v1.8b, v1.8b, v0.8b\nfmov w8, s1\nbic w9, w9, w8\nand w8, w8, w1\nfmov s1, w9\nand w11, w10, w8\neor w13, w1, w8\nand w8, w8, #0xfe\neor w10, w10, w11\nand w11, w11, #0xfe\norr w8, w13, w8, lsr #1\npmul v1.8b, v1.8b, v0.8b\nfmov w12, s1\nbic w9, w9, w12\nfmov s1, w9\norr w9, w10, w11, lsr #1\nand w10, w12, w8\neor w8, w8, w10\nand w11, w9, w10\nand w10, w10, #0xfc\npmul v0.8b, v1.8b, v0.8b\norr w8, w8, w10, lsr #2\neor w9, w9, w11\nand w11, w11, #0xfc\norr w9, w9, w11, lsr #2\nfmov w10, s0\nand w8, w10, w8\nand w8, w9, w8\neor w9, w9, w8\nand w8, w8, #0xf0\norr w0, w9, w8, lsr #4\nret",
+  "asm": "mvn w8, w1\nmovi v0.2d, #0xffffffffffffffff\nand w10, w0, w1\nlsl w8, w8, #1\nfmov s1, w8\npmul v1.8b, v1.8b, v0.8b\nfmov w9, s1\nbic w8, w8, w9\nand w9, w9, w1\nfmov s1, w8\nand w11, w10, w9\neor w13, w1, w9\nand w9, w9, #0xfe\neor w10, w10, w11\nand w11, w11, #0xfe\norr w9, w13, w9, lsr #1\npmul v1.8b, v1.8b, v0.8b\nfmov w12, s1\nbic w8, w8, w12\nfmov s1, w8\norr w8, w10, w11, lsr #1\nand w10, w12, w9\neor w9, w9, w10\nand w11, w8, w10\nand w10, w10, #0xfc\npmul v0.8b, v1.8b, v0.8b\norr w9, w9, w10, lsr #2\neor w8, w8, w11\nand w11, w11, #0xfc\norr w8, w8, w11, lsr #2\nfmov w10, s0\nand w9, w10, w9\nand w9, w8, w9\neor w8, w8, w9\nand w9, w9, #0xf0\norr w0, w8, w9, lsr #4\nret",
   "giasm": "LLVM ERROR: cannot select: %4:gpr(i8) = G_INTRINSIC intrinsic(@llvm.pext), %0:gpr(i8), %1:gpr(i8) (in function: test)",
   "ll": "define i8 @test(i8 %a, i8 %b) {\n  %r = call i8 @llvm.pext(i8 %a, i8 %b)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i8 @llvm.pext.i8(i8 %a, i8 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
