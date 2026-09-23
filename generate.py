@@ -337,7 +337,7 @@ def do(instr, variant, ty, ty2, tyoverride):
 if args.type == 'all' or args.type == 'int':
   def enumint():
     # Int Binops
-    for instr in ['add', 'sub', 'mul', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'sdiv', 'srem', 'udiv', 'urem', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl', 'clmul', 'scmp', 'ucmp', 'pdep', 'pext', 'smul.fix', 'umul.fix', 'smul.fix.sat', 'umul.fix.sat', 'sadd.with.overflow', 'uadd.with.overflow', 'ssub.with.overflow', 'usub.with.overflow', 'smul.with.overflow', 'umul.with.overflow']:
+    for instr in ['add', 'sub', 'mul', 'and', 'or', 'xor', 'shl', 'ashr', 'lshr', 'sdiv', 'srem', 'udiv', 'urem', 'smin', 'smax', 'umin', 'umax', 'uadd.sat', 'usub.sat', 'sadd.sat', 'ssub.sat', 'rotr', 'rotl', 'clmul', 'scmp', 'ucmp', 'pdep', 'pext', 'smul.fix', 'umul.fix', 'smul.fix.sat', 'umul.fix.sat', 'sadd.with.overflow', 'uadd.with.overflow', 'ssub.with.overflow', 'usub.with.overflow', 'smul.with.overflow', 'umul.with.overflow', 'smulh', 'umulh']:
       for ty in inttypes():
         yield (instr, 'binop', ty, ty, None)
         if instr in ['sdiv', 'srem', 'udiv', 'urem', 'shl', 'ashr', 'lshr', 'rotr', 'rotl']:
@@ -375,7 +375,6 @@ if args.type == 'all' or args.type == 'int':
 
     # TODO: uaddo, usubo, uadde, usube?
     # TODO: umulo, smulo?
-    # TODO: umulh, smulh
     # TODO: ushlsat, sshlsat
     # TODO: sdivfix, udivfix
     # TODO: sdivfixsat, udivfixsat
