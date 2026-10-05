@@ -8230,7 +8230,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.d\nsxtb z0.d, p0/m, z0.d\nscvtf z0.h, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x half> @test(<vscale x 2 x i8> %a) {\n  %r = sitofp <vscale x 2 x i8> %a to <vscale x 2 x half>\n  ret <vscale x 2 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = sitofp <vscale x 2 x i8> %a to <vscale x 2 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x half> %r"
  },
@@ -8245,7 +8245,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nscvtf z0.h, p0/m, z0.h\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x half> @test(<vscale x 2 x i16> %a) {\n  %r = sitofp <vscale x 2 x i16> %a to <vscale x 2 x half>\n  ret <vscale x 2 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i16> %a to <vscale x 2 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x half> %r"
  },
@@ -8260,7 +8260,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nscvtf z0.h, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x half> @test(<vscale x 2 x i32> %a) {\n  %r = sitofp <vscale x 2 x i32> %a to <vscale x 2 x half>\n  ret <vscale x 2 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i32> %a to <vscale x 2 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x half> %r"
  },
@@ -8290,7 +8290,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.s\nsxtb z0.s, p0/m, z0.s\nscvtf z0.h, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x i8> %a) {\n  %r = sitofp <vscale x 4 x i8> %a to <vscale x 4 x half>\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = sitofp <vscale x 4 x i8> %a to <vscale x 4 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
  },
@@ -8305,7 +8305,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.s\nscvtf z0.h, p0/m, z0.h\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x i16> %a) {\n  %r = sitofp <vscale x 4 x i16> %a to <vscale x 4 x half>\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 4 x i16> %a to <vscale x 4 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
  },
@@ -8350,7 +8350,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.h\nsxtb z0.h, p0/m, z0.h\nscvtf z0.h, p0/m, z0.h\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x i8> %a) {\n  %r = sitofp <vscale x 8 x i8> %a to <vscale x 8 x half>\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = sitofp <vscale x 8 x i8> %a to <vscale x 8 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x half> %r"
  },
@@ -8470,7 +8470,7 @@
   "size": 11,
   "gisize": -1,
   "asm": "ptrue p0.d\nmov z1.s, #32767                    // =0x7fff\nsxtb z0.d, p0/m, z0.d\nscvtf z0.s, p0/m, z0.d\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x bfloat> @test(<vscale x 2 x i8> %a) {\n  %r = sitofp <vscale x 2 x i8> %a to <vscale x 2 x bfloat>\n  ret <vscale x 2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i8> %a to <vscale x 2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x bfloat> %r"
  },
@@ -8485,7 +8485,7 @@
   "size": 11,
   "gisize": -1,
   "asm": "ptrue p0.d\nmov z1.s, #32767                    // =0x7fff\nsxth z0.d, p0/m, z0.d\nscvtf z0.s, p0/m, z0.d\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x bfloat> @test(<vscale x 2 x i16> %a) {\n  %r = sitofp <vscale x 2 x i16> %a to <vscale x 2 x bfloat>\n  ret <vscale x 2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i16> %a to <vscale x 2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x bfloat> %r"
  },
@@ -8500,7 +8500,7 @@
   "size": 10,
   "gisize": -1,
   "asm": "ptrue p0.d\nmov z1.s, #32767                    // =0x7fff\nscvtf z0.s, p0/m, z0.s\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x bfloat> @test(<vscale x 2 x i32> %a) {\n  %r = sitofp <vscale x 2 x i32> %a to <vscale x 2 x bfloat>\n  ret <vscale x 2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i32> %a to <vscale x 2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x bfloat> %r"
  },
@@ -8530,7 +8530,7 @@
   "size": 11,
   "gisize": -1,
   "asm": "ptrue p0.s\nmov z1.s, #32767                    // =0x7fff\nsxtb z0.s, p0/m, z0.s\nscvtf z0.s, p0/m, z0.s\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x bfloat> @test(<vscale x 4 x i8> %a) {\n  %r = sitofp <vscale x 4 x i8> %a to <vscale x 4 x bfloat>\n  ret <vscale x 4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 4 x i8> %a to <vscale x 4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x bfloat> %r"
  },
@@ -8545,7 +8545,7 @@
   "size": 11,
   "gisize": -1,
   "asm": "ptrue p0.s\nmov z1.s, #32767                    // =0x7fff\nsxth z0.s, p0/m, z0.s\nscvtf z0.s, p0/m, z0.s\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x bfloat> @test(<vscale x 4 x i16> %a) {\n  %r = sitofp <vscale x 4 x i16> %a to <vscale x 4 x bfloat>\n  ret <vscale x 4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 4 x i16> %a to <vscale x 4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x bfloat> %r"
  },
@@ -8590,7 +8590,7 @@
   "size": 17,
   "gisize": -1,
   "asm": "ptrue p0.h\nmov z2.s, #32767                    // =0x7fff\nsxtb z0.h, p0/m, z0.h\nsunpkhi z1.s, z0.h\nsunpklo z0.s, z0.h\nscvtf z1.s, p0/m, z1.s\nscvtf z0.s, p0/m, z0.s\nlsr z3.s, z1.s, #16\nlsr z4.s, z0.s, #16\nadd z1.s, z1.s, z2.s\nadd z0.s, z0.s, z2.s\nand z3.s, z3.s, #0x1\nand z4.s, z4.s, #0x1\nadd z1.s, z3.s, z1.s\nadd z0.s, z4.s, z0.s\nlsr z1.s, z1.s, #16\nlsr z0.s, z0.s, #16\nuzp1 z0.h, z0.h, z1.h\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x i8> %a) {\n  %r = sitofp <vscale x 8 x i8> %a to <vscale x 8 x bfloat>\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 8 x i8> %a to <vscale x 8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
  },
@@ -8710,7 +8710,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.d\nsxtb z0.d, p0/m, z0.d\nscvtf z0.s, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x i8> %a) {\n  %r = sitofp <vscale x 2 x i8> %a to <vscale x 2 x float>\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = sitofp <vscale x 2 x i8> %a to <vscale x 2 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
  },
@@ -8725,7 +8725,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.d\nsxth z0.d, p0/m, z0.d\nscvtf z0.s, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x i16> %a) {\n  %r = sitofp <vscale x 2 x i16> %a to <vscale x 2 x float>\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i16> %a to <vscale x 2 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
  },
@@ -8740,7 +8740,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nscvtf z0.s, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x i32> %a) {\n  %r = sitofp <vscale x 2 x i32> %a to <vscale x 2 x float>\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i32> %a to <vscale x 2 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
  },
@@ -8770,7 +8770,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.s\nsxtb z0.s, p0/m, z0.s\nscvtf z0.s, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x i8> %a) {\n  %r = sitofp <vscale x 4 x i8> %a to <vscale x 4 x float>\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = sitofp <vscale x 4 x i8> %a to <vscale x 4 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
  },
@@ -8785,7 +8785,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.s\nsxth z0.s, p0/m, z0.s\nscvtf z0.s, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x i16> %a) {\n  %r = sitofp <vscale x 4 x i16> %a to <vscale x 4 x float>\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 4 x i16> %a to <vscale x 4 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
  },
@@ -8830,7 +8830,7 @@
   "size": 7,
   "gisize": -1,
   "asm": "ptrue p0.h\nsxtb z0.h, p0/m, z0.h\nsunpklo z1.s, z0.h\nsunpkhi z2.s, z0.h\nmovprfx z0, z1\nscvtf z0.s, p0/m, z1.s\nmovprfx z1, z2\nscvtf z1.s, p0/m, z2.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x i8> %a) {\n  %r = sitofp <vscale x 8 x i8> %a to <vscale x 8 x float>\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = sitofp <vscale x 8 x i8> %a to <vscale x 8 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x float> %r"
  },
@@ -8890,7 +8890,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.d\nsxtb z0.d, p0/m, z0.d\nscvtf z0.d, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x i8> %a) {\n  %r = sitofp <vscale x 2 x i8> %a to <vscale x 2 x double>\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = sitofp <vscale x 2 x i8> %a to <vscale x 2 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -8905,7 +8905,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "ptrue p0.d\nsxth z0.d, p0/m, z0.d\nscvtf z0.d, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x i16> %a) {\n  %r = sitofp <vscale x 2 x i16> %a to <vscale x 2 x double>\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i16> %a to <vscale x 2 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -8920,7 +8920,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nscvtf z0.d, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x i32> %a) {\n  %r = sitofp <vscale x 2 x i32> %a to <vscale x 2 x double>\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = sitofp <vscale x 2 x i32> %a to <vscale x 2 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -8950,7 +8950,7 @@
   "size": 7,
   "gisize": -1,
   "asm": "ptrue p0.s\nsxtb z0.s, p0/m, z0.s\nsunpklo z1.d, z0.s\nsunpkhi z2.d, z0.s\nmovprfx z0, z1\nscvtf z0.d, p0/m, z1.d\nmovprfx z1, z2\nscvtf z1.d, p0/m, z2.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x i8> %a) {\n  %r = sitofp <vscale x 4 x i8> %a to <vscale x 4 x double>\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = sitofp <vscale x 4 x i8> %a to <vscale x 4 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
  },
@@ -8965,7 +8965,7 @@
   "size": 7,
   "gisize": -1,
   "asm": "ptrue p0.s\nsxth z0.s, p0/m, z0.s\nsunpklo z1.d, z0.s\nsunpkhi z2.d, z0.s\nmovprfx z0, z1\nscvtf z0.d, p0/m, z1.d\nmovprfx z1, z2\nscvtf z1.d, p0/m, z2.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x i16> %a) {\n  %r = sitofp <vscale x 4 x i16> %a to <vscale x 4 x double>\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = sitofp <vscale x 4 x i16> %a to <vscale x 4 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
  },
@@ -10030,7 +10030,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.d, z0.d, #0xff\nptrue p0.d\nucvtf z0.h, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x half> @test(<vscale x 2 x i8> %a) {\n  %r = uitofp <vscale x 2 x i8> %a to <vscale x 2 x half>\n  ret <vscale x 2 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = uitofp <vscale x 2 x i8> %a to <vscale x 2 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x half> %r"
  },
@@ -10045,7 +10045,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nucvtf z0.h, p0/m, z0.h\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x half> @test(<vscale x 2 x i16> %a) {\n  %r = uitofp <vscale x 2 x i16> %a to <vscale x 2 x half>\n  ret <vscale x 2 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i16> %a to <vscale x 2 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x half> %r"
  },
@@ -10060,7 +10060,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nucvtf z0.h, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x half> @test(<vscale x 2 x i32> %a) {\n  %r = uitofp <vscale x 2 x i32> %a to <vscale x 2 x half>\n  ret <vscale x 2 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i32> %a to <vscale x 2 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x half> %r"
  },
@@ -10090,7 +10090,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.s, z0.s, #0xff\nptrue p0.s\nucvtf z0.h, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x i8> %a) {\n  %r = uitofp <vscale x 4 x i8> %a to <vscale x 4 x half>\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = uitofp <vscale x 4 x i8> %a to <vscale x 4 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
  },
@@ -10105,7 +10105,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.s\nucvtf z0.h, p0/m, z0.h\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x half> @test(<vscale x 4 x i16> %a) {\n  %r = uitofp <vscale x 4 x i16> %a to <vscale x 4 x half>\n  ret <vscale x 4 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 4 x i16> %a to <vscale x 4 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x half> %r"
  },
@@ -10150,7 +10150,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.h, z0.h, #0xff\nptrue p0.h\nucvtf z0.h, p0/m, z0.h\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x half> @test(<vscale x 8 x i8> %a) {\n  %r = uitofp <vscale x 8 x i8> %a to <vscale x 8 x half>\n  ret <vscale x 8 x half> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = uitofp <vscale x 8 x i8> %a to <vscale x 8 x half>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x half> %r"
  },
@@ -10270,7 +10270,7 @@
   "size": 11,
   "gisize": -1,
   "asm": "and z0.d, z0.d, #0xff\nptrue p0.d\nmov z1.s, #32767                    // =0x7fff\nucvtf z0.s, p0/m, z0.d\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x bfloat> @test(<vscale x 2 x i8> %a) {\n  %r = uitofp <vscale x 2 x i8> %a to <vscale x 2 x bfloat>\n  ret <vscale x 2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i8> %a to <vscale x 2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x bfloat> %r"
  },
@@ -10285,7 +10285,7 @@
   "size": 11,
   "gisize": -1,
   "asm": "and z0.d, z0.d, #0xffff\nptrue p0.d\nmov z1.s, #32767                    // =0x7fff\nucvtf z0.s, p0/m, z0.d\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x bfloat> @test(<vscale x 2 x i16> %a) {\n  %r = uitofp <vscale x 2 x i16> %a to <vscale x 2 x bfloat>\n  ret <vscale x 2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i16> %a to <vscale x 2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x bfloat> %r"
  },
@@ -10300,7 +10300,7 @@
   "size": 10,
   "gisize": -1,
   "asm": "ptrue p0.d\nmov z1.s, #32767                    // =0x7fff\nucvtf z0.s, p0/m, z0.s\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x bfloat> @test(<vscale x 2 x i32> %a) {\n  %r = uitofp <vscale x 2 x i32> %a to <vscale x 2 x bfloat>\n  ret <vscale x 2 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i32> %a to <vscale x 2 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x bfloat> %r"
  },
@@ -10330,7 +10330,7 @@
   "size": 11,
   "gisize": -1,
   "asm": "and z0.s, z0.s, #0xff\nptrue p0.s\nmov z1.s, #32767                    // =0x7fff\nucvtf z0.s, p0/m, z0.s\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x bfloat> @test(<vscale x 4 x i8> %a) {\n  %r = uitofp <vscale x 4 x i8> %a to <vscale x 4 x bfloat>\n  ret <vscale x 4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 4 x i8> %a to <vscale x 4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x bfloat> %r"
  },
@@ -10345,7 +10345,7 @@
   "size": 11,
   "gisize": -1,
   "asm": "and z0.s, z0.s, #0xffff\nptrue p0.s\nmov z1.s, #32767                    // =0x7fff\nucvtf z0.s, p0/m, z0.s\nlsr z2.s, z0.s, #16\nadd z1.s, z0.s, z1.s\nfcmuo p0.s, p0/z, z0.s, z0.s\norr z0.s, z0.s, #0x400000\nand z2.s, z2.s, #0x1\nadd z1.s, z2.s, z1.s\nsel z0.s, p0, z0.s, z1.s\nlsr z0.s, z0.s, #16\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x bfloat> @test(<vscale x 4 x i16> %a) {\n  %r = uitofp <vscale x 4 x i16> %a to <vscale x 4 x bfloat>\n  ret <vscale x 4 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 4 x i16> %a to <vscale x 4 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x bfloat> %r"
  },
@@ -10390,7 +10390,7 @@
   "size": 17,
   "gisize": -1,
   "asm": "and z0.h, z0.h, #0xff\nptrue p0.s\nmov z2.s, #32767                    // =0x7fff\nuunpkhi z1.s, z0.h\nuunpklo z0.s, z0.h\nucvtf z1.s, p0/m, z1.s\nucvtf z0.s, p0/m, z0.s\nlsr z3.s, z1.s, #16\nlsr z4.s, z0.s, #16\nadd z1.s, z1.s, z2.s\nadd z0.s, z0.s, z2.s\nand z3.s, z3.s, #0x1\nand z4.s, z4.s, #0x1\nadd z1.s, z3.s, z1.s\nadd z0.s, z4.s, z0.s\nlsr z1.s, z1.s, #16\nlsr z0.s, z0.s, #16\nuzp1 z0.h, z0.h, z1.h\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x bfloat> @test(<vscale x 8 x i8> %a) {\n  %r = uitofp <vscale x 8 x i8> %a to <vscale x 8 x bfloat>\n  ret <vscale x 8 x bfloat> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 8 x i8> %a to <vscale x 8 x bfloat>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x bfloat> %r"
  },
@@ -10510,7 +10510,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.d, z0.d, #0xff\nptrue p0.d\nucvtf z0.s, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x i8> %a) {\n  %r = uitofp <vscale x 2 x i8> %a to <vscale x 2 x float>\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = uitofp <vscale x 2 x i8> %a to <vscale x 2 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
  },
@@ -10525,7 +10525,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.d, z0.d, #0xffff\nptrue p0.d\nucvtf z0.s, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x i16> %a) {\n  %r = uitofp <vscale x 2 x i16> %a to <vscale x 2 x float>\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i16> %a to <vscale x 2 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
  },
@@ -10540,7 +10540,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nucvtf z0.s, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x float> @test(<vscale x 2 x i32> %a) {\n  %r = uitofp <vscale x 2 x i32> %a to <vscale x 2 x float>\n  ret <vscale x 2 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i32> %a to <vscale x 2 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x float> %r"
  },
@@ -10570,7 +10570,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.s, z0.s, #0xff\nptrue p0.s\nucvtf z0.s, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x i8> %a) {\n  %r = uitofp <vscale x 4 x i8> %a to <vscale x 4 x float>\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = uitofp <vscale x 4 x i8> %a to <vscale x 4 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
  },
@@ -10585,7 +10585,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.s, z0.s, #0xffff\nptrue p0.s\nucvtf z0.s, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x float> @test(<vscale x 4 x i16> %a) {\n  %r = uitofp <vscale x 4 x i16> %a to <vscale x 4 x float>\n  ret <vscale x 4 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 4 x i16> %a to <vscale x 4 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x float> %r"
  },
@@ -10630,7 +10630,7 @@
   "size": 7,
   "gisize": -1,
   "asm": "and z0.h, z0.h, #0xff\nptrue p0.s\nuunpklo z1.s, z0.h\nuunpkhi z2.s, z0.h\nmovprfx z0, z1\nucvtf z0.s, p0/m, z1.s\nmovprfx z1, z2\nucvtf z1.s, p0/m, z2.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 8 x float> @test(<vscale x 8 x i8> %a) {\n  %r = uitofp <vscale x 8 x i8> %a to <vscale x 8 x float>\n  ret <vscale x 8 x float> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = uitofp <vscale x 8 x i8> %a to <vscale x 8 x float>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 8 x float> %r"
  },
@@ -10690,7 +10690,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.d, z0.d, #0xff\nptrue p0.d\nucvtf z0.d, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x i8> %a) {\n  %r = uitofp <vscale x 2 x i8> %a to <vscale x 2 x double>\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = uitofp <vscale x 2 x i8> %a to <vscale x 2 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -10705,7 +10705,7 @@
   "size": 2,
   "gisize": -1,
   "asm": "and z0.d, z0.d, #0xffff\nptrue p0.d\nucvtf z0.d, p0/m, z0.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x i16> %a) {\n  %r = uitofp <vscale x 2 x i16> %a to <vscale x 2 x double>\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i16> %a to <vscale x 2 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -10720,7 +10720,7 @@
   "size": 1,
   "gisize": -1,
   "asm": "ptrue p0.d\nucvtf z0.d, p0/m, z0.s\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 2 x double> @test(<vscale x 2 x i32> %a) {\n  %r = uitofp <vscale x 2 x i32> %a to <vscale x 2 x double>\n  ret <vscale x 2 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = uitofp <vscale x 2 x i32> %a to <vscale x 2 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 2 x double> %r"
  },
@@ -10750,7 +10750,7 @@
   "size": 7,
   "gisize": -1,
   "asm": "and z0.s, z0.s, #0xff\nptrue p0.d\nuunpklo z1.d, z0.s\nuunpkhi z2.d, z0.s\nmovprfx z0, z1\nucvtf z0.d, p0/m, z1.d\nmovprfx z1, z2\nucvtf z1.d, p0/m, z2.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x i8> %a) {\n  %r = uitofp <vscale x 4 x i8> %a to <vscale x 4 x double>\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = uitofp <vscale x 4 x i8> %a to <vscale x 4 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
  },
@@ -10765,7 +10765,7 @@
   "size": 7,
   "gisize": -1,
   "asm": "and z0.s, z0.s, #0xffff\nptrue p0.d\nuunpklo z1.d, z0.s\nuunpkhi z2.d, z0.s\nmovprfx z0, z1\nucvtf z0.d, p0/m, z1.d\nmovprfx z1, z2\nucvtf z1.d, p0/m, z2.d\nret",
-  "giasm": "LLVM ERROR: Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
+  "giasm": "LLVM ERROR: cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`",
   "ll": "define <vscale x 4 x double> @test(<vscale x 4 x i16> %a) {\n  %r = uitofp <vscale x 4 x i16> %a to <vscale x 4 x double>\n  ret <vscale x 4 x double> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = uitofp <vscale x 4 x i16> %a to <vscale x 4 x double>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <vscale x 4 x double> %r"
  },
