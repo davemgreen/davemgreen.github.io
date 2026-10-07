@@ -3713,9 +3713,9 @@
   "lat": 4,
   "sizelat": 4,
   "size": 7,
-  "gisize": 8,
+  "gisize": 7,
   "asm": "sxtb w8, w0\nmov w9, #-109                       // =0xffffff93\nmul w8, w8, w9\nadd w8, w0, w8, lsr #8\nsbfx w9, w8, #2, #6\nand w8, w8, #0x80\nadd w0, w9, w8, lsr #7\nret",
-  "giasm": "sxtb w8, w0\nmov w9, #-109                       // =0xffffff93\nmul w8, w8, w9\nsxth w8, w8\nadd w8, w0, w8, asr #8\nsbfx w8, w8, #2, #6\nubfx w9, w8, #7, #1\nadd w0, w8, w9\nret",
+  "giasm": "sxtb w8, w0\nmov w9, #-109                       // =0xffffff93\nmul w8, w8, w9\nadd w8, w0, w8, asr #8\nsbfx w8, w8, #2, #6\nubfx w9, w8, #7, #1\nadd w0, w8, w9\nret",
   "ll": "define i8 @test(i8 %a) {\n  %r = sdiv i8 %a, 7\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = sdiv i8 %a, 7\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -4493,9 +4493,9 @@
   "lat": 4,
   "sizelat": 4,
   "size": 9,
-  "gisize": 10,
+  "gisize": 9,
   "asm": "sxtb w8, w0\nmov w9, #-109                       // =0xffffff93\nmul w8, w8, w9\nadd w8, w0, w8, lsr #8\nsbfx w9, w8, #2, #6\nand w8, w8, #0x80\nadd w8, w9, w8, lsr #7\nsub w8, w8, w8, lsl #3\nadd w0, w0, w8\nret",
-  "giasm": "sxtb w8, w0\nmov w9, #-109                       // =0xffffff93\nmul w8, w8, w9\nsxth w8, w8\nadd w8, w0, w8, asr #8\nsbfx w8, w8, #2, #6\nubfx w9, w8, #7, #1\nadd w8, w8, w9\nsub w8, w8, w8, lsl #3\nadd w0, w0, w8\nret",
+  "giasm": "sxtb w8, w0\nmov w9, #-109                       // =0xffffff93\nmul w8, w8, w9\nadd w8, w0, w8, asr #8\nsbfx w8, w8, #2, #6\nubfx w9, w8, #7, #1\nadd w8, w8, w9\nsub w8, w8, w8, lsl #3\nadd w0, w0, w8\nret",
   "ll": "define i8 @test(i8 %a) {\n  %r = srem i8 %a, 7\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = srem i8 %a, 7\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -11305,7 +11305,7 @@
   "size": 5,
   "gisize": 4,
   "asm": "sxtb x8, w1\nsxtb x9, w0\nsmull x8, w9, w8\nlsr x9, x8, #32\nextr w0, w9, w8, #7\nret",
-  "giasm": "sxtb w8, w0\nsxtb w9, w1\nmul w8, w8, w9\nsbfx w0, w8, #7, #9\nret",
+  "giasm": "sxtb w8, w0\nsxtb w9, w1\nmul w8, w8, w9\nasr w0, w8, #7\nret",
   "ll": "define i8 @test(i8 %a, i8 %b) {\n  %r = call i8 @llvm.smul.fix(i8 %a, i8 %b, i32 7)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 6 for:   %r = call i8 @llvm.smul.fix.i8(i8 %a, i8 %b, i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -11755,7 +11755,7 @@
   "size": 12,
   "gisize": 10,
   "asm": "sxtb x9, w1\nlsl w10, w0, #24\nmov w8, #2147483647                 // =0x7fffffff\nsmull x9, w9, w10\nlsr x10, x9, #32\nextr w9, w10, w9, #7\ncmp w10, #63\ncsel w8, w8, w9, gt\ncmn w10, #64\nmov w9, #-2147483648                // =0x80000000\ncsel w8, w9, w8, lt\nasr w0, w8, #24\nret",
-  "giasm": "sxtb w9, w0\nsxtb w10, w1\nmov w8, #127                        // =0x7f\nmul w9, w9, w10\nsbfx w9, w9, #7, #9\ncmp w9, #127\ncsel w8, w9, w8, lt\nmov w9, #-128                       // =0xffffff80\ncmn w8, #128\ncsel w0, w8, w9, gt\nret",
+  "giasm": "sxtb w9, w0\nsxtb w10, w1\nmov w8, #127                        // =0x7f\nmul w9, w9, w10\nasr w9, w9, #7\ncmp w9, #127\ncsel w8, w9, w8, lt\nmov w9, #-128                       // =0xffffff80\ncmn w8, #128\ncsel w0, w8, w9, gt\nret",
   "ll": "define i8 @test(i8 %a, i8 %b) {\n  %r = call i8 @llvm.smul.fix.sat(i8 %a, i8 %b, i32 7)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 1 for:   %r = call i8 @llvm.smul.fix.sat.i8(i8 %a, i8 %b, i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
@@ -13555,7 +13555,7 @@
   "size": 4,
   "gisize": 4,
   "asm": "sxtb w8, w1\nsxtb w9, w0\nmul w8, w9, w8\nasr w0, w8, #8\nret",
-  "giasm": "sxtb w8, w0\nsxtb w9, w1\nmul w8, w8, w9\nsbfx w0, w8, #8, #8\nret",
+  "giasm": "sxtb w8, w0\nsxtb w9, w1\nmul w8, w8, w9\nasr w0, w8, #8\nret",
   "ll": "define i8 @test(i8 %a, i8 %b) {\n  %r = call i8 @llvm.smulh(i8 %a, i8 %b)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = call i8 @llvm.smulh.i8(i8 %a, i8 %b)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
  },
