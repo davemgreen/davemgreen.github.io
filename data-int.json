@@ -25974,7 +25974,7 @@
   "sizelat": 5,
   "size": 5,
   "gisize": 15,
-  "asm": "fmov x8, d0\nand x8, x8, x8, lsr #32\nand x8, x8, x8, lsr #16\nlsr x9, x8, #8\nand w0, w8, w9\nret",
+  "asm": "fmov x8, d0\nand x8, x8, x8, lsr #32\nlsr x9, x8, #16\nand w8, w8, w9\nand w0, w8, w8, lsr #8\nret",
   "giasm": "umov w8, v0.b[0]\numov w9, v0.b[1]\numov w10, v0.b[2]\numov w11, v0.b[3]\numov w12, v0.b[4]\numov w13, v0.b[5]\numov w14, v0.b[6]\numov w15, v0.b[7]\nand w8, w8, w9\nand w9, w10, w11\nand w10, w12, w13\nand w11, w14, w15\nand w8, w8, w9\nand w9, w10, w11\nand w0, w8, w9\nret",
   "ll": "define i8 @test(<8 x i8> %a) {\n  %r = call i8 @llvm.vector.reduce.and(<8 x i8> %a)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 5 for:   %r = call i8 @llvm.vector.reduce.and.v8i8(<8 x i8> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
@@ -25989,7 +25989,7 @@
   "sizelat": 7,
   "size": 7,
   "gisize": 17,
-  "asm": "mov d1, v0.d[1]\nand v0.8b, v0.8b, v1.8b\nfmov x8, d0\nand x8, x8, x8, lsr #32\nand x8, x8, x8, lsr #16\nlsr x9, x8, #8\nand w0, w8, w9\nret",
+  "asm": "mov d1, v0.d[1]\nand v0.8b, v0.8b, v1.8b\nfmov x8, d0\nand x8, x8, x8, lsr #32\nlsr x9, x8, #16\nand w8, w8, w9\nand w0, w8, w8, lsr #8\nret",
   "giasm": "mov d1, v0.d[1]\nand v0.8b, v0.8b, v1.8b\numov w8, v0.b[0]\numov w9, v0.b[1]\numov w10, v0.b[2]\numov w11, v0.b[3]\numov w12, v0.b[4]\numov w13, v0.b[5]\numov w14, v0.b[6]\numov w15, v0.b[7]\nand w8, w8, w9\nand w9, w10, w11\nand w10, w12, w13\nand w11, w14, w15\nand w8, w8, w9\nand w9, w10, w11\nand w0, w8, w9\nret",
   "ll": "define i8 @test(<16 x i8> %a) {\n  %r = call i8 @llvm.vector.reduce.and(<16 x i8> %a)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 7 for:   %r = call i8 @llvm.vector.reduce.and.v16i8(<16 x i8> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
@@ -26004,7 +26004,7 @@
   "sizelat": 8,
   "size": 8,
   "gisize": 18,
-  "asm": "and v0.16b, v0.16b, v1.16b\nmov d1, v0.d[1]\nand v0.8b, v0.8b, v1.8b\nfmov x8, d0\nand x8, x8, x8, lsr #32\nand x8, x8, x8, lsr #16\nlsr x9, x8, #8\nand w0, w8, w9\nret",
+  "asm": "and v0.16b, v0.16b, v1.16b\nmov d1, v0.d[1]\nand v0.8b, v0.8b, v1.8b\nfmov x8, d0\nand x8, x8, x8, lsr #32\nlsr x9, x8, #16\nand w8, w8, w9\nand w0, w8, w8, lsr #8\nret",
   "giasm": "and v0.16b, v0.16b, v1.16b\nmov d1, v0.d[1]\nand v0.8b, v0.8b, v1.8b\numov w8, v0.b[0]\numov w9, v0.b[1]\numov w10, v0.b[2]\numov w11, v0.b[3]\numov w12, v0.b[4]\numov w13, v0.b[5]\numov w14, v0.b[6]\numov w15, v0.b[7]\nand w8, w8, w9\nand w9, w10, w11\nand w10, w12, w13\nand w11, w14, w15\nand w8, w8, w9\nand w9, w10, w11\nand w0, w8, w9\nret",
   "ll": "define i8 @test(<32 x i8> %a) {\n  %r = call i8 @llvm.vector.reduce.and(<32 x i8> %a)\n  ret i8 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 8 for:   %r = call i8 @llvm.vector.reduce.and.v32i8(<32 x i8> %a)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i8 %r"
