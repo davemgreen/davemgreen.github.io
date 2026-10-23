@@ -6218,9 +6218,9 @@
   "lat": 4,
   "sizelat": 4,
   "size": 5,
-  "gisize": 7,
+  "gisize": 6,
   "asm": "sxth w8, w0\nmov w9, #18725                      // =0x4925\nmul w8, w8, w9\nasr w9, w8, #17\nadd w0, w9, w8, lsr #31\nret",
-  "giasm": "sxth w8, w0\nmov w9, #18725                      // =0x4925\nmul w8, w8, w9\nasr w8, w8, #16\nasr w8, w8, #1\nubfx w9, w8, #15, #1\nadd w0, w8, w9\nret",
+  "giasm": "sxth w8, w0\nmov w9, #18725                      // =0x4925\nmul w8, w8, w9\nasr w8, w8, #17\nubfx w9, w8, #15, #1\nadd w0, w8, w9\nret",
   "ll": "define i16 @test(i16 %a) {\n  %r = sdiv i16 %a, 7\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = sdiv i16 %a, 7\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
@@ -7493,9 +7493,9 @@
   "lat": 4,
   "sizelat": 4,
   "size": 7,
-  "gisize": 9,
+  "gisize": 8,
   "asm": "sxth w8, w0\nmov w9, #18725                      // =0x4925\nmul w8, w8, w9\nasr w9, w8, #17\nadd w8, w9, w8, lsr #31\nsub w8, w8, w8, lsl #3\nadd w0, w0, w8\nret",
-  "giasm": "sxth w8, w0\nmov w9, #18725                      // =0x4925\nmul w8, w8, w9\nasr w8, w8, #16\nasr w8, w8, #1\nubfx w9, w8, #15, #1\nadd w8, w8, w9\nsub w8, w8, w8, lsl #3\nadd w0, w0, w8\nret",
+  "giasm": "sxth w8, w0\nmov w9, #18725                      // =0x4925\nmul w8, w8, w9\nasr w8, w8, #17\nubfx w9, w8, #15, #1\nadd w8, w8, w9\nsub w8, w8, w8, lsl #3\nadd w0, w0, w8\nret",
   "ll": "define i16 @test(i16 %a) {\n  %r = srem i16 %a, 7\n  ret i16 %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 4 for:   %r = srem i16 %a, 7\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret i16 %r"
  },
