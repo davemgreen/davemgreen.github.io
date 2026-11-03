@@ -19762,9 +19762,9 @@
   "thru": 224,
   "lat": 224,
   "sizelat": 224,
-  "size": 20,
+  "size": 23,
   "gisize": 8,
-  "asm": "smulh z4.b, z0.b, z2.b\nsmulh z5.b, z1.b, z3.b\nmovi v6.16b, #63\nmul v0.16b, v0.16b, v2.16b\nmul v1.16b, v1.16b, v3.16b\nmovi v7.16b, #127\nadd v2.16b, v4.16b, v4.16b\nadd v3.16b, v5.16b, v5.16b\ncmgt v16.16b, v4.16b, v6.16b\ncmgt v6.16b, v5.16b, v6.16b\nusra v2.16b, v0.16b, #7\nmovi v0.16b, #192\nusra v3.16b, v1.16b, #7\nmov v1.16b, v16.16b\nbit v3.16b, v7.16b, v6.16b\ncmgt v4.16b, v0.16b, v4.16b\nbsl v1.16b, v7.16b, v2.16b\nmovi v2.16b, #128\ncmgt v5.16b, v0.16b, v5.16b\nmov v0.16b, v4.16b\nbsl v0.16b, v2.16b, v1.16b\nmov v1.16b, v5.16b\nbsl v1.16b, v2.16b, v3.16b\nret",
+  "asm": "smulh z4.b, z0.b, z2.b\nsmulh z5.b, z1.b, z3.b\nmovi v6.16b, #63\nmul v0.16b, v0.16b, v2.16b\nmul v1.16b, v1.16b, v3.16b\nmovi v7.16b, #127\nadd v2.16b, v4.16b, v4.16b\nadd v3.16b, v5.16b, v5.16b\ncmgt v16.16b, v4.16b, v6.16b\ncmgt v6.16b, v5.16b, v6.16b\nusra v2.16b, v0.16b, #7\nmovi v0.16b, #192\nusra v3.16b, v1.16b, #7\nmovprfx z1, z7\nbsl z1.d, z1.d, z2.d, z16.d\nmovi v2.16b, #128\nbit v3.16b, v7.16b, v6.16b\ncmgt v4.16b, v0.16b, v4.16b\ncmgt v5.16b, v0.16b, v5.16b\nmovprfx z0, z2\nbsl z0.d, z0.d, z1.d, z4.d\nmovprfx z1, z2\nbsl z1.d, z1.d, z3.d, z5.d\nret",
   "giasm": "smull v4.8h, v0.8b, v2.8b\nsmull v5.8h, v1.8b, v3.8b\nsmull2 v2.8h, v0.16b, v2.16b\nsmull2 v3.8h, v1.16b, v3.16b\nsqshrn v0.8b, v4.8h, #7\nsqshrn v1.8b, v5.8h, #7\nsqshrn2 v0.16b, v2.8h, #7\nsqshrn2 v1.16b, v3.8h, #7\nret",
   "ll": "define <32 x i8> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = call <32 x i8> @llvm.smul.fix.sat(<32 x i8> %a, <32 x i8> %b, i32 7)\n  ret <32 x i8> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of RThru:224 CodeSize:128 Lat:224 SizeLat:224 for:   %r = call <32 x i8> @llvm.smul.fix.sat.v32i8(<32 x i8> %a, <32 x i8> %b, i32 7)\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i8> %r"
