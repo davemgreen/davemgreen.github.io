@@ -9218,9 +9218,9 @@
   "lat": 9,
   "sizelat": 9,
   "size": 9,
-  "gisize": 12,
+  "gisize": 11,
   "asm": "adrp x8, .LCPI0_0\nmovi v2.2s, #128, lsl #24\nldr d1, [x8, :lo12:.LCPI0_0]\numulh z1.s, z0.s, z1.s\nfneg d2, d2\nsub v0.2s, v0.2s, v1.2s\numulh z0.s, z0.s, z2.s\nadd v0.2s, v0.2s, v1.2s\nushr v0.2s, v0.2s, #2\nret",
-  "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nmov x8, #-9223372034707292160       // =0x8000000080000000\nfmov d2, x8\numull v1.2d, v0.2s, v1.2s\nfneg d2, d2\nshrn v1.2s, v1.2d, #32\nsub v0.2s, v0.2s, v1.2s\numull v0.2d, v0.2s, v2.2s\nshrn v0.2s, v0.2d, #32\nadd v0.2s, v0.2s, v1.2s\nushr v0.2s, v0.2s, #2\nret",
+  "giasm": "adrp x8, .LCPI0_0\nmovi v2.2s, #128, lsl #24\nldr d1, [x8, :lo12:.LCPI0_0]\numull v1.2d, v0.2s, v1.2s\nfneg d2, d2\nshrn v1.2s, v1.2d, #32\nsub v0.2s, v0.2s, v1.2s\numull v0.2d, v0.2s, v2.2s\nshrn v0.2s, v0.2d, #32\nadd v0.2s, v0.2s, v1.2s\nushr v0.2s, v0.2s, #2\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) {\n  %r = udiv <2 x i32> %a, <i32 7, i32 6>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 9 for:   %r = udiv <2 x i32> %a, <i32 7, i32 6>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
  },
@@ -10493,9 +10493,9 @@
   "lat": 11,
   "sizelat": 11,
   "size": 11,
-  "gisize": 15,
+  "gisize": 14,
   "asm": "adrp x8, .LCPI0_0\nmovi v2.2s, #128, lsl #24\nldr d1, [x8, :lo12:.LCPI0_0]\numulh z1.s, z0.s, z1.s\nfneg d2, d2\nsub v3.2s, v0.2s, v1.2s\numulh z2.s, z3.s, z2.s\nadd v1.2s, v2.2s, v1.2s\nindex z2.s, #7, #-1\nushr v1.2s, v1.2s, #2\nmls v0.2s, v1.2s, v2.2s\nret",
-  "giasm": "adrp x8, .LCPI0_0\nldr d1, [x8, :lo12:.LCPI0_0]\nmov x8, #-9223372034707292160       // =0x8000000080000000\nfmov d2, x8\nadrp x8, .LCPI0_1\numull v1.2d, v0.2s, v1.2s\nfneg d2, d2\nshrn v1.2s, v1.2d, #32\nsub v3.2s, v0.2s, v1.2s\numull v2.2d, v3.2s, v2.2s\nshrn v2.2s, v2.2d, #32\nadd v1.2s, v2.2s, v1.2s\nldr d2, [x8, :lo12:.LCPI0_1]\nushr v1.2s, v1.2s, #2\nmls v0.2s, v1.2s, v2.2s\nret",
+  "giasm": "adrp x8, .LCPI0_0\nmovi v2.2s, #128, lsl #24\nldr d1, [x8, :lo12:.LCPI0_0]\nadrp x8, .LCPI0_1\numull v1.2d, v0.2s, v1.2s\nfneg d2, d2\nshrn v1.2s, v1.2d, #32\nsub v3.2s, v0.2s, v1.2s\numull v2.2d, v3.2s, v2.2s\nshrn v2.2s, v2.2d, #32\nadd v1.2s, v2.2s, v1.2s\nldr d2, [x8, :lo12:.LCPI0_1]\nushr v1.2s, v1.2s, #2\nmls v0.2s, v1.2s, v2.2s\nret",
   "ll": "define <2 x i32> @test(<2 x i32> %a) {\n  %r = urem <2 x i32> %a, <i32 7, i32 6>\n  ret <2 x i32> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 11 for:   %r = urem <2 x i32> %a, <i32 7, i32 6>\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <2 x i32> %r"
  },
