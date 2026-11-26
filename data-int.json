@@ -17454,7 +17454,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmeq v1.16b, v1.16b, v3.16b\nadrp x9, .LCPI0_0\ncmeq v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmeq v1.16b, v1.16b, v3.16b\ncmeq v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp eq <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp eq <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -18354,7 +18354,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmeq v1.16b, v1.16b, v3.16b\nadrp x9, .LCPI0_0\ncmeq v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nbic v1.16b, v2.16b, v1.16b\nbic v0.16b, v2.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmeq v1.16b, v1.16b, v3.16b\ncmeq v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nbic v1.16b, v2.16b, v1.16b\nbic v0.16b, v2.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp ne <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp ne <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -19254,7 +19254,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmgt v1.16b, v3.16b, v1.16b\nadrp x9, .LCPI0_0\ncmgt v0.16b, v2.16b, v0.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmgt v1.16b, v3.16b, v1.16b\ncmgt v0.16b, v2.16b, v0.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp slt <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp slt <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -20154,7 +20154,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmge v1.16b, v3.16b, v1.16b\nadrp x9, .LCPI0_0\ncmge v0.16b, v2.16b, v0.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmge v1.16b, v3.16b, v1.16b\ncmge v0.16b, v2.16b, v0.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp sle <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp sle <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -21054,7 +21054,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmgt v1.16b, v1.16b, v3.16b\nadrp x9, .LCPI0_0\ncmgt v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmgt v1.16b, v1.16b, v3.16b\ncmgt v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp sgt <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp sgt <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -21954,7 +21954,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmge v1.16b, v1.16b, v3.16b\nadrp x9, .LCPI0_0\ncmge v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmge v1.16b, v1.16b, v3.16b\ncmge v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp sge <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp sge <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -22854,7 +22854,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmhi v1.16b, v3.16b, v1.16b\nadrp x9, .LCPI0_0\ncmhi v0.16b, v2.16b, v0.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmhi v1.16b, v3.16b, v1.16b\ncmhi v0.16b, v2.16b, v0.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp ult <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp ult <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -23754,7 +23754,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmhs v1.16b, v3.16b, v1.16b\nadrp x9, .LCPI0_0\ncmhs v0.16b, v2.16b, v0.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmhs v1.16b, v3.16b, v1.16b\ncmhs v0.16b, v2.16b, v0.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp ule <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp ule <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -24654,7 +24654,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmhi v1.16b, v1.16b, v3.16b\nadrp x9, .LCPI0_0\ncmhi v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmhi v1.16b, v1.16b, v3.16b\ncmhi v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp ugt <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp ugt <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
@@ -25554,7 +25554,7 @@
   "sizelat": 2,
   "size": 14,
   "gisize": -2,
-  "asm": "cmhs v1.16b, v1.16b, v3.16b\nadrp x9, .LCPI0_0\ncmhs v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
+  "asm": "adrp x9, .LCPI0_0\ncmhs v1.16b, v1.16b, v3.16b\ncmhs v0.16b, v0.16b, v2.16b\nldr q2, [x9, :lo12:.LCPI0_0]\nand v1.16b, v1.16b, v2.16b\nand v0.16b, v0.16b, v2.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\naddp v1.16b, v1.16b, v1.16b\naddp v0.16b, v0.16b, v0.16b\nstr h1, [x8, #2]\nstr h0, [x8]\nret",
   "giasm": "LLVM ERROR: unable to legalize instruction: G_STORE %8:_(<32 x i8>), %2:_(p0) :: (store (<32 x i1>)) (in function: test)",
   "ll": "define <32 x i1> @test(<32 x i8> %a, <32 x i8> %b) {\n  %r = icmp uge <32 x i8> %a, %b\n  ret <32 x i1> %r\n}",
   "costoutput": "Printing analysis 'Cost Model Analysis' for function 'test':\nCost Model: Found costs of 2 for:   %r = icmp uge <32 x i8> %a, %b\nCost Model: Found costs of RThru:0 CodeSize:1 Lat:1 SizeLat:1 for:   ret <32 x i1> %r"
